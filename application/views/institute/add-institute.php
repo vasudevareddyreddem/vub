@@ -11,7 +11,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			<div style="padding:20px;">
-            <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/addpost'); ?>">
+            <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/addpost'); ?>" enctype="multipart/form-data">
 						
 						<div class="col-md-6">
 							<div class="form-group">
@@ -25,7 +25,7 @@
 							<div class="form-group">
 								<label class=" control-label">Institute Logo</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_logo" id="i_logo" placeholder="Institute Logo" />
+									<input type="file" class="form-control" name="i_logo" id="i_logo" placeholder="Institute Logo" />
 								</div>
 							</div>
                         </div>

@@ -233,28 +233,45 @@
           </a>
         
 			</li>
+			
 			<li class="treeview">
-          <a href="<?php echo base_url('Institute'); ?>">
-            <i class="fa fa-files-o"></i>
-            <span>Institute Details</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right"></span>
-            </span>
-          </a>
-        
+				  <a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Institute</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('institute'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('institute/details'); ?>"><i class="fa fa-circle-o"></i> Details</a></li>
+				</ul>
 			</li>
 			<li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Upload  Video</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right"></span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('country'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
-            <li><a href="<?php echo base_url('country/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
-            </ul>
+				  <a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Course </span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('course'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('course/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
+			</li>
+			<li class="treeview">
+				  <a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Upload  Video</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('country'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('country/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
 			</li>
 	  <?php } ?>
 		

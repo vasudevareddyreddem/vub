@@ -25,6 +25,19 @@ class Institute_model extends CI_Model
 		$this->db->where('l_status ',1);
 		return $this->db->get()->result_array();
 	}
+	public  function save_institute($data){
+		$this->db->insert('institute_list',$data);
+		return $this->db->insert_id();
+	}
+	
+	public  function get_institute_details($cut_id){
+		$this->db->select('institute_list.*,countries_list.country_name as c_name,city_list.city_name,location_list.location_name as l_name')->from('institute_list');
+		$this->db->join('countries_list', 'countries_list.c_id = institute_list.country_name', 'left');
+		$this->db->join('city_list', 'city_list.city_id = institute_list.i_city', 'left');
+		$this->db->join('location_list', 'location_list.l_id = institute_list.location_name', 'left');
+		$this->db->where('institute_list.created_by ',$cut_id);
+		return $this->db->get()->row_array();
+	}
 	
 	
 	
