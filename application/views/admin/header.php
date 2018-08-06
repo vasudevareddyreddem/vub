@@ -224,6 +224,16 @@
 			</li>
 	  <?php }else if($details['role_id']==2){ ?>
 		<li class="treeview">
+          <a href="<?php echo base_url('institute/videos'); ?>">
+            <i class="fa fa-files-o"></i>
+            <span>Video's</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right"></span>
+            </span>
+          </a>
+        
+			</li>
+			<li class="treeview">
           <a href="<?php echo base_url('Institute'); ?>">
             <i class="fa fa-files-o"></i>
             <span>Institute Details</span>

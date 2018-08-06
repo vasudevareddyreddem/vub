@@ -17,6 +17,12 @@ class Institute_model extends CI_Model
 	public  function get_cities_list($c_id){
 		$this->db->select('city_id,city_name')->from('city_list');
 		$this->db->where('c_status ',1);
+		$this->db->where('c_id ',$c_id);
+		return $this->db->get()->result_array();
+	}
+	public  function get_locations_list($c_id){
+		$this->db->select('l_id,location_name')->from('location_list');
+		$this->db->where('l_status ',1);
 		return $this->db->get()->result_array();
 	}
 	
