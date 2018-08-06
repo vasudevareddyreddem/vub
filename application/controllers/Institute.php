@@ -1,26 +1,32 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Institute extends CI_Controller {
+@include_once( APPPATH . 'controllers/Admin_panel.php');
+
+class Institute extends Admin_panel {
 
 	public function __construct() 
 	{
 		parent::__construct();	
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-		$this->load->library('session');
-		$this->load->library('email');
-		$this->load->library('user_agent');
-		$this->load->helper('directory');
-		$this->load->helper('cookie');
-		$this->load->helper('security');
-		$this->load->model('Admin_model');
+		
 		
 	}
 	
 	public function index()
 	{	
-		$this->load->view('institute/add-institute');
-		$this->load->view('admin/footer');
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==2){
+				$this->load->view('institute/add-institute');
+				$this->load->view('admin/footer');
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
 	}
 	
 	
