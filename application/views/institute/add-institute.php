@@ -13,19 +13,128 @@
 			<div style="padding:20px;">
             <form id="addcountry" method="post" class="" action="<?php echo base_url('country/addpost'); ?>">
 						
-						<div class="col-md-8">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Country Name</label>
+								<label class=" control-label">Institute Name</label>
 								<div class="">
-									<input type="text" class="form-control" name="country_name" id="country_name" placeholder="Country Name" />
+									<input type="text" class="form-control" name="i_name" id="i_name" placeholder="Institute Name" />
 								</div>
 							</div>
                         </div>
-						<div class="col-md-8">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Country Code</label>
+								<label class=" control-label">Institute Logo</label>
 								<div class="">
-									<input type="text" class="form-control" name="country_code" id="country_code" placeholder="Country Code" />
+									<input type="text" class="form-control" name="i_logo" id="i_logo" placeholder="Institute Logo" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">About Institute</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_about" id="i_about" placeholder="About Institute" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Website</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_website" id="i_website" placeholder="ex: http://Institute.com" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Country</label>
+								<div class="">
+								<select  class="form-control select2" onchange="get_city_list(this.value)" name="country_name" id="country_name">
+								<option value="">Select</option>
+								<?php if(isset($countries_list) && count($countries_list)>0){ ?>
+								<?php foreach($countries_list as $list){ ?>
+								<option value="<?php echo $list['c_id']; ?>"><?php echo $list['country_name']; ?></option>
+								<?php } ?>
+								<?php } ?>
+								</select>
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">City</label>
+								<div class="">
+								<select  class="form-control select2" onchange="get_location_list(this.value)" name="i_city" id="i_city">
+								<option value="">Select</option>
+							
+								</select>
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Location</label>
+								<div class="">
+								<select  class="form-control select2" name="location_name" id="location_name">
+								<option value="">Select</option>
+							
+								</select>
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Detailed Address</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_address" id="i_address" placeholder="Country Name" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Primary Contact</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_p_phone" id="i_p_phone" placeholder="Primary Contact" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Secondary Contact</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_s_phone" id="i_s_phone" placeholder="Secondary Contact" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">E-Mail ID</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_email_id" id="i_email_id" placeholder="Email Id" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Founder Name</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_founder" id="i_founder" placeholder="Founder Name" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">About Founder</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_f_about" id="i_f_about" placeholder="About Founder" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Contact Person</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_contact_person" id="i_contact_person" placeholder="Contact Person" />
 								</div>
 							</div>
                         </div>
@@ -88,4 +197,62 @@
         })
      
 });
+function get_location_list(country_id){
+	if(country_id !=''){
+		    jQuery.ajax({
+   			url: "<?php echo base_url('institute/get_city_lists');?>",
+   			data: {
+				country_id: country_id,
+			},
+   			type: "POST",
+   			format:"Json",
+   					success:function(data){
+						
+						if(data.msg=1){
+							var parsedData = JSON.parse(data);
+						//alert(parsedData.list.length);
+							$('#i_city').empty();
+							$('#i_city').append("<option>select</option>");
+							for(i=0; i < parsedData.list.length; i++) {
+								//console.log(parsedData.list);
+							$('#i_city').append("<option value="+parsedData.list[i].city_id+">"+parsedData.list[i].city_name+"</option>");                      
+                    
+								
+							 
+							}
+						}
+						
+   					}
+           });
+	   }
+}
+function get_city_list(country_id){
+	if(country_id !=''){
+		    jQuery.ajax({
+   			url: "<?php echo base_url('institute/get_city_lists');?>",
+   			data: {
+				country_id: country_id,
+			},
+   			type: "POST",
+   			format:"Json",
+   					success:function(data){
+						
+						if(data.msg=1){
+							var parsedData = JSON.parse(data);
+						//alert(parsedData.list.length);
+							$('#i_city').empty();
+							$('#i_city').append("<option>select</option>");
+							for(i=0; i < parsedData.list.length; i++) {
+								//console.log(parsedData.list);
+							$('#i_city').append("<option value="+parsedData.list[i].city_id+">"+parsedData.list[i].city_name+"</option>");                      
+                    
+								
+							 
+							}
+						}
+						
+   					}
+           });
+	   }
+}
 </script>

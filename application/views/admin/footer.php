@@ -26,6 +26,11 @@
 <!-- Bootstrap WYSIHTML5 -->
 
 <script>
+ $(".select2").select2(
+	 {
+		closeOnSelect: true
+	}
+ );
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
