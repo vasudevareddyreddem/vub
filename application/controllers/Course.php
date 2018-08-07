@@ -16,7 +16,7 @@ class Course extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
+			if($login_details['role_id']==1){
 				
 				$data['course_type_list']=$this->Course_model->get_course_type_Name_list();
 				//echo '<pre>';print_r($data);exit;
@@ -36,7 +36,7 @@ class Course extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
+			if($login_details['role_id']==1){
 				$data['course_list']=$this->Course_model->get_course_list($login_details['cust_id']);
 				//echo '<pre>';print_r($data);exit;
 				$this->load->view('course/list',$data);
@@ -55,7 +55,7 @@ class Course extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
+			if($login_details['role_id']==1){
 				$c_id=base64_decode($this->uri->segment(3));
 				$data['course_details']=$this->Course_model->get_full_course_details($c_id);
 				$data['course_type_list']=$this->Course_model->get_course_type_Name_list();
@@ -77,7 +77,7 @@ class Course extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
+			if($login_details['role_id']==1){
 				
 				$post=$this->input->post();
 				$check=$this->Course_model->check_course_exits_ornot($post['c_name'],$post['c_type']);
@@ -137,7 +137,7 @@ class Course extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
+			if($login_details['role_id']==1){
 				
 				$post=$this->input->post();
 				$course_details=$this->Course_model->get_full_course_details($post['c_id']);
@@ -339,7 +339,7 @@ class Course extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
+			if($login_details['role_id']==1){
 			$admindetails=$this->session->userdata('user_details');
 			$c_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
@@ -417,7 +417,7 @@ class Course extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
+			if($login_details['role_id']==1){
 				$admindetails=$this->session->userdata('user_details');
 				$c_id=base64_decode($this->uri->segment(3));
 			

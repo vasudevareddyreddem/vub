@@ -89,7 +89,7 @@
     <!-- /.content -->
   </div>	
   <script>
-  function admindeactive(id){
+function admindeactive(id){
 	$(".popid").attr("href","<?php echo base_url('publish/status'); ?>"+"/"+id);
 } 
 
@@ -98,10 +98,10 @@ function admindedelete(id){
 }
 function adminstatus(id){
 	if(id==1){
-			$('#content1').html('Are you sure you want to Deactivate?');
+			$('#content1').html('Are you sure you want to Unpublished?');
 		
 	}if(id==0){
-			$('#content1').html('Are you sure you want to activate?');
+			$('#content1').html('Are you sure you want to Published?');
 	}
 }
 function admindedeletemsg(id){

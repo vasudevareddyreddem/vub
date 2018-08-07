@@ -23,8 +23,9 @@ class User_model extends CI_Model
 		
 	}
 	public  function get_admin_details($cust_id){
-		$this->db->select('*')->from('customers_list');
-		$this->db->where('cust_id',$cust_id);
+		$this->db->select('customers_list.*,role.role')->from('customers_list');
+		$this->db->join('role ', 'role.role_id = customers_list.role_id', 'left');
+		$this->db->where('customers_list.cust_id',$cust_id);
 		return $this->db->get()->row_array();
 	}
 	

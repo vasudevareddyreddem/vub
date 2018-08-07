@@ -23,8 +23,9 @@ class Admin_model extends CI_Model
 		
 	}
 	public  function get_admin_details($cust_id){
-		$this->db->select('*')->from('admin');
-		$this->db->where('cust_id',$cust_id);
+		$this->db->select('admin.*,role.role')->from('admin');
+		$this->db->join('role ', 'role.role_id = admin.role_id', 'left');
+		$this->db->where('admin.cust_id',$cust_id);
 		return $this->db->get()->row_array();
 	}
 	
