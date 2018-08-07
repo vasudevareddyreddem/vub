@@ -13,41 +13,25 @@
 			<div style="padding:20px;">
             <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/addpost'); ?>" enctype="multipart/form-data">
 						
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div class="form-group">
-								<label class=" control-label">Institute Name</label>
+								<label class=" control-label">Course Name</label>
 								<div class="">
 									<input type="text" class="form-control" name="i_name" id="i_name" placeholder="Institute Name" />
 								</div>
 							</div>
                         </div>
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div class="form-group">
-								<label class=" control-label">Institute Logo</label>
+								<label class=" control-label">Course Image</label>
 								<div class="">
 									<input type="file" class="form-control" name="i_logo" id="i_logo" placeholder="Institute Logo" />
 								</div>
 							</div>
                         </div>
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div class="form-group">
-								<label class=" control-label">About Institute</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_about" id="i_about" placeholder="About Institute" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Website</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_website" id="i_website" placeholder="ex: http://Institute.com" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Country</label>
+								<label class=" control-label">Course Type</label>
 								<div class="">
 								<select  class="form-control select2" onchange="get_city_list(this.value)" name="country_name" id="country_name">
 								<option value="">Select</option>
@@ -60,84 +44,16 @@
 								</div>
 							</div>
                         </div>
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div class="form-group">
-								<label class=" control-label">City</label>
+								<label class=" control-label">Course Profile1</label>
 								<div class="">
-								<select  class="form-control select2" onchange="get_location_list(this.value)" name="i_city" id="i_city">
-								<option value="">Select</option>
-							
-								</select>
+									<input type="text" class="form-control" name="i_website" id="i_website" placeholder="ex: http://Institute.com" />
 								</div>
 							</div>
                         </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Location</label>
-								<div class="">
-								<select  class="form-control select2" name="location_name" id="location_name">
-								<option value="">Select</option>
-							
-								</select>
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Detailed Address</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_address" id="i_address" placeholder="Detailed Address" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Primary Contact</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_p_phone" id="i_p_phone" placeholder="Primary Contact" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Secondary Contact</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_s_phone" id="i_s_phone" placeholder="Secondary Contact" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">E-Mail ID</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_email_id" id="i_email_id" placeholder="Email Id" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Founder Name</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_founder" id="i_founder" placeholder="Founder Name" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">About Founder</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_f_about" id="i_f_about" placeholder="About Founder" />
-								</div>
-							</div>
-                        </div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class=" control-label">Contact Person</label>
-								<div class="">
-									<input type="text" class="form-control" name="i_contact_person" id="i_contact_person" placeholder="Contact Person" />
-								</div>
-							</div>
-                        </div>
+						
+						
 						<div class="clearfix">&nbsp;</div>
 						  <div class="form-group">
                             <div class="col-lg-4 col-lg-offset-6">

@@ -98,6 +98,10 @@
                     <td><?php echo isset($institute_details['i_contact_person'])?$institute_details['i_contact_person']:''; ?></td>
                  
                 </tr>
+				<tr>
+                  <th><a href="<?php echo base_url('institute/edit'); ?>">Edit</a></th>
+                 
+                </tr>
                 
                 </tbody>
              

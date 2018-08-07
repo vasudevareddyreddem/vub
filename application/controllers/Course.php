@@ -2,12 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 @include_once( APPPATH . 'controllers/Admin_panel.php');
 
-class Institute extends Admin_panel {
+class Course extends Admin_panel {
 
 	public function __construct() 
 	{
 		parent::__construct();	
-		$this->load->model('Institute_model');
+		$this->load->model('Course_model');
 		
 	}
 	
@@ -20,7 +20,7 @@ class Institute extends Admin_panel {
 				
 				$data['countries_list']=$this->Institute_model->get_countries_list();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('institute/add-institute',$data);
+				$this->load->view('course/add-institute',$data);
 				$this->load->view('admin/footer');
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");

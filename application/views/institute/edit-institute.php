@@ -6,18 +6,18 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Add Institute</h3>
+              <h3 class="box-title">Edit Institute</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
 			<div style="padding:20px;">
-            <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/addpost'); ?>" enctype="multipart/form-data">
-						
+            <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/editpost'); ?>" enctype="multipart/form-data">
+						<input  type="hidden" name="i_id" id="i_id" value="<?php echo isset($institute_details['i_id'])?$institute_details['i_id']:''; ?>">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">Institute Name</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_name" id="i_name" placeholder="Institute Name" />
+									<input type="text" class="form-control" name="i_name" id="i_name" value="<?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?>" placeholder="Institute Name" />
 								</div>
 							</div>
                         </div>
@@ -33,7 +33,7 @@
 							<div class="form-group">
 								<label class=" control-label">About Institute</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_about" id="i_about" placeholder="About Institute" />
+									<input type="text" class="form-control" name="i_about" id="i_about" value="<?php echo isset($institute_details['i_about'])?$institute_details['i_about']:''; ?>" placeholder="About Institute" />
 								</div>
 							</div>
                         </div>
@@ -41,7 +41,7 @@
 							<div class="form-group">
 								<label class=" control-label">Website</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_website" id="i_website" placeholder="ex: http://Institute.com" />
+									<input type="text" class="form-control" name="i_website" id="i_website" value="<?php echo isset($institute_details['i_website'])?$institute_details['i_website']:''; ?>" placeholder="ex: http://Institute.com" />
 								</div>
 							</div>
                         </div>
@@ -52,9 +52,13 @@
 								<select  class="form-control select2" onchange="get_city_list(this.value)" name="country_name" id="country_name">
 								<option value="">Select</option>
 								<?php if(isset($countries_list) && count($countries_list)>0){ ?>
-								<?php foreach($countries_list as $list){ ?>
-								<option value="<?php echo $list['c_id']; ?>"><?php echo $list['country_name']; ?></option>
-								<?php } ?>
+									<?php foreach($countries_list as $list){ ?>
+										<?php if($list['c_id']==$institute_details['country_name']){ ?>
+											<option selected value="<?php echo $list['c_id']; ?>"><?php echo $list['country_name']; ?></option>
+										<?php }else{?>
+											<option value="<?php echo $list['c_id']; ?>"><?php echo $list['country_name']; ?></option>
+										<?php } ?>
+									<?php } ?>
 								<?php } ?>
 								</select>
 								</div>
@@ -66,6 +70,15 @@
 								<div class="">
 								<select  class="form-control select2" onchange="get_location_list(this.value)" name="i_city" id="i_city">
 								<option value="">Select</option>
+								<?php if(isset($city_list) && count($city_list)>0){ ?>
+									<?php foreach($city_list as $list){ ?>
+										<?php if($list['city_id']==$institute_details['i_city']){ ?>
+											<option selected value="<?php echo $list['city_id']; ?>"><?php echo $list['city_name']; ?></option>
+										<?php }else{?>
+											<option value="<?php echo $list['city_id']; ?>"><?php echo $list['city_name']; ?></option>
+										<?php } ?>
+									<?php } ?>
+								<?php } ?>
 							
 								</select>
 								</div>
@@ -77,7 +90,15 @@
 								<div class="">
 								<select  class="form-control select2" name="location_name" id="location_name">
 								<option value="">Select</option>
-							
+								<?php if(isset($location_list) && count($location_list)>0){ ?>
+									<?php foreach($location_list as $list){ ?>
+										<?php if($list['l_id']==$institute_details['location_name']){ ?>
+											<option selected value="<?php echo $list['l_id']; ?>"><?php echo $list['location_name']; ?></option>
+										<?php }else{?>
+											<option value="<?php echo $list['l_id']; ?>"><?php echo $list['location_name']; ?></option>
+										<?php } ?>
+									<?php } ?>
+								<?php } ?>
 								</select>
 								</div>
 							</div>
@@ -86,7 +107,7 @@
 							<div class="form-group">
 								<label class=" control-label">Detailed Address</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_address" id="i_address" placeholder="Detailed Address" />
+									<input type="text" class="form-control" name="i_address" id="i_address" value="<?php echo isset($institute_details['i_address'])?$institute_details['i_address']:''; ?>" placeholder="Detailed Address" />
 								</div>
 							</div>
                         </div>
@@ -94,7 +115,7 @@
 							<div class="form-group">
 								<label class=" control-label">Primary Contact</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_p_phone" id="i_p_phone" placeholder="Primary Contact" />
+									<input type="text" class="form-control" name="i_p_phone" id="i_p_phone" value="<?php echo isset($institute_details['i_p_phone'])?$institute_details['i_p_phone']:''; ?>" placeholder="Primary Contact" />
 								</div>
 							</div>
                         </div>
@@ -102,7 +123,7 @@
 							<div class="form-group">
 								<label class=" control-label">Secondary Contact</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_s_phone" id="i_s_phone" placeholder="Secondary Contact" />
+									<input type="text" class="form-control" name="i_s_phone" id="i_s_phone" value="<?php echo isset($institute_details['i_s_phone'])?$institute_details['i_s_phone']:''; ?>" placeholder="Secondary Contact" />
 								</div>
 							</div>
                         </div>
@@ -110,7 +131,7 @@
 							<div class="form-group">
 								<label class=" control-label">E-Mail ID</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_email_id" id="i_email_id" placeholder="Email Id" />
+									<input type="text" class="form-control" name="i_email_id" id="i_email_id" value="<?php echo isset($institute_details['i_email_id'])?$institute_details['i_email_id']:''; ?>" placeholder="Email Id" />
 								</div>
 							</div>
                         </div>
@@ -118,7 +139,7 @@
 							<div class="form-group">
 								<label class=" control-label">Founder Name</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_founder" id="i_founder" placeholder="Founder Name" />
+									<input type="text" class="form-control" name="i_founder" id="i_founder" value="<?php echo isset($institute_details['i_founder'])?$institute_details['i_founder']:''; ?>" placeholder="Founder Name" />
 								</div>
 							</div>
                         </div>
@@ -126,7 +147,7 @@
 							<div class="form-group">
 								<label class=" control-label">About Founder</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_f_about" id="i_f_about" placeholder="About Founder" />
+									<input type="text" class="form-control" name="i_f_about" id="i_f_about" value="<?php echo isset($institute_details['i_f_about'])?$institute_details['i_f_about']:''; ?>" placeholder="About Founder" />
 								</div>
 							</div>
                         </div>
@@ -134,7 +155,7 @@
 							<div class="form-group">
 								<label class=" control-label">Contact Person</label>
 								<div class="">
-									<input type="text" class="form-control" name="i_contact_person" id="i_contact_person" placeholder="Contact Person" />
+									<input type="text" class="form-control" name="i_contact_person" id="i_contact_person" value="<?php echo isset($institute_details['i_contact_person'])?$institute_details['i_contact_person']:''; ?>" placeholder="Contact Person" />
 								</div>
 							</div>
                         </div>
@@ -142,7 +163,7 @@
 						  <div class="form-group">
                             <div class="col-lg-4 col-lg-offset-6">
 							
-                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Add</button>
+                                <button type="submit" class="btn btn-primary" name="signup" value="Update">Update</button>
 								
                                 
                             </div>
