@@ -159,6 +159,7 @@ class Institute extends Admin_panel {
 
 				//echo '<pre>';print_r($post);exit;
 				if(isset($_FILES['i_logo']['name']) && $_FILES['i_logo']['name']!=''){
+					unlink('assets/institute_logo/'.$institute_details['i_logo']);
 					$pic=$_FILES['i_logo']['name'];
 					$picname = str_replace(" ", "", $pic);
 					$imagename=microtime().basename($picname);

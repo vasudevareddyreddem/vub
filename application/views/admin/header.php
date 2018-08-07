@@ -210,18 +210,71 @@
         <li class="header">MAIN NAVIGATION</li>
       <?php if($details['role_id']==1){ ?>
 		  <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Country</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right"></span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('country'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
-            <li><a href="<?php echo base_url('country/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
-            </ul>
+			  <a href="#">
+				<i class="fa fa-files-o"></i>
+				<span>Country</span>
+				<span class="pull-right-container">
+				  <span class="label label-primary pull-right"></span>
+				</span>
+			  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('country'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('country/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
+		</li>
+		<li class="treeview">
+			  <a href="#">
+				<i class="fa fa-files-o"></i>
+				<span>Course Type</span>
+				<span class="pull-right-container">
+				  <span class="label label-primary pull-right"></span>
+				</span>
+			  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('course/addtype'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('course/typelists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
+		</li>
+		<li class="treeview">
+			  <a href="#">
+				<i class="fa fa-files-o"></i>
+				<span>Classification</span>
+				<span class="pull-right-container">
+				  <span class="label label-primary pull-right"></span>
+				</span>
+			  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('classification'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('classification/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
+		</li>
+		<li class="treeview">
+			  <a href="#">
+				<i class="fa fa-files-o"></i>
+				<span>Vendor</span>
+				<span class="pull-right-container">
+				  <span class="label label-primary pull-right"></span>
+				</span>
+			  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('vendor'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('vendor/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
+		</li>
+		<li class="treeview">
+				  <a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Publish Course</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('publish'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('publish/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
 			</li>
+		
 	  <?php }else if($details['role_id']==2){ ?>
 		<li class="treeview">
           <a href="<?php echo base_url('institute/videos'); ?>">
@@ -247,6 +300,7 @@
 					<li><a href="<?php echo base_url('institute/details'); ?>"><i class="fa fa-circle-o"></i> Details</a></li>
 				</ul>
 			</li>
+			
 			<li class="treeview">
 				  <a href="#">
 					<i class="fa fa-files-o"></i>
@@ -260,6 +314,7 @@
 					<li><a href="<?php echo base_url('course/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
 			</li>
+			
 			<li class="treeview">
 				  <a href="#">
 					<i class="fa fa-files-o"></i>

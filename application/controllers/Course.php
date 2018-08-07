@@ -18,9 +18,9 @@ class Course extends Admin_panel {
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==2){
 				
-				$data['countries_list']=$this->Institute_model->get_countries_list();
+				$data['course_type_list']=$this->Course_model->get_course_type_Name_list();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('course/add-institute',$data);
+				$this->load->view('course/add',$data);
 				$this->load->view('admin/footer');
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
@@ -31,35 +31,15 @@ class Course extends Admin_panel {
 			redirect('admin');
 		}
 	}
-	public function videos()
+	public function lists()
 	{	
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==2){
-				
+				$data['course_list']=$this->Course_model->get_course_list($login_details['cust_id']);
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('institute/videos');
-				$this->load->view('admin/footer');
-			}else{
-					$this->session->set_flashdata('error',"you don't have permission to access");
-					redirect('dashboard');
-			}
-		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('admin');
-		}
-	}
-	public function details()
-	{	
-		if($this->session->userdata('user_details'))
-		{
-			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==2){
-				$data['institute_details']=$this->Institute_model->get_institute_details($login_details['cust_id']);
-			
-				//echo '<pre>';print_r($data);exit;
-				$this->load->view('institute/details',$data);
+				$this->load->view('course/list',$data);
 				$this->load->view('admin/footer');
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
@@ -76,12 +56,12 @@ class Course extends Admin_panel {
 		{
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==2){
-				$data['institute_details']=$this->Institute_model->get_institute_details($login_details['cust_id']);
-				$data['countries_list']=$this->Institute_model->get_countries_list();
-				$data['city_list']=$this->Institute_model->get_cities_list($data['institute_details']['country_name']);
-				$data['location_list']=$this->Institute_model->get_locations_list($data['institute_details']['i_city']);
+				$c_id=base64_decode($this->uri->segment(3));
+				$data['course_details']=$this->Course_model->get_full_course_details($c_id);
+				$data['course_type_list']=$this->Course_model->get_course_type_Name_list();
+
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('institute/edit-institute',$data);
+				$this->load->view('course/edit',$data);
 				$this->load->view('admin/footer');
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
@@ -100,41 +80,46 @@ class Course extends Admin_panel {
 			if($login_details['role_id']==2){
 				
 				$post=$this->input->post();
-				if(isset($_FILES['i_logo']['name']) && $_FILES['i_logo']['name']!=''){
-					$pic=$_FILES['i_logo']['name'];
+				$check=$this->Course_model->check_course_exits_ornot($post['c_name'],$post['c_type']);
+				//echo $this->db->last_query();
+				if(count($check)>0){
+					$this->session->set_flashdata('error','Course already exists. Pelase try another name');
+					redirect('course/index');
+				}
+				//echo '<pre>';print_r($post);exit;
+				if(isset($_FILES['c_logo']['name']) && $_FILES['c_logo']['name']!=''){
+					$pic=$_FILES['c_logo']['name'];
 					$picname = str_replace(" ", "", $pic);
 					$imagename=microtime().basename($picname);
 					$imgname = str_replace(" ", "", $imagename);
-					move_uploaded_file($_FILES['i_logo']['tmp_name'], 'assets/institute_logo/'.$imgname);
+					move_uploaded_file($_FILES['c_logo']['tmp_name'], 'assets/course/'.$imgname);
 				}
 				$add=array(
-				'i_name'=>isset($post['i_name'])?$post['i_name']:'',
-				'i_logo'=>isset($imgname)?$imgname:'',
-				'i_about'=>isset($post['i_about'])?$post['i_about']:'',
-				'i_website'=>isset($post['i_website'])?$post['i_website']:'',
-				'country_name'=>isset($post['country_name'])?$post['country_name']:'',
-				'i_city'=>isset($post['i_city'])?$post['i_city']:'',
-				'location_name'=>isset($post['location_name'])?$post['location_name']:'',
-				'i_address'=>isset($post['i_address'])?$post['i_address']:'',
-				'i_p_phone'=>isset($post['i_p_phone'])?$post['i_p_phone']:'',
-				'i_s_phone'=>isset($post['i_s_phone'])?$post['i_s_phone']:'',
-				'i_email_id'=>isset($post['i_email_id'])?$post['i_email_id']:'',
-				'i_founder'=>isset($post['i_founder'])?$post['i_founder']:'',
-				'i_f_about'=>isset($post['i_f_about'])?$post['i_f_about']:'',
-				'i_contact_person'=>isset($post['i_contact_person'])?$post['i_contact_person']:'',
+				'c_name'=>isset($post['c_name'])?$post['c_name']:'',
+				'c_logo'=>isset($imgname)?$imgname:'',
+				'c_type'=>isset($post['c_type'])?$post['c_type']:'',
+				'c_profile_1'=>isset($post['c_profile_1'])?$post['c_profile_1']:'',
+				'c_profile_2'=>isset($post['c_profile_2'])?$post['c_profile_2']:'',
+				'c_profile_3'=>isset($post['c_profile_3'])?$post['c_profile_3']:'',
+				'c_profile_4'=>isset($post['c_profile_4'])?$post['c_profile_4']:'',
+				'c_profile_5'=>isset($post['c_profile_5'])?$post['c_profile_5']:'',
+				'c_profile_6'=>isset($post['c_profile_6'])?$post['c_profile_6']:'',
+				'c_profile_7'=>isset($post['c_profile_7'])?$post['c_profile_7']:'',
+				'c_profile_8'=>isset($post['c_profile_8'])?$post['c_profile_8']:'',
+				'c_profile_9'=>isset($post['c_profile_9'])?$post['c_profile_9']:'',
+				'c_profile_10'=>isset($post['c_profile_10'])?$post['c_profile_10']:'',
 				'status'=>1,
 				'created_at'=>date('Y-m-d H:i:s'),
 				'updated_at'=>date('Y-m-d H:i:s'),
 				'created_by'=>$login_details['cust_id'],
-				'completed'=>1,
 				);
-				$save=$this->Institute_model->save_institute($add);
+				$save=$this->Course_model->save_course($add);
 				if(count($save)>0){
-					$this->session->set_flashdata('success','Institute successfully Added');
-					redirect('institute/details');
+					$this->session->set_flashdata('success','Course successfully Added');
+					redirect('course/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
-					redirect('institute/index/');
+					redirect('course/index');
 				}
 				//echo '<pre>';print_r($post);exit;
 				
@@ -155,42 +140,50 @@ class Course extends Admin_panel {
 			if($login_details['role_id']==2){
 				
 				$post=$this->input->post();
-				$institute_details=$this->Institute_model->get_institute_details($post['i_id']);
-
+				$course_details=$this->Course_model->get_full_course_details($post['c_id']);
+				if($course_details['c_name']!=$post['c_name'] || $course_details['c_type']!=$post['c_type']){
+					$check=$this->Course_model->check_course_exits_ornot($post['c_name'],$post['c_type']);
+					//echo $this->db->last_query();
+					if(count($check)>0){
+						$this->session->set_flashdata('error','Course already exists. Pelase try another name');
+						redirect('course/edit/'.base64_encode($post['c_id']));
+					}
+				}
 				//echo '<pre>';print_r($post);exit;
-				if(isset($_FILES['i_logo']['name']) && $_FILES['i_logo']['name']!=''){
-					$pic=$_FILES['i_logo']['name'];
+				if(isset($_FILES['c_logo']['name']) && $_FILES['c_logo']['name']!=''){
+					unlink('assets/course/'.$course_details['c_logo']);
+					$pic=$_FILES['c_logo']['name'];
 					$picname = str_replace(" ", "", $pic);
 					$imagename=microtime().basename($picname);
 					$imgname = str_replace(" ", "", $imagename);
-					move_uploaded_file($_FILES['i_logo']['tmp_name'], 'assets/institute_logo/'.$imgname);
+					move_uploaded_file($_FILES['c_logo']['tmp_name'], 'assets/course/'.$imgname);
 				}else{
-					$imgname=$institute_details['i_logo'];
+					$imgname=$course_details['c_logo'];
 				}
-				$update=array(
-				'i_name'=>isset($post['i_name'])?$post['i_name']:'',
-				'i_logo'=>isset($imgname)?$imgname:'',
-				'i_about'=>isset($post['i_about'])?$post['i_about']:'',
-				'i_website'=>isset($post['i_website'])?$post['i_website']:'',
-				'country_name'=>isset($post['country_name'])?$post['country_name']:'',
-				'i_city'=>isset($post['i_city'])?$post['i_city']:'',
-				'location_name'=>isset($post['location_name'])?$post['location_name']:'',
-				'i_address'=>isset($post['i_address'])?$post['i_address']:'',
-				'i_p_phone'=>isset($post['i_p_phone'])?$post['i_p_phone']:'',
-				'i_s_phone'=>isset($post['i_s_phone'])?$post['i_s_phone']:'',
-				'i_email_id'=>isset($post['i_email_id'])?$post['i_email_id']:'',
-				'i_founder'=>isset($post['i_founder'])?$post['i_founder']:'',
-				'i_f_about'=>isset($post['i_f_about'])?$post['i_f_about']:'',
-				'i_contact_person'=>isset($post['i_contact_person'])?$post['i_contact_person']:'',
+				$update_data=array(
+				'c_name'=>isset($post['c_name'])?$post['c_name']:'',
+				'c_logo'=>isset($imgname)?$imgname:'',
+				'c_type'=>isset($post['c_type'])?$post['c_type']:'',
+				'c_profile_1'=>isset($post['c_profile_1'])?$post['c_profile_1']:'',
+				'c_profile_2'=>isset($post['c_profile_2'])?$post['c_profile_2']:'',
+				'c_profile_3'=>isset($post['c_profile_3'])?$post['c_profile_3']:'',
+				'c_profile_4'=>isset($post['c_profile_4'])?$post['c_profile_4']:'',
+				'c_profile_5'=>isset($post['c_profile_5'])?$post['c_profile_5']:'',
+				'c_profile_6'=>isset($post['c_profile_6'])?$post['c_profile_6']:'',
+				'c_profile_7'=>isset($post['c_profile_7'])?$post['c_profile_7']:'',
+				'c_profile_8'=>isset($post['c_profile_8'])?$post['c_profile_8']:'',
+				'c_profile_9'=>isset($post['c_profile_9'])?$post['c_profile_9']:'',
+				'c_profile_10'=>isset($post['c_profile_10'])?$post['c_profile_10']:'',
 				'updated_at'=>date('Y-m-d H:i:s'),
 				);
-				$update=$this->Institute_model->update_institute_details($post['i_id'],$update);
+				$update=$this->Course_model->update_course_details($post['c_id'],$update_data);
+
 				if(count($update)>0){
-					$this->session->set_flashdata('success','Institute details successfully updated');
-					redirect('institute/details');
+					$this->session->set_flashdata('success','Course successfully updated');
+					redirect('course/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
-					redirect('institute/edit/');
+					redirect('course/edit/'.base64_encode($post['c_id']));
 				}
 				//echo '<pre>';print_r($post);exit;
 				
@@ -203,60 +196,287 @@ class Course extends Admin_panel {
 			redirect('admin');
 		}
 	}
-	
-	public  function get_city_lists(){
+	public function addtype()
+	{	
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
-				if($login_details['role_id']==2){
-					$post=$this->input->post();
-					$city_list=$this->Institute_model->get_cities_list($post['country_id']);
-					//echo'<pre>';print_r($student_list);exit;
-					if(count($city_list)>0){
-						$data['msg']=1;
-						$data['list']=$city_list;
-						echo json_encode($data);exit;	
-					}else{
-						$data['msg']=0;
-						echo json_encode($data);exit;
-					}
-					
+			if($login_details['role_id']==1){
+				
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('course/addcourse_type');
+				$this->load->view('admin/footer');
 			}else{
-				$this->session->set_flashdata('error',"you don't have permission to access");
-				redirect('home');
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
 			}
 		}else{
 			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('home');
-		}
-	}
-	public  function get_location_lists(){
-		if($this->session->userdata('user_details'))
-		{
-			$login_details=$this->session->userdata('user_details');
-				if($login_details['role_id']==2){
-					$post=$this->input->post();
-					$city_list=$this->Institute_model->get_locations_list($post['city_id']);
-					//echo'<pre>';print_r($student_list);exit;
-					if(count($city_list)>0){
-						$data['msg']=1;
-						$data['list']=$city_list;
-						echo json_encode($data);exit;	
-					}else{
-						$data['msg']=0;
-						echo json_encode($data);exit;
-					}
-					
-			}else{
-				$this->session->set_flashdata('error',"you don't have permission to access");
-				redirect('home');
-			}
-		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('home');
+			redirect('admin');
 		}
 	}
 	
+	
+	public function typelists()
+	{	
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==1){
+				$data['course_type_list']=$this->Course_model->get_course_type_list($login_details['cust_id']);
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('course/course_tpe_list',$data);
+				$this->load->view('admin/footer');
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public function typeedit()
+	{	
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==1){
+				$c_id=base64_decode($this->uri->segment(3));
+				$data['cpurse_type_details']=$this->Course_model->get_course_details($c_id);
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('course/course_tpe_edit',$data);
+				$this->load->view('admin/footer');
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public function addcoursetype_post()
+	{	
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==1){
+				$post=$this->input->post();
+				//echo '<pre>';print_r($post);exit;
+				$check=$this->Course_model->check_exits_ornot($post['course_name']);
+				if(count($check)>0){
+					$this->session->set_flashdata('error','Course type Name already exists. Pelase  try  another name');
+					redirect('course/addtype');
+				}
+				$add=array(
+				'course_type'=>isset($post['course_name'])?$post['course_name']:'',
+				'status'=>1,
+				'created_at'=>date('Y-m-d H:i:s'),
+				'updated_at'=>date('Y-m-d H:i:s'),
+				'created_by'=>$login_details['cust_id'],
+				);
+				$save=$this->Course_model->save_course_type($add);
+				if(count($save)>0){
+					$this->session->set_flashdata('success','Course type successfully Added');
+					redirect('course/typelists');
+				}else{
+					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+					redirect('course/addtype/');
+				}
+				//echo '<pre>';print_r($post);exit;
+				
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public function editcoursetype_post()
+	{	
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==1){
+				$post=$this->input->post();
+				//echo '<pre>';print_r($post);exit;
+				$details=$this->Course_model->get_course_details($post['c_t_l']);
+				if($details['course_type']!=$post['course_name']){
+					$check=$this->Course_model->check_exits_ornot($post['course_name']);
+					if(count($check)>0){
+						$this->session->set_flashdata('error','Course Type already exists. Pelase  try  another name');
+						redirect('course/typeedit/'.base64_encode($post['c_t_l']));
+
+					}
+				}
+				$update_data=array(
+				'course_type'=>isset($post['course_name'])?$post['course_name']:'',
+				'updated_at'=>date('Y-m-d H:i:s'),
+				);
+				$update=$this->Course_model->update_course_type_details($post['c_t_l'],$update_data);
+				if(count($update)>0){
+					$this->session->set_flashdata('success','Course type successfully details Updated');
+					redirect('course/typelists');
+				}else{
+					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+					redirect('course/typeedit/'.base64_encode($post['c_t_l']));
+				}
+				//echo '<pre>';print_r($post);exit;
+				
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public  function status(){
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==2){
+			$admindetails=$this->session->userdata('user_details');
+			$c_id=base64_decode($this->uri->segment(3));
+			$status=base64_decode($this->uri->segment(4));
+			if($status==1){
+				$stat=0;
+			}else{
+				$stat=1;
+			}
+			$update_data=array(
+					'status'=>$stat,
+					'updated_at'=>date('Y-m-d H:i:s'),
+					);
+					$update=$this->Course_model->update_course_details($c_id,$update_data);
+						if(count($update)>0){
+							if($status==1){
+							$this->session->set_flashdata('success',"Course successfully deactivated");
+							}else{
+							$this->session->set_flashdata('success',"Course successfully activated");
+							}
+							redirect('course/lists');
+							
+						}else{
+							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+							redirect('course/lists');
+						}
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public  function typestatus(){
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==1){
+			$admindetails=$this->session->userdata('user_details');
+			$c_id=base64_decode($this->uri->segment(3));
+			$status=base64_decode($this->uri->segment(4));
+			if($status==1){
+				$stat=0;
+			}else{
+				$stat=1;
+			}
+			$update_data=array(
+					'status'=>$stat,
+					'updated_at'=>date('Y-m-d H:i:s'),
+					);
+					$update=$this->Course_model->update_course_type_details($c_id,$update_data);
+						if(count($update)>0){
+							if($status==1){
+							$this->session->set_flashdata('success',"Course type successfully deactivated");
+							}else{
+							$this->session->set_flashdata('success',"Course type successfully activated");
+							}
+							redirect('course/typelists');
+							
+						}else{
+							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+							redirect('course/typelists');
+						}
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public  function delete(){
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==2){
+				$admindetails=$this->session->userdata('user_details');
+				$c_id=base64_decode($this->uri->segment(3));
+			
+			$update_data=array(
+					'status'=>2,
+					'updated_at'=>date('Y-m-d H:i:s'),
+					);
+					$course_details=$this->Course_model->get_full_course_details($c_id);
+					$update=$this->Course_model->update_course_details($c_id,$update_data);
+						if(count($update)>0){
+							unlink('assets/course/'.$course_details['c_logo']);
+							
+							$this->session->set_flashdata('success',"Course successfully deleted");
+
+							redirect('course/lists');
+						}else{
+							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+							redirect('course/lists');
+						}
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public  function typedelete(){
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==1){
+				$admindetails=$this->session->userdata('user_details');
+				$c_id=base64_decode($this->uri->segment(3));
+			
+			$update_data=array(
+					'status'=>2,
+					'updated_at'=>date('Y-m-d H:i:s'),
+					);
+					$update=$this->Course_model->update_course_type_details($c_id,$update_data);
+						if(count($update)>0){
+							$this->session->set_flashdata('success',"Course type successfully deleted");
+
+							redirect('course/typelists');
+							
+						}else{
+							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+							redirect('course/typelists');
+						}
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
 	
 	
 }

@@ -1,21 +1,28 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 @include_once( APPPATH . 'controllers/Admin_panel.php');
-class Country extends Admin_panel {
+
+class Publish extends Admin_panel {
 
 	public function __construct() 
 	{
 		parent::__construct();	
+		$this->load->model('Publish_model');
 		
-		$this->load->model('Country_model');
 	}
+	
 	public function index()
 	{	
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==1){
-				$this->load->view('admin/country/country-add');
+				
+				$data['course_list']=$this->Publish_model->get_course_list($login_details['cust_id']);
+				$data['class_list']=$this->Publish_model->get_classification_list($login_details['cust_id']);
+				$data['vendor_list']=$this->Publish_model->get_vendor_list($login_details['cust_id']);
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('publish/add',$data);
 				$this->load->view('admin/footer');
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
@@ -26,33 +33,16 @@ class Country extends Admin_panel {
 			redirect('admin');
 		}
 	}
-	public  function addpost(){
+	public function lists()
+	{	
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==1){
-				$post=$this->input->post();
-				$check_exits=$this->Country_model->check_country_exists($post['country_name']);
-				if(count($check_exits)>0){
-					$this->session->set_flashdata('error',"Country already exists. Please use another country name");
-					redirect('country');
-				}
-				$add=array(
-				'country_name'=>isset($post['country_name'])?$post['country_name']:'',
-				'country_code'=>isset($post['country_code'])?$post['country_code']:'',
-				'status'=>1,
-				'create_at'=>date('Y-m-d H:i:s'),
-				'updated_at'=>date('Y-m-d H:i:s'),
-				'created_by'=>$login_details['cust_id']
-				);
-				$save_country=$this->Country_model->save_country($add);
-				if(count($save_country)>0){
-					$this->session->set_flashdata('success','Country successfully Added');
-					redirect('country/lists');
-				}else{
-					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
-					redirect('country');
-				}
+				$data['course_list']=$this->Publish_model->get_published_course_list($login_details['cust_id']);
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('publish/list',$data);
+				$this->load->view('admin/footer');
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
 					redirect('dashboard');
@@ -69,9 +59,13 @@ class Country extends Admin_panel {
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==1){
 				$c_id=base64_decode($this->uri->segment(3));
-				$data['country_details']=$this->Country_model->get_country_details($c_id);
-				
-				$this->load->view('admin/country/country-edit',$data);
+				$data['course_details']=$this->Publish_model->get_full_course_details($c_id);
+				$data['course_list']=$this->Publish_model->get_course_list($login_details['cust_id']);
+				$data['class_list']=$this->Publish_model->get_classification_list($login_details['cust_id']);
+				$data['vendor_list']=$this->Publish_model->get_vendor_list($login_details['cust_id']);
+
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('publish/edit',$data);
 				$this->load->view('admin/footer');
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
@@ -82,35 +76,30 @@ class Country extends Admin_panel {
 			redirect('admin');
 		}
 	}
-	public  function editpost(){
+	public function addpost()
+	{	
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==1){
 				$post=$this->input->post();
-				
-				//echo '<pre>';print_r($post);exit;
-				$country_details=$this->Country_model->get_country_details($post['country_id']);
-				if($country_details['country_name']!=$post['country_name']){
-					$check_exits=$this->Country_model->check_country_exists($post['country_name']);
-					if(count($check_exits)>0){
-						$this->session->set_flashdata('error',"Country already exists. Please use another Country name");
-						redirect('country/edit/'.base64_encode($post['country_id']));
-					}
-				}
-				$update=array(
-				'country_name'=>isset($post['country_name'])?$post['country_name']:'',
-				'country_code'=>isset($post['country_code'])?$post['country_code']:'',
+				$update_data=array(
+				'v_id'=>isset($post['vendor'])?$post['vendor']:'',
+				'classification_id'=>isset($post['c_type'])?$post['c_type']:'',
+				'published'=>1,
+				'published_status'=>1,
 				'updated_at'=>date('Y-m-d H:i:s'),
 				);
-				$update_country=$this->Country_model->update_country_details($post['country_id'],$update);
-				if(count($update_country)>0){
-					$this->session->set_flashdata('success','Country successfully updated');
-					redirect('country/lists');
+				$update=$this->Publish_model->update_course_details($post['c_name'],$update_data);
+				if(count($update)>0){
+					$this->session->set_flashdata('success','Course successfully Published');
+					redirect('publish/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
-					redirect('country/edit/'.base64_encode($post['country_id']));
+					redirect('publish/index');
 				}
+				//echo '<pre>';print_r($post);exit;
+				
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
 					redirect('dashboard');
@@ -120,32 +109,49 @@ class Country extends Admin_panel {
 			redirect('admin');
 		}
 	}
-	public  function lists(){
+	public function editpost()
+	{	
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==1){
-				$data['countries_list']=$this->Country_model->get_all_countries_list($login_details['cust_id']);
 				
-				//echo '<pre>';print_r($data);exit;
-				$this->load->view('admin/country/country-list',$data);
-				$this->load->view('admin/footer');
+				$post=$this->input->post();
+				
+				$update_data=array(
+				'v_id'=>isset($post['vendor'])?$post['vendor']:'',
+				'classification_id'=>isset($post['c_type'])?$post['c_type']:'',
+				'published'=>1,
+				'published_status'=>1,
+				'updated_at'=>date('Y-m-d H:i:s'),
+				);
+				$update=$this->Publish_model->update_course_details($post['c_name'],$update_data);
+
+				if(count($update)>0){
+					$this->session->set_flashdata('success','Course published details successfully updated');
+					redirect('publish/lists');
+				}else{
+					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+					redirect('publish/edit/'.base64_encode($post['c_id']));
+				}
+				//echo '<pre>';print_r($post);exit;
 				
 			}else{
-				$this->session->set_flashdata('error',"you don't have permission to access");
-				redirect('dashboard');
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
 			}
 		}else{
 			$this->session->set_flashdata('error',"you don't have permission to access");
 			redirect('admin');
 		}
 	}
+	
 	public  function status(){
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
 			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
+			$admindetails=$this->session->userdata('user_details');
 			$c_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
 			if($status==1){
@@ -154,52 +160,21 @@ class Country extends Admin_panel {
 				$stat=1;
 			}
 			$update_data=array(
-					'status'=>$stat,
+					'published_status'=>$stat,
 					'updated_at'=>date('Y-m-d H:i:s'),
 					);
-					$update=$this->Country_model->update_country_details($c_id,$update_data);
+					$update=$this->Publish_model->update_course_details($c_id,$update_data);
 						if(count($update)>0){
 							if($status==1){
-							$this->session->set_flashdata('success',"Country successfully deactivated");
+							$this->session->set_flashdata('success',"Course successfully unpublished");
 							}else{
-							$this->session->set_flashdata('success',"Country successfully activated");
+							$this->session->set_flashdata('success',"Course successfully published");
 							}
-							redirect('country/lists');
+							redirect('publish/lists');
 							
 						}else{
 							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
-							redirect('country/lists');
-						}
-			}else{
-					$this->session->set_flashdata('error',"you don't have permission to access");
-					redirect('dashboard');
-			}
-		}else{
-			$this->session->set_flashdata('error',"you don't have permission to access");
-			redirect('admin');
-		}
-	}
-	public  function deletes(){
-		if($this->session->userdata('user_details'))
-		{
-			$login_details=$this->session->userdata('user_details');
-			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
-			$c_id=base64_decode($this->uri->segment(3));
-			
-			$update_data=array(
-					'status'=>2,
-					'updated_at'=>date('Y-m-d H:i:s'),
-					);
-					$update=$this->Country_model->update_country_details($c_id,$update_data);
-						if(count($update)>0){
-							$this->session->set_flashdata('success',"Country successfully deleted");
-							
-							redirect('country/lists');
-							
-						}else{
-							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
-							redirect('country/lists');
+							redirect('publish/lists');
 						}
 			}else{
 					$this->session->set_flashdata('error',"you don't have permission to access");
@@ -211,6 +186,38 @@ class Country extends Admin_panel {
 		}
 	}
 	
+	public  function delete(){
+		if($this->session->userdata('user_details'))
+		{
+			$login_details=$this->session->userdata('user_details');
+			if($login_details['role_id']==1){
+				$admindetails=$this->session->userdata('user_details');
+				$c_id=base64_decode($this->uri->segment(3));
+			
+			$update_data=array(
+					'published'=>0,
+					'published_status'=>0,
+					'updated_at'=>date('Y-m-d H:i:s'),
+					);
+					$update=$this->Publish_model->update_course_details($c_id,$update_data);
+						if(count($update)>0){
+							
+							$this->session->set_flashdata('success',"Course published successfully deleted");
+
+							redirect('publish/lists');
+						}else{
+							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+							redirect('publish/lists');
+						}
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
 	
 	
 }

@@ -13,16 +13,15 @@ class Dashboard extends Admin_panel {
 		if($this->session->userdata('user_details'))
 		{
 			$login_details=$this->session->userdata('user_details');
+			//echo '<pre>';print_r($login_details);exit;
 			if($login_details['role_id']==1){
 				$this->load->view('admin/dashboard');
-				$this->load->view('admin/footer');
+				
 			}if($login_details['role_id']==2){
 				$this->load->view('admin/dashboard');
-				$this->load->view('admin/footer');
-			}else{
-				$this->session->set_flashdata('error',"you don't have permission to access");
-				redirect('dashboard');
+				
 			}
+			$this->load->view('admin/footer');
 		}else{
 			$this->session->set_flashdata('error',"you don't have permission to access");
 			redirect('admin');
