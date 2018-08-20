@@ -18,6 +18,12 @@ class User extends CI_Controller {
 	}
 	public function index()
 	{	
+		$this->load->view('html/header');
+		$this->load->view('html/index');
+		$this->load->view('html/footer');
+	}
+	public function login()
+	{	
 		if(!$this->session->userdata('user_details'))
 		{
 			$this->load->view('index');
