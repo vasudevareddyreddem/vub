@@ -1,4 +1,13 @@
 <div class="content-wrapper">
+ <section class="content-header">
+      <h1>
+       Add Institute 
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Add Institute</li>
+      </ol>
+    </section>
    <section class="content">
       <div class="row">
         <!-- left column -->
@@ -12,7 +21,7 @@
             <!-- form start -->
 			<div style="padding:20px;">
             <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/addpost'); ?>" enctype="multipart/form-data">
-						
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">Institute Name</label>
@@ -29,6 +38,8 @@
 								</div>
 							</div>
                         </div>
+                        </div>
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">About Institute</label>
@@ -45,6 +56,8 @@
 								</div>
 							</div>
                         </div>
+                        </div>
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">Country</label>
@@ -71,6 +84,8 @@
 								</div>
 							</div>
                         </div>
+                        </div>
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">Location</label>
@@ -90,6 +105,8 @@
 								</div>
 							</div>
                         </div>
+                        </div>
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">Primary Contact</label>
@@ -106,6 +123,8 @@
 								</div>
 							</div>
                         </div>
+                        </div>
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">E-Mail ID</label>
@@ -122,6 +141,8 @@
 								</div>
 							</div>
                         </div>
+                        </div>
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">About Founder</label>
@@ -137,6 +158,7 @@
 									<input type="text" class="form-control" name="i_contact_person" id="i_contact_person" placeholder="Contact Person" />
 								</div>
 							</div>
+                        </div>
                         </div>
 						<div class="clearfix">&nbsp;</div>
 						  <div class="form-group">
@@ -168,28 +190,82 @@
 </div>
 
   <script type="text/javascript">$(document).ready(function() {
-    $('#addcountry').bootstrapValidator({
+   $('#addcountry').bootstrapValidator({
         
         fields: {
              country_name: {
                 validators: {
 					notEmpty: {
-						message: 'Country Name is required'
-					},
-					regexp: {
-					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message:'Country Name wont allow <> [] = % '
+						message: 'Country is required'
+					}
+				}
+            }, 
+			i_city: {
+                validators: {
+					notEmpty: {
+						message: 'City is required'
 					}
 				}
             },
-            country_code: {
-					 validators: {
+			location_name: {
+                validators: {
 					notEmpty: {
-						message: 'Country Code is required'
+						message: 'Location is required'
+					}
+				}
+            },
+			i_address: {
+                validators: {
+					notEmpty: {
+						message: 'Detailed Address is required'
 					},
 					regexp: {
 					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message:'Country Code wont allow <> [] = % '
+					message:'Detailed Address wont allow <> [] = % '
+					}
+				}
+            },
+			i_p_phone: {
+                validators: {
+					notEmpty: {
+						message: 'Primary Contact is required'
+					},
+					 regexp: {
+					regexp:  /^[0-9]{10}$/,
+					message:'Primary Contact must be 10 to 14 digits'
+					}
+				}
+            },
+			i_s_phone: {
+                validators: {
+					notEmpty: {
+						message: 'Secondary Contact is required'
+					},
+					 regexp: {
+					regexp:  /^[0-9]{10,14}$/,
+					message:'Secondary Contact must be 10 to 14 digits'
+					}
+				}
+            },
+			i_email_id: {
+                validators: {
+					notEmpty: {
+						message: 'E-Mail ID is required'
+					},
+					regexp: {
+					regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+					message: 'Please enter a valid email address. For example johndoe@domain.com.'
+					}
+				}
+            },
+            i_name: {
+					 validators: {
+					notEmpty: {
+						message: 'Institute Name is required'
+					},
+					regexp: {
+					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+					message:'Institute Name wont allow <> [] = % '
 					}
 				}
 				}

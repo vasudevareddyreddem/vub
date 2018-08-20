@@ -179,6 +179,19 @@
 		  <li class="treeview">
 			  <a href="#">
 				<i class="fa fa-files-o"></i>
+				<span>Home page Video</span>
+				<span class="pull-right-container">
+				  <span class="label label-primary pull-right"></span>
+				</span>
+			  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('video/homevideo'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('video/homevideolists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
+		</li>
+		<li class="treeview">
+			  <a href="#">
+				<i class="fa fa-files-o"></i>
 				<span>Country</span>
 				<span class="pull-right-container">
 				  <span class="label label-primary pull-right"></span>
@@ -252,6 +265,19 @@
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('publish'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
 					<li><a href="<?php echo base_url('publish/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+				</ul>
+			</li>
+			<li class="treeview">
+				  <a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Add Institute</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url('institutes'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('institutes/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
 			</li>
 		

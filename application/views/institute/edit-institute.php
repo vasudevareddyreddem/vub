@@ -189,28 +189,82 @@
 </div>
 
   <script type="text/javascript">$(document).ready(function() {
-    $('#addcountry').bootstrapValidator({
+   $('#addcountry').bootstrapValidator({
         
         fields: {
              country_name: {
                 validators: {
 					notEmpty: {
-						message: 'Country Name is required'
-					},
-					regexp: {
-					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message:'Country Name wont allow <> [] = % '
+						message: 'Country is required'
+					}
+				}
+            }, 
+			i_city: {
+                validators: {
+					notEmpty: {
+						message: 'City is required'
 					}
 				}
             },
-            country_code: {
-					 validators: {
+			location_name: {
+                validators: {
 					notEmpty: {
-						message: 'Country Code is required'
+						message: 'Location is required'
+					}
+				}
+            },
+			i_address: {
+                validators: {
+					notEmpty: {
+						message: 'Detailed Address is required'
 					},
 					regexp: {
 					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message:'Country Code wont allow <> [] = % '
+					message:'Detailed Address wont allow <> [] = % '
+					}
+				}
+            },
+			i_p_phone: {
+                validators: {
+					notEmpty: {
+						message: 'Primary Contact is required'
+					},
+					 regexp: {
+					regexp:  /^[0-9]{10}$/,
+					message:'Primary Contact must be 10 to 14 digits'
+					}
+				}
+            },
+			i_s_phone: {
+                validators: {
+					notEmpty: {
+						message: 'Secondary Contact is required'
+					},
+					 regexp: {
+					regexp:  /^[0-9]{10,14}$/,
+					message:'Secondary Contact must be 10 to 14 digits'
+					}
+				}
+            },
+			i_email_id: {
+                validators: {
+					notEmpty: {
+						message: 'E-Mail ID is required'
+					},
+					regexp: {
+					regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+					message: 'Please enter a valid email address. For example johndoe@domain.com.'
+					}
+				}
+            },
+            i_name: {
+					 validators: {
+					notEmpty: {
+						message: 'Institute Name is required'
+					},
+					regexp: {
+					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+					message:'Institute Name wont allow <> [] = % '
 					}
 				}
 				}

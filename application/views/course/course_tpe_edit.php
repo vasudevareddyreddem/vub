@@ -53,3 +53,25 @@
     </section> 
 	
 </div>
+
+  <script type="text/javascript">$(document).ready(function() {
+    $('#addcountry').bootstrapValidator({
+        
+        fields: {
+             course_name: {
+                validators: {
+					notEmpty: {
+						message: 'Course Type is required'
+					},
+					regexp: {
+					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+					message:'Course Type wont allow <> [] = % '
+					}
+				}
+            }
+            }
+        })
+     
+});
+
+</script>

@@ -53,3 +53,24 @@
     </section> 
 	
 </div>
+  <script type="text/javascript">$(document).ready(function() {
+    $('#addcountry').bootstrapValidator({
+        
+        fields: {
+             c_name: {
+                validators: {
+					notEmpty: {
+						message: 'Classification is required'
+					},
+					regexp: {
+					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+					message:'Classification wont allow <> [] = % '
+					}
+				}
+            }
+            }
+        })
+     
+});
+
+</script>

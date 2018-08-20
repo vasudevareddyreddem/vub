@@ -320,9 +320,7 @@
             },
 			v_desc: {
                 validators: {
-					notEmpty: {
-						message: 'Video Description is required'
-					},
+				
 					regexp: {
 					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
 					message:'Video Description wont allow <> [] = % '

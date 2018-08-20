@@ -45,7 +45,7 @@ class Video_model extends CI_Model
 		return $this->db->insert_id();
 	}
 	public  function get_video_list($c_id){
-		$this->db->select('video_list.video_id,video_list.i_id,video_list.video_file,video_list.org_video_file,course_list.c_name as coursename,video_list.training_mode,video_list.public,video_list.private,video_list.status,video_list.created_at')->from('video_list');
+		$this->db->select('video_list.video_id,video_list.i_id,video_list.video_file,video_list.org_video_file,course_list.c_name as coursename,video_list.training_mode,video_list.public,video_list.private,video_list.status,video_list.created_at,video_list.demo_type,video_list.full_type')->from('video_list');
 		$this->db->join('course_list ', 'course_list.course_id = video_list.course_name', 'left');
 		$this->db->where('video_list.created_by',$c_id);
 		$this->db->where('video_list.status !=',2);
@@ -60,6 +60,39 @@ class Video_model extends CI_Model
 		$this->db->where('video_id',$v_id);
 		return $this->db->update('video_list',$data);
 	}
+	
+	/* home  page  banner video functionality*/
+	public  function save_homepage_banner_video($add){
+		$this->db->insert('homepage_header_videos',$add);
+		return $this->db->insert_id();
+		
+	}
+	public  function get_homepage_all_videolist(){
+		$this->db->select('h_v_id,title,video_name,org_video_name,status,created_at')->from('homepage_header_videos');
+		$this->db->where('homepage_header_videos.status !=',2);
+		return $this->db->get()->result_array();
+	}
+	public  function update_homepagevideo_details($id,$data){
+		$this->db->where('h_v_id',$id);
+		return $this->db->update('homepage_header_videos',$data);
+	}
+	
+	public  function get_active_homepage_videos(){
+		$this->db->select('h_v_id')->from('homepage_header_videos');
+		$this->db->where('homepage_header_videos.status',1);
+		return $this->db->get()->result_array();
+	}
+	public  function get_homepage_video_details($v_id){
+		$this->db->select('h_v_id,status')->from('homepage_header_videos');
+		$this->db->where('homepage_header_videos.h_v_id',$v_id);
+		return $this->db->get()->row_array();
+	}
+	
+	public  function update_video_demo_full_type($id,$data){
+			$this->db->where('video_id',$id);
+		return $this->db->update('video_list',$data);
+	}
+	/* home  page  banner video functionality*/
 	
 	
 	

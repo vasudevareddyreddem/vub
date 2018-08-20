@@ -58,88 +58,20 @@
     $('#addcountry').bootstrapValidator({
         
         fields: {
-             country_name: {
+             c_name: {
                 validators: {
 					notEmpty: {
-						message: 'Country Name is required'
+						message: 'Classification is required'
 					},
 					regexp: {
 					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message:'Country Name wont allow <> [] = % '
+					message:'Classification wont allow <> [] = % '
 					}
 				}
-            },
-            country_code: {
-					 validators: {
-					notEmpty: {
-						message: 'Country Code is required'
-					},
-					regexp: {
-					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message:'Country Code wont allow <> [] = % '
-					}
-				}
-				}
+            }
             }
         })
      
 });
-function get_location_list(city_id){
-	if(city_id !=''){
-		    jQuery.ajax({
-   			url: "<?php echo base_url('institute/get_location_lists');?>",
-   			data: {
-				city_id: city_id,
-			},
-   			type: "POST",
-   			format:"Json",
-   					success:function(data){
-						
-						if(data.msg=1){
-							var parsedData = JSON.parse(data);
-						//alert(parsedData.list.length);
-							$('#location_name').empty();
-							$('#location_name').append("<option>select</option>");
-							for(i=0; i < parsedData.list.length; i++) {
-								//console.log(parsedData.list);
-							$('#location_name').append("<option value="+parsedData.list[i].l_id+">"+parsedData.list[i].location_name+"</option>");                      
-                    
-								
-							 
-							}
-						}
-						
-   					}
-           });
-	   }
-}
-function get_city_list(country_id){
-	if(country_id !=''){
-		    jQuery.ajax({
-   			url: "<?php echo base_url('institute/get_city_lists');?>",
-   			data: {
-				country_id: country_id,
-			},
-   			type: "POST",
-   			format:"Json",
-   					success:function(data){
-						
-						if(data.msg=1){
-							var parsedData = JSON.parse(data);
-						//alert(parsedData.list.length);
-							$('#i_city').empty();
-							$('#i_city').append("<option>select</option>");
-							for(i=0; i < parsedData.list.length; i++) {
-								//console.log(parsedData.list);
-							$('#i_city').append("<option value="+parsedData.list[i].city_id+">"+parsedData.list[i].city_name+"</option>");                      
-                    
-								
-							 
-							}
-						}
-						
-   					}
-           });
-	   }
-}
+
 </script>

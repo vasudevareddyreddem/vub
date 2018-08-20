@@ -60,3 +60,33 @@
     </section> 
 	
 </div>
+<script type="text/javascript">$(document).ready(function() {
+    $('#addcountry').bootstrapValidator({
+        
+        fields: {
+             v_name: {
+                validators: {
+					notEmpty: {
+						message: 'Vendor Name is required'
+					},
+					regexp: {
+					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+					message:'Vendor Name wont allow <> [] = % '
+					}
+				}
+            },
+            image: {
+					 validators: {
+					
+					 regexp: {
+					regexp: /\.(jpe?g|png|gif)$/i,
+					message: 'Uploaded file is not a valid image. Only JPG, PNG and GIF files are allowed'
+					}
+				}
+				}
+            }
+        })
+     
+});
+
+</script>
