@@ -7,7 +7,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="<?php echo base_url('institutes/lists'); ?>"><i class="fa fa-dashboard"></i> Institute List</a></li>
+        <li><a href="<?php echo base_url('institute/admin_lists'); ?>"><i class="fa fa-dashboard"></i> Institute List</a></li>
         <li class="active"> Institute video List</li>
       </ol>
     </section>

@@ -66,7 +66,39 @@ class Institute_model extends CI_Model
 		$this->db->where('public ',1);
 		return $this->db->get()->row_array();
 		
-	}	
+	}
+	public  function get_institues_details_for_front_end($i_id){
+		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,countries_list.country_name,countries_list.country_code,city_list.city_name,location_list.location_name')->from('institute_list');
+		$this->db->join('countries_list', 'countries_list.c_id = institute_list.country_name', 'left');
+		$this->db->join('city_list', 'city_list.city_id = institute_list.i_city', 'left');
+		$this->db->join('location_list', 'location_list.l_id = institute_list.location_name', 'left');
+		$this->db->where('institute_list.i_id',$i_id);
+		//$this->db->order_by('institute_list.i_id','asc');
+		$return=$this->db->get()->row_array();
+		$videos_count=$this->get_institue_video_count_list($return['i_id']);
+		$data=isset($return)?$return:'';
+		$data['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+		if(!empty($data)){
+				return $data;
+		}
+	}
+	public  function get_institues_video_list($i_id){
+		$this->db->select('course_list.c_name,video_list.t_name,video_list.v_desc,video_list.i_id,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.training_mode,video_list.v_title,video_list.a_author,video_list.u_b_schedule,video_list.created_by')->from('video_list');
+		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->where('video_list.status ',1);
+		$this->db->where('video_list.public ',1);
+		$this->db->where('video_list.i_id ',$i_id);
+		return $this->db->get()->result_array();
+	}
+	public  function get_video_details($video_id){
+		$this->db->select('course_list.c_name,video_list.t_name,video_list.v_desc,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.training_mode,video_list.v_title,video_list.a_author,video_list.u_b_schedule,video_list.created_by,video_list.course_content')->from('video_list');
+		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->where('video_list.status ',1);
+		$this->db->where('video_list.public ',1);
+		$this->db->where('video_list.video_id ',$video_id);
+		return $this->db->get()->row_array();
+	}
+		
 	/* front_end  purpose*/
 	
 	public  function get_countries_list(){

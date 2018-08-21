@@ -12,23 +12,27 @@
       <div class="pad-15" >
       <div class="user-panel">
         <div class="bg-white" style="padding:10px;border-radius:5px;">
-         <img  class="img-responsive" src="dist/img/in1.png" alt="naresh">
+		<?php if(isset($institute_details['i_logo']) && $institute_details['i_logo']!=''){ ?>
+         <img  class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$institute_details['i_logo']); ?>" alt="<?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?>">
+		<?php }else{ ?>
+		 <img  class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?>">
+		<?php } ?>
         </div>
        
       </div>
     
       <!-- sidebar menu: : style can be found in sidebar.less -->
 	  <div class="" style="overflow:hidden;">
-		   <h4>Naresh Technologies</h4>
-		   <small ><i class="fa fa-map-marker"> </i> &nbsp; Ameerpet,Hyderabad,India</small > 
+		   <h4><?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?></h4>
+		   <small ><i class="fa fa-map-marker"> </i> &nbsp; <?php echo isset($institute_details['i_address'])?$institute_details['i_address']:''; ?>,<?php echo isset($institute_details['location_name'])?$institute_details['location_name']:''; ?>,<?php echo isset($institute_details['city_name'])?$institute_details['city_name']:''; ?>,<?php echo isset($institute_details['country_name'])?$institute_details['country_name']:''; ?></small > 
 	  <div class="help-side">
-		   <small ><i class="fa fa-phone"> </i>&nbsp;  8500226782</small>
+		   <small ><i class="fa fa-phone"> </i>&nbsp;  <?php echo isset($institute_details['i_p_phone'])?$institute_details['i_p_phone']:''; ?></small>
 	  </div>  
 	 <div class="help-side">
-		   <small ><i class="fa fa-envelope"> </i>&nbsp;  vxxxx@gmail.com</small>
+		   <small ><i class="fa fa-envelope"> </i>&nbsp;  <?php echo isset($institute_details['i_email_id'])?$institute_details['i_email_id']:''; ?></small>
 	  </div>   
 	  <div class="help-side">
-		   <small ><i class="fa fa-video-camera"> </i>&nbsp;  Total: 230</small>
+		   <small ><i class="fa fa-video-camera"> </i>&nbsp;  Total: <?php echo isset($institute_details['video_list'])?$institute_details['video_list']:''; ?></small>
 	  </div> 
 	</div> 
 	
@@ -38,68 +42,80 @@
     </section>
 		 </div>
 		 </div>
+		 <?php if(isset($video_list) && count($video_list)>0){ ?>
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">
-		  <marquee scrolldelay="150"  onmouseover="this.stop()" onmouseout="this.start()">Next Batch Will Be Started On 15-08-2018 <strong>Timings :</strong>11.Am to 1Pm and 3.Pm to 6.Pm</marquee>
-                 <div class="article">
-					   <div class="row">
-						  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							 <div class="article-footer clearfix">
-								<span class="pull-left">
-								   <h4 class="text-white">Php Training Video</h4>
-								</span>	
-								<span class="pull-right">
-									<button class="btn btn-primary btn-sm">Subscribe</button>
-								</span>	
-							 </div>
-						  </div>
-						  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							 <div class="article-body clearfix">
-								<div class="row">
-								   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 p0">
-									  <div class="article-view">
-										 <div class="">
-										 <a href="videoplay.php">
-										 <video width="100%" height="100%" class="thumbnail">
-										  <source src="dist/video/back1.mp4" type="video/mp4">
-										  <source src="movie.ogg" type="video/ogg">
-										</video></a>
-												
-										 </div>
-									  </div>
-								   </div>
-								   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-									  <div class="article-details">
-										 <h4><a href="#" target="_blank" style="color:#0062C4;">VideoTutorial 1 del Curso de PHP y MySQL Orientado a Objetos</a></h4>
-										 
-										 <h5><strong class="site-col-r">Course Name:</strong> Php Training Video</h5>
-										 <h5><strong class="site-col-b">Training Mode:</strong> Offline</h5>
-										 <h5><strong class="site-col-b">Training Mode:</strong> Offline</h5>
-										 <h5><strong class="site-col-b">Trainer Name:</strong> Vubinxxxx</h5>
-										 
-									  </div>
-								   </div>
-								</div>
-								
-							 </div>
-						  </div>
-						    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							 <div class="article-head clearfix">
-								<span class="">
-								  <i class="fa fa-thumbs-up" aria-hidden="true"></i> 25
-								</span>
-								<span class="mar-l10">
-								  <i class="fa fa-eye" aria-hidden="true"></i> 35
-								</span>
-								<span class="pull-right">
-								   <h4 class="text-white" style="line-height:24px"><i class="fa fa-clock-o" aria-hidden="true"></i> Thu Jan 27 2011 02:05:17 </h4>
-								</span>
-							 </div>
-						  </div>
-					   </div>
-					</div>
-					 
-					 
-            </div>
+		 <?php foreach($video_list as $list){ ?>
+		 <?php if(isset($list['u_b_schedule']) && $list['u_b_schedule']!=''){ ?>
+			  <marquee scrolldelay="150"  onmouseover="this.stop()" onmouseout="this.start()"><?php echo isset($list['u_b_schedule'])?$list['u_b_schedule']:''; ?></marquee>
+		 <?php } ?>			
+			<div class="article">
+						   <div class="row">
+							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								 <div class="article-footer clearfix">
+									<span class="pull-left">
+									   <h4 class="text-white"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></h4>
+									</span>	
+									<span class="pull-right">
+										<button class="btn btn-primary btn-sm">Subscribe</button>
+									</span>	
+								 </div>
+							  </div>
+							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								 <div class="article-body clearfix">
+									<div class="row">
+									   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 p0">
+										  <div class="article-view">
+											 <div class="">
+											 <a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id'])); ?>">
+											 <video width="100%" height="100%" class="thumbnail">
+											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
+											  <source src="movie.ogg" type="video/ogg">
+											</video></a>
+													
+											 </div>
+										  </div>
+									   </div>
+									   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+										  <div class="article-details">
+											 <h4><a href="#" target="_blank" style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
+											 
+											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($list['c_name'])?$list['c_name']:''; ?></h5>
+											 <?php if(isset($list['training_mode']) && $list['training_mode']!=''){ ?>
+											 <h5><strong class="site-col-b">Training Mode:</strong> <?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></h5>
+											 <?php } ?>
+												<?php if(isset($list['v_desc']) && $list['v_desc']!=''){ ?>
+											 <h5><strong class="site-col-b">Video Description:</strong>  <?php echo isset($list['v_desc'])?$list['v_desc']:''; ?></h5>
+												 <?php } ?>
+											 <?php if(isset($list['t_name']) && $list['t_name']!=''){ ?>
+											 <h5><strong class="site-col-b">Trainer Name:</strong> <?php echo isset($list['t_name'])?$list['t_name']:''; ?></h5>
+											 <?php } ?>
+											 
+										  </div>
+									   </div>
+									</div>
+									
+								 </div>
+							  </div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								 <div class="article-head clearfix">
+									<span class="">
+									  <i class="fa fa-thumbs-up" aria-hidden="true"></i> 25
+									</span>
+									<span class="mar-l10">
+									  <i class="fa fa-eye" aria-hidden="true"></i> 35
+									</span>
+									<span class="pull-right">
+									   <h4 class="text-white" style="line-height:24px"><i class="fa fa-clock-o" aria-hidden="true"></i> Thu Jan 27 2011 02:05:17 </h4>
+									</span>
+								 </div>
+							  </div>
+						   </div>
+						</div>
+						 
+					<?php } ?>	 
+				</div>
+				
+			<?php } ?>
 			<div class="col-md-3 ">
 				
 				<div id="">
