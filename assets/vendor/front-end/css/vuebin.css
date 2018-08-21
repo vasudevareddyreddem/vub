@@ -367,6 +367,37 @@ color:#FFF;
 .bg-white{
 	background:#fff;
 }
+.text-white-social{
+	color:#fff !important;
+}
+.text-white-social:hover{
+	color:#337ab7 !important;
+}
+.btn-bs-file{
+    position:relative;
+	text-transform: capitalize !important;
+}
+.border-ddd{
+	border:1px solid #ddd;
+	padding:30px;
+}
+.pad-100{
+	padding:100px
+}
+.btn-bs-file input[type="file"]{
+    position: absolute;
+    top: -9999999;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    width:0;
+    height:0;
+    outline: none;
+    cursor: inherit;
+
+}
+.text-white{
+	color:#fff !important;
+}
 .img-vertical-center{
 	  margin: auto 0;
     position: absolute;

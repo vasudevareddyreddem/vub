@@ -70,6 +70,37 @@ class User extends CI_Controller {
 			redirect('admin');
 		}
 	}
+	public  function verification(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$this->load->view('html/header');
+			$user_details=$this->session->userdata('vuebin_user');
+			$data['user_details']=$this->User_model->get_user_basic_details($user_details['cust_id']);
+			//echo '<pre>';print_r($data);exit; 
+			$this->load->view('html/verification',$data);
+			$this->load->view('html/footer');
+		}else{
+			redirect();
+		}
+	}
+	public  function verificationpost(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$post=$this->input->post();
+			$update_data=array(
+			'soure'=>isset($post['source'])?$post['source']:'',
+			'name'=>isset($post['name'])?$post['name']:'',
+			'email_id'=>isset($post['email_id'])?$post['email_id']:'',
+			'mobile'=>isset($post['mobile'])?$post['mobile']:'',
+			'otp_verification'=>isset($post['otp_verification'])?$post['otp_verification']:'',
+			'otp_dateitm'=>date('Y-m-d H:i:s'),
+			);
+			echo '<pre>';print_r($post);exit; 
+			
+		}else{
+			redirect();
+		}
+	}
 	
 	
 	

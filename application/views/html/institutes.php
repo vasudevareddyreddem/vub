@@ -85,7 +85,7 @@
 									  
 									  </div>
 									  <div class="col-md-9">
-										 <a href="" target="_blank" style="  text-decoration:none;font-weight:normal"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a>
+										 <a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>" target="_blank" style="  text-decoration:none;font-weight:normal"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a>
 										 </div>
 										 </div>
 									  </li>

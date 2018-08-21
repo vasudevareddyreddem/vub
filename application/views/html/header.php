@@ -34,11 +34,6 @@
 
 </head>
 
- 
-</head>
-<style>
-
-</style>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
@@ -140,7 +135,10 @@
                         </li>
 						
 						<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
-                           <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
+                           <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Login</a>
+                        </li>
+						<li class="page-scroll" style="padding-left:30px;margin-top:5px">
+                           <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
                         </li>
                       	</form>
                     </ul>
@@ -163,7 +161,7 @@
 						</div>
 						<br>
 						<div class="">
-							<button type="button" class="btn btn-danger btn-block"><i class="fa fa-google-plus"></i> Sign in with GooglePlus</button>
+							<a href="<?php echo base_url('auth_oa2/session/google'); ?>" type="button" class="btn btn-danger btn-block"><i class="fa fa-google-plus"></i> Sign in with GooglePlus</a>
 						</div>
 					
 				 

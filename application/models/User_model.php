@@ -18,6 +18,28 @@ class User_model extends CI_Model
 		return $this->db->get()->row_array();
 		
 	}
+	public  function save_new_user($data){
+		$this->db->insert('customers_list',$data);
+		return $this->db->insert_id();
+		
+	}
+	public  function get_user_details($u_id){
+		$this->db->select('cust_id,role_id,email_id,mobile_verified')->from('customers_list');
+		$this->db->where('cust_id',$u_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_user_basic_details($u_id){
+		$this->db->select('cust_id,role_id,email_id,source,name,mobile_verified')->from('customers_list');
+		$this->db->where('cust_id',$u_id);
+		return $this->db->get()->row_array();
+	}
+	public  function check_user_exists($email,$source){
+		$this->db->select('cust_id')->from('customers_list');
+		$this->db->where('email_id',$email);
+		$this->db->where('source',$source);
+		return $this->db->get()->row_array();
+	}
+	
 	/* home page  purpose*/
 	
 	public  function check_login_details($username,$pwd){

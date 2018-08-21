@@ -38,5 +38,11 @@ class Videos extends  CI_Controller {
 		$this->load->view('html/videoplay',$data);
 		$this->load->view('html/footer');
 	}
+	public function upload()
+	{	
+		$this->load->view('html/header');
+		$this->load->view('html/upload');
+		$this->load->view('html/footer');
+	}
 	
 }
