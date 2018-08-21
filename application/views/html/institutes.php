@@ -75,7 +75,8 @@
 								   <?php foreach($lastest_institute_list as $list){ ?>
 								   <ul>
 									  <li style="padding:0px 0px 0px 5px">
-									  <div>
+									  <div class="row">
+									  <div class="col-md-3">
 										<?php if($list['i_logo']!=''){ ?>
 												<img  class="logo-recent-side " src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>"  alt="<?php echo isset($list['i_logo'])?$list['i_logo']:''; ?>">
 											<?php }else{ ?>
@@ -83,8 +84,9 @@
 											<?php } ?>
 									  
 									  </div>
-									  <div>
+									  <div class="col-md-9">
 										 <a href="" target="_blank" style="  text-decoration:none;font-weight:normal"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a>
+										 </div>
 										 </div>
 									  </li>
 								   </ul>
