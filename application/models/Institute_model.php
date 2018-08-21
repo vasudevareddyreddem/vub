@@ -18,6 +18,7 @@ class Institute_model extends CI_Model
 		$this->db->limit(5);
 		return $this->db->get()->result_array();
 	}
+
 	public  function get_institues_list_for_front_end(){
 		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,countries_list.country_name,countries_list.country_code,city_list.city_name,location_list.location_name')->from('institute_list');
 		$this->db->join('countries_list', 'countries_list.c_id = institute_list.country_name', 'left');
@@ -45,13 +46,21 @@ class Institute_model extends CI_Model
 				$data[$list['i_id']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
 				
 			}
-			//echo '<pre>';print_r($data);exit;
+			foreach($data as $key => $row) {
+				//echo '<pre>';print_r($row);
+				$dates[$key]  = $row['video_list'];
+			}
+			$sort_data=array_multisort($dates, SORT_DESC, $data);
+			//echo '<pre>';print_r($sort_data);exit;
 			if(!empty($data)){
 				return $data;
 				
 			}
+			
+			
 		
 	}
+	
 	public  function get_institue_course_list($i_id){
 		$this->db->select('course_list.c_name,course_list.c_logo,video_list.course_name')->from('video_list');
 		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
@@ -64,6 +73,7 @@ class Institute_model extends CI_Model
 		$this->db->where('status ',1);
 		$this->db->where('i_id',$i_id);
 		$this->db->where('public ',1);
+		$this->db->order_by('video_count');
 		return $this->db->get()->row_array();
 		
 	}

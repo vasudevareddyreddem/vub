@@ -20,7 +20,6 @@ class Institutes extends  CI_Controller {
 		$this->load->view('html/header');
 		$data['institute_list']=$this->Institute_model->get_institues_list_for_front_end();
 		$data['lastest_institute_list']=$this->Institute_model->get_lastest_institute_list();
-		
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/institutes',$data);
 		$this->load->view('html/footer');
