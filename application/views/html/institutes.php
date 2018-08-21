@@ -26,7 +26,7 @@
 												 <span><?php echo isset($list['location_name'])?$list['location_name']:''; ?></span>,
 												 <span><?php echo isset($list['city_name'])?$list['city_name']:''; ?></span>,
 												 <span><?php echo isset($list['country_name'])?$list['country_name']:''; ?></span>
-												 <span><img class="img-vertical-center img-responsive" src="<?php echo base_url('assets/flags/'.$list['country_code'].'.png'); ?>"></span>
+												 <span><img class=" img-responsive" src="<?php echo base_url('assets/flags/'.$list['country_code'].'.png'); ?>"></span>
 												 </h5> 
 												 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
 												 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
