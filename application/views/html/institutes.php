@@ -11,7 +11,11 @@
 									 <div class=" ">
 										<div class="row ">
 											  <div class="col-md-3 col-xs-12 text-center " >
-												<img class="img-vertical-center img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="<?php echo isset($list['i_logo'])?$list['i_logo']:''; ?>">
+											  <?php if($list['i_logo']!=''){ ?>
+													<img class="img-vertical-center img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="<?php echo isset($list['i_logo'])?$list['i_logo']:''; ?>">
+												<?php }else{ ?>
+													<img class="img-vertical-center img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
+												<?php } ?>
 										   </div>
 										   <div class=" col-md-7  bod-left">
 											  <div class="article-details">
@@ -53,6 +57,7 @@
 				 </div>
 			
 			<?php } ?>
+			<?php if(isset($lastest_institute_list) && count($lastest_institute_list)>0){ ?>
 				<div class="col-md-4 col-xs-12 col-sm-12">
 				<div id="sticky-anchor"></div>
 				<div id="sticky">
@@ -65,27 +70,26 @@
 							</div>	
 							 <div class="pad-20 list-style-none" >
 								<marquee class="pubmed-articles" align="top" behavior="scroll" onmouseout="this.start();" onmouseover="this.stop();" direction="up" scrollamount="2" style="padding: 5px 0px 5px 0px;height: 200px;background: #f5f5f5;overflow:hidden;">
+								   
+								   <?php foreach($lastest_institute_list as $list){ ?>
 								   <ul>
 									  <li style="padding:0px 0px 0px 5px">
 									  <div>
-									  <img  class="logo-recent-side " src="<?php echo base_url(); ?>assets/vendor/front-end/img/in1.png">
+										<?php if($list['i_logo']!=''){ ?>
+												<img  class="logo-recent-side " src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>"  alt="<?php echo isset($list['i_logo'])?$list['i_logo']:''; ?>">
+											<?php }else{ ?>
+												<img class="logo-recent-side" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
+											<?php } ?>
+									  
 									  </div>
 									  <div>
-										 <a href="" target="_blank" style="  text-decoration:none;font-weight:normal">Naresh i Technologies | Software Training - Online Training </a>
+										 <a href="" target="_blank" style="  text-decoration:none;font-weight:normal"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a>
 										 </div>
 									  </li>
 								   </ul>
 								   <p style="border-bottom:1px solid #ddd; padding-top:0px"></p>
-								   <ul>
-									  <li style="padding:0px 0px 0px 5px">
-									  <div>
-									  <img  class="logo-recent-side " src="<?php echo base_url(); ?>assets/vendor/front-end/img/sathya_technolologies_Logo.png">
-									  </div>
-									  <div>
-										 <a href="" target="_blank" style="  text-decoration:none;font-weight:normal">Block Chain Training by Sathya Technologies  - Online Training </a>
-										 </div>
-									  </li>
-									 </ul>
+								   <?php } ?>
+								   
 								</marquee>
 								
 							 </div>
@@ -94,6 +98,7 @@
 					
 						</div>
 						</div>
+						<?php } ?>
 						</section>
 				
 		</div>

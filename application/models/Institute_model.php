@@ -12,11 +12,11 @@ class Institute_model extends CI_Model
 	/* front_end  purpose*/
 	
 	public  function get_lastest_institute_list(){
-		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo')->from('institute_list');
+		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id')->from('institute_list');
 		$this->db->where('institute_list.status',1);
 		$this->db->order_by('institute_list.i_id','desc');
 		$this->db->limit(5);
-		$return=$this->db->get()->result_array();
+		return $this->db->get()->result_array();
 	}
 	public  function get_institues_list_for_front_end(){
 		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,countries_list.country_name,city_list.city_name,location_list.location_name')->from('institute_list');
@@ -24,7 +24,7 @@ class Institute_model extends CI_Model
 		$this->db->join('city_list', 'city_list.city_id = institute_list.i_city', 'left');
 		$this->db->join('location_list', 'location_list.l_id = institute_list.location_name', 'left');
 		$this->db->where('institute_list.status',1);
-		$this->db->order_by('institute_list.i_id','asc');
+		//$this->db->order_by('institute_list.i_id','asc');
 		$return=$this->db->get()->result_array();
 			foreach($return as $list){
 			$course=$this->get_institue_course_list($list['i_id']);
@@ -45,18 +45,18 @@ class Institute_model extends CI_Model
 				$data[$list['i_id']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
 				
 			}
+			//echo '<pre>';print_r($data);exit;
 			if(!empty($data)){
 				return $data;
 				
 			}
-		//echo '<pre>';print_r($data);exit;
+		
 	}
 	public  function get_institue_course_list($i_id){
-		$this->db->select('c_name,c_logo')->from('course_list');
-		$this->db->where('status ',1);
-		$this->db->where('institute_id',$i_id);
-		$this->db->where('published ',1);
-		$this->db->where('published_status ',1);
+		$this->db->select('course_list.c_name,course_list.c_logo,video_list.course_name')->from('video_list');
+		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->group_by('course_list.c_name');
+		$this->db->where('video_list.i_id',$i_id);
 		return $this->db->get()->result_array();
 	}
 	public  function get_institue_video_count_list($i_id){
