@@ -41,6 +41,11 @@ class Course_model extends CI_Model
 	}
 	
 	/*course*/
+	public  function get_institue_details($a_id){
+		$this->db->select('i_id,i_name')->from('institute_list');
+		$this->db->where('created_by ',$a_id);
+		return $this->db->get()->row_array();
+	}
 	public  function save_course($data){
 		$this->db->insert('course_list',$data);
 		return $this->db->insert_id();	
@@ -58,6 +63,7 @@ class Course_model extends CI_Model
 		$this->db->join('classification_list ', 'classification_list.c_id = course_list.classification_id', 'left');
 		$this->db->join('vendor_list ', 'vendor_list.v_id = course_list.v_id', 'left');
 		$this->db->where('course_list.status !=',2);
+		$this->db->where('course_list.created_by',$id);
 		return $this->db->get()->result_array();
 	}
 	public  function update_course_details($course_id,$data){

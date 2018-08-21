@@ -47,7 +47,7 @@
     <nav class="navbar navbar-dark navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="index.php" class="navbar-brand"><img  style="width:100px;height:auto;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png"/></a>
+          <a href="<?php echo base_url(); ?>" class="navbar-brand"><img  style="width:100px;height:auto;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png"/></a>
 			<div id="mobile-search-id" class=" md-hide" style="position:absolute;right:65px;color:#333;top:12px;font-size:20px;">
 				<i class="fa fa-search" aria-hidden="true"></i>
 			</div>
@@ -88,7 +88,7 @@
                         </li>
                      
 						<li class="page-scroll">
-                            <a href="<?php echo base_url('institute'); ?>">INSTITUTES</a>
+                            <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a>
                         </li>
                         <li class="page-scroll">
                             <a href="course.php">COURSES</a>

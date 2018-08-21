@@ -44,7 +44,11 @@
 							<tr>
 							  <td style="display:none;"><?php echo $list['i_id']; ?></td>
 							  <td><?php echo $list['i_name']; ?></td>
-							  <td><img class="img-responsive" style="width:150px;height:auto;" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>"></td>
+							  <td>
+							  <?php if($list['i_logo']!=''){ ?>
+							  <img class="img-responsive" style="width:150px;height:auto;" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>">
+							  <?php } ?>
+							  </td>
 							  <td><?php echo $list['i_email_id']; ?></td>
 							  <td><?php echo $list['i_p_phone']; ?></td>
 							  <td><?php echo $list['i_contact_person']; ?></td>
@@ -53,8 +57,8 @@
 							  <td> <?php echo date('M d ,Y',strtotime(htmlentities($list['created_at'])));?></td>
 							  <td><?php if($list['status']==1){  echo "Active";}else{ echo "Deactive";} ?></td>
 							  <td>
-									  <a href="<?php echo base_url('institutes/edit/'.base64_encode($list['i_id'])); ?>"  data-toggle="tooltip" title="Edit"><i class="fa fa-pencil btn btn-success"></i></a>
-									  <a href="<?php echo base_url('institutes/uploadvideolist/'.base64_encode($list['i_id'])); ?>"  data-toggle="tooltip" title="Upload"><i class="fa fa-upload btn btn-success"></i></a>
+									  <a href="<?php echo base_url('institute/admin_edit/'.base64_encode($list['i_id'])); ?>"  data-toggle="tooltip" title="Edit"><i class="fa fa-pencil btn btn-success"></i></a>
+									  <a href="<?php echo base_url('institute/admin_uploadvideolist/'.base64_encode($list['i_id'])); ?>"  data-toggle="tooltip" title="Upload"><i class="fa fa-upload btn btn-success"></i></a>
 									  <a href="javascript;void(0);" onclick="admindeactive('<?php echo base64_encode(htmlentities($list['i_id'])).'/'.base64_encode(htmlentities($list['status']));?>');adminstatus('<?php echo $list['status'];?>')" data-toggle="modal" data-target="#myModal" title="Edit"><i class="fa fa-info-circle btn btn-warning"></i></a>
 									  <a href="javascript;void(0);" onclick="admindedelete('<?php echo base64_encode($list['i_id']) ?>');admindedeletemsg();" data-toggle="modal" data-target="#myModal" title="Delete"><i class="fa fa-trash btn btn-danger"></i></a>
 								
@@ -92,11 +96,11 @@
   </div>	
   <script>
   function admindeactive(id){
-	$(".popid").attr("href","<?php echo base_url('institutes/status'); ?>"+"/"+id);
+	$(".popid").attr("href","<?php echo base_url('institute/institute_status'); ?>"+"/"+id);
 } 
 
 function admindedelete(id){
-	$(".popid").attr("href","<?php echo base_url('institutes/delete'); ?>"+"/"+id);
+	$(".popid").attr("href","<?php echo base_url('institute/institute_delete'); ?>"+"/"+id);
 }
 function adminstatus(id){
 	if(id==1){

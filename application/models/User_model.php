@@ -8,6 +8,17 @@ class User_model extends CI_Model
 		parent::__construct();
 		$this->load->database("default");
 	}
+	/* home page  purpose*/
+	
+	public  function get_home_page_video(){
+		$this->db->select('title,video_name,org_video_name')->from('homepage_header_videos');
+		$this->db->where('status',1);
+		$this->db->order_by('h_v_id','desc');
+		$this->db->limit(1);
+		return $this->db->get()->row_array();
+		
+	}
+	/* home page  purpose*/
 	
 	public  function check_login_details($username,$pwd){
 		$this->db->select('customers_list.cust_id')->from('customers_list');

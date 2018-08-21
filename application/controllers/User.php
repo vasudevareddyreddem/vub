@@ -19,7 +19,9 @@ class User extends CI_Controller {
 	public function index()
 	{	
 		$this->load->view('html/header');
-		$this->load->view('html/index');
+		$data['home_page_video']=$this->User_model->get_home_page_video();
+		//echo '<pre>';print_r($data);exit; 
+		$this->load->view('html/index',$data);
 		$this->load->view('html/footer');
 	}
 	public function login()

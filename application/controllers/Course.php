@@ -80,13 +80,16 @@ class Course extends Admin_panel {
 			if($login_details['role_id']==1){
 				
 				$post=$this->input->post();
+				//echo '<pre>';print_r($post);
+				$institue_id=$this->Course_model->get_institue_details($login_details['cust_id']);
+				//echo '<pre>';print_r($institue_id);exit;
 				$check=$this->Course_model->check_course_exits_ornot($post['c_name'],$post['c_type']);
 				//echo $this->db->last_query();
 				if(count($check)>0){
 					$this->session->set_flashdata('error','Course already exists. Pelase try another name');
 					redirect('course/index');
 				}
-				//echo '<pre>';print_r($post);exit;
+				
 				if(isset($_FILES['c_logo']['name']) && $_FILES['c_logo']['name']!=''){
 					$pic=$_FILES['c_logo']['name'];
 					$picname = str_replace(" ", "", $pic);
@@ -95,6 +98,8 @@ class Course extends Admin_panel {
 					move_uploaded_file($_FILES['c_logo']['tmp_name'], 'assets/course/'.$imgname);
 				}
 				$add=array(
+				'institute_id'=>isset($institue_id['i_id'])?$institue_id['i_id']:'',
+				'c_name'=>isset($post['c_name'])?$post['c_name']:'',
 				'c_name'=>isset($post['c_name'])?$post['c_name']:'',
 				'c_logo'=>isset($imgname)?$imgname:'',
 				'c_type'=>isset($post['c_type'])?$post['c_type']:'',

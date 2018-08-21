@@ -130,14 +130,14 @@ class Video extends Admin_panel {
 					$this->session->set_flashdata('success','course Video successfully uploaded');
 					
 					if( $login_details['role_id']==1){
-						redirect('institutes/uploadvideolist/'.base64_encode($post['i_id']));
+						redirect('institute/admin_uploadvideolist/'.base64_encode($post['i_id']));
 					}else{
 						redirect('video/lists');	
 					}
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
 					if( $login_details['role_id']==1){
-						redirect('institutes/addvideo/'.base64_encode($post['i_id']));
+						redirect('institute/admin_addvideo/'.base64_encode($post['i_id']));
 					}else{
 						redirect('video/index');	
 					}
@@ -205,7 +205,7 @@ class Video extends Admin_panel {
 					$this->session->set_flashdata('success','Video details successfully updated');
 					
 					if( $login_details['role_id']==1){
-						redirect('institutes/uploadvideolist/'.base64_encode($post['i_id']));
+						redirect('institute/admin_uploadvideolist/'.base64_encode($post['i_id']));
 					}else{
 						redirect('video/lists');	
 					}
@@ -214,7 +214,7 @@ class Video extends Admin_panel {
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
 					if( $login_details['role_id']==1){
-						redirect('institutes/videoedit/'.base64_encode($post['i_id']).'/'.base64_encode($post['video_id']));
+						redirect('institute/admin_videoedit/'.base64_encode($post['i_id']).'/'.base64_encode($post['video_id']));
 					}else{
 						redirect('video/edit/'.base64_encode($post['video_id']));	
 					}
@@ -447,9 +447,7 @@ class Video extends Admin_panel {
 					);
 					$update=$this->Video_model->update_homepagevideo_details($v_id,$update_data);
 						if(count($update)>0){
-							
 							$this->session->set_flashdata('success',"Video successfully deleted");
-
 							redirect('video/homevideolists');
 						}else{
 							$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");

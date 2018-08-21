@@ -1,39 +1,19 @@
-
+<?php if(isset($home_page_video) && count($home_page_video)>0){ ?>
   <div class="">
     <div class="intro-video intro-dark-bg ">
 		<video autoplay loop muted poster="screenshot.jpg" id="background" height="100%" width="100%" style="overflow:hidden">
-        <source src="<?php echo base_url(); ?>assets/vendor/front-end/video/back2.mp4" type="video/mp4"  >
+        <source src="<?php echo base_url('assets/homepage_videos/'.$home_page_video['video_name']); ?>" type="video/mp4"  >
 		  </video>
                 <div class="overlay"></div>
                 <div class="intro-body mobile-heading">
                     <div class="container ">
-                        
-                        <h1 class="brand-heading">
-                            All<span class="text-primary"> your video </span>needs
-                        </h1>
-                        <hr class="light">
-                        <div class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <h4>The highest quality, more control</h4>
-                                </div>
-                                <div class="item">
-                                    <h4>unlimited inspiration, and</h4>
-                                </div>
-                                <div class="item">
-                                    <h4> everything else for your video.</h4>
-                                </div>
-                            </div>
-                        </div>
-						     <br class="sm-hide">
-						<a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary btn-square btn-lg btn-mobile">Join Free</a>
-                   
-                       
-                    </div>
+                       <h1 class="brand-heading"><?php echo isset($home_page_video['title'])?$home_page_video['title']:''; ?></h1>
+                     </div>
                 </div>
-            </div>
+        </div>
     <!-- /.container -->
   </div>
+  <?php } ?>
   </div>
 <section id="" class="-2">
  

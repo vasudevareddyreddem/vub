@@ -24,7 +24,7 @@
 				</div>
 				<div class="col-md-6">
 					  <div class="pull-right">
-						<a class="btn btn-default st-btn add-student-btn" href="<?php echo base_url('institutes/addvideo/'.$institue_id); ?>"><i class="fa fa-plus"></i> Add Video</a>
+						<a class="btn btn-default st-btn add-student-btn" href="<?php echo base_url('institute/addvideo/'.$institue_id); ?>"><i class="fa fa-plus"></i> Add Video</a>
 						</div>
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 							  <td> <?php echo htmlentities($list['created_by']);?></td>
 							  <td><?php if($list['status']==1){  echo "Active";}else{ echo "Deactive";} ?></td>
 							  <td>
-									  <a href="<?php echo base_url('institutes/videoedit/'.$institue_id.'/'.base64_encode($list['video_id'])); ?>"  data-toggle="tooltip" title="Edit"><i class="fa fa-pencil btn btn-success"></i></a>
+									  <a href="<?php echo base_url('institute/videoedit/'.$institue_id.'/'.base64_encode($list['video_id'])); ?>"  data-toggle="tooltip" title="Edit"><i class="fa fa-pencil btn btn-success"></i></a>
 									  <a href="javascript;void(0);" onclick="admindeactive('<?php echo base64_encode(htmlentities($list['video_id'])).'/'.base64_encode(htmlentities($list['status'])).'/'.base64_encode($institue_id);?>');adminstatus('<?php echo $list['status'];?>')" data-toggle="modal" data-target="#myModal" title="Edit"><i class="fa fa-info-circle btn btn-warning"></i></a>
 									  <a href="javascript;void(0);" onclick="admindedelete('<?php echo base64_encode($list['video_id']).'/'.base64_encode($institue_id) ?>');admindedeletemsg();" data-toggle="modal" data-target="#myModal" title="Delete"><i class="fa fa-trash btn btn-danger"></i></a>
 								
@@ -105,11 +105,11 @@
   </div>	
   <script>
 function admindeactive(id){
-	$(".popid").attr("href","<?php echo base_url('institutes/videostatus'); ?>"+"/"+id);
+	$(".popid").attr("href","<?php echo base_url('institute/videostatus'); ?>"+"/"+id);
 } 
 
 function admindedelete(id){
-	$(".popid").attr("href","<?php echo base_url('institutes/videodelete'); ?>"+"/"+id);
+	$(".popid").attr("href","<?php echo base_url('institute/videodelete'); ?>"+"/"+id);
 }
 function adminstatus(id){
 	if(id==1){

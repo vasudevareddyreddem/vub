@@ -21,7 +21,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			<div style="padding:20px;">
-            <form id="addcountry" method="post" class="" action="<?php echo base_url('institutes/editpost'); ?>" enctype="multipart/form-data">
+            <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/admin_editpost'); ?>" enctype="multipart/form-data">
 						<input  type="hidden" name="i_id" id="i_id" value="<?php echo isset($institute_details['i_id'])?$institute_details['i_id']:''; ?>">
 						<div class="row">
 						<div class="col-md-6">

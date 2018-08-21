@@ -276,8 +276,8 @@
 					</span>
 				  </a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url('institutes'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
-					<li><a href="<?php echo base_url('institutes/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
+					<li><a href="<?php echo base_url('institute/admin_add'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					<li><a href="<?php echo base_url('institute/admin_lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
 			</li>
 		

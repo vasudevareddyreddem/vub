@@ -20,7 +20,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			<div style="padding:20px;">
-            <form id="addcountry" method="post" class="" action="<?php echo base_url('institutes/addpost'); ?>" enctype="multipart/form-data">
+            <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/admin_addpost'); ?>" enctype="multipart/form-data">
 						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -276,7 +276,7 @@
 function get_location_list(city_id){
 	if(city_id !=''){
 		    jQuery.ajax({
-   			url: "<?php echo base_url('institutes/get_location_lists');?>",
+   			url: "<?php echo base_url('institute/get_location_lists');?>",
    			data: {
 				city_id: city_id,
 			},
@@ -305,7 +305,7 @@ function get_location_list(city_id){
 function get_city_list(country_id){
 	if(country_id !=''){
 		    jQuery.ajax({
-   			url: "<?php echo base_url('institutes/get_city_lists');?>",
+   			url: "<?php echo base_url('institute/get_city_lists');?>",
    			data: {
 				country_id: country_id,
 			},
