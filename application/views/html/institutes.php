@@ -19,13 +19,14 @@
 										   </div>
 										   <div class=" col-md-7  bod-left">
 											  <div class="article-details">
-												 <h4><a href="<?php echo base_url('institutes/page'); ?>" target="_blank" style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
+												 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>" target="_blank" style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
 												 
 												 <h5><strong class="site-col-r">Courses:</strong> <?php echo isset($list['course_list'])?$list['course_list']:''; ?></h5> 
 												 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
 												 <span><?php echo isset($list['location_name'])?$list['location_name']:''; ?></span>,
 												 <span><?php echo isset($list['city_name'])?$list['city_name']:''; ?></span>,
 												 <span><?php echo isset($list['country_name'])?$list['country_name']:''; ?></span>
+												 <span><img class="img-vertical-center img-responsive" src="<?php echo base_url('assets/flags/'.$list['country_code'].'.png'); ?>"></span>
 												 </h5> 
 												 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
 												 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>

@@ -19,7 +19,7 @@ class Institute_model extends CI_Model
 		return $this->db->get()->result_array();
 	}
 	public  function get_institues_list_for_front_end(){
-		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,countries_list.country_name,city_list.city_name,location_list.location_name')->from('institute_list');
+		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,countries_list.country_name,countries_list.country_code,city_list.city_name,location_list.location_name')->from('institute_list');
 		$this->db->join('countries_list', 'countries_list.c_id = institute_list.country_name', 'left');
 		$this->db->join('city_list', 'city_list.city_id = institute_list.i_city', 'left');
 		$this->db->join('location_list', 'location_list.l_id = institute_list.location_name', 'left');
