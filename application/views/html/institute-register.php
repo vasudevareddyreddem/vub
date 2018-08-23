@@ -1,4 +1,3 @@
-<?php include("header1.php"); ?>
 <div class="content-wrapper">
 <div class="body-start-page">
    <section class="content">
@@ -13,63 +12,151 @@
             <!-- /.box-header -->
             <!-- form start -->
 			<div style="padding:20px;">
-            <form id="defaultForm" method="post" class="" action="form-validations.php">
-						
-					
+            <form id="addcountry" method="post" class="" action="<?php echo base_url('institute/addpost'); ?>" enctype="multipart/form-data">
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Class Capacity</label>
+								<label class=" control-label">Institute Name</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Class Capacity" />
+									<input type="text" class="form-control" name="i_name" id="i_name" placeholder="Institute Name" />
 								</div>
 							</div>
                         </div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Class Teacher (Incharge)</label>
+								<label class=" control-label">Institute Logo</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Class Teacher Name" />
+									<input type="file" class="form-control" name="i_logo" id="i_logo" placeholder="Institute Logo" />
+								</div>
+							</div>
+                        </div>
+                        </div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">About Institute</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_about" id="i_about" placeholder="About Institute" />
 								</div>
 							</div>
                         </div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Name of the teacher</label>
+								<label class=" control-label">Website</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Name of the teacher" />
+									<input type="text" class="form-control" name="i_website" id="i_website" placeholder="ex: http://Institute.com" />
+								</div>
+							</div>
+                        </div>
+                        </div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Country</label>
+								<div class="">
+								<select  class="form-control select2" onchange="get_city_list(this.value)" name="country_name" id="country_name">
+								<option value="">Select</option>
+								<?php if(isset($countries_list) && count($countries_list)>0){ ?>
+								<?php foreach($countries_list as $list){ ?>
+								<option value="<?php echo $list['c_id']; ?>"><?php echo $list['country_name']; ?></option>
+								<?php } ?>
+								<?php } ?>
+								</select>
 								</div>
 							</div>
                         </div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Class Starting on</label>
+								<label class=" control-label">City</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Class Starting on" />
+								<select  class="form-control select2" onchange="get_location_list(this.value)" name="i_city" id="i_city">
+								<option value="">Select</option>
+							
+								</select>
+								</div>
+							</div>
+                        </div>
+                        </div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Location</label>
+								<div class="">
+								<select  class="form-control select2" name="location_name" id="location_name">
+								<option value="">Select</option>
+							
+								</select>
 								</div>
 							</div>
                         </div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Class Ending on (Approximate)</label>
+								<label class=" control-label">Detailed Address</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Class Ending on" />
+									<input type="text" class="form-control" name="i_address" id="i_address" placeholder="Detailed Address" />
+								</div>
+							</div>
+                        </div>
+                        </div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Primary Contact</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_p_phone" id="i_p_phone" placeholder="Primary Contact" />
 								</div>
 							</div>
                         </div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class=" control-label">Class Location (Optional)</label>
+								<label class=" control-label">Secondary Contact</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Class Location (Optional)" />
+									<input type="text" class="form-control" name="i_s_phone" id="i_s_phone" placeholder="Secondary Contact" />
 								</div>
 							</div>
                         </div>
-						
-					
+                        </div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">E-Mail ID</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_email_id" id="i_email_id" placeholder="Email Id" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Founder Name</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_founder" id="i_founder" placeholder="Founder Name" />
+								</div>
+							</div>
+                        </div>
+                        </div>
+						<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">About Founder</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_f_about" id="i_f_about" placeholder="About Founder" />
+								</div>
+							</div>
+                        </div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class=" control-label">Contact Person</label>
+								<div class="">
+									<input type="text" class="form-control" name="i_contact_person" id="i_contact_person" placeholder="Contact Person" />
+								</div>
+							</div>
+                        </div>
+                        </div>
 						<div class="clearfix">&nbsp;</div>
 						  <div class="form-group">
-                            <div class="col-lg-4 col-lg-offset-10">
-                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Check Validations</button>
+                            <div class="col-lg-4 col-lg-offset-6">
+							
+                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Add</button>
 								
                                 
                             </div>
@@ -79,186 +166,7 @@
 					<div class="clearfix">&nbsp;</div>
           </div>
           </div>
-          <!-- /.box -->
-
-         
-
-        </div>
-		<div class="col-md-12">
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">form Validations</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-			<div style="padding:20px;">
-            <form id="defaultForm" method="post" class="form-horizontal" action="target.php">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Full name</label>
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" name="firstName" placeholder="First name" />
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" name="lastName" placeholder="Last name" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Username</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="username" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Email address</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="email" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Password</label>
-                            <div class="col-lg-5">
-                                <input type="password" class="form-control" name="password" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Retype password</label>
-                            <div class="col-lg-5">
-                                <input type="password" class="form-control" name="confirmPassword" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Gender</label>
-                            <div class="col-lg-5">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="male" /> Male
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="female" /> Female
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="other" /> Other
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Birthday</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="birthday" /> (YYYY/MM/DD)
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Languages</label>
-                            <div class="col-lg-5">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="languages[]" value="english" /> English
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="languages[]" value="french" /> French
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="languages[]" value="german" /> German
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="languages[]" value="russian" /> Russian
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="languages[]" value="other" /> Other
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Programming Languages</label>
-                            <div class="col-lg-5">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="net" /> .Net
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="java" /> Java
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="c" /> C/C++
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="php" /> PHP
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="perl" /> Perl
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="ruby" /> Ruby
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="python" /> Python
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="programs[]" value="javascript" /> Javascript
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label" id="captchaOperation"></label>
-                            <div class="col-lg-2">
-                                <input type="text" class="form-control" name="captcha" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-9 col-lg-offset-3">
-                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Sign up</button>
-                               
-                            </div>
-                        </div>
-                    </form>
-					<div class="clearfix">&nbsp;</div>
-          </div>
-          </div>
-          <!-- /.box -->
-
-         
-
-        </div>
+          
       
         </div>
 		
@@ -421,4 +329,3 @@ $(document).ready(function() {
     });
 });
 </script>
-<?php include("footer1.php"); ?>

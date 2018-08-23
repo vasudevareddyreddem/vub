@@ -93,7 +93,14 @@ class Video_model extends CI_Model
 		return $this->db->update('video_list',$data);
 	}
 	/* home  page  banner video functionality*/
-	
+	/*upload  video  in  home  purpose*/
+	public  function check_institue_avaiable($cus_id){
+		$this->db->select('i_id,created_by')->from('institute_list');
+		$this->db->where('created_by',$cus_id);
+		return $this->db->get()->row_array();
+		
+	}
+	/*upload  video  in  home  purpose*/
 	
 	
 

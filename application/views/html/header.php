@@ -133,13 +133,14 @@
 						
 							
                         </li>
+						<?php if($this->session->userdata('user_details')){ ?>
+						<a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Logout</a>
+                        <?php }else{ ?>
+							<li class="page-scroll" style="padding-left:30px;margin-top:5px">
+							   <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
+							</li>
+						<?php } ?>
 						
-						<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
-                           <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Login</a>
-                        </li>
-						<li class="page-scroll" style="padding-left:30px;margin-top:5px">
-                           <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
-                        </li>
                       	</form>
                     </ul>
         </div>

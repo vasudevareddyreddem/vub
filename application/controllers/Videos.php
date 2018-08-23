@@ -1,24 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Videos extends  CI_Controller {
+@include_once( APPPATH . 'controllers/Front_end.php');
+class Videos extends  Front_end {
 
 	public function __construct() 
 	{
 		parent::__construct();	
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-		$this->load->library('session');
-		$this->load->library('email');
-		$this->load->library('user_agent');
-		$this->load->helper('directory');
-		$this->load->helper('cookie');
-		$this->load->helper('security');
 		$this->load->model('Institute_model');
 	}
 	public function index()
 	{	
-		$this->load->view('html/header');
 		$i_id=base64_decode($this->uri->segment(3));
 		$v_id=base64_decode($this->uri->segment(4));
 		$data['institute_details']=$this->Institute_model->get_institues_details_for_front_end($i_id);
@@ -29,7 +20,6 @@ class Videos extends  CI_Controller {
 	}
 	public function play()
 	{	
-		$this->load->view('html/header');
 		$i_id=base64_decode($this->uri->segment(3));
 		$v_id=base64_decode($this->uri->segment(4));
 		$data['institute_details']=$this->Institute_model->get_institues_details_for_front_end($i_id);
@@ -43,15 +33,21 @@ class Videos extends  CI_Controller {
 		
 		if($this->session->userdata('vuebin_user'))
 		{
+			$this->load->model('Video_model');
 			$user_details=$this->session->userdata('vuebin_user');
-			$this->
-			echo '<pre>';print_r($user_details);exit;			
-		}else{
+			$data['institue_details']=$this->Video_model->check_institue_avaiable($user_details['cust_id']);
+			if(count($data['institue_details'])>0){
+				$this->load->view('html/upload',$data);
+			}else{
+				redirect('institute/index');
+			}
 			
+					
+		}else{
+
 		}
-		$this->load->view('html/header');
-		$this->load->view('html/upload');
 		$this->load->view('html/footer');
+		
 	}
 	
 }

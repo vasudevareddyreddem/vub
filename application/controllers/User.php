@@ -1,30 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+@include_once( APPPATH . 'controllers/Front_end.php');
 
-class User extends CI_Controller {
+class User extends Front_end {
 
 	public function __construct() 
 	{
 		parent::__construct();	
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-		//$this->load->library('session');
-		$this->load->library('email');
-		$this->load->library('user_agent');
-		$this->load->helper('directory');
-		$this->load->helper('cookie');
-		$this->load->helper('security');
-		$this->load->model('User_model');
-		
 	}
 	public function index()
 	{	
 		
-		require_once "config.php";
-		$redirectURL = "https://shofus.com/fbcallback";
-		$permissions = ['email'];
-		$header['loginURL']=$helper->getLoginUrl($redirectURL, $permissions);
-		$this->load->view('html/header',$header);
 		$data['home_page_video']=$this->User_model->get_home_page_video();
 		//echo '<pre>';print_r($header);exit; 
 		$this->load->view('html/index',$data);
@@ -122,7 +108,6 @@ class User extends CI_Controller {
 	public  function verify(){
 		if($this->session->userdata('vuebin_user'))
 		{
-			$this->load->view('html/header');
 			$user_details=$this->session->userdata('vuebin_user');
 			$data['user_details']=$this->User_model->get_user_basic_details($user_details['cust_id']);
 			//echo '<pre>';print_r($data);exit; 

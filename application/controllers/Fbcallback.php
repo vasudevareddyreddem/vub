@@ -51,7 +51,7 @@ class Fbcallback extends CI_Controller
 		//session_destroy();
 		$newadd=array(
 					'username'=>isset($userData['id'])?$userData['id']:'',
-					'role_id'=>3,
+					'role_id'=>2,
 					'source'=>'facebook',
 					'name'=>isset($userData['first_name'])?$userData['first_name']:'',
 					'email_id'=>isset($userData['email'])?$userData['email']:'',

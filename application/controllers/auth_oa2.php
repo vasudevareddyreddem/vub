@@ -37,7 +37,7 @@ class Auth_oa2 extends CI_Controller
 				if(isset($user['email']) && $user['email']!=''){
 					$newadd=array(
 					'username'=>isset($user['email'])?$user['email']:'',
-					'role_id'=>3,
+					'role_id'=>2,
 					'source'=>'google',
 					'name'=>isset($user['name'])?$user['name']:'',
 					'email_id'=>isset($user['email'])?$user['email']:'',
