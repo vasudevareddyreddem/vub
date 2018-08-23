@@ -8,7 +8,7 @@ class User extends CI_Controller {
 		parent::__construct();	
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-		$this->load->library('session');
+		//$this->load->library('session');
 		$this->load->library('email');
 		$this->load->library('user_agent');
 		$this->load->helper('directory');
@@ -58,6 +58,17 @@ class User extends CI_Controller {
 			'otp_verification'=>isset($random)?$random:'',
 			'otp_dateitm'=>date('Y-m-d H:i:s'),
 			);
+			$username=$this->config->item('smsusername');
+			$pass=$this->config->item('smspassword');
+			$msg=$random.' is your vuebin verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security.';
+			$ch2 = curl_init();
+			curl_setopt($ch2, CURLOPT_URL,'https://login.bulksmsgateway.in/sendmessage.php');
+			curl_setopt($ch2, CURLOPT_POST, 1);
+			curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&password='.$pass.'&mobile='.$post['mobile'].'&message='.$msg.'&sender=vubein&type=3');
+			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+			//echo '<pre>';print_r($ch2);exit;
+			$server_output = curl_exec ($ch2);
+			curl_close ($ch2);
 			$update=$this->User_model->update_user_details($user_details['cust_id'],$update_data);
 			if(count($update)>0){
 				$this->session->set_flashdata('success',"Mobile Number Successfully Updated.");
@@ -83,6 +94,17 @@ class User extends CI_Controller {
 			'otp_verification'=>isset($random)?$random:'',
 			'otp_dateitm'=>date('Y-m-d H:i:s'),
 			);
+			$username=$this->config->item('smsusername');
+			$pass=$this->config->item('smspassword');
+			$msg=$random.' is your vuebin verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security.';
+			$ch2 = curl_init();
+			curl_setopt($ch2, CURLOPT_URL,'https://login.bulksmsgateway.in/sendmessage.php');
+			curl_setopt($ch2, CURLOPT_POST, 1);
+			curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&password='.$pass.'&mobile='.$post['mobile'].'&message='.$msg.'&sender=vubein&type=3');
+			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+			//echo '<pre>';print_r($ch2);exit;
+			$server_output = curl_exec ($ch2);
+			curl_close ($ch2);
 			$update=$this->User_model->update_user_details($user_details['cust_id'],$update_data);
 			if(count($update)>0){
 				$this->session->set_flashdata('success',"Otp successfully sent. Check  your  register Mobile  number");

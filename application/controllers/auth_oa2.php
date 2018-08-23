@@ -10,7 +10,7 @@ class Auth_oa2 extends CI_Controller
 
 
         $this->load->library('oauth2/OAuth2');
-				$this->load->library('tank_auth');
+				//$this->load->library('tank_auth');
 				$this->load->model('User_model');
 				$this->load->config('oauth2', TRUE);
 
@@ -47,6 +47,7 @@ class Auth_oa2 extends CI_Controller
 					if(count($check)>0){
 							$user_details=$this->User_model->get_user_details($check['cust_id']);
 								if($user_details['mobile_verified']==1){
+									$this->session->set_userdata('vuebin_user',$user_details);
 									redirect($this->agent->referrer());
 								}else{
 									$this->session->set_userdata('vuebin_user',$user_details);
@@ -57,6 +58,7 @@ class Auth_oa2 extends CI_Controller
 							if(count($save)>0){
 								$user_details=$this->User_model->get_user_details($save);
 								if($user_details['mobile_verified']==1){
+									$this->session->set_userdata('vuebin_user',$user_details);
 									redirect($this->agent->referrer());
 								}else{
 									$this->session->set_userdata('vuebin_user',$user_details);
@@ -89,25 +91,7 @@ class Auth_oa2 extends CI_Controller
     }
 
 
-	/**
-	 * Send email message of given type (activate, forgot_password, etc.)
-	 *
-	 * @param	string
-	 * @param	string
-	 * @param	array
-	 * @return	void
-	 */
-	function _send_email($type, $email, &$data)
-	{
-		$this->load->library('email');
-		$this->email->from($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
-		$this->email->reply_to($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
-		$this->email->to($email);
-		$this->email->subject(sprintf($this->lang->line('auth_subject_'.$type), $this->config->item('website_name', 'tank_auth')));
-		$this->email->message($this->load->view('email/'.$type.'-html', $data, TRUE));
-		$this->email->set_alt_message($this->load->view('email/'.$type.'-txt', $data, TRUE));
-		$this->email->send();
-	}
+	
 
 }
 

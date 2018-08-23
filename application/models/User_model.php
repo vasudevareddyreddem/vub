@@ -36,6 +36,7 @@ class User_model extends CI_Model
 	public  function check_user_exists($email,$source){
 		$this->db->select('cust_id')->from('customers_list');
 		$this->db->where('email_id',$email);
+		$this->db->or_where('username',$email);
 		$this->db->where('source',$source);
 		return $this->db->get()->row_array();
 	}

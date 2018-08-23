@@ -24,7 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/vub/';
-
+$config['smsusername']	= "laxman.calfre";
+$config['smspassword']	= "laxman123@";
 /*
 |--------------------------------------------------------------------------
 | Index File
