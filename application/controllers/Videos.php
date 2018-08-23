@@ -40,6 +40,15 @@ class Videos extends  CI_Controller {
 	}
 	public function upload()
 	{	
+		
+		if($this->session->userdata('vuebin_user'))
+		{
+			$user_details=$this->session->userdata('vuebin_user');
+			$this->
+			echo '<pre>';print_r($user_details);exit;			
+		}else{
+			
+		}
 		$this->load->view('html/header');
 		$this->load->view('html/upload');
 		$this->load->view('html/footer');
