@@ -157,7 +157,7 @@
                   <span aria-hidden="true">&times;</span></button>
 					<h1>Login with</h1><br>
 						<div class="">
-							<button type="button" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
+							<a href="<?php echo isset($loginURL)?$loginURL:''; ?>" type="button" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
 						</div>
 						<br>
 						<div class="">

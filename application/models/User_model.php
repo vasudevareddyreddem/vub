@@ -29,7 +29,7 @@ class User_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	public  function get_user_basic_details($u_id){
-		$this->db->select('cust_id,role_id,email_id,source,name,mobile_verified')->from('customers_list');
+		$this->db->select('cust_id,role_id,email_id,source,name,mobile,mobile_verified,otp_dateitm,otp_verification')->from('customers_list');
 		$this->db->where('cust_id',$u_id);
 		return $this->db->get()->row_array();
 	}
@@ -38,6 +38,10 @@ class User_model extends CI_Model
 		$this->db->where('email_id',$email);
 		$this->db->where('source',$source);
 		return $this->db->get()->row_array();
+	}
+	public function update_user_details($u_id,$data){
+		$this->db->where('cust_id',$u_id);
+		return $this->db->update('customers_list',$data);
 	}
 	
 	/* home page  purpose*/

@@ -41,6 +41,7 @@ class Auth_oa2 extends CI_Controller
 					'source'=>'google',
 					'name'=>isset($user['name'])?$user['name']:'',
 					'email_id'=>isset($user['email'])?$user['email']:'',
+					'created_at'=>date('Y-m-d H:i:s'),
 					);
 					$check=$this->User_model->check_user_exists($user['email'],'google');
 					if(count($check)>0){
@@ -73,7 +74,7 @@ class Auth_oa2 extends CI_Controller
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
 					redirect('');
 				}
-				echo '<pre>';print_r($user);exit;
+				//echo '<pre>';print_r($user);exit;
 				
 
 

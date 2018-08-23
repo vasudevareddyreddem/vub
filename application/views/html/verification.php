@@ -48,9 +48,7 @@
 						  <div class="form-group">
                             <div class="col-lg-4 col-lg-offset-3">
                                 <button type="submit" class="btn btn-primary" name="signup" value="Sign up">verify</button>
-								<a href="otp.php">otp page</a>
 								
-                                
                             </div>
                         </div>
 						

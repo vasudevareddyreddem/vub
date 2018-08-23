@@ -5,8 +5,8 @@
 | Facebook API
 |--------------------------------------------------------------------------
 */
-$config['facebook_id'] = '453304691841949';
-$config['facebook_secret'] = 'c7a76ee23c19785179ba3515cc9226db';
+$config['facebook_id'] = '228496184502248';
+$config['facebook_secret'] = '0ead4ad1a9456d1910a9cd6badfdbde8';
 
 
 /*
