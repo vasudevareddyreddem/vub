@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>vuebin</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/bootstrapValidator.min.css">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
- 
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/design.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/vuebin.css">
- <link  rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/suggestion-box.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/color.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/skins.css">
-  
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<title>vuebin</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/bootstrapValidator.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/design.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/vuebin.css">
+<link  rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/suggestion-box.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/color.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/skins.css">
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/bootstrapValidator.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/select2.full.min.js"></script>
-
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/suggestion-box.min.js"></script>
-
-
-
-
 </head>
-
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
-
   <header class="main-header">
     <nav class="navbar navbar-dark navbar-fixed-top">
       <div class="container">
@@ -58,8 +51,7 @@
 		</div>
 	
 		<hr>
-		
-				<div class="container" style="position:relative;z-index:2000">
+		<div class="container" style="position:relative;z-index:2000">
 					<span class="fa fa-search" style=";position:absolute;top:10px;left:30px;color:#aaa"></span>
 					<input style="padding-left:35px;z-index:2000" type="text" class="form-control" name="search" id="" placeholder="Search videos">
 					
@@ -73,8 +65,7 @@
 				
 			<br>
 		</div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
+		<!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
            <ul class="nav navbar-nav ">
                         <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
@@ -110,17 +101,9 @@
 									<span class="fa fa-search form-control-feedback"></span>
 								</div>
 								</div>
-									
-									
-							
-						
-							
-                        </li>
+							 </li>
 						<li class="page-scroll">
-                             
-                             
-								
-									<div class="location-hide" style="">
+                             <div class="location-hide" style="">
 									<div class="row">
 									<div class="col-md-10">
 									
@@ -129,15 +112,23 @@
 										<button class="btn btn-sm btn-primary col-md-2">Go</button>
 									</div>
 									</div>
-									
-						
-							
-                        </li>
-						<?php if($this->session->userdata('user_details')){ ?>
-						<a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Logout</a>
-                        <?php }else{ ?>
+						</li>
+						<?php if(isset($user_details) && count($user_details)>0){ ?>
 							<li class="page-scroll" style="padding-left:30px;margin-top:5px">
-							   <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
+							<a href="<?php echo base_url('user/logout'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Logout</a>
+							</li>
+                        <?php }else{ ?>
+							<!--<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
+							   <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Login</a>
+							</li>-->
+						<?php } ?>
+						<?php if(isset($user_details) && count($user_details)>0){ ?>
+							<li class="page-scroll" style="padding-left:30px;margin-top:5px">
+								 <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
+							</li>
+						<?php }else{ ?>
+						<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
+							   <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
 							</li>
 						<?php } ?>
 						
@@ -170,7 +161,7 @@
 			</div>
 		  </div>
   <!-- Full Width Column -->
-  <script>
+ <script>
     $(document).ready(function () {
         $('#search').suggestionBox({
             filter: true,

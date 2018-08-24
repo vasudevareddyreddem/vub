@@ -37,7 +37,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+	 <?php if($details['role_id']==1){ ?>
+    <a href="<?php echo base_url('admin'); ?>" class="logo">
+	 <?php }else{ ?>
+	  <a href="<?php echo base_url(''); ?>" class="logo">
+	 <?php } ?>
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>V</b>uebin</span>
       <!-- logo for regular state and mobile devices -->
@@ -134,12 +138,14 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
 			  <?php }else{ ?>
+			  <?php if(isset($details['completed'])&& $details['completed']==1){ ?>
 			   <div class="pull-left">
                   <a href="<?php echo base_url('institute/details'); ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
 			  <?php } ?>
+			  <?php } ?>
                 <div class="pull-right">
-                  <a href="<?php echo base_url('dashboard/logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo base_url('user/logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -282,7 +288,7 @@
 			</li>
 		
 	  <?php }else if($details['role_id']==2){ ?>
-		
+			<?php if(isset($details['completed'])&& $details['completed']==1){ ?>
 			
 			<li class="treeview">
 				  <a href="#">
@@ -293,12 +299,9 @@
 					</span>
 				  </a>
 				<ul class="treeview-menu">
-					<li><a href="<?php echo base_url('institute'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
 					<li><a href="<?php echo base_url('institute/details'); ?>"><i class="fa fa-circle-o"></i> Details</a></li>
 				</ul>
 			</li>
-			
-			
 			
 			<li class="treeview">
 				  <a href="#">
@@ -313,6 +316,21 @@
 					<li><a href="<?php echo base_url('video/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
 			</li>
+			<?php }else{ ?>
+				<li class="treeview">
+					  <a href="#">
+						<i class="fa fa-files-o"></i>
+						<span>Institute</span>
+						<span class="pull-right-container">
+						  <span class="label label-primary pull-right"></span>
+						</span>
+					  </a>
+					<ul class="treeview-menu">
+						<li><a href="<?php echo base_url('institute'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
+					</ul>
+				</li>
+
+			<?php } ?>
 	  <?php } ?>
 		
 		

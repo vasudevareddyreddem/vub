@@ -9,7 +9,12 @@ class User_model extends CI_Model
 		$this->load->database("default");
 	}
 	/* home page  purpose*/
-	
+	public  function get_userdetails($cust_id){
+		$this->db->select('customers_list.cust_id,customers_list.role_id,customers_list.email_id,customers_list.mobile_verified,institute_list.completed')->from('customers_list');
+		$this->db->join('institute_list ', 'institute_list.created_at = customers_list.cust_id', 'left');
+		$this->db->where('customers_list.cust_id',$cust_id);
+		return $this->db->get()->row_array();
+	}
 	public  function get_home_page_video(){
 		$this->db->select('title,video_name,org_video_name')->from('homepage_header_videos');
 		$this->db->where('status',1);
@@ -61,8 +66,9 @@ class User_model extends CI_Model
 		
 	}
 	public  function get_admin_details($cust_id){
-		$this->db->select('customers_list.*,role.role')->from('customers_list');
+		$this->db->select('customers_list.cust_id,customers_list.role_id,customers_list.name,role.role,institute_list.completed')->from('customers_list');
 		$this->db->join('role ', 'role.role_id = customers_list.role_id', 'left');
+		$this->db->join('institute_list ', 'institute_list.created_by = customers_list.cust_id', 'left');
 		$this->db->where('customers_list.cust_id',$cust_id);
 		return $this->db->get()->row_array();
 	}

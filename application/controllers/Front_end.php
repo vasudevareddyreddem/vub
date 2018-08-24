@@ -16,10 +16,17 @@ class Front_end extends CI_Controller {
 		$this->load->helper('security');
 		$this->load->model('User_model');
 		
-		require_once "config.php";
-		$redirectURL = "https://shofus.com/fbcallback";
-		$permissions = ['email'];
-		$header['loginURL']=$helper->getLoginUrl($redirectURL, $permissions);
+		if($this->session->userdata('vuebin_user'))
+		{
+			$vuebin_details=$this->session->userdata('vuebin_user');
+			$header['user_details']=$this->User_model->get_userdetails($vuebin_details['cust_id']);
+			//echo '<pre>';print_r($header);exit;			
+		}else{
+			require_once "config.php";
+			$redirectURL = "https://shofus.com/fbcallback";
+			$permissions = ['email'];
+			$header['loginURL']=$helper->getLoginUrl($redirectURL, $permissions);
+		}
 		$this->load->view('html/header',$header);
 	}
 }

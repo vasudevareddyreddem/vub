@@ -16,15 +16,15 @@ class Admin_panel extends CI_Controller {
 		$this->load->helper('security');
 		$this->load->model('Admin_model');
 		$this->load->model('User_model');
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 			{
-				$login_details=$this->session->userdata('user_details');
+				$login_details=$this->session->userdata('vuebin_user');
 				if($login_details['role_id']==1){
 					$data['details']=$this->Admin_model->get_admin_details($login_details['cust_id']);
 				}else{
 					$data['details']=$this->User_model->get_admin_details($login_details['cust_id']);
 				}
-				//echo '<pre>';print_r($login_details);exit;
+				//echo '<pre>';print_r($data);exit;
 			}
 			$this->load->view('admin/header',$data);
 	}

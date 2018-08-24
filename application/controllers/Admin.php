@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
 	}
 	public function index()
 	{	
-		if(!$this->session->userdata('user_details'))
+		if(!$this->session->userdata('vuebin_user'))
 		{
 			$this->load->view('admin/index');
 		}else{
@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 	/* login post method*/
 	public function loginpost()
 	{
-		if(!$this->session->userdata('user_details'))
+		if(!$this->session->userdata('vuebin_user'))
 		{
 			$post=$this->input->post();
 			$login_details=$this->Admin_model->check_login_details($post['username'],md5($post['password']));
@@ -51,7 +51,7 @@ class Admin extends CI_Controller {
 					}
 			if(count($login_details)>0){
 				$cust_details=$this->Admin_model->get_login_customer_details($login_details['cust_id']);
-				$this->session->set_userdata('user_details',$cust_details);
+				$this->session->set_userdata('vuebin_user',$cust_details);
 				redirect('dashboard');
 			}else{
 				$this->session->set_flashdata('error',"Invalid Username/Email Id or Password!");

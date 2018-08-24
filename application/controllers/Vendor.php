@@ -13,9 +13,9 @@ class Vendor extends Admin_panel {
 	
 	public function index()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				
 				//echo '<pre>';print_r($data);exit;
@@ -35,9 +35,9 @@ class Vendor extends Admin_panel {
 	
 	public function lists()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$data['vendor_list']=$this->Vendor_model->get_vendor_list($login_details['cust_id']);
 				//echo '<pre>';print_r($data);exit;
@@ -54,9 +54,9 @@ class Vendor extends Admin_panel {
 	}
 	public function edit()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$c_id=base64_decode($this->uri->segment(3));
 				$data['vendor_details']=$this->Vendor_model->get_vendor_details($c_id);
@@ -75,9 +75,9 @@ class Vendor extends Admin_panel {
 
 	public function addpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$post=$this->input->post();
 				//echo '<pre>';print_r($post);exit;
@@ -122,9 +122,9 @@ class Vendor extends Admin_panel {
 	}
 	public function editpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$post=$this->input->post();
 				//echo '<pre>';print_r($post);exit;
@@ -173,11 +173,11 @@ class Vendor extends Admin_panel {
 	}
 	
 	public  function status(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-			$admindetails=$this->session->userdata('user_details');
+			$admindetails=$this->session->userdata('vuebin_user');
 			$v_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
 			if($status==1){
@@ -212,11 +212,11 @@ class Vendor extends Admin_panel {
 		}
 	}
 	public  function delete(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
+				$admindetails=$this->session->userdata('vuebin_user');
 				$v_id=base64_decode($this->uri->segment(3));
 			
 				$update_data=array(

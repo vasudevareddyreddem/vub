@@ -13,9 +13,9 @@ class Video extends Admin_panel {
 	
 	public function index()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				
 				$data['institute_details']=$this->Video_model->get_institute_details($login_details['cust_id']);
@@ -37,9 +37,9 @@ class Video extends Admin_panel {
 	}
 	public function lists()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				$data['video_list']=$this->Video_model->get_video_list($login_details['cust_id']);
 				//echo '<pre>';print_r($data);exit;
@@ -56,9 +56,9 @@ class Video extends Admin_panel {
 	}
 	public function edit()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				$video_id=base64_decode($this->uri->segment(3));
 				$data['institute_details']=$this->Video_model->get_institute_details($login_details['cust_id']);
@@ -84,9 +84,9 @@ class Video extends Admin_panel {
 	}
 	public function addpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2 || $login_details['role_id']==1){
 				$post=$this->input->post();
 				if(isset($post['training_mode']) && count($post['training_mode'])>0){
@@ -156,9 +156,9 @@ class Video extends Admin_panel {
 	}
 	public function editpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2 || $login_details['role_id']==1){
 				
 				$post=$this->input->post();
@@ -233,11 +233,11 @@ class Video extends Admin_panel {
 	}
 	
 	public  function status(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
-			$admindetails=$this->session->userdata('user_details');
+			$admindetails=$this->session->userdata('vuebin_user');
 			$v_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
 			if($status==1){
@@ -273,11 +273,11 @@ class Video extends Admin_panel {
 	}
 	
 	public  function delete(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
-				$admindetails=$this->session->userdata('user_details');
+				$admindetails=$this->session->userdata('vuebin_user');
 				$v_id=base64_decode($this->uri->segment(3));
 			
 			$update_data=array(
@@ -307,9 +307,9 @@ class Video extends Admin_panel {
 	/* home page  video  purpose*/
 	public function homevideo()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				
 				$this->load->view('video/homevideoadd');
@@ -324,9 +324,9 @@ class Video extends Admin_panel {
 		}
 	}
 	public  function addhomepagevideopost(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 			{
-				$login_details=$this->session->userdata('user_details');
+				$login_details=$this->session->userdata('vuebin_user');
 				if($login_details['role_id']==1){
 					$post=$this->input->post();
 					//echo '<pre>';print_r($post);exit;
@@ -368,9 +368,9 @@ class Video extends Admin_panel {
 		
 	}
 	public  function homevideolists(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$data['video_list']=$this->Video_model->get_homepage_all_videolist();
 				//echo '<pre>';print_r($data);exit; 
@@ -386,11 +386,11 @@ class Video extends Admin_panel {
 		}
 	}
 		public  function homepagevideostatus(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-			$admindetails=$this->session->userdata('user_details');
+			$admindetails=$this->session->userdata('vuebin_user');
 			$v_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
 			if($status==1){
@@ -430,11 +430,11 @@ class Video extends Admin_panel {
 		}
 	}
 	public  function homepagevideodelete(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
+				$admindetails=$this->session->userdata('vuebin_user');
 				$v_id=base64_decode($this->uri->segment(3));
 				$v_details=$this->Video_model->get_homepage_video_details($v_id);
 				if($v_details['status']==1){
@@ -465,9 +465,9 @@ class Video extends Admin_panel {
 	/* home page  video  purpose*/
 	
 	public  function addvideo_types(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				$post=$this->input->post();
 				if(isset($post['video_type']) && $post['video_type']!=''){

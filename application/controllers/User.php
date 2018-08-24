@@ -20,7 +20,6 @@ class User extends Front_end {
 	public  function verification(){
 		if($this->session->userdata('vuebin_user'))
 		{
-			$this->load->view('html/header');
 			$user_details=$this->session->userdata('vuebin_user');
 			$data['user_details']=$this->User_model->get_user_basic_details($user_details['cust_id']);
 			//echo '<pre>';print_r($data);exit; 
@@ -163,6 +162,14 @@ class User extends Front_end {
 		}else{
 			redirect();
 		}
+	}
+	
+	public  function logout(){
+		$userinfo = $this->session->userdata('vuebin_user');
+        $this->session->unset_userdata($userinfo);
+		$this->session->sess_destroy('vuebin_user');
+		$this->session->unset_userdata('vuebin_user');
+        redirect('');
 	}
 	
 	

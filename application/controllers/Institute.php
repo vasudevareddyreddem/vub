@@ -14,9 +14,9 @@ class Institute extends Admin_panel {
 	
 	public function index()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				
 				$data['countries_list']=$this->Institute_model->get_countries_list();
@@ -34,9 +34,9 @@ class Institute extends Admin_panel {
 	}
 	public function videos()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				
 				//echo '<pre>';print_r($data);exit;
@@ -53,9 +53,9 @@ class Institute extends Admin_panel {
 	}
 	public function details()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				$data['institute_details']=$this->Institute_model->get_institute_details($login_details['cust_id']);
 			
@@ -73,9 +73,9 @@ class Institute extends Admin_panel {
 	}
 	public function edit()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				$data['institute_details']=$this->Institute_model->get_institute_details($login_details['cust_id']);
 				$data['countries_list']=$this->Institute_model->get_countries_list();
@@ -95,9 +95,9 @@ class Institute extends Admin_panel {
 	}
 	public function addpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				
 				$post=$this->input->post();
@@ -150,9 +150,9 @@ class Institute extends Admin_panel {
 	}
 	public function editpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2){
 				
 				$post=$this->input->post();
@@ -207,9 +207,9 @@ class Institute extends Admin_panel {
 	}
 	
 	public  function get_city_lists(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 				if($login_details['role_id']==2 || $login_details['role_id']==1){
 					$post=$this->input->post();
 					$city_list=$this->Institute_model->get_cities_list($post['country_id']);
@@ -233,9 +233,9 @@ class Institute extends Admin_panel {
 		}
 	}
 	public  function get_location_lists(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 				if($login_details['role_id']==2 || $login_details['role_id']==1){
 					$post=$this->input->post();
 					$city_list=$this->Institute_model->get_locations_list($post['city_id']);
@@ -262,9 +262,9 @@ class Institute extends Admin_panel {
 	/* admin side list */
 	public function admin_add()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				
 				$data['countries_list']=$this->Institute_model->get_countries_list();
@@ -282,9 +282,9 @@ class Institute extends Admin_panel {
 	}
 	public function admin_lists()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$data['institutes_list']=$this->Institute_model->get_all_institute_list();
 			
@@ -302,9 +302,9 @@ class Institute extends Admin_panel {
 	}
 	public function admin_edit()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$i_id=base64_decode($this->uri->segment(3));
 				$data['institute_details']=$this->Institute_model->get_all_institute_details($i_id);
@@ -325,9 +325,9 @@ class Institute extends Admin_panel {
 	}
 	public function admin_addpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				
 				$post=$this->input->post();
@@ -402,9 +402,9 @@ class Institute extends Admin_panel {
 	
 	public function admin_editpost()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				
 				$post=$this->input->post();
@@ -458,11 +458,11 @@ class Institute extends Admin_panel {
 		}
 	}
 	public  function institute_status(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-			$admindetails=$this->session->userdata('user_details');
+			$admindetails=$this->session->userdata('vuebin_user');
 			$i_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
 			
@@ -504,11 +504,11 @@ class Institute extends Admin_panel {
 		}
 	}
 	public  function institute_delete(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
+				$admindetails=$this->session->userdata('vuebin_user');
 				$i_id=base64_decode($this->uri->segment(3));
 			
 			$update_data=array(
@@ -544,9 +544,9 @@ class Institute extends Admin_panel {
 	/* admin side list */
 	/* institue level admin video upload*/
 	public  function admin_uploadvideolist(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				
 				$i_id=base64_decode($this->uri->segment(3));
@@ -565,9 +565,9 @@ class Institute extends Admin_panel {
 		}
 	}
 	public  function addvideo(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				
 				$i_id=base64_decode($this->uri->segment(3));
@@ -591,9 +591,9 @@ class Institute extends Admin_panel {
 	}
 	public function videoedit()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$i_id=base64_decode($this->uri->segment(3));
 				$video_id=base64_decode($this->uri->segment(4));
@@ -619,11 +619,11 @@ class Institute extends Admin_panel {
 		}
 	}
 	public  function videostatus(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-			$admindetails=$this->session->userdata('user_details');
+			$admindetails=$this->session->userdata('vuebin_user');
 			$v_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
 			$i_id=base64_decode($this->uri->segment(5));
@@ -660,11 +660,11 @@ class Institute extends Admin_panel {
 		}
 	}
 	public  function videodelete(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
+				$admindetails=$this->session->userdata('vuebin_user');
 				$v_id=base64_decode($this->uri->segment(3));
 				$i_id=base64_decode($this->uri->segment(4));
 			$update_data=array(

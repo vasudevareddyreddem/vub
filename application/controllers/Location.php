@@ -11,9 +11,9 @@ class Location extends Admin_panel {
 	}
 	public function index()
 	{	
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$city_id=base64_decode($this->uri->segment(3));
 				if($city_id==''){
@@ -37,9 +37,9 @@ class Location extends Admin_panel {
 		}
 	}
 	public  function addpost(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$post=$this->input->post();
 				
@@ -75,9 +75,9 @@ class Location extends Admin_panel {
 		}
 	}
 	public  function editpost(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$post=$this->input->post();
 				
@@ -112,9 +112,9 @@ class Location extends Admin_panel {
 		}
 	}
 	public  function add(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$c_id=base64_decode($this->uri->segment(3));
 				$data['country_id']=$this->uri->segment(4);
@@ -134,9 +134,9 @@ class Location extends Admin_panel {
 		}
 	}
 	public  function edit(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
 				$l_id=base64_decode($this->uri->segment(3));
 				$data['country_id']=$this->uri->segment(4);
@@ -155,11 +155,11 @@ class Location extends Admin_panel {
 		}
 	}
 	public  function status(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
+				$admindetails=$this->session->userdata('vuebin_user');
 			$l_id=base64_decode($this->uri->segment(3));
 			$status=base64_decode($this->uri->segment(4));
 			$city_id=$this->uri->segment(5);
@@ -196,11 +196,11 @@ class Location extends Admin_panel {
 		}
 	}
 	public  function deletes(){
-		if($this->session->userdata('user_details'))
+		if($this->session->userdata('vuebin_user'))
 		{
-			$login_details=$this->session->userdata('user_details');
+			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==1){
-				$admindetails=$this->session->userdata('user_details');
+				$admindetails=$this->session->userdata('vuebin_user');
 			$l_id=base64_decode($this->uri->segment(3));
 			$city_id=$this->uri->segment(4);
 			$country_id=$this->uri->segment(5);
