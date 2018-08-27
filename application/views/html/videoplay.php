@@ -51,13 +51,16 @@
 				</video>
 				<div class="video-content">
 					<div class="row">
-					<div class="col-md-9">
+					<div class="col-md-7">
 						<h4><a href="#" target="_blank" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?></a></h4>	
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-5">
+						<a href=""><i class="fa fa-share-alt font-share" aria-hidden="true"></i></a>
+
+					
 					<?php if(isset($cust_id) && $cust_id!=''){ ?>
 							<a href="javascript:void(0);" onclick="video_like(<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>);">
-							  <i class="fa fa-thumbs-up" aria-hidden="true"></i><span id="likes_count"> <?php if(isset($like_count['like_count']) && $like_count['like_count']!=0){ echo $like_count['like_count']; } ?></span>
+							  <i class="fa fa-thumbs-up font-share" aria-hidden="true"></i><span id="likes_count"> <?php if(isset($like_count['like_count']) && $like_count['like_count']!=0){ echo $like_count['like_count']; } ?></span>
 						
 							</a>
 								
@@ -65,7 +68,7 @@
 									<a href="javascript:void(0);" onclick="video_subscribe(<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>);" class="btn btn-primary btn-sm">Subscribe</a>
 							</span>
 					<?php }else{ ?>
-					 <a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+					 <a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal"><i class="fa fa-thumbs-up font-share" aria-hidden="true"></i></a>
 					<span class="pull-right">
 									<a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal" class="btn btn-primary btn-sm">Subscribe</a>
 							</span>

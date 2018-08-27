@@ -511,7 +511,11 @@ color:#FFF;
    width: 26.9%;
   
 }
-
+.font-share{
+	font-size:24px;
+	margin:0px 20px;
+	
+}
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;
