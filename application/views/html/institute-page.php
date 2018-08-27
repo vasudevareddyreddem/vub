@@ -75,7 +75,7 @@
 									   </div>
 									   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 										  <div class="article-details">
-											 <h4><a href="#" target="_blank" style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
+											 <h4><a href="#"  style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
 											 
 											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($list['c_name'])?$list['c_name']:''; ?></h5>
 											 <?php if(isset($list['training_mode']) && $list['training_mode']!=''){ ?>
@@ -126,7 +126,7 @@
 									 <div class="pad-10 " >
 										<ul class="list-courses">
 										<?php foreach($courses_offered as $list){ ?>
-											<li class=""><a href="<?php echo base_url($list['i_id']); ?>" target="_blank" style="color:#0062C4;"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp; Count: &nbsp;<?php echo isset($list['video_list'])?$list['video_list']:''; ?></a></li>
+											<li class=""><a href="<?php echo base_url($list['i_id']); ?>" style="color:#0062C4;"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp; Count: &nbsp;<?php echo isset($list['video_list'])?$list['video_list']:''; ?></a></li>
 											
 										<?php } ?>
 										</ul>

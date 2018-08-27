@@ -19,7 +19,7 @@
 										   </div>
 										   <div class=" col-md-7  bod-left">
 											  <div class="article-details">
-												 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>" target="_blank" style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
+												 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>"  style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
 												 
 												 <h5><strong class="site-col-r">Courses:</strong> <?php echo isset($list['course_list'])?$list['course_list']:''; ?></h5> 
 												 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,

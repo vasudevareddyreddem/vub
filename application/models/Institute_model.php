@@ -126,7 +126,7 @@ class Institute_model extends CI_Model
 	public  function get_institue_video_likes_count($video_id){
 		$this->db->select('COUNT(video_likes_list.v_l_id) as like_count')->from('video_likes_list');
 		$this->db->where('status ',1);
-		$this->db->where('v_id',$video_id);
+		$this->db->where('video_id',$video_id);
 		return $this->db->get()->row_array();
 	}
 	public  function get_institue_video_view_count($video_id){

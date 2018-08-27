@@ -27,6 +27,7 @@ class Videos extends  Front_end {
 		$data['institute_details']=$this->Institute_model->get_institues_details_for_front_end($i_id);
 		$data['video_details']=$this->Institute_model->get_video_details($v_id);
 		$data['video_list']=$this->Institute_model->get_course_wise_video_list($i_id,$course_id,$v_id);
+		$data['like_count']=$this->Video_model->get_video_counts($v_id);
 		
 		if($this->session->userdata('vuebin_user'))
 		{
@@ -47,7 +48,7 @@ class Videos extends  Front_end {
 			'create_by'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
 			);
 			$this->Video_model->save_video_views_count($view_data);
-			$this->session->set_flashdata('error',"Old Password are not matched.");
+
 		/* view count*/
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/videoplay',$data);
@@ -76,6 +77,81 @@ class Videos extends  Front_end {
 		}
 		$this->load->view('html/footer');
 		
+	}
+	public  function video_subscribe(){
+		
+		if($this->session->userdata('vuebin_user'))
+		{
+			$user_details=$this->session->userdata('vuebin_user');
+			$post=$this->input->post();
+			$subscribe_data=array(
+			'video_id'=>isset($post['video_id'])?$post['video_id']:'',
+			'ip_address'=>$this->input->ip_address(),
+			'cust_id'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
+			'status'=>1,
+			'created_at'=>date('Y-m-d H:i:s'),
+			'updated_at'=>date('Y-m-d H:i:s'),
+			'create_by'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
+			);
+			$check=$this->Video_model->check_video_subscribe_exist($post['video_id'],$user_details['cust_id']);
+			if(count($check)>0){
+					$data=2;
+					echo json_encode($data);exit;		
+			}else{
+				$save=$this->Video_model->save_video_subscribe($subscribe_data);
+				if(count($save)>0){
+						$data=1;
+						echo json_encode($data);exit;	
+				}else{
+					$data=0;
+					echo json_encode($data);exit;
+				}
+			}
+
+		}else{
+			$this->session->set_flashdata('error',"Please login and continue");
+			redirect('');
+		}
+	}
+	public  function video_likes(){
+		
+		if($this->session->userdata('vuebin_user'))
+		{
+			$user_details=$this->session->userdata('vuebin_user');
+			$post=$this->input->post();
+			$like_data=array(
+			'video_id'=>isset($post['video_id'])?$post['video_id']:'',
+			'ip_address'=>$this->input->ip_address(),
+			'cust_id'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
+			'status'=>1,
+			'created_at'=>date('Y-m-d H:i:s'),
+			'updated_at'=>date('Y-m-d H:i:s'),
+			'create_by'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
+			);
+			$check=$this->Video_model->check_video_likes_exist($post['video_id'],$user_details['cust_id']);
+			if(count($check)>0){
+				$like_count=$this->Video_model->get_video_counts($post['video_id']);
+				//echo '<pe>';print_r($like_count);exit;
+						$data['msg']=1;
+						$data['count']=$like_count['like_count'];
+						echo json_encode($data);exit;	
+			}else{
+				$save=$this->Video_model->save_video_likee($like_data);
+				if(count($save)>0){
+					$like_counts=$this->Video_model->get_video_counts($post['video_id']);
+						$data['msg']=1;
+						$data['count']=$like_counts['like_count'];
+						echo json_encode($data);exit;	
+				}else{
+					$data=0;
+					echo json_encode($data);exit;
+				}
+			}
+
+		}else{
+			$this->session->set_flashdata('error',"Please login and continue");
+			redirect('');
+		}
 	}
 	
 }

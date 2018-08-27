@@ -107,7 +107,35 @@ class Video_model extends CI_Model
 		return $this->db->insert_id();
 		
 	}
-	/* video  views  count  purpose*/
+	/* video  subscrib   purpose*/
+	public  function save_video_subscribe($data){
+		$this->db->insert('video_subscribe_list',$data);
+		return $this->db->insert_id();
+	}
+	public  function check_video_subscribe_exist($v_id,$cust_id){
+		$this->db->select('v_s_id')->from('video_subscribe_list');
+		$this->db->where('video_id',$v_id);
+		$this->db->where('cust_id',$cust_id);
+		return $this->db->get()->row_array();
+	}
+	
+	/* video likes */
+	public  function save_video_likee($data){
+		$this->db->insert('video_likes_list',$data);
+		return $this->db->insert_id();
+	}
+	public  function check_video_likes_exist($v_id,$cust_id){
+		$this->db->select('v_l_id')->from('video_likes_list');
+		$this->db->where('video_id',$v_id);
+		$this->db->where('cust_id',$cust_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_video_counts($video_id){
+		$this->db->select('COUNT(video_likes_list.v_l_id) as like_count')->from('video_likes_list');
+		$this->db->where('status ',1);
+		$this->db->where('video_id',$video_id);
+		return $this->db->get()->row_array();
+	}
 	
 	
 

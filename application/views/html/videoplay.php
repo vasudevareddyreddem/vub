@@ -56,10 +56,16 @@
 					</div>
 					<div class="col-md-3">
 					<?php if(isset($cust_id) && $cust_id!=''){ ?>
+							<a href="javascript:void(0);" onclick="video_like(<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>);">
+							  <i class="fa fa-thumbs-up" aria-hidden="true"></i><span id="likes_count"> <?php if(isset($like_count['like_count']) && $like_count['like_count']!=0){ echo $like_count['like_count']; } ?></span>
+						
+							</a>
+								
 							<span class="pull-right">
 									<a href="javascript:void(0);" onclick="video_subscribe(<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>);" class="btn btn-primary btn-sm">Subscribe</a>
 							</span>
 					<?php }else{ ?>
+					 <a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
 					<span class="pull-right">
 									<a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal" class="btn btn-primary btn-sm">Subscribe</a>
 							</span>
@@ -130,7 +136,7 @@
     <!-- /.content -->
   </div>	
   </div>	
- 
+ <div id="sucessmsg" style="display:none;"></div>
 <script>
 	function sticky_relocate() {
 		var window_top = $(window).scrollTop();
@@ -161,23 +167,50 @@ function video_subscribe(v_id){
 		 jQuery.ajax({
    			url: "<?php echo base_url('videos/video_subscribe');?>",
    			data: {
-				route_number: route_number,
+				video_id: v_id,
 			},
    			type: "POST",
    			format:"Json",
    					success:function(data){
+						jQuery('#sucessmsg').show();
+						var parsedData=data;
+						if(parsedData==1){
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ"> Video successfully subscribed. <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+
+						}else if(parsedData==2){
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Video already subscribed <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+
+						}else if(parsedData==0){
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Technical problem will occurred. Please try again <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+						}
 						
-						if(data.msg=1){
-							var parsedData = JSON.parse(data);
-						//alert(parsedData.list.length);
-							$('#multiple_stops').empty();
-							for(i=0; i < parsedData.list.length; i++) {
-								//console.log(parsedData.list);
-							$('#multiple_stops').append("<option value="+parsedData.list[i].stop_id+">"+parsedData.list[i].stop_name+"</option>");                      
-                    
-								
-							 
-							}
+   					}
+           });
+	}
+	
+}
+function video_like(v_id){
+	if(v_id!=''){
+		 jQuery.ajax({
+   			url: "<?php echo base_url('videos/video_likes');?>",
+   			data: {
+				video_id: v_id,
+			},
+   			type: "POST",
+   			format:"Json",
+   					success:function(data){
+						jQuery('#sucessmsg').show();
+						var parsedData=JSON.parse(data);
+						if(parsedData.msg=1){
+							$('#likes_count').empty();
+							$('#likes_count').append(parsedData.count);
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ"> Video successfully subscribed. <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+
+						}else if(parsedData.msg=2){
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Video already subscribed <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+
+						}else if(parsedData.msg=0){
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Technical problem will occurred. Please try again <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
 						}
 						
    					}
