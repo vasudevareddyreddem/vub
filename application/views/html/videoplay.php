@@ -55,7 +55,7 @@
 						<h4><a href="#" target="_blank" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?></a></h4>	
 					</div>
 					<div class="col-md-5">
-						<a href=""><i class="fa fa-share-alt font-share" aria-hidden="true"></i></a>
+						<a href=""  data-toggle="modal" data-target="#share-modal" ><i class="fa fa-share-alt font-share" aria-hidden="true"></i></a>
 
 					
 					<?php if(isset($cust_id) && $cust_id!=''){ ?>
@@ -140,6 +140,33 @@
   </div>	
   </div>	
  <div id="sucessmsg" style="display:none;"></div>
+ <div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+
+    	  <div class="modal-dialog">
+		  
+				<div class="loginmodal-container">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute;right:10px;top:10px;background:#aaa;padding:5px; border-radius:50%;width:40px;height:40px;">
+                  <span aria-hidden="true">&times;</span></button>
+					<h1>Share with</h1><br>
+						<div class="">
+							<a href="upload.php" type="button" class="btn btn-primary btn-block text-white-social"><i class="fa fa-facebook"></i> Share with Facebook</a>
+						</div>
+						<br>
+						<div class="">
+							<button type="button" class="btn btn-danger btn-block"> <i class="fa fa-google-plus"></i> Share with GooglePlus</button>
+						</div>
+						<br>
+						<div class="">
+							<button type="button" class="btn btn-primary btn-block"> <i class="fa fa-linkedin"></i> Share with linkedin</button>
+						</div><br>
+						<div class="">
+							<button type="button" class="btn btn-primary btn-block bg-twitter"> <i class="fa fa-twitter"></i> Share with twitter</button>
+						</div>
+					
+				 
+				</div>
+			</div>
+		  </div>
 <script>
 	function sticky_relocate() {
 		var window_top = $(window).scrollTop();

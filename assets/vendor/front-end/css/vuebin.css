@@ -511,6 +511,12 @@ color:#FFF;
    width: 26.9%;
   
 }
+.bg-twitter{
+	background-color:#64ccf1 !important;
+	border-color: #64ccf1 !important;
+
+	color:#fff;
+}
 .font-share{
 	font-size:24px;
 	margin:0px 20px;
