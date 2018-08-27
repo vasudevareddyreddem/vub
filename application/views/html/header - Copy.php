@@ -19,14 +19,16 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/design.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/vuebin.css">
+<link  rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/suggestion-box.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/color.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/skins.css">
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/bootstrapValidator.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/select2.full.min.js"></script>
-   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/jquery-ui.css">
-  <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/jquery-ui.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendor/front-end/js/suggestion-box.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
@@ -53,7 +55,7 @@
 		<hr>
 		<div class="container" style="position:relative;z-index:2000">
 					<span class="fa fa-search" style=";position:absolute;top:10px;left:30px;color:#aaa"></span>
-					<input style="padding-left:35px;z-index:2000" type="text" class="form-control tags" name="search " id="" placeholder="Search videos">
+					<input style="padding-left:35px;z-index:2000" type="text" class="form-control" name="search" id="" placeholder="Search videos">
 					
 					<div class="row mar-t10" >
 						<div class="col-md-12">
@@ -119,8 +121,36 @@
 										<div class="col-md-10">
 											<div class="search-form1">
 												<div class="form-group ">
-													<input id="myInput1"type="text" class="form-control search-loc1 tags"  id="tags"  placeholder="Search videos" onkeyup="myFunction()">
+													<input id="myInput1"type="text" class="form-control search-loc1 "  placeholder="Search videos" onkeyup="myFunction()">
+													<div  style="display:none;" class="search-box-toggle-loction">
+													<ul id="myUL"  class="search-box-toggle">
+													  <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/in.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
+													   <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/bj.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
+													   <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/bm.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
+													   <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/gh.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li> <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/mk.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
 													
+													</ul>
+												</div>
 												</div>
 								</div>
 										</div>	
@@ -223,31 +253,3 @@ $(document).ready(function(){
 });
 
 </script>
- <script>
-  $( function() {
-    var raw = [
-    { value: 6, label: 'one'   },
-    { value: 4, label: 'one with two'   },
-    { value: 5, label: 'one with three'   },
-    { value: 1, label: 'one'   },
-    { value: 2, label: 'two'   },
-    { value: 3, label: 'three' },
-    { value: 4, label: 'four'  }
-];
-var source  = [ ];
-var mapping = { };
-for(var i = 0; i < raw.length; ++i) {
-    source.push(raw[i].label);
-    mapping[raw[i].label] = raw[i].value;
-}
-
-$('.tags').autocomplete({
-    minLength: 1,
-    source: source,
-    select: function(event, ui) {
-        $('#tags_id').val(mapping[ui.item.value]);
-    }
-});
-
-  } );
-  </script>
