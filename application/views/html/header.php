@@ -94,12 +94,12 @@
 
                         <li class="page-scroll">
                               <form action="" >
-                              <div class="search-form">
-								<div class="form-group has-feedback">
-									<label for="search" class="sr-only">Search</label>
-									<input type="text" class="form-control search-loc " name="search" id="search" placeholder="Search videos">
-									<span class="fa fa-search form-control-feedback"></span>
-								</div>
+								<div class="search-form">
+									<div class="form-group has-feedback">
+										<label for="search" class="sr-only">Search</label>
+										<input type="text" class="form-control search-loc "  placeholder="Search videos">
+									
+									</div>
 								</div>
 							 </li>
 						<li class="page-scroll">
