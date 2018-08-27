@@ -161,7 +161,8 @@
 							<a href="<?php echo base_url('user/logout'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Logout</a>
 							</li>
                         <?php }else{ ?>
-							<!--<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
+							<!--<li data-toggle="
+							" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
 							   <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Login</a>
 							</li>-->
 						<?php } ?>
