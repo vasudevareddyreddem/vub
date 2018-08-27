@@ -48,11 +48,22 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
   float: right !important;
   transition: all 0.35s, border-radius 0s;
   width: 250px;
-  height: 32px;
+  height: 35px;
   background-color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
   border-radius:0px;
-  border: 1px solid #ccc;
+
+  margin-top:5px;
+}
+.search-form1 .form-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 250px;
+  height: 35px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius:0px;
+
   margin-top:5px;
 }
 .mar-t10{
@@ -107,20 +118,15 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
 .letter-break{
 	word-break: break-all !important;
 }
-.location-hide{
-	position:relative;
-	width:100%;
-	padding-top:5px;
-}
-.location-hide input{
-	height: 32px;
-  background-color: #fff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-  border-radius:0px;
-  border: 1px solid #ccc;
-  margin-top:0px;
-}
+
 .search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+.search-form1 .form-group input.form-control {
   padding-right: 20px;
   border: 0 none;
   background: transparent;
@@ -147,6 +153,20 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
   
 }
 .search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
+}
+.search-form1 .form-group span.form-control-feedback {
   position: absolute;
   top: -1px;
   right: -2px;
@@ -488,7 +508,7 @@ color:#FFF;
 
 #sticky.stick {
     position: fixed;
-   width: 27.8%;
+   width: 26.9%;
   
 }
 
@@ -811,4 +831,53 @@ color:#FFF;
     transform: translate(-50%, 0%);
 	border-bottom:1px solid #ddd;
 	}
+}
+/* search css */
+#myInput {
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 8px 8px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#myInput1 {
+	
+  background-position: 8px 8px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 12px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+.search-box-toggle .flag{
+	Height:25px;
+	width:auto;
+}
+.btn-go{
+	margin-top:6px;
 }
