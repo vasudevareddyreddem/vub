@@ -77,7 +77,7 @@
                             <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="course.php">COURSES</a>
+                            <a href="<?php echo base_url('courses'); ?>">COURSES</a>
                         </li>
                       
                     </ul>

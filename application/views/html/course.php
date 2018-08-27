@@ -1,4 +1,3 @@
-<?php include("header1.php"); ?>
 
 	<div class="content-wrapper">
 	<div class="body-start">
@@ -355,4 +354,3 @@
 		</div>
 	</div>
 	</div>
-<?php include("footer1.php"); ?>

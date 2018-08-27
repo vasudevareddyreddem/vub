@@ -57,7 +57,7 @@
 					<div class="col-md-3">
 					<?php if(isset($cust_id) && $cust_id!=''){ ?>
 							<span class="pull-right">
-									<a href="javascript:void(0);" onclick="video_subscribe('<?php echo isset($video_details['v_id'])?$video_details['v_id']:''; ?>');" class="btn btn-primary btn-sm">Subscribe</a>
+									<a href="javascript:void(0);" onclick="video_subscribe(<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>);" class="btn btn-primary btn-sm">Subscribe</a>
 							</span>
 					<?php }else{ ?>
 					<span class="pull-right">
@@ -156,9 +156,35 @@
 	});
 </script>
 <script>
-function video_subscribe(){
-	
+function video_subscribe(v_id){
+	if(v_id!=''){
+		 jQuery.ajax({
+   			url: "<?php echo base_url('transportation/routes_sides');?>",
+   			data: {
+				route_number: route_number,
+			},
+   			type: "POST",
+   			format:"Json",
+   					success:function(data){
+						
+						if(data.msg=1){
+							var parsedData = JSON.parse(data);
+						//alert(parsedData.list.length);
+							$('#multiple_stops').empty();
+							for(i=0; i < parsedData.list.length; i++) {
+								//console.log(parsedData.list);
+							$('#multiple_stops').append("<option value="+parsedData.list[i].stop_id+">"+parsedData.list[i].stop_name+"</option>");                      
+                    
+								
+							 
+							}
+						}
+						
+   					}
+           });
 	}
+	
+}
 </script>
 
 
