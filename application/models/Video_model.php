@@ -101,6 +101,13 @@ class Video_model extends CI_Model
 		
 	}
 	/*upload  video  in  home  purpose*/
+	/* video  views  count  purpose*/
+	public  function save_video_views_count($data){
+		$this->db->insert('video_view_list',$data);
+		return $this->db->insert_id();
+		
+	}
+	/* video  views  count  purpose*/
 	
 	
 

@@ -22,6 +22,7 @@ class Institutes extends  Front_end {
 		$i_id=base64_decode($this->uri->segment(3));
 		$data['institute_details']=$this->Institute_model->get_institues_details_for_front_end($i_id);
 		$data['video_list']=$this->Institute_model->get_institues_video_list($i_id);
+		$data['courses_offered']=$this->Institute_model->get_institues_wise_courses_offered($i_id);
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/institute-page',$data);
 		$this->load->view('html/footer');

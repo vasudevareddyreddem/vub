@@ -66,7 +66,7 @@
 									   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 p0">
 										  <div class="article-view">
 											 <div class="">
-											 <a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id'])); ?>">
+											 <a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name'])); ?>">
 											 <video width="100%" height="100%" class="thumbnail">
 											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
 											  <source src="movie.ogg" type="video/ogg">
@@ -99,13 +99,13 @@
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								 <div class="article-head clearfix">
 									<span class="">
-									  <i class="fa fa-thumbs-up" aria-hidden="true"></i> 25
+									  <i class="fa fa-thumbs-up" aria-hidden="true"></i> <?php echo isset($list['likes_count'])?$list['likes_count']:''; ?>
 									</span>
 									<span class="mar-l10">
-									  <i class="fa fa-eye" aria-hidden="true"></i> 35
+									  <i class="fa fa-eye" aria-hidden="true"></i> <?php echo isset($list['view_count'])?$list['view_count']:''; ?>
 									</span>
 									<span class="pull-right">
-									   <h4 class="text-white" style="line-height:24px"><i class="fa fa-clock-o" aria-hidden="true"></i> Thu Jan 27 2011 02:05:17 </h4>
+									   <h4 class="text-white" style="line-height:24px"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date('M j Y h:i A',strtotime(htmlentities($list['created_at'])));?></h4>
 									</span>
 								 </div>
 							  </div>
@@ -116,32 +116,29 @@
 				</div>
 				
 			<?php } ?>
-			<div class="col-md-3 ">
-				
-				<div id="">
-				
+			<?php if(isset($courses_offered) && count($courses_offered)>0){ ?>
+					<div class="col-md-3 ">
+						<div id="">
 							<div class="sidebar-recent bg-white">
-							<div class="bg-primary pad-10">
-								<span class="">
-								   <h3 class="text-white text-center">Latest Courses </h3>
-								</span>	
-							</div>	
-							 <div class="pad-10 " >
-								<ul class="list-courses">
-									<li class=""><a href="#" target="_blank" style="color:#0062C4;">VideoTutorial 1 del Curso de PHP y MySQL Orientado a Objetos</a></li>
-									<li class=" class="pad-t10"><a href="#" target="_blank" style="color:#0062C4;">VideoTutorial 1 del Curso de PHP y MySQL Orientado a Objetos</a></li>
-									<li class="pad-t10"><a href="#" target="_blank" style="color:#0062C4;">VideoTutorial 1 del Curso de PHP y MySQL Orientado a Objetos</a></li>
-									<li class=" class="pad-t10"><a href="#" target="_blank" style="color:#0062C4;">VideoTutorial 1 del Curso de PHP y MySQL Orientado a Objetos</a></li>
-									<li class="pad-t10"><a href="#" target="_blank" style="color:#0062C4;">VideoTutorial 1 del Curso de PHP y MySQL Orientado a Objetos</a></li>
-									<li class=" class="pad-t10"><a href="#" target="_blank" style="color:#0062C4;">VideoTutorial 1 del Curso de PHP y MySQL Orientado a Objetos</a></li>
-								</u>
-								
-							 </div>
-						  </div>
-						  <div class="clearfix">&nbsp;</div>	
-					
-						</div>
-						</div>
+									<div class="bg-primary pad-10">
+										<span class="">
+										   <h3 class="text-white text-center">Courses offered </h3>
+										</span>	
+									</div>	
+									 <div class="pad-10 " >
+										<ul class="list-courses">
+										<?php foreach($courses_offered as $list){ ?>
+											<li class=""><a href="<?php echo base_url($list['i_id']); ?>" target="_blank" style="color:#0062C4;"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp; Count: &nbsp;<?php echo isset($list['video_list'])?$list['video_list']:''; ?></a></li>
+											
+										<?php } ?>
+										</ul>
+										
+									 </div>
+								  </div>
+								  <div class="clearfix">&nbsp;</div>	
+								</div>
+								</div>
+			<?php } ?>
       </div>
       <!-- /.row -->
     </section>

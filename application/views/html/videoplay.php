@@ -55,9 +55,15 @@
 						<h4><a href="#" target="_blank" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?></a></h4>	
 					</div>
 					<div class="col-md-3">
-						<span class="pull-right">
-									<button class="btn btn-primary btn-sm">Subscribe</button>
-								</span>
+					<?php if(isset($cust_id) && $cust_id!=''){ ?>
+							<span class="pull-right">
+									<a href="javascript:void(0);" onclick="video_subscribe('<?php echo isset($video_details['v_id'])?$video_details['v_id']:''; ?>');" class="btn btn-primary btn-sm">Subscribe</a>
+							</span>
+					<?php }else{ ?>
+					<span class="pull-right">
+									<a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal" class="btn btn-primary btn-sm">Subscribe</a>
+							</span>
+					<?php } ?>
 					</div>
 					</div>
 					 <hr>
@@ -79,6 +85,7 @@
 				</div>
 			</div>
             </div>
+			<?php if(isset($video_list)&& count($video_list)>0){ ?>
 				<div class="col-md-3 ">
 					<div class="sidebar-recent bg-white">
 						<div class="bg-primary pad-10">
@@ -87,98 +94,36 @@
 								
 						</div>	
 						 <div class="pad-10 " >
+						 
+						 <?php foreach($video_list as $list){ ?>
 							<div class="row">
-							<a href="#" class="text-dark">
+							<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name'])); ?>" class="text-dark">
 								<div class="pad-rl-15">
 									<div class="col-md-5" style="padding:0px">
 										<video width="100%" height="100%" class="thumbnail">
-												  <source src="dist/video/back2.mp4" type="video/mp4">
+												  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
 												  <source src="movie.ogg" type="video/ogg">
 												</video>
 									</div>
 									<div class="col-md-7">
-											<div class="font-15">Beginner PHP Tutorial - Part 1 - Introduction to PHP</div>
+											<div class="font-15"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp;-&nbsp;<?php echo isset($list['v_title'])?$list['v_title']:''; ?></div>
 									</div>
 								</div>
 								</a>
 							</div>
 							
 							<hr class="hr-videos" >
-							<div class="row">
-								<div class="pad-rl-15">
-									<div class="col-md-5" style="padding:0px">
-										<video width="100%" height="100%" class="thumbnail">
-												  <source src="dist/video/back2.mp4" type="video/mp4">
-												  <source src="movie.ogg" type="video/ogg">
-												</video>
-									</div>
-									<div class="col-md-7 ">
-											<div class="font-15">Beginner PHP Tutorial - Part 1 - Introduction to PHP</div>
-									</div>
-								</div>
-							</div>
-							<hr class="hr-videos" >
-							<div class="row">
-								<div class="pad-rl-15">
-									<div class="col-md-5" style="padding:0px">
-										<video width="100%" height="100%" class="thumbnail">
-												  <source src="dist/video/back2.mp4" type="video/mp4">
-												  <source src="movie.ogg" type="video/ogg">
-												</video>
-									</div>
-									<div class="col-md-7 ">
-											<div class="font-15">Beginner PHP Tutorial - Part 1 - Introduction to PHP</div>
-									</div>
-								</div>
-							</div>
-							<hr class="hr-videos" >
-							<div class="row">
-								<div class="pad-rl-15">
-									<div class="col-md-5" style="padding:0px">
-										<video width="100%" height="100%" class="thumbnail">
-												  <source src="dist/video/back2.mp4" type="video/mp4">
-												  <source src="movie.ogg" type="video/ogg">
-												</video>
-									</div>
-									<div class="col-md-7 ">
-											<div class="font-15">Beginner PHP Tutorial - Part 1 - Introduction to PHP</div>
-									</div>
-								</div>
-							</div>
-							<hr class="hr-videos" >
-							<div class="row">
-								<div class="pad-rl-15">
-									<div class="col-md-5" style="padding:0px">
-										<video width="100%" height="100%" class="thumbnail">
-												  <source src="dist/video/back2.mp4" type="video/mp4">
-												  <source src="movie.ogg" type="video/ogg">
-												</video>
-									</div>
-									<div class="col-md-7 ">
-											<div class="font-15">Beginner PHP Tutorial - Part 1 - Introduction to PHP</div>
-									</div>
-								</div>
-							</div>
-							<hr class="hr-videos" >
-							<div class="row">
-								<div class="pad-rl-15">
-									<div class="col-md-5" style="padding:0px">
-										<video width="100%" height="100%" class="thumbnail">
-												  <source src="dist/video/back2.mp4" type="video/mp4">
-												  <source src="movie.ogg" type="video/ogg">
-												</video>
-									</div>
-									<div class="col-md-7 ">
-											<div class="font-15">Beginner PHP Tutorial - Part 1 - Introduction to PHP</div>
-									</div>
-								</div>
-							</div>
+						 <?php } ?>
+							
+							
 							
 							
 						 </div>
+						
 					</div>
 					<div class="clearfix">&nbsp;</div>
 				</div>
+				 <?php } ?>
       </div>
       <!-- /.row -->
     </section>
@@ -209,6 +154,11 @@
 		$(window).scroll(sticky_relocate);
 		sticky_relocate();
 	});
+</script>
+<script>
+function video_subscribe(){
+	
+	}
 </script>
 
 

@@ -93,12 +93,47 @@ class Institute_model extends CI_Model
 		}
 	}
 	public  function get_institues_video_list($i_id){
-		$this->db->select('course_list.c_name,video_list.t_name,video_list.v_desc,video_list.i_id,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.training_mode,video_list.v_title,video_list.a_author,video_list.u_b_schedule,video_list.created_by')->from('video_list');
+		$this->db->select('course_list.c_name,video_list.t_name,video_list.course_name,video_list.v_desc,video_list.i_id,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.training_mode,video_list.v_title,video_list.a_author,video_list.u_b_schedule,video_list.created_by,video_list.created_at')->from('video_list');
 		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
 		$this->db->where('video_list.status ',1);
 		$this->db->where('video_list.public ',1);
 		$this->db->where('video_list.i_id ',$i_id);
-		return $this->db->get()->result_array();
+		$return=$this->db->get()->result_array();
+		foreach($return as $lis){
+			$videos_view_count=$this->get_institue_video_view_count($lis['video_id']);
+			$videos_likes_count=$this->get_institue_video_likes_count($lis['video_id']);
+			if($videos_view_count['view_count']==0){
+				$view_cnt='';
+			}else{
+				$view_cnt=$videos_view_count['view_count'];
+			}
+			if($videos_likes_count['like_count']==0){
+				$like_cnt='';
+			}else{
+				$like_cnt=$videos_likes_count['like_count'];
+			}
+			
+				$data[$lis['video_id']]=$lis;
+				$data[$lis['video_id']]['likes_count']=isset($like_cnt)?$like_cnt:'';
+				$data[$lis['video_id']]['view_count']=isset($view_cnt)?$view_cnt:'';
+		}
+		//echo '<pre>';print_r($data);exit;
+		if(!empty($data)){
+			return $data;
+		}
+				
+	}
+	public  function get_institue_video_likes_count($video_id){
+		$this->db->select('COUNT(video_likes_list.v_l_id) as like_count')->from('video_likes_list');
+		$this->db->where('status ',1);
+		$this->db->where('v_id',$video_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_institue_video_view_count($video_id){
+		$this->db->select('COUNT(video_view_list.v_l_id) as view_count')->from('video_view_list');
+		$this->db->where('status ',1);
+		$this->db->where('v_id',$video_id);
+		return $this->db->get()->row_array();
 	}
 	public  function get_video_details($video_id){
 		$this->db->select('course_list.c_name,video_list.t_name,video_list.v_desc,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.training_mode,video_list.v_title,video_list.a_author,video_list.u_b_schedule,video_list.created_by,video_list.course_content')->from('video_list');
@@ -107,6 +142,18 @@ class Institute_model extends CI_Model
 		$this->db->where('video_list.public ',1);
 		$this->db->where('video_list.video_id ',$video_id);
 		return $this->db->get()->row_array();
+	}
+	
+	public  function get_course_wise_video_list($i_id,$course_id,$v_id){
+		$this->db->select('course_list.c_name,video_list.t_name,video_list.i_id,video_list.course_name,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.v_title')->from('video_list');
+		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->where('video_list.status ',1);
+		$this->db->where('video_list.public ',1);
+		$this->db->where('video_list.i_id ',$i_id);
+		$this->db->where('video_list.video_id!=',$v_id);
+		$this->db->order_by('video_list.video_id ','asc');
+		$this->db->where('video_list.course_name',$course_id);
+		return $this->db->get()->result_array();
 	}
 		
 	/* front_end  purpose*/
@@ -207,6 +254,43 @@ class Institute_model extends CI_Model
 	}
 	/* add  add institute wise  upload  video  functionality*/
 	
+	/* institur page  purpose*/
+	
+	public function get_institues_wise_courses_offered($i_id){
+		$this->db->select('course_list.c_name,video_list.i_id,video_list.course_name')->from('video_list');
+		$this->db->join('course_list ', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->group_by('course_list.c_name');
+		$this->db->where('video_list.i_id',$i_id);
+		$return=$this->db->get()->result_array();
+		foreach($return as $list){
+			$videos_count=$this->get_institue_course_video_count_list($list['i_id'],$list['course_name']);
+				$data[$list['course_name']]=$list;
+				$data[$list['course_name']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+				
+			}
+			foreach($data as $key => $row) {
+				//echo '<pre>';print_r($row);
+				$dates[$key]  = $row['video_list'];
+			}
+			$sort_data=array_multisort($dates, SORT_DESC, $data);
+			//echo '<pre>';print_r($sort_data);exit;
+			if(!empty($data)){
+				return $data;
+				
+			}
+		//echo '<pre>';print_r($data);exit;
+	}
+	public  function get_institue_course_video_count_list($i_id,$course_id){
+		$this->db->select('COUNT(video_list.video_id) as video_count')->from('video_list');
+		$this->db->where('status ',1);
+		$this->db->where('i_id',$i_id);
+		$this->db->where('course_name',$course_id);
+		$this->db->where('public ',1);
+		$this->db->order_by('video_count');
+		return $this->db->get()->row_array();
+		
+	}
+	/* institur page  purpose*/
 	
 
 }
