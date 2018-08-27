@@ -159,7 +159,7 @@
 function video_subscribe(v_id){
 	if(v_id!=''){
 		 jQuery.ajax({
-   			url: "<?php echo base_url('transportation/routes_sides');?>",
+   			url: "<?php echo base_url('videos/video_subscribe');?>",
    			data: {
 				route_number: route_number,
 			},

@@ -140,6 +140,16 @@
       <!-- /.container-fluid -->
     </nav>
   </header>
+  <?php if($this->session->flashdata('success')): ?>
+<div class="alert_msg1 animated slideInUp bg-succ">
+   <?php echo $this->session->flashdata('success');?> &nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i>
+</div>
+<?php endif; ?>
+<?php if($this->session->flashdata('error')): ?>
+<div class="alert_msg1 animated slideInUp bg-warn">
+   <?php echo $this->session->flashdata('error');?> &nbsp; <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i>
+</div>
+<?php endif; ?>
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 
     	  <div class="modal-dialog">
