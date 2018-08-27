@@ -95,21 +95,64 @@
                         <li class="page-scroll">
                               <form action="" >
 								<div class="search-form">
-									<div class="form-group has-feedback">
-										<label for="search" class="sr-only">Search</label>
-										<input type="text" class="form-control search-loc "  placeholder="Search videos">
-									
+									<div class="form-group ">
+										<input id="myInput"type="text" class="form-control search-loc "  placeholder="Search videos" onkeyup="myFunction()">
+										<div style="display:none" class="search-box-toggle">
+										<ul id="myUL" >
+										  <li><a href="#">Adele</a></li>
+										  <li><a href="#">Agnes</a></li>
+
+										  <li><a href="#">Billy</a></li>
+										  <li><a href="#">Bob</a></li>
+
+										  <li><a href="#">Calvin</a></li>
+										  <li><a href="#">Christina</a></li>
+										  <li><a href="#">Cindy</a></li>
+										</ul>
+									</div>
 									</div>
 								</div>
 							 </li>
 						<li class="page-scroll">
-                             <div class="location-hide" style="">
+                             <div >
 									<div class="row">
-									<div class="col-md-10">
-									
-										<input type="text" class="form-control " name="search"  placeholder="Location">
+										<div class="col-md-10">
+											<div class="search-form1">
+												<div class="form-group ">
+													<input id="myInput1"type="text" class="form-control search-loc1 "  placeholder="Search videos" onkeyup="myFunction()">
+													<div  style="display:none;" class="search-box-toggle-loction">
+													<ul id="myUL"  class="search-box-toggle">
+													  <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/in.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
+													   <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/bj.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
+													   <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/bm.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
+													   <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/gh.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li> <li>
+														<a href="#">
+															<img class="flag" src="<?php echo base_url(); ?>assets/flags/mk.png"> <span style=""> Ameerpet, Hyderabad, Telangana, India
+															</span></a>
+													  </li>
+													
+													</ul>
+												</div>
+												</div>
+								</div>
 										</div>	
-										<button class="btn btn-sm btn-primary col-md-2">Go</button>
+										<button class="btn btn-sm btn-primary col-md-2 btn-go ">Go</button>
 									</div>
 									</div>
 						</li>
@@ -171,20 +214,33 @@
 			</div>
 		  </div>
   <!-- Full Width Column -->
- <script>
-    $(document).ready(function () {
-        $('#search').suggestionBox({
-            filter: true,
-            widthAdjustment: -8,
-            leftOffset: 0,
-            topOffset: 0,
-        }).loadSuggestions('suggestions.json');
-    });
+  <script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
 </script>
+ 
 <script>
 $(document).ready(function(){
     $(".search-loc").click(function(){
-        $('.location-hide').show();
+        $('.search-box-toggle').toggle();
+    });
+});
+$(document).ready(function(){
+    $(".search-loc1").click(function(){
+        $('.search-box-toggle-loction').toggle();
     });
 });
 
@@ -193,9 +249,5 @@ $(document).ready(function(){
         $('.mobile-search').show();
     });
 });
-$(document).ready(function(){
-    $("#close-search").click(function(){
-        $('.mobile-search').hide();
-    });
-});
+
 </script>
