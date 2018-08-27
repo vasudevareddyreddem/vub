@@ -55,9 +55,7 @@
 									<span class="pull-left">
 									   <h4 class="text-white"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></h4>
 									</span>	
-									<span class="pull-right">
-										<button class="btn btn-primary btn-sm">Subscribe</button>
-									</span>	
+									
 								 </div>
 							  </div>
 							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

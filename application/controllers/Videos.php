@@ -47,7 +47,7 @@ class Videos extends  Front_end {
 			'create_by'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
 			);
 			$this->Video_model->save_video_views_count($view_data);
-
+			$this->session->set_flashdata('error',"Old Password are not matched.");
 		/* view count*/
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/videoplay',$data);
