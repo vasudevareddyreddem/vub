@@ -119,7 +119,7 @@
 										<div class="col-md-10">
 											<div class="search-form1">
 												<div class="form-group ">
-													<input id="myInput1"type="text" class="form-control search-loc1 tags"  id="tags"  placeholder="Search videos" onkeyup="myFunction()">
+													<input id="myInput1"type="text" class="form-control search-loc1 tags"  id="tags"  placeholder="Location" onkeyup="myFunction()">
 													
 												</div>
 								</div>

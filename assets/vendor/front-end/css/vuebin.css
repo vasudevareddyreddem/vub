@@ -147,11 +147,7 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
 .search-form .form-group input.form-control:-ms-input-placeholder {
   display: none;
 }
-.search-form .form-group:hover,
-.search-form .form-group.hover {
-  width: 300px;
-  
-}
+
 .search-form .form-group span.form-control-feedback {
   position: absolute;
   top: -1px;
