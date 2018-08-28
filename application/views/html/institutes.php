@@ -1,4 +1,11 @@
-  <div class="content-wrapper">
+<style>
+#sticky.stick {
+    position: fixed;
+   width: 26.9% !important;
+  
+}
+</style> 
+ <div class="content-wrapper">
 	<div class="body-start">
 		<div class="container">
 		    <section class="content">
@@ -61,7 +68,7 @@
 			<?php if(isset($lastest_institute_list) && count($lastest_institute_list)>0){ ?>
 				<div class="col-md-4 col-xs-12 col-sm-12">
 				<div id="sticky-anchor"></div>
-				<div id="sticky">
+				<div id="sticky" >
 				
 							<div class="sidebar-recent bg-white">
 							<div class="bg-primary pad-10">

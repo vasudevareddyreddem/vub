@@ -6,7 +6,7 @@
       <div class="row">
 		 <div class="col-md-2 no-padding bg-dark pos-ab-left" >
 		 <div id="sticky-anchor"></div>
-				<div id="sticky" style="width:16.66%">
+				<div id="sticky" >
 			<section class=" ">
       <!-- Sidebar user panel -->
       <div class="pad-15" >
