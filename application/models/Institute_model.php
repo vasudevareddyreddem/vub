@@ -92,10 +92,13 @@ class Institute_model extends CI_Model
 				return $data;
 		}
 	}
-	public  function get_institues_video_list($i_id){
+	public  function get_institues_video_list($i_id,$course_id){
 		$this->db->select('course_list.c_name,video_list.t_name,video_list.course_name,video_list.v_desc,video_list.i_id,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.training_mode,video_list.v_title,video_list.a_author,video_list.u_b_schedule,video_list.created_by,video_list.created_at')->from('video_list');
 		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
 		$this->db->where('video_list.status ',1);
+		if(isset($course_id) && $course_id!=''){
+		$this->db->where('video_list.course_name ',$course_id);	
+		}
 		$this->db->where('video_list.public ',1);
 		$this->db->where('video_list.i_id ',$i_id);
 		$return=$this->db->get()->result_array();
