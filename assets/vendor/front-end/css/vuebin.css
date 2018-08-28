@@ -1,4 +1,17 @@
-
+/* Chat start */
+.chat-div{
+	position:fixed;
+	bottom:0;
+	right:0;
+	width:22%;
+	
+}
+.chat-box{
+	-webkit-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
+box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
+}
+/* chat end */
 	/* notifications */
 .bg-succ{
 	background:#449d44 !important;
