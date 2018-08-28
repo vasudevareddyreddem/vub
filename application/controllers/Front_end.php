@@ -15,18 +15,22 @@ class Front_end extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper('security');
 		$this->load->model('User_model');
-		
+		$header['search_values']=$this->User_model->get_course_or_institues_list('');
+		$header['location_values']=$this->User_model->get_location_search_list('');
 		if($this->session->userdata('vuebin_user'))
 		{
 			$vuebin_details=$this->session->userdata('vuebin_user');
 			$header['user_details']=$this->User_model->get_userdetails($vuebin_details['cust_id']);
-			//echo '<pre>';print_r($header);exit;			
+			
+
+				
 		}else{
 			require_once "config.php";
 			$redirectURL = "https://shofus.com/fbcallback";
 			$permissions = ['email'];
 			$header['loginURL']=$helper->getLoginUrl($redirectURL, $permissions);
 		}
+		//echo '<pre>';print_r($header);exit;		
 		$this->load->view('html/header',$header);
 	}
 }

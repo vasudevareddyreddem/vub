@@ -93,11 +93,11 @@
                         </li>
 
                         <li class="page-scroll">
-                              <form action="<?php echo base_url('search/post'); ?>" method="post">
+                              <form action="" >
 								<div class="search-form">
 									<div class="form-group ">
-										<input id="myInput"type="text" class="form-control search-loc homemenu_id" name="institue_course_name"  placeholder="Search videos" >
-										<input type="hidden" id="homemenu_id" name="institue_course" value="" >
+										<input id="myInput"type="text" class="form-control search_home_institue" onkeyup="course_institue_search(this.value)"  placeholder="Search videos" onkeyup="myFunction()">
+										<input type="hidden" id="homemenu_id" name="" value="" >
 									</div>
 								</div>
 							 </li>
@@ -107,8 +107,8 @@
 										<div class="col-md-10">
 											<div class="search-form1">
 												<div class="form-group ">
-													<input id="myInput1"type="text" class="form-control location_search" name="location_name"    placeholder="Location" >
-													<input type="hidden" name="local_id" id="local_id" value="">
+													<input id="myInput1"type="text" class="form-control"  placeholder="Location" onkeyup="myFunction()">
+													
 												</div>
 								</div>
 										</div>	
@@ -175,40 +175,69 @@
 			</div>
 		  </div>
   <!-- Full Width Column -->
-
-<script  type="text/javascript">
-
-  $( function() {
-    var raw = [
-    <?php foreach($location_values as $a_lis){
-		
-		?>{
-			value:'<?php echo $a_lis['l_id']; ?>',
-			label:'<?php echo $a_lis['address']; ?>',
-			//img:'<img src="http://localhost/vub/assets/flags/in.png">',
-			},
-		<?php } ?>
-		];
-var source  = [ ];
-var mapping = { };
-for(var i = 0; i < raw.length; ++i) {
-    source.push(raw[i].label);
-    mapping[raw[i].label] = raw[i].value;
-}
-$('.location_search').autocomplete({
-    minLength: 1,
-    source: source,
-    select: function(event, ui) {
-        $('#local_id').val(mapping[ui.item.value]);
+  <script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
     }
-});
-
-  } );
+}
+</script>
  
+<script>
+function course_institue_search(course_institue){
+	if(course_institue!=''){
+		jQuery.ajax({
+   			url: "<?php echo base_url('search/get_course_or_institues');?>",
+   			data: {
+				search_value: course_institue,
+			},
+   			type: "POST",
+   			format:"json",
+   					success:function(data){
+						
+							var parsedData=JSON.parse(data);
+							var fff=parsedData.list;
+							var ff=fff.split(",");
+							alert(ff);
+							alert(parsedData.list);
+							var raw = [parsedData.list];
+							var source  = [ ];
+							var mapping = { };
+							for(var i = 0; i < raw.length; ++i) {
+								alert(raw[i]);
+								
+							}
+
+					}
+           });
+	}
+	
+}
+
+</script>
+ <script>
+ 
+  
  $( function() {
-	var homesearch = [
-		<?php foreach($search_values as $lis){ ?>{value:'<?php echo $lis['value']; ?>', label:'<?php echo $lis['label']; ?>',},	<?php } ?>
-	];
+    var homesearch = [
+    	{ value: 6, label: 'one'   },
+								{ value: 4, label: 'one with two'   },
+								{ value: 5, label: 'one with three'   },
+								{ value: 1, label: 'one'   },
+								{ value: 2, label: 'two'   },
+								{ value: 3, label: 'three' },
+								{ value: 4, label: 'four'  }
+];
 var source  = [ ];
 var mapping = { };
 for(var i = 0; i < homesearch.length; ++i) {

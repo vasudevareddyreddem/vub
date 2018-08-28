@@ -42,8 +42,9 @@
     </section>
 		 </div>
 		 </div>
-		 <?php if(isset($video_list) && count($video_list)>0){ ?>
+		 
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">
+		 <?php if(isset($video_list) && count($video_list)>0){ ?>
 		 <?php foreach($video_list as $list){ ?>
 		 <?php if(isset($list['u_b_schedule']) && $list['u_b_schedule']!=''){ ?>
 			  <marquee scrolldelay="150"  onmouseover="this.stop()" onmouseout="this.start()"><?php echo isset($list['u_b_schedule'])?$list['u_b_schedule']:''; ?></marquee>
@@ -110,10 +111,13 @@
 						   </div>
 						</div>
 						 
-					<?php } ?>	 
+					<?php } ?>	
+				<?php }else{ ?>	
+				<div>No data Available</div>
+				<?php } ?>				
 				</div>
 				
-			<?php } ?>
+			
 			<?php if(isset($courses_offered) && count($courses_offered)>0){ ?>
 					<div class="col-md-3 ">
 						<div id="">

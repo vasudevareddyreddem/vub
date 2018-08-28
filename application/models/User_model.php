@@ -73,7 +73,33 @@ class User_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	
+	/*home  search functionality  purpose*/
+	public  function get_course_or_institues_list($val){
+		$this->db->select('i_name as label,CONCAT(i_id,"_","institue") AS value')->from('institute_list');
+		$this->db->where('institute_list.status',1);
+		$result1=$this->db->get()->result_array();
+		$this->db->select('c_name as label,CONCAT(course_id,"_","course") as value')->from('course_list');
+		$this->db->where('course_list.status',1);
+		$result2=$this->db->get()->result_array();
+		return array_merge($result1, $result2);
+	}
+	public  function get_location_search_list(){
+		$this->db->select('location_list.l_id,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code')->from('location_list');
+		$this->db->join('city_list ', 'city_list.city_id = location_list.city_id', 'left');
+		$this->db->join('countries_list ', 'countries_list.c_id = city_list.c_id', 'left');
+		$this->db->where('location_list.l_status ',1);
+		$this->db->order_by('location_list.l_id','desc');
+		return $this->db->get()->result_array();
+	}
+	public  function get_location_with_intitue($i_id,$location_id){
+		$this->db->select('i_id,i_name')->from('institute_list');
+		$this->db->where('institute_list.i_id',$i_id);
+		if(isset($location_id) && $location_id!=''){
+			$this->db->where('institute_list.location_name',$location_id);	
+		}
 	
+		return $this->db->get()->row_array();
+	}	
 	
 
 }

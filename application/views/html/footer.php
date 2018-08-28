@@ -122,6 +122,7 @@ $(document).ready(function(){
 </script>
 
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/app.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/jquery-ui.js"></script>
 
 
 </body>

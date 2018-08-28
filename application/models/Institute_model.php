@@ -271,15 +271,18 @@ class Institute_model extends CI_Model
 				$data[$list['course_name']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
 				
 			}
-			foreach($data as $key => $row) {
-				//echo '<pre>';print_r($row);
-				$dates[$key]  = $row['video_list'];
-			}
-			$sort_data=array_multisort($dates, SORT_DESC, $data);
-			//echo '<pre>';print_r($sort_data);exit;
-			if(!empty($data)){
-				return $data;
-				
+			if(isset($data) && count($data)>0){
+			//echo '<pre>';print_r($data);exit;
+				foreach($data as $key => $row) {
+					//echo '<pre>';print_r($row);
+					$dates[$key]  = $row['video_list'];
+				}
+				$sort_data=array_multisort($dates, SORT_DESC, $data);
+				//echo '<pre>';print_r($sort_data);exit;
+				if(!empty($data)){
+					return $data;
+					
+				}
 			}
 		//echo '<pre>';print_r($data);exit;
 	}
