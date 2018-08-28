@@ -96,20 +96,8 @@
                               <form action="" >
 								<div class="search-form">
 									<div class="form-group ">
-										<input id="myInput"type="text" class="form-control search-loc "  placeholder="Search videos" onkeyup="myFunction()">
-										<div style="display:none" class="search-box-toggle">
-										<ul id="myUL" >
-										  <li><a href="#">Adele</a></li>
-										  <li><a href="#">Agnes</a></li>
-
-										  <li><a href="#">Billy</a></li>
-										  <li><a href="#">Bob</a></li>
-
-										  <li><a href="#">Calvin</a></li>
-										  <li><a href="#">Christina</a></li>
-										  <li><a href="#">Cindy</a></li>
-										</ul>
-									</div>
+										<input id="myInput"type="text" class="form-control search-loc homemenu_id"  placeholder="Search videos" onkeyup="myFunction()">
+										<input type="hidden" id="homemenu_id" name="" value="" >
 									</div>
 								</div>
 							 </li>
@@ -247,6 +235,33 @@ $('.tags').autocomplete({
     source: source,
     select: function(event, ui) {
         $('#tags_id').val(mapping[ui.item.value]);
+    }
+});
+
+  } );
+  
+ $( function() {
+    var homesearch = [
+    { value: 6, label: 'bayappu institue'   },
+    { value: 4, label: 'vasudevareddy institue'   },
+    { value: 5, label: 'prachatech'   },
+    { value: 1, label: 'one'   },
+    { value: 2, label: 'two'   },
+    { value: 3, label: 'three' },
+    { value: 4, label: 'four'  }
+];
+var source  = [ ];
+var mapping = { };
+for(var i = 0; i < homesearch.length; ++i) {
+    source.push(homesearch[i].label);
+    mapping[homesearch[i].label] = homesearch[i].value;
+}
+
+$('.homemenu_id').autocomplete({
+    minLength: 1,
+    source: source,
+    select: function(event, ui) {
+        $('#homemenu_id').val(mapping[ui.item.value]);
     }
 });
 
