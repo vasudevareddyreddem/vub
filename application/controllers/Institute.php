@@ -577,7 +577,7 @@ class Institute extends Admin_panel {
 				$data['countries_list']=$this->Video_model->get_countries_list();
 				$data['city_list']=$this->Video_model->get_city_list($data['institute_details']['country_name']);
 				$data['location_list']=$this->Video_model->get_location_list($data['institute_details']['i_city']);
-				//echo '<pre>';print_r($data);exit;
+				//echo '<pre>';print_r($data['course_list']);exit;
 				$this->load->view('admin/add-video',$data);
 				$this->load->view('admin/footer');
 			}else{
