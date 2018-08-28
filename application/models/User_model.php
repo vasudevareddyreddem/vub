@@ -97,7 +97,16 @@ class User_model extends CI_Model
 		if(isset($location_id) && $location_id!=''){
 			$this->db->where('institute_list.location_name',$location_id);	
 		}
-	
+		return $this->db->get()->row_array();
+	}
+	public  function get_location_with_course($course_id,$location_id){
+		$this->db->select('course_list.course_id,course_list.c_name')->from('course_list');
+		$this->db->join('video_list ', 'video_list.course_name = course_list.course_id', 'left');
+		$this->db->join('institute_list ', 'institute_list.i_id = video_list.i_id', 'left');
+		$this->db->where('course_list.course_id',$course_id);
+		if(isset($location_id) && $location_id!=''){
+			$this->db->where('institute_list.location_name',$location_id);	
+		}
 		return $this->db->get()->row_array();
 	}	
 	

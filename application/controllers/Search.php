@@ -20,7 +20,7 @@ class Search extends Front_end {
 		
 		$post=$this->input->post();
 		$value=explode('_',$post['institue_course']);
-		//echo '<pre>';print_r($post);exit;
+		echo '<pre>';print_r($post);
 		if(isset($value[1]) && $value[1]=='institue'){
 			if(isset($post['local_id']) && $post['local_id']!=''){
 				$check=$this->User_model->get_location_with_intitue($value[0],$post['local_id']);
@@ -35,8 +35,20 @@ class Search extends Front_end {
 			}
 			
 			
+		}else  if(isset($value[1]) && $value[1]=='course'){
+			if(isset($post['local_id']) && $post['local_id']!=''){
+				$check=$this->User_model->get_location_with_course($value[0],$post['local_id']);
+			}else{
+				$check=$this->User_model->get_location_with_course($value[0],'');
+			}
+			if(count($check)>0){
+				redirect('courses/video/'.base64_encode($check['course_id']).'/'.$check['c_name']);
+			}else{
+				$this->session->set_flashdata('error',"Your searched location having no institues. Please try again.");
+				redirect($this->agent->referrer());
+			}
 		}
-		echo '<pre>';print_r($value);
+		//echo '<pre>';print_r($value);exit;
 		
 		
 	}
