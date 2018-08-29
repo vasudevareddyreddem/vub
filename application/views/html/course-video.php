@@ -4,7 +4,6 @@
 <!-- Main content -->
     <section class="content">
       <div class="row">
-		 
 		 <div class="col-md-8  lib-item " data-category="view">
 			<div class="sidebar-recent bg-white">
 				<video width="100%" height="100%" controls  autoplay controlsList="nodownload">
