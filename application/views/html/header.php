@@ -96,7 +96,7 @@
                               <form action="<?php echo base_url('search/post'); ?>" method="post">
 								<div class="search-form">
 									<div class="form-group ">
-										<input id="myInput"type="text" class="form-control search-loc homemenu_id" name="institue_course_name"  placeholder="Search videos" >
+										<input id="myInput"type="text" class="form-control search-loc homemenu_id" name="institue_course_name"  placeholder="Search Institute Name or course Name" >
 										<input type="hidden" id="homemenu_id" name="institue_course" value="" >
 									</div>
 								</div>

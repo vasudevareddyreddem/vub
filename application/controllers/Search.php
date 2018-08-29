@@ -19,6 +19,10 @@ class Search extends Front_end {
 	public  function post(){
 		
 		$post=$this->input->post();
+		if($post['institue_course']=='' && $post['local_id']!=''){
+			$this->session->set_flashdata('error',"Please select any one");
+			redirect($this->agent->referrer());
+		}
 		$value=explode('_',$post['institue_course']);
 		echo '<pre>';print_r($post);
 		if(isset($value[1]) && $value[1]=='institue'){
@@ -44,9 +48,12 @@ class Search extends Front_end {
 			if(count($check)>0){
 				redirect('courses/video/'.base64_encode($check['course_id']).'/'.$check['c_name']);
 			}else{
-				$this->session->set_flashdata('error',"Your searched location having no institues. Please try again.");
+				$this->session->set_flashdata('error',"Your search location having no Institutes. Please try again.");
 				redirect($this->agent->referrer());
 			}
+		}else if(isset($post['local_id']) && $post['local_id']!=''){
+			$this->session->set_flashdata('error',"Must be select Institute Name or course Name");
+			redirect($this->agent->referrer());
 		}
 		//echo '<pre>';print_r($value);exit;
 		
