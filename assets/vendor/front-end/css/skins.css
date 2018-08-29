@@ -56,11 +56,11 @@ box-shadow: 0px 4px 6px -5px rgba(0,0,0,0.75);
 .skin-blue .content-header {
     background: transparent
 }
-.skin-blue .wrapper,
-.skin-blue .main-sidebar,
-.skin-blue .left-side {
-    background-color: #222d32
-}
+/* .skin-blue .wrapper, */
+/* .skin-blue .main-sidebar, */
+/* .skin-blue .left-side { */
+    /* background-color: #222d32 */
+/* } */
 .skin-blue .user-panel>.info,
 .skin-blue .user-panel>.info>a {
     color: #fff

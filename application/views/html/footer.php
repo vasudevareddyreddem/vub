@@ -1,3 +1,4 @@
+
 <div class="chat-div">
 <div >
 	<div  style="display:none" class="chat-box">
@@ -87,8 +88,9 @@
 <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat">
 	
 </div>
-
-<footer class="footer-2 bg-dark" id="footer" style="border-top:5px solid #fff;">
+</div>
+</body>
+<footer class="footer-2 bg-dark" id="footer" style="border-top:5px solid #fff;z-index:1024">
 <div class="container">
 			
                 <div class="row">

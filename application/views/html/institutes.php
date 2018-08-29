@@ -1,13 +1,13 @@
 <style>
 #sticky.stick {
     position: fixed;
-   width: 26.9% !important;
+   width: 29.4% !important;
   
 }
 </style> 
  <div class="content-wrapper">
 	<div class="body-start">
-		<div class="container">
+		<div class="container-fluid">
 		    <section class="content">
 			<?php if(isset($institute_list) && count($institute_list)>0){ ?>
 				 <div class="col-md-8  " data-category="view">
@@ -28,7 +28,7 @@
 											  <div class="article-details">
 												 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>"  style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
 												 
-												 <h5><strong class="site-col-r">Courses:</strong> <?php echo isset($list['course_list'])?$list['course_list']:''; ?></h5> 
+												<!-- <h5><strong class="site-col-r">Courses:</strong> <?php echo isset($list['course_list'])?$list['course_list']:''; ?></h5> -->
 												 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
 												 <span><?php echo isset($list['location_name'])?$list['location_name']:''; ?></span>,
 												 <span><?php echo isset($list['city_name'])?$list['city_name']:''; ?></span>,
@@ -77,28 +77,64 @@
 								</span>	
 							</div>	
 							 <div class="pad-20 list-style-none" >
-								<marquee class="pubmed-articles" align="top" behavior="scroll" onmouseout="this.start();" onmouseover="this.stop();" direction="up" scrollamount="2" style="padding: 5px 0px 5px 0px;height: 200px;background: #f5f5f5;overflow:hidden;">
+								<marquee class="pubmed-articles" align="top" behavior="scroll" onmouseout="this.start();" onmouseover="this.stop();" direction="up" scrollamount="2" style="padding: 10px;height: 350px;overflow:hidden;">
 								   
-								   <?php foreach($lastest_institute_list as $list){ ?>
-								   <ul>
-									  <li style="padding:0px 0px 0px 5px">
-									  <div class="row">
-									  <div class="col-md-3">
-										<?php if($list['i_logo']!=''){ ?>
-												<img  class="logo-recent-side " src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>"  alt="<?php echo isset($list['i_logo'])?$list['i_logo']:''; ?>">
-											<?php }else{ ?>
-												<img class="logo-recent-side" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
-											<?php } ?>
-									  
-									  </div>
-									  <div class="col-md-9">
-										 <a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>" target="_blank" style="  text-decoration:none;font-weight:normal"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a>
-										 </div>
-										 </div>
-									  </li>
-								   </ul>
-								   <p style="border-bottom:1px solid #ddd; padding-top:0px"></p>
-								   <?php } ?>
+								  <div class="row ">
+								  <div class="table-responsive ">
+								  <table class="table table-striped">
+								
+								<tbody>
+								  <tr>
+									<td valign="center">
+										<img class="img-responsive" src="	http://localhost/vub/assets/institute_logo/0.528892001534827423sathya_technolologies_Logo.png" alt="Sathya techonologies">
+									</td>
+									<td colspan="2">
+										<div class="article-details">
+											 <h4><a href="" target="_blank" style="color:#0062C4;">Sathya techonologies</a></h4>
+										
+											 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
+											 <span>Hyderabad</span>,
+											 <span>Ameerpet</span>
+											 </h5>
+									    </div>
+									</td>
+								  </tr>
+								    <tr>
+									<td style="vertical-algin:middle">
+										<img class="img-responsive" src="	http://localhost/vub/assets/institute_logo/0.528892001534827423sathya_technolologies_Logo.png" alt="Sathya techonologies">
+									</td>
+									<td colspan="2"><div class="article-details">
+										 <h4><a href="" target="_blank" style="color:#0062C4;">Sathya techonologies</a></h4>
+									
+										 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
+										 <span>Hyderabad</span>,
+										 <span>Ameerpet</span>
+										 </h5> 
+										
+									  </div></td>
+								  </tr>
+							    <tr>
+									<td style="vertical-algin:middle">
+										<img class="img-responsive" src="	http://localhost/vub/assets/institute_logo/0.528892001534827423sathya_technolologies_Logo.png" alt="Sathya techonologies">
+									</td>
+									<td colspan="2"><div class="article-details">
+										 <h4><a href="" target="_blank" style="color:#0062C4;">Sathya techonologies</a></h4>
+									
+										 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
+										 <span>Hyderabad</span>,
+										 <span>Ameerpet</span>
+										 </h5> 
+										
+									  </div></td>
+								  </tr>
+							
+								  </tr>
+								</tbody>
+							  </table>
+							  </div>
+								  
+								
+								
 								   
 								</marquee>
 								

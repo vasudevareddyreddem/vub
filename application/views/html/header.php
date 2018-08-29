@@ -96,7 +96,7 @@
                               <form action="<?php echo base_url('search/post'); ?>" method="post">
 								<div class="search-form">
 									<div class="form-group ">
-										<input id="myInput"type="text" class="form-control search-loc homemenu_id" name="institue_course_name"  placeholder="Search Institute Name or course Name" >
+										<input id="myInput"type="text" class="form-control search-loc homemenu_id" name="institue_course_name"  placeholder=" Course Video/Institute " >
 										<input type="hidden" id="homemenu_id" name="institue_course" value="" >
 									</div>
 								</div>
@@ -107,7 +107,8 @@
 										<div class="col-md-10">
 											<div class="search-form1">
 												<div class="form-group ">
-													<input id="myInput1"type="text" class="form-control location_search" name="location_name"    placeholder="Location" >
+												
+													<input id="myInput1"type="text" class="form-control location_search" name="location_name"    placeholder=" Location" >
 													<input type="hidden" name="local_id" id="local_id" value="">
 												</div>
 								</div>
@@ -128,11 +129,11 @@
 						<?php } ?>
 						<?php if(isset($user_details) && count($user_details)>0){ ?>
 							<li class="page-scroll" style="padding-left:30px;margin-top:5px">
-								 <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
+								 <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;"> <i style="font-size:20px;" class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</a>
 							</li>
 						<?php }else{ ?>
 						<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
-							   <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Upload</a>
+							   <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;"> <span style="font-size:18px"><i class="fa fa-cloud-upload" aria-hidden="true"></i></span> Upload</a>
 							</li>
 						<?php } ?>
 						
