@@ -34,9 +34,10 @@ class Auth_oa2 extends CI_Controller
                 $token = $provider->access($this->input->get('code'));
 
                 $user = $provider->get_user_info($token);
+				//echo '<pre>';print_r($user);exit;
 				if(isset($user['email']) && $user['email']!=''){
 					$newadd=array(
-					'username'=>isset($user['email'])?$user['email']:'',
+					'username'=>isset($user['uid'])?$user['uid']:'',
 					'role_id'=>2,
 					'source'=>'google',
 					'name'=>isset($user['name'])?$user['name']:'',

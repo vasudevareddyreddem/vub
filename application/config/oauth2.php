@@ -17,6 +17,9 @@ $config['facebook_secret'] = '0ead4ad1a9456d1910a9cd6badfdbde8';
 $config['google_id'] = '978860054062-g5lnada6mnabfgprb69n0c3jgt15tsfk.apps.googleusercontent.com';
 $config['google_secret'] = 'ueYWT7LdqDGj2KOivWKEeTgH';
 
+$config['linkedin_id'] = '81622f5e3jzvhe';
+$config['linkedin_secret'] = 'MwpYeZJkkYSTxlVx';
+
 
 
 /* End of file oauth2.php */
