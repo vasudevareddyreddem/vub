@@ -12,7 +12,7 @@
 				  <?php if(isset($list['course_list']) && count($list['course_list'])>0){ ?>
 					  <?php foreach($list['course_list'] as $li){ ?>
 						<div class="col-md-3 pad-t10">
-							<a href="<?php echo base_url('courses/video/'.base64_encode($li['course_id'])); ?>"> <?php echo isset($li['c_name'])?$li['c_name']:''; ?>  <span class="label label-primary"><?php echo isset($li['video_count'])?$li['video_count']:''; ?></span></a>
+							<a href="<?php echo base_url('courses/videolist/'.base64_encode($li['course_id'])); ?>"> <?php echo isset($li['c_name'])?$li['c_name']:''; ?>  <span class="label label-primary"><?php echo isset($li['video_count'])?$li['video_count']:''; ?></span></a>
 						</div>
 					  <?php } ?>
 				  <?php } ?>

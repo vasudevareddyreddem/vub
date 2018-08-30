@@ -46,7 +46,7 @@ class Search extends Front_end {
 				$check=$this->User_model->get_location_with_course($value[0],'');
 			}
 			if(count($check)>0){
-				redirect('courses/video/'.base64_encode($check['course_id']).'/'.$check['c_name']);
+				redirect('courses/videolist/'.base64_encode($check['course_id']));
 			}else{
 				$this->session->set_flashdata('error',"Your search location having no Institutes. Please try again.");
 				redirect($this->agent->referrer());

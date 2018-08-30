@@ -8,16 +8,16 @@
 			<div class="col-md-8" style="border-right:1px solid #f5f5f5;">
 			<div class="">
 				<video width="100%" height="100%" controls  autoplay controlsList="nodownload">
-					<source src="<?php echo base_url('assets/videos/'.$video_details[0]['video_file']); ?>" type="video/mp4">
+					<source src="<?php echo base_url('assets/videos/'.$video_details['video_file']); ?>" type="video/mp4">
 					<source src="movie.ogg" type="video/ogg">
 				</video>
 				<div class="video-content">
 					<div class="row">
 					<div class="col-md-6">
-						<h4><a href="javascript:void(0)" style="color:#0062C4;">AngularJS tutorial - What is AngularJS</a></h4>	
+						<h4><a href="javascript:void(0)" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?> tutorial - What is <?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?></a></h4>	
 					</div>
 					<div class="col-md-6">
-						<a href=""  data-toggle="modal" data-target="#share-modal" ><i class="fa fa-share-alt font-share" aria-hidden="true"></i></a>
+						<a href="javascript:void(0)"  data-toggle="modal" data-target="#share-modal" ><i class="fa fa-share-alt font-share" aria-hidden="true"></i></a>
 
 					
 					<?php if(isset($cust_id) && $cust_id!=''){ ?>
@@ -48,31 +48,40 @@
 				
 				<div>
 					<div class="pad-15">
-						<h3 class=""> What is AngularJS?  </h3>	
+						<h3 class=""> What is <?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?> ?  </h3>	
 						   <div class="" >
 							  <div class="user-panel">
-								<div class="bg-white" style="padding:10px;border-radius:5px;">
-								<?php if(isset($video_details[0]['i_logo']) && $video_details[0]['i_logo']!=''){ ?>
-								 <img  class="img-responsive thumbnail" src="<?php echo base_url('assets/institute_logo/'.$video_details[0]['i_logo']); ?>" alt="<?php echo isset($video_details[0]['i_name'])?$video_details[0]['i_name']:''; ?>">
+								<a href="<?php echo base_url('institutes/page/'.base64_encode($video_details['i_id']).'/'.$video_details['i_name']); ?>"><div class="bg-white" style="padding:10px;border-radius:5px;">
+								<?php if(isset($video_details['i_logo']) && $video_details['i_logo']!=''){ ?>
+								 <img  class="img-responsive thumbnail" src="<?php echo base_url('assets/institute_logo/'.$video_details['i_logo']); ?>" alt="<?php echo isset($video_details[0]['i_name'])?$video_details['i_name']:''; ?>">
 								 <?php }else{ ?>
-									<img  class="img-responsive thumbnail" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?>">
+									<img  class="img-responsive thumbnail" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($video_details['i_name'])?$video_details['i_name']:''; ?>">
 									<?php } ?>
 								</div>
+								</a>
 								
 							   
 							  </div>
 							
 							  <!-- sidebar menu: : style can be found in sidebar.less -->
 							  <div class="" style="overflow:hidden;">
-								   <h4 class="font-20"><strong class="text-primary">Institute :</strong> NareshIT Software Training Institute</h4>
-								   <h4 class="font-20"><strong class="text-primary">Address :</strong> Plot No. 177, Sri Vani Nilayam, 1st floor, Beside Sri Chaitanya High School, Sardar Patel Nagar,  kukatpalli hyd india</h4>
-								   <h4 class="font-20"><strong class="text-primary"><i class="fa fa-phone-square"> </i>  &nbsp;</strong> 8500050944</h4> 
+								   <h4 class="font-20"><strong class="text-primary">Institute :</strong> <?php echo isset($video_details['i_name'])?$video_details['i_name']:''; ?></h4>
+								   <h4 class="font-20"><strong class="text-primary">Address :</strong> <?php echo isset($video_details['i_address'])?$video_details['i_address']:''; ?>, <?php echo isset($video_details['address'])?$video_details['address']:''; ?></h4>
+								   <h4 class="font-20"><strong class="text-primary"><i class="fa fa-phone-square"> </i>  &nbsp;</strong> <?php echo isset($video_details['i_p_phone'])?$video_details['i_p_phone']:''; ?></h4> 
 								   
-								   <h4 class="font-20"> <strong class="text-primary"> <i class="fa fa-envelope"> </i> &nbsp; </strong> reddy.55610@gmail.com</h4>
-								   <h4 class="font-20"> <strong class="text-primary">Trainer  Name: </strong>  Sathya</h4> 
-								   <h4 class="font-20"> <strong class="text-primary">Founder Name: </strong>  Sathya</h4>
-								   <h4 class="font-20"> <strong class="text-primary">Description: </strong>  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h4>
-								   
+								   <h4 class="font-20"> <strong class="text-primary"> <i class="fa fa-envelope"> </i> &nbsp; </strong> <?php echo isset($video_details['i_email_id'])?$video_details['i_email_id']:''; ?></h4>
+								   <?php if($video_details['t_name']!=''){ ?>
+								   <h4 class="font-20"> <strong class="text-primary">Trainer  Name: </strong>  <?php echo isset($video_details['t_name'])?$video_details['t_name']:''; ?></h4> 
+								   <?php } ?>
+								   <?php if($video_details['i_founder']!=''){ ?>
+								   <h4 class="font-20"> <strong class="text-primary">Founder Name: </strong>   <?php echo isset($video_details['i_founder'])?$video_details['i_founder']:''; ?></h4>
+								   <?php } ?>
+								   <?php if($video_details['i_contact_person']!=''){ ?>
+								   <h4 class="font-20"> <strong class="text-primary">Contact Person: </strong>  <?php echo isset($video_details['i_contact_person'])?$video_details['i_contact_person']:''; ?></h4>
+								   <?php } ?>
+								   <?php if($video_details['course_content']!=''){ ?>
+								   <h4 class="font-20"> <strong class="text-primary">Description: </strong>  <?php echo isset($video_details['course_content'])?$video_details['course_content']:''; ?></h4>
+								   <?php } ?>
 							
 								
 							  
@@ -94,117 +103,94 @@
 		<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-8">
+			<?php if(isset($video_list) && count($video_list)>0){ ?>
 			<div class="sidebar-recent bg-white pad-20">
 				<h4>Similar videos</h4>
 				<hr>
+						<?php foreach($video_list as $list){ ?>
 						<div class="row " style="border:1px solid #ddd;margin:5px;position:relative">
 								    <div class="col-md-3 col-xs-12 text-center " >
 										<div class="vertical-center">
-											 <a href="<?php echo base_url('courses/video/'.base64_encode(6)); ?>" class="">
+											 <a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id'])); ?>" class="">
 											 <video width="100%" height="100%" class="thumbnail">
-											  <source src="<?php echo base_url('assets/videos/testvideo.mp4'); ?>" type="video/mp4">
+											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
 											  <source src="movie.ogg" type="video/ogg">
 											</video></a>
 											</div>
 								   </div>
 								   <div class=" col-md-7  bod-left">
 									  <div class="article-details">
-										 <h4><a href="" target="_blank" style="color:#0062C4;">Software Training - Online Training</a></h4>
+										 <h4><a href="" style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
 										 
-										 <h5><strong class="site-col-r">Institites:</strong> Naresh Technologies</h5> 
-										 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
-										 <span>Hyderabad</span>,
-										 <span>Ameerpet</span>
+										 <h5><strong class="site-col-r">Institites:</strong> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h5> 
+										 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
+										 <span><?php echo isset($list['address'])?$list['address']:''; ?></span>,
 										 </h5> 
-										 <h5><strong class="site-col-r">Contact:</strong> <span>040-2374 6666</span>,
-										 <span>90009 94007</span>,
+										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
+										 <?php if($list['i_s_phone']!=''){ ?>
+										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>,
+										 <?php } ?>
 										 </h5>
-										 <h5><strong class="site-col-r">E-Mail ID:</strong> <span>nareshit@gmail.com</span>,
+										 <h5><strong class="site-col-r">E-Mail ID:</strong> <span><?php echo isset($list['i_email_id'])?$list['i_email_id']:''; ?></span>,
 										 
 										 </h5>
-										 <h5><strong class="site-col-r">Founder Name:</strong> <span>naresh</span>,
+										  <?php if($list['i_founder']!=''){ ?>
+										 <h5><strong class="site-col-r">Founder Name:</strong> <span><?php echo isset($list['i_founder'])?$list['i_founder']:''; ?></span>,
 										 
 										 </h5>
+										  <?php } ?>
+										  <?php if($list['t_name']!=''){ ?>
+										 <h5><strong class="site-col-r">Trainer Name:</strong> <span><?php echo isset($list['t_name'])?$list['t_name']:''; ?></span>,
+										 <?php } ?>
+										 <?php if($list['training_mode']!=''){ ?>
+										 <h5><strong class="site-col-r">Training Mode:</strong> <span><?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></span>,
+										 </h5>
+										  <?php } ?>
 										 
 										 
 									  </div>
 								   </div>
 								   <div class="bg-aaa col-md-2 text-center institutes-curd-right" >
 											<div class="count-videos">
-												<h2>105</h2>
+												<h2><?php echo isset($list['video_count'])?$list['video_count']:''; ?></h2>
 												<h2><i class="fa fa-video-camera" aria-hidden="true"></i></h2>
 											</div>
 										</div>
 										
 						</div>
-						<div class="row " style="border:1px solid #ddd;margin:5px;position:relative">
-								    <div class="col-md-3 col-xs-12 text-center " >
-										<div class="vertical-center">
-											 <a href="<?php echo base_url('courses/video/'.base64_encode(6)); ?>" class="">
-											 <video width="100%" height="100%" class="thumbnail">
-											  <source src="<?php echo base_url('assets/videos/testvideo.mp4'); ?>" type="video/mp4">
-											  <source src="movie.ogg" type="video/ogg">
-											</video></a>
-											</div>
-								   </div>
-								   <div class=" col-md-7  bod-left">
-									  <div class="article-details">
-										 <h4><a href="" target="_blank" style="color:#0062C4;">Software Training - Online Training</a></h4>
-										 
-										 <h5><strong class="site-col-r">Institites:</strong> Naresh Technologies</h5> 
-										 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
-										 <span>Hyderabad</span>,
-										 <span>Ameerpet</span>
-										 </h5> 
-										 <h5><strong class="site-col-r">Contact:</strong> <span>040-2374 6666</span>,
-										 <span>90009 94007</span>,
-										 </h5>
-										 <h5><strong class="site-col-r">E-Mail ID:</strong> <span>nareshit@gmail.com</span>,
-										 
-										 </h5>
-										 <h5><strong class="site-col-r">Founder Name:</strong> <span>naresh</span>,
-										 
-										 </h5>
-										 
-										 
-									  </div>
-								   </div>
-								   <div class="bg-aaa col-md-2 text-center institutes-curd-right" >
-											<div class="count-videos">
-												<h2>105</h2>
-												<h2><i class="fa fa-video-camera" aria-hidden="true"></i></h2>
-											</div>
-										</div>
-										
-						</div>
+						<?php } ?>
+						
 						
 				
 			</div>
+			<?php } ?>
 			</div>
 			<div class="col-md-4">
 			<div class="sidebar-recent bg-white pad-20">
-				<h4>Courses offered by Naresh</h4>
+				<h4>Courses offered by <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h4>
 				<hr>
+						<?php if(isset($courses_list) && count($courses_list)>0){ ?>
+						<?php foreach($courses_list as $list){ ?>
 						<div class="row " style="border:1px solid #ddd;margin:5px">
 								    <div class="pad-10 ">
 										<ul class="list-courses">
-											<li class=""><a href="http://localhost/vub/institutes/page/Mw==/web development/NA==" style="color:#0062C4;">web development&nbsp; Count: &nbsp;3</a></li>
+											<li class=""><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp; Count: &nbsp;<?php echo isset($list['video_count'])?$list['video_count']:''; ?></a></li>
 	
-											<li class=""><a href="http://localhost/vub/institutes/page/Mw==/html/Ng==" style="color:#0062C4;">html&nbsp; Count: &nbsp;2</a></li>
-	
-											<li class=""><a href="http://localhost/vub/institutes/page/Mw==/java/NQ==" style="color:#0062C4;">java&nbsp; Count: &nbsp;1</a></li>
-	
+						
 										</ul>
 										
 									 </div>
 										
 						</div>
+						<?php } ?>
+						<?php } ?>
 						
 			</div>
 			</div>
 		</div>
 		</div>
     </section>
+
 	
   </div>	
   <div class="clearfix">&nbsp;</div>

@@ -12,7 +12,11 @@ class Institute_model extends CI_Model
 	/* front_end  purpose*/
 	
 	public  function get_lastest_institute_list(){
-		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id')->from('institute_list');
+		$this->db->select('institute_list.i_id,institute_list.i_name,institute_list.i_logo,institute_list.i_address,institute_list.i_p_phone,institute_list.i_email_id,countries_list.country_name,countries_list.country_code,city_list.city_name,location_list.location_name')->from('institute_list');
+		$this->db->join('countries_list', 'countries_list.c_id = institute_list.country_name', 'left');
+		$this->db->join('city_list', 'city_list.city_id = institute_list.i_city', 'left');
+		$this->db->join('location_list', 'location_list.l_id = institute_list.location_name', 'left');
+		
 		$this->db->where('institute_list.status',1);
 		$this->db->order_by('institute_list.i_id','desc');
 		$this->db->limit(5);

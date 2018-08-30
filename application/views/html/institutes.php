@@ -84,51 +84,31 @@
 								  <table class="table table-striped">
 								
 								<tbody>
-								  <tr>
-									<td valign="center">
-										<img class="img-responsive" src="	http://localhost/vub/assets/institute_logo/0.528892001534827423sathya_technolologies_Logo.png" alt="Sathya techonologies">
-									</td>
-									<td colspan="2">
-										<div class="article-details">
-											 <h4><a href="" target="_blank" style="color:#0062C4;">Sathya techonologies</a></h4>
+								<?php foreach($lastest_institute_list as $list){ ?>
+										<tr>
+											<td valign="center">
+											<?php if($list['i_logo']!=''){ ?>
+											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="Sathya techonologies">
+											<?php }else{?>
+											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
+											<?php } ?>
 										
-											 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
-											 <span>Hyderabad</span>,
-											 <span>Ameerpet</span>
-											 </h5>
-									    </div>
-									</td>
-								  </tr>
-								    <tr>
-									<td style="vertical-algin:middle">
-										<img class="img-responsive" src="	http://localhost/vub/assets/institute_logo/0.528892001534827423sathya_technolologies_Logo.png" alt="Sathya techonologies">
-									</td>
-									<td colspan="2"><div class="article-details">
-										 <h4><a href="" target="_blank" style="color:#0062C4;">Sathya techonologies</a></h4>
-									
-										 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
-										 <span>Hyderabad</span>,
-										 <span>Ameerpet</span>
-										 </h5> 
-										
-									  </div></td>
-								  </tr>
-							    <tr>
-									<td style="vertical-algin:middle">
-										<img class="img-responsive" src="	http://localhost/vub/assets/institute_logo/0.528892001534827423sathya_technolologies_Logo.png" alt="Sathya techonologies">
-									</td>
-									<td colspan="2"><div class="article-details">
-										 <h4><a href="" target="_blank" style="color:#0062C4;">Sathya techonologies</a></h4>
-									
-										 <h5><strong class="site-col-r">Address:</strong> <span>India</span>,
-										 <span>Hyderabad</span>,
-										 <span>Ameerpet</span>
-										 </h5> 
-										
-									  </div></td>
-								  </tr>
-							
-								  </tr>
+												
+											</td>
+											<td colspan="2">
+												<div class="article-details">
+													 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>" style="color:#0062C4;"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
+												
+													 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
+													 <span><?php echo isset($list['location_name'])?$list['location_name']:''; ?></span>,
+													 <span><?php echo isset($list['city_name'])?$list['city_name']:''; ?></span>
+													 <span><?php echo isset($list['country_name'])?$list['country_name']:''; ?></span>
+													 </h5>
+												</div>
+											</td>
+										  </tr>
+								<?php } ?>
+								  
 								</tbody>
 							  </table>
 							  </div>
