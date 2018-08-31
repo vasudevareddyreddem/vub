@@ -71,7 +71,8 @@
       </div>
       <!--/.direct-chat -->
     </div>
-</div><div>
+</div>
+<div>
 	<div  style="display:none" class="chat-box">
       <!-- DIRECT CHAT PRIMARY -->
       <div class="box box-primary direct-chat direct-chat-primary">
