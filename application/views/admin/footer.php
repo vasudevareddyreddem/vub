@@ -35,10 +35,7 @@
 <!-- Bootstrap WYSIHTML5 -->
 
 <script>
-function pageScroll() {
-    	window.scrollBy(0,50); // horizontal and vertical scroll increments
-    	scrolldelay = setTimeout('pageScroll()',100); // scrolls every 100 milliseconds
-}
+
 function sent_replay_msg(cust_id){
 	var msg=$('#text_msg'+cust_id).val();
 	jQuery.ajax({
