@@ -34,5 +34,23 @@ class Institutes extends  Front_end {
 		$this->load->view('html/institute-page',$data);
 		$this->load->view('html/footer');
 	}
+	public function share(){
+		
+		
+		$i_id=base64_decode($this->uri->segment(3));
+		$data['details']=$this->Institute_model->get_institue_details($i_id);
+		//echo '<pre>';print_r($data);exit;
+		$this->load->view('share',$data);
+		//exit;
+	}
+	public function lshares(){
+		
+		
+		$i_id=base64_decode($this->uri->segment(3));
+		$data['details']=$this->Institute_model->get_institue_details($i_id);
+		//echo '<pre>';print_r($data);exit;
+		$this->load->view('link',$data);
+		//exit;
+	}
 	
 }

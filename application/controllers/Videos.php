@@ -62,7 +62,9 @@ class Videos extends  Front_end {
 			$this->load->model('Video_model');
 			$user_details=$this->session->userdata('vuebin_user');
 			$data['institue_details']=$this->Video_model->check_institue_avaiable($user_details['cust_id']);
-			if(count($data['institue_details'])>0){
+			
+			//echo '<pre>';print_r($data['institue_details']);exit;
+			if(isset($data['institue_details']) && count($data['institue_details'])>0){
 				redirect('video/');
 			}else{
 				

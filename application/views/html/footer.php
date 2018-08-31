@@ -15,7 +15,7 @@
           <!-- Conversations are loaded here -->
           <div class="direct-chat-messages">
             <!-- Message. Default to the left -->
-            <div class="direct-chat-msg">
+            <div id="replyed_chat" class="direct-chat-msg">
               <div class="direct-chat-info clearfix">
                 <span class="direct-chat-name pull-left">Alexander Pierce</span>
                 <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
@@ -30,14 +30,14 @@
             <!-- /.direct-chat-msg -->
     
             <!-- Message to the right -->
-            <div class="direct-chat-msg right">
+            <div id="reply_chat"  class="direct-chat-msg right">
               <div class="direct-chat-info clearfix">
                 <span class="direct-chat-name pull-right">Sarah Bullock</span>
                 <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
               </div>
               <!-- /.direct-chat-info -->
               <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
-              <div class="direct-chat-text">
+              <div  class="direct-chat-text">
                 You better believddde it!
               </div>
               <!-- /.direct-chat-text -->
@@ -73,9 +73,9 @@
         <div class="box-footer">
           <form action="#" method="post">
             <div class="input-group">
-              <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+              <input type="text" id="text_msg" name="text_msg" placeholder="Type Message ..." class="form-control">
                   <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                    <button type="button" onclick="send_msg()" class="btn btn-primary btn-flat">Send</button>
                   </span>
             </div>
           </form>
@@ -85,8 +85,7 @@
       <!--/.direct-chat -->
     </div>
 </div>
-<img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat">
-	
+
 </div>
 </div>
 </body>
@@ -116,6 +115,36 @@
         </footer>
 <!-- jQuery 2.2.3 -->
 <script>
+function send_msg(){
+	var msg=$('#text_msg').val();
+	if(msg!=''){
+		    jQuery.ajax({
+   			url: "<?php echo base_url('chat/send_sms_institue');?>",
+   			data: {
+				text: msg,
+			},
+   			type: "POST",
+   			format:"Json",
+   					success:function(data){
+						//alert(data);
+						var parsedData = JSON.parse(data);
+						//alert(parsedData.list.length);
+							$('#reply_chat').empty();
+							$('#replyed_chat').empty();
+							for(i=0; i < parsedData.list.length; i++) {
+								console.log(parsedData.list);
+								if(parsedData.list[i].type=='Replayed'){
+									$('#replyed_chat').append("<div class='direct-chat-info clearfix'><span class='direct-chat-name pull-left'>"+parsedData.list[i].sent_name+"</span><span class='direct-chat-timestamp pull-right'>"+parsedData.list[i].created_at+"</span></div><img class='direct-chat-img' src='<?php echo base_url('assets/customer_pic/user_1.jpg'); ?>' alt='Message User Image'><div  class='direct-chat-text'>"+parsedData.list[i].text+"</div>");                      
+								}else{
+									$('#reply_chat').append("<div class='direct-chat-info clearfix'><span class='direct-chat-name pull-right'>"+parsedData.list[i].sender_name+"</span><span class='direct-chat-timestamp pull-left'>"+parsedData.list[i].created_at+"</span></div><img class='direct-chat-img' src='<?php echo base_url('assets/customer_pic/user_2.jpg'); ?>' alt='Message User Image'><div  class='direct-chat-text'>"+parsedData.list[i].text+"</div>");                      
+								}
+							}
+						
+   					}
+           });
+	   }
+	
+}
 $(document).ready(function(){
     $(".btn-chat-box").click(function(){
         $(".chat-box").toggle();

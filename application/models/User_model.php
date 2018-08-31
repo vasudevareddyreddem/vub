@@ -13,6 +13,8 @@ class User_model extends CI_Model
 		$this->db->select('customers_list.cust_id,customers_list.role_id,customers_list.email_id,customers_list.mobile_verified,institute_list.completed')->from('customers_list');
 		$this->db->join('institute_list ', 'institute_list.created_at = customers_list.cust_id', 'left');
 		$this->db->where('customers_list.cust_id',$cust_id);
+		$this->db->where('customers_list.cust_id',$cust_id);
+		$this->db->where('customers_list.mobile_verified!=',0);
 		return $this->db->get()->row_array();
 	}
 	public  function get_home_page_video(){

@@ -49,10 +49,11 @@ class User extends Front_end {
 			$ch2 = curl_init();
 			curl_setopt($ch2, CURLOPT_URL,'https://login.bulksmsgateway.in/sendmessage.php');
 			curl_setopt($ch2, CURLOPT_POST, 1);
-			curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&password='.$pass.'&mobile='.$post['mobile'].'&message='.$msg.'&sender=vubein&type=3');
+			curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&password='.$pass.'&mobile='.$post['mobile'].'&message='.$msg.'&sender=calfre&type=3');
 			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
 			//echo '<pre>';print_r($ch2);exit;
 			$server_output = curl_exec ($ch2);
+			
 			curl_close ($ch2);
 			$update=$this->User_model->update_user_details($user_details['cust_id'],$update_data);
 			if(count($update)>0){
