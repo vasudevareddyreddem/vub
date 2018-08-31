@@ -259,7 +259,7 @@ $('.homemenu_id').autocomplete({
     <div class="chat-div">
 		<?php if(isset($user_details) && count($user_details)>0){ ?>
 							<li class="page-scroll" style="padding-left:30px;margin-top:5px">
-								 <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat">
+								<a href="javascript:void(0);" onclick="send_msg()"> <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"></a>
 							</li>
 						<?php }else{ ?>
 							<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">

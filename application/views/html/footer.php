@@ -11,63 +11,8 @@
           
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
-          <!-- Conversations are loaded here -->
-          <div class="direct-chat-messages">
-            <!-- Message. Default to the left -->
-            <div id="replyed_chat" class="direct-chat-msg">
-              <div class="direct-chat-info clearfix">
-                <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-              </div>
-              <!-- /.direct-chat-info -->
-              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_1.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
-              <div class="direct-chat-text">
-                Is this template really for free? That's unbelievable!
-              </div>
-              <!-- /.direct-chat-text -->
-            </div>
-            <!-- /.direct-chat-msg -->
-    
-            <!-- Message to the right -->
-            <div id="reply_chat"  class="direct-chat-msg right">
-              <div class="direct-chat-info clearfix">
-                <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-              </div>
-              <!-- /.direct-chat-info -->
-              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
-              <div  class="direct-chat-text">
-                You better believddde it!
-              </div>
-              <!-- /.direct-chat-text -->
-            </div>
-            <!-- /.direct-chat-msg -->
-          </div>
-          <!--/.direct-chat-messages-->
-    
-          <!-- Contacts are loaded here -->
-          <div class="direct-chat-contacts">
-            <ul class="contacts-list">
-              <li>
-                <a href="#">
-                  <img class="contacts-list-img" src="https://bootdey.com/img/Content/user_1.jpg">
-    
-                  <div class="contacts-list-info">
-                        <span class="contacts-list-name">
-                          Count Dracula
-                          <small class="contacts-list-date pull-right">2/28/2015</small>
-                        </span>
-                    <span class="contacts-list-msg">How have you been? I was...</span>
-                  </div>
-                  <!-- /.contacts-list-info -->
-                </a>
-              </li>
-              <!-- End Contact Item -->
-            </ul>
-            <!-- /.contatcts-list -->
-          </div>
-          <!-- /.direct-chat-pane -->
+        <div class="box-body" id="chatmessages">
+         
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -122,26 +67,34 @@ function send_msg(){
    			url: "<?php echo base_url('chat/send_sms_institue');?>",
    			data: {
 				text: msg,
+				int_id: '<?php echo base64_decode($this->uri->segment(3)); ?>',
+				msg_type: '<?php echo $this->uri->segment(2); ?>',
 			},
    			type: "POST",
-   			format:"Json",
+   			format:"html",
    					success:function(data){
-						//alert(data);
-						var parsedData = JSON.parse(data);
-						//alert(parsedData.list.length);
-							$('#reply_chat').empty();
-							$('#replyed_chat').empty();
-							for(i=0; i < parsedData.list.length; i++) {
-								console.log(parsedData.list);
-								if(parsedData.list[i].type=='Replayed'){
-									$('#replyed_chat').append("<div class='direct-chat-info clearfix'><span class='direct-chat-name pull-left'>"+parsedData.list[i].sent_name+"</span><span class='direct-chat-timestamp pull-right'>"+parsedData.list[i].created_at+"</span></div><img class='direct-chat-img' src='<?php echo base_url('assets/customer_pic/user_1.jpg'); ?>' alt='Message User Image'><div  class='direct-chat-text'>"+parsedData.list[i].text+"</div>");                      
-								}else{
-									$('#reply_chat').append("<div class='direct-chat-info clearfix'><span class='direct-chat-name pull-right'>"+parsedData.list[i].sender_name+"</span><span class='direct-chat-timestamp pull-left'>"+parsedData.list[i].created_at+"</span></div><img class='direct-chat-img' src='<?php echo base_url('assets/customer_pic/user_2.jpg'); ?>' alt='Message User Image'><div  class='direct-chat-text'>"+parsedData.list[i].text+"</div>");                      
-								}
-							}
+						$('#text_msg').val('');
+						$("#chatmessages").empty();
+						$("#chatmessages").append(data);
 						
    					}
            });
+	   }else{
+		  jQuery.ajax({
+   			url: "<?php echo base_url('chat/get_sms_institue');?>",
+   			data: {
+				text: msg,
+				int_id: '<?php echo base64_decode($this->uri->segment(3)); ?>',
+				msg_type: '<?php echo $this->uri->segment(2); ?>',
+			},
+   			type: "POST",
+   			format:"html",
+   					success:function(data){
+						$("#chatmessages").empty();
+						$("#chatmessages").append(data);
+						
+   					}
+           }); 
 	   }
 	
 }
