@@ -34,10 +34,10 @@ class Chat extends Front_end {
 					$save=$this->Chat_model->save_message($msg_data);
 					if(count($save)>0){
 						$data['msg_list']=$this->Chat_model->get_customer_wise_sent_messages_list($login_details['cust_id'],$post['int_id']);
-						$this->load->view('html/chat',$data);	
+						$this->load->view('chat/chat',$data);	
 					}else{
 						$data['msg_list']=$this->Chat_model->get_customer_wise_sent_messages_list($login_details['cust_id'],$post['int_id']);
-						$this->load->view('html/chat',$data);	
+						$this->load->view('chat/chat',$data);	
 					}
 		
 			}else{
@@ -58,8 +58,8 @@ class Chat extends Front_end {
 					}else{
 						$data['msg_list']=$this->Chat_model->get_customer_wise_sent_admin_messages_list($login_details['cust_id']);
 					}
-					$this->load->view('html/adminchat',$data);
-					//echo '<pre>';print_r($adminmsg_data);exit;
+					$this->load->view('chat/adminchat',$data);
+					echo '<pre>';print_r($adminmsg_data);exit;
 					
 					
 			}
@@ -78,15 +78,15 @@ class Chat extends Front_end {
 			$msg_list=$this->Chat_model->get_customer_wise_sent_messages_list($login_details['cust_id'],$post['int_id']);
 			if(count($msg_list)>0){
 				$data['msg_list']=$msg_list;
-				$this->load->view('html/chat',$data);
+				$this->load->view('chat/chat',$data);
 				//echo json_encode($data);exit;	
 			}else{
 				$data['msg_list']=$this->Chat_model->get_customer_wise_sent_messages_list($login_details['cust_id'],$post['int_id']);
-				$this->load->view('html/chat',$data);
+				$this->load->view('chat/chat',$data);
 			}
 		}else{
 				$data['msg_list']=$this->Chat_model->get_customer_wise_sent_admin_messages_list($login_details['cust_id']);
-				$this->load->view('html/adminchat',$data);
+				$this->load->view('chat/adminchat',$data);
 		}
 		//echo '<pre>';print_r($post);exit;
 		}else{
@@ -95,7 +95,14 @@ class Chat extends Front_end {
 		}
 	}
 	
-	
+/* admin side  replay messages */
+public  function get_admin_pending_institue(){
+	$login_details=$this->session->userdata('vuebin_user');
+	$data['msg_list']=$this->Chat_model->get_pending_pending_messages_list($login_details['cust_id']);
+	//echo '<pre>';print_r($data);exit;
+	$this->load->view('chat/adminreplay_chat',$data);
+}	
+/* admin side  replay messages */	
 	
 	
 }

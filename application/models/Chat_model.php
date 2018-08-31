@@ -29,7 +29,53 @@ class Chat_model extends CI_Model
 		return $this->db->insert_id();
 	}
 	public  function get_customer_wise_sent_admin_messages_list($cust_id){
-		$this->db->select('admin_chat.c_a_id,admin_chat.text,admin_chat.created_at,admin_chat.type,customers_list.profile_pic,customers_list.name as sender_name,admin.name as sent_name')->from('admin_chat');
+		$this->db->select('admin_chat.c_a_id,admin_chat.text,admin_chat.created_at,admin_chat.type,customers_list.profile_pic,customers_list.name as sender_name,admin.name as sent_name,admin.profile_pic as a_logo')->from('admin_chat');
+		$this->db->join('customers_list', 'customers_list.cust_id = admin_chat.cust_id', 'left');
+		$this->db->join('admin', 'admin.cust_id = admin_chat.admin_id', 'left');
+		$this->db->where('admin_chat.cust_id',$cust_id);
+		$this->db->where('admin_chat.text!=','');
+		return $this->db->get()->result_array();
+	}
+	
+	public  function get_pending_pending_messages_list($cust_id){
+		$this->db->select('admin_chat.cust_id,customers_list.name as sender_name')->from('admin_chat');
+		$this->db->join('customers_list', 'customers_list.cust_id = admin_chat.cust_id', 'left');
+
+		$this->db->group_by('admin_chat.cust_id');
+		$this->db->where('admin_chat.text!=','');
+		$this->db->where('admin_chat.read_msg',0);
+		$this->db->order_by('admin_chat.c_a_id');
+		$this->db->limit(3);
+		$return=$this->db->get()->result_array();
+		foreach($return as $list){
+			$msgs=$this->get_customer_pending_msgs_list($list['cust_id']);
+			$data[$list['cust_id']]=$list;
+			$data[$list['cust_id']]['messages']=$msgs;
+		}
+		if(!empty($data)){
+			return $data;
+		}
+	}
+	
+	public function get_customer_pending_msgs_list($cust_id){
+		$this->db->select('admin_chat.c_a_id,admin_chat.text,admin_chat.created_at,admin_chat.type,customers_list.profile_pic,customers_list.name as sender_name,admin.name as sent_name,admin.profile_pic as a_logo')->from('admin_chat');
+		$this->db->join('customers_list', 'customers_list.cust_id = admin_chat.cust_id', 'left');
+		$this->db->join('admin', 'admin.cust_id = admin_chat.admin_id', 'left');
+		$this->db->where('admin_chat.cust_id',$cust_id);
+		$this->db->where('admin_chat.text!=','');
+		return $this->db->get()->result_array();
+	}
+	
+	public  function save_admin_sent_messages($data){
+		$this->db->insert('admin_chat',$data);
+		return $this->db->insert_id();
+	}
+	public  function update_unread_admin_messages($cust_id,$data){
+		$this->db->where('cust_id',$cust_id);
+		return $this->db->update('admin_chat',$data);
+	}
+	public  function admin_get_indivusal_messages_list($cust_id){
+		$this->db->select('admin_chat.c_a_id,admin_chat.text,admin_chat.created_at,admin_chat.type,customers_list.profile_pic,customers_list.name as sender_name,admin.name as sent_name,admin.profile_pic as a_logo')->from('admin_chat');
 		$this->db->join('customers_list', 'customers_list.cust_id = admin_chat.cust_id', 'left');
 		$this->db->join('admin', 'admin.cust_id = admin_chat.admin_id', 'left');
 		$this->db->where('admin_chat.cust_id',$cust_id);

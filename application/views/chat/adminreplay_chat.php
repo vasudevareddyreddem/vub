@@ -1,10 +1,23 @@
- <!-- Conversations are loaded here -->
- <?php //echo '<pre>';print_r($msg_list);exit; ?>
- <?php if(isset($msg_list) && count($msg_list)>0){ ?>
 
-          <div  id="chatmessages" class="direct-chat-messages">
-		   <?php foreach($msg_list as $list){ ?>
-				 <?php if($list['type']=='Replay'){ ?>
+<?php if(isset($msg_list) && count($msg_list)>0){ ?>
+<?php foreach($msg_list as $lis){ ?>
+<div  style="" class="chat-box col-md-3 col-md-offset-3">
+      <!-- DIRECT CHAT PRIMARY -->
+      <div id="admin_user_chat_id_<?php echo $lis['cust_id']; ?>" class="box box-primary direct-chat direct-chat-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title"><?php echo isset($lis['sender_name'])?$lis['sender_name']:'' ;?>&nbsp;Direct Chat</h3>
+		 <a href="javascript:void(0);" onclick="close_user_chat('<?php echo $lis['cust_id']; ?>');"> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
+    
+          
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <!-- Conversations are loaded here -->
+          <div class="direct-chat-messages">
+            <!-- Message. Default to the left -->
+			
+			<?php foreach($lis['messages'] as $list){ ?>
+             <?php if($list['type']=='Replayed'){ ?>
 							<!-- Message. Default to the left -->
 							<div id="replyed_chat" class="direct-chat-msg">
 							  <div class="direct-chat-info clearfix">
@@ -44,10 +57,29 @@
 							  <!-- /.direct-chat-text -->
 							</div>
 				 <?php } ?>
-          <!-- /.direct-chat-pane -->
- <?php } ?>
+			
+			<?php } ?>
           </div>
-		  
- 
- <?php } ?>
-		  <?php exit; ?>
+          <!--/.direct-chat-messages-->
+    
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <form>
+            <div class="input-group">
+				<input type="text" id="text_msg<?php echo $lis['cust_id']; ?>" name="text_msg" placeholder="Type Message ..." class="form-control">
+				<span class="input-group-btn">
+				<button type="button" onclick="sent_replay_msg(<?php echo $lis['cust_id']; ?>);" class="btn btn-primary btn-flat">Send</button>
+				</span>
+            </div>
+          </form>
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!--/.direct-chat -->
+    </div>
+<?php } ?>
+	
+<?php } ?>
+
+<?php exit; ?>
