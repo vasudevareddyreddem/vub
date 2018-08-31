@@ -9,8 +9,8 @@
 
   <div class="control-sidebar-bg"></div>
   <div class="chat-div">
-<div>
-	<div  style="display:none" class="chat-box">
+	<div class="row">
+	<div  style="display:none" class="chat-box col-md-3 col-md-offset-3">
       <!-- DIRECT CHAT PRIMARY -->
       <div class="box box-primary direct-chat direct-chat-primary">
         <div class="box-header with-border">
@@ -71,9 +71,7 @@
       </div>
       <!--/.direct-chat -->
     </div>
-</div>
-<div>
-	<div  style="display:none" class="chat-box">
+	<div  style="display:none" class="chat-box col-md-3">
       <!-- DIRECT CHAT PRIMARY -->
       <div class="box box-primary direct-chat direct-chat-primary">
         <div class="box-header with-border">
@@ -134,8 +132,7 @@
       </div>
       <!--/.direct-chat -->
     </div>
-</div><div>
-	<div  style="display:none" class="chat-box">
+	<div  style="display:none" class="chat-box col-md-3">
       <!-- DIRECT CHAT PRIMARY -->
       <div class="box box-primary direct-chat direct-chat-primary">
         <div class="box-header with-border">
@@ -196,7 +193,10 @@
       </div>
       <!--/.direct-chat -->
     </div>
-</div>
+	
+    </div>
+	
+
 <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat">
 	
 </div>
