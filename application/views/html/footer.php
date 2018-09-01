@@ -1,37 +1,5 @@
 
-<div class="chat-div">
-<div >
-	<div  style="display:none" class="chat-box">
-      <!-- DIRECT CHAT PRIMARY -->
-      <div class="box box-primary direct-chat direct-chat-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Direct Chat</h3>
-		 <a> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
-    
-          
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body" id="chatmessages">
-         
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          <form action="#" method="post">
-            <div class="input-group">
-              <input type="text" id="text_msg" name="text_msg" placeholder="Type Message ..." class="form-control">
-                  <span class="input-group-btn">
-                    <button type="button" onclick="send_msg()" class="btn btn-primary btn-flat">Send</button>
-                  </span>
-            </div>
-          </form>
-        </div>
-        <!-- /.box-footer-->
-      </div>
-      <!--/.direct-chat -->
-    </div>
-</div>
 
-</div>
 </div>
 </body>
 <footer class="footer-2 bg-dark" id="footer" style="border-top:5px solid #fff;z-index:1024">
