@@ -85,7 +85,7 @@ class User_model extends CI_Model
 		return array_merge($result1, $result2);
 	}
 	public  function get_location_search_list(){
-		$this->db->select('location_list.l_id,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code')->from('location_list');
+		$this->db->select('location_list.l_id,CONCAT(location_list.location_name,", ",city_list.city_name,", ",countries_list.country_name) as address,countries_list.country_code')->from('location_list');
 		$this->db->join('city_list ', 'city_list.city_id = location_list.city_id', 'left');
 		$this->db->join('countries_list ', 'countries_list.c_id = city_list.c_id', 'left');
 		$this->db->where('location_list.l_status ',1);

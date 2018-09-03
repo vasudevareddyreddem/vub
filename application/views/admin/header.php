@@ -287,6 +287,26 @@
 					<li><a href="<?php echo base_url('institute/admin_lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
 			</li>
+			<li class="treeview">
+				  <a href="<?php echo base_url('institute/subscribeers'); ?>">
+					<i class="fa fa-files-o"></i>
+					<span>Subscribed List</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				
+			</li>
+			<li class="treeview">
+				  <a href="<?php echo base_url('institute/userlists'); ?>">
+					<i class="fa fa-files-o"></i>
+					<span>User's List</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				
+			</li>
 		
 	  <?php }else if($details['role_id']==2){ ?>
 			<?php if(isset($details['completed'])&& $details['completed']==1){ ?>
@@ -316,6 +336,16 @@
 					<li><a href="<?php echo base_url('video'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
 					<li><a href="<?php echo base_url('video/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
+			</li>
+			<li class="treeview">
+				  <a href="<?php echo base_url('institute/subscribeers'); ?>">
+					<i class="fa fa-files-o"></i>
+					<span>Subscribed List</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+				
 			</li>
 			<?php }else{ ?>
 				<li class="treeview">

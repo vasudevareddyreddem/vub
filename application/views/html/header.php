@@ -264,9 +264,10 @@
     <?php foreach($location_values as $a_lis){
 		
 		?>{
+			
 			value:'<?php echo $a_lis['l_id']; ?>',
-			label:'<?php echo $a_lis['address']; ?>',
-			//img:'<img src="http://localhost/vub/assets/flags/in.png">',
+			label:'<?php echo $a_lis['address']; ?>'+'<img src="http://localhost/vub/assets/flags/in.png">',
+			//img:'<?php echo $a_lis['address']; ?><?php echo isset($img)?$img:''; ?>',
 			},
 		<?php } ?>
 		];
@@ -280,7 +281,7 @@ $('.location_search').autocomplete({
     minLength: 1,
     source: source,
     select: function(event, ui) {
-        $('#local_id').val(mapping[ui.item.value]);
+		$('#local_id').val(mapping[ui.item.value]);
     }
 });
 
