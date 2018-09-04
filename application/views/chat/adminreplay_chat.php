@@ -1,7 +1,7 @@
 
 <?php if(isset($msg_list) && count($msg_list)>0){ ?>
 <?php foreach($msg_list as $lis){ ?>
-<div  style="" class="chat-box col-md-3 col-md-offset-3">
+<div  style="" class="chat-box col-md-3 pull-right">
       <!-- DIRECT CHAT PRIMARY -->
       <div id="admin_user_chat_id_<?php echo $lis['cust_id']; ?>" class="box box-primary direct-chat direct-chat-primary">
         <div class="box-header with-border">

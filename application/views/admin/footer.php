@@ -1,12 +1,3 @@
- <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-    </div>
-    <strong>Copyright &copy; 2018 <a href="#">vuebin</a>.</strong> All rights
-    reserved.
-  </footer>
-
-
-  <div class="control-sidebar-bg"></div>
   <div class="chat-div">
 	<div class="row" id="pending_chats">
 	
@@ -17,6 +8,16 @@
 <a href="javascript:void(0);" onclick="get_admin_msgs();"><img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"></a>
 	
 </div>
+ <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+    </div>
+    <strong>Copyright &copy; 2018 <a href="#">vuebin</a>.</strong> All rights
+    reserved.
+  </footer>
+
+
+  <div class="control-sidebar-bg"></div>
+
 </div>
 <!-- ./wrapper -->
 <!-- DataTables -->
