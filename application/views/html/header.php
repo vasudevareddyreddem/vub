@@ -178,6 +178,7 @@
   <!-- Full Width Column -->
  <!-- share -->
  <div class="modal-on-middle" style="display:none;" >
+
     <div class="modal-dialog modal-smll" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-center">
