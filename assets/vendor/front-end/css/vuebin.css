@@ -40,6 +40,11 @@ position: relative;
 
 	
 }
+.chat-div li{
+list-style-type:none;
+
+	
+}
 .chat-container {
   max-height: 400px;
   overflow: auto;
