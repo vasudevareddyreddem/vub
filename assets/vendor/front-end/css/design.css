@@ -3144,7 +3144,11 @@ table.text-center th {
 }
 
 .direct-chat-msg {
-	margin-bottom: 10px
+	
+	  padding: 20px;
+  -webkit-transform: rotate(180deg) !important;
+          transform: rotate(180deg)!important;
+  direction: ltr;
 }
 
 .direct-chat-msg:before,

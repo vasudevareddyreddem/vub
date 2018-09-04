@@ -16,7 +16,7 @@
 													<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/user_1.jpg'); ?>" alt="User"><!-- /.direct-chat-img -->
 											  <?php }else{ ?>
 													<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/'.$list['profile_pic']); ?>" alt="User"><!-- /.direct-chat-img -->
-											  <?php } ?>											<div class="direct-chat-text">
+											  <?php } ?><div class="direct-chat-text">
 											<?php echo isset($list['text'])?$list['text']:''; ?>
 											</div>
 									<!-- /.direct-chat-text -->
