@@ -177,10 +177,9 @@
 		  </div>
   <!-- Full Width Column -->
  <!-- share -->
- <div class="modal-on-middle" style="display:none;" >
-
-    <div class="modal-dialog modal-smll" role="document">
-        <div class="modal-content">
+<div class="modal fade" id="pop-modal" role="dialog">
+    <div class="modal-dialog  ">
+    <div class="modal-content ">
             <div class="modal-header bg-primary text-center">
 				</span></button>
                 <h4 class="modal-title" id="myModalLabel">Please submit this form to get calls from Training Institutes
@@ -230,8 +229,9 @@
                 </div>
             </div>
         </div>
+      
     </div>
-</div>
+  </div>
  <div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 
     	  <div class="modal-dialog">
@@ -312,7 +312,11 @@
 		<?php } ?>
 	</div>
  <!-- share -->
-
+  <script>
+$(document).ready(function(){
+   $("#pop-modal").modal();
+});
+</script>
 <script  type="text/javascript">
 $( function() {
     var raw = [
