@@ -1,7 +1,5 @@
 
 
-
-</div>
 </div>
 </body>
 <footer class="footer-2 bg-dark" id="footer" style="border-top:5px solid #fff;z-index:1024">
@@ -29,9 +27,6 @@
             </div>
         </footer>
 <!-- jQuery 2.2.3 -->
-<script>
-$(".direct-chat-messages").scrollTop($('.direct-chat-messages').height())
-</script>
 <script>
 function send_msg(){
 	var msg=$('#text_msg').val();

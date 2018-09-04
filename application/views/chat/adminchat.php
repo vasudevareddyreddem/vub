@@ -1,62 +1,52 @@
-
-<div class="chat-div">
-<div >
-	<div  style="" class="chat-box">
-	 <div class="box-header with-border bg-white">
-          <h3 class="box-title">Direct Chat</h3>
-		 <a> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
-    
-          
-        </div>
-     <div class="chat-container">
-	 
-	   <div class="box-body">
-		<div class="message">
-		   <div class="direct-chat-msg">
-				  <div class="direct-chat-info clearfix">
-					<span class="direct-chat-name pull-left">Alexander Pierce</span>
-					<span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-				  </div>
-				  <!-- /.direct-chat-info -->
-				  <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_1.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
-				  <div class="direct-chat-text">
-					Is this template really for free? That's unbelievable!
-				  </div>
-				  <!-- /.direct-chat-text -->
-				</div>
-		</div> 
-		<div class="message">
-		   <div class="direct-chat-msg right">
-				  <div class="direct-chat-info clearfix">
-					<span class="direct-chat-name pull-right">Sarah Bullock</span>
-					<span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-				  </div>
-				  <!-- /.direct-chat-info -->
-				  <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
-				  <div class="direct-chat-text">
-					You better believe it!
-				  </div>
-				  <!-- /.direct-chat-text -->
-				</div>
-		</div>
-    
-  </div>
-  </div>
-  <div class="box-footer">
-          <form action="#" method="post">
-            <div class="input-group">
-              <input type="text" name="message" placeholder="Type Message ..." class="form-control">
-                  <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary btn-flat">Send</button>
-                  </span>
-            </div>
-          </form>
-        </div>
-
-    </div>
-</div>
-
-</div>
-<?php exit; ?>
-
+ <!-- Conversations are loaded here -->
+ <?php //echo '<pre>';print_r($msg_list);exit; ?>
+ <?php if(isset($msg_list) && count($msg_list)>0){ ?>
+		<div  id="chatmessages" class="direct-chat-messages">
+		   <?php foreach($msg_list as $list){ ?>
+				 <?php if($list['type']=='Replay'){ ?>
+							<!-- Message. Default to the left -->
+							<div id="replyed_chat" class="direct-chat-msg">
+							  <div class="direct-chat-info clearfix">
+								<span class="direct-chat-name pull-left"><?php echo isset($list['sender_name'])?$list['sender_name']:''; ?></span>
+								<span class="direct-chat-timestamp pull-right"><?php echo date('M j h:i A',strtotime(htmlentities($list['created_at'])));?></span>
+							  </div>
+							  <!-- /.direct-chat-info -->
+							  <?php if($list['profile_pic']==''){ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/user_1.jpg'); ?>" alt="User"><!-- /.direct-chat-img -->
+							  <?php }else{ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/'.$list['profile_pic']); ?>" alt="User"><!-- /.direct-chat-img -->
+							  <?php } ?>
+							  <div class="direct-chat-text">
+								<?php echo isset($list['text'])?$list['text']:''; ?>
+							  </div>
+							  <!-- /.direct-chat-text -->
+							</div>
+							<?php }else{ ?>
+						  
+						  
+						  <!--/.direct-chat-messages-->
+					
+						 <div id="reply_chat"  class="direct-chat-msg right">
+							  <div class="direct-chat-info clearfix">
+								<span class="direct-chat-name pull-right"><?php echo isset($list['sent_name'])?$list['sent_name']:''; ?></span>
+								<span class="direct-chat-timestamp pull-left"><?php echo date('M j h:i A',strtotime(htmlentities($list['created_at'])));?></span>
+							  </div>
+							  <!-- /.direct-chat-info -->
+							  <?php if($list['a_logo']==''){ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/user_2.jpg'); ?>" alt="Admin"><!-- /.direct-chat-img -->
+							  <?php }else{ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/user_2.jpg'); ?>" alt="Admin"><!-- /.direct-chat-img -->
+							  <?php } ?>
+							  <div  class="direct-chat-text">
+								<?php echo isset($list['text'])?$list['text']:''; ?>
+							  </div>
+							  <!-- /.direct-chat-text -->
+							</div>
+				 <?php } ?>
+          <!-- /.direct-chat-pane -->
+ <?php } ?>
+          </div>
+		  
  
+ <?php } ?>
+		  <?php exit; ?>
