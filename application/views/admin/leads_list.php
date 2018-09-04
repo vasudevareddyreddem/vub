@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Users List
+        Leads List
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Users List</li>
+        <li class="active">Leads List</li>
       </ol>
     </section>
 
@@ -18,7 +18,7 @@
         <div class="col-xs-12">
 		<div class="box">
             <div class="box-header">
-              <h3 class="box-title">Users List</h3>
+              <h3 class="box-title">Leads List</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -26,23 +26,31 @@
                 <thead>
                 <tr>
 					<th style="display:none;" ></th>
-					<th>Source</th>
+				  <?php if(isset($user_details['role_id']) && $user_details['role_id']!=2){ ?>
+                  <th>Institute Name</th>
+				  <?php } ?>
+                  <th>Course Name</th>
 					<th>Name</th>
+					<th>Location, City</th>
 					<th>Email Id</th>
-					<th>Mobile Number</th>
+					<th>Contact Number</th>
 					<th>Created at</th>
                 </tr>
                 </thead>
-				<?php if(isset($user_list) && count($user_list)>0){ ?>
+				<?php if(isset($leads_list_list) && count($leads_list_list)>0){ ?>
 					<tbody>
-						<?php foreach($user_list as $list){ ?>
+						<?php foreach($leads_list_list as $list){ ?>
 							<tr>
 							  <td style="display:none;"><?php echo $list['cust_id']; ?></td>
-							  <td><?php echo $list['source']; ?></td>
+								<?php if(isset($user_details['role_id']) && $user_details['role_id']!=2){ ?>
+								 <td><?php echo $list['i_name']; ?></td>
+								<?php } ?>
+							  <td><?php echo $list['course_name']; ?></td>
 							 
 							  <td><?php echo $list['name']; ?></td>
+							  <td><?php echo $list['location_name']; ?></td>
 							  <td><?php echo $list['email_id']; ?></td>
-							  <td><?php echo $list['mobile']; ?></td>
+							  <td><?php echo $list['contact_num']; ?></td>
 							  <td> <?php echo date('M d ,Y',strtotime(htmlentities($list['created_at'])));?></td>
 							  
 							  
@@ -52,12 +60,17 @@
 				<?php } ?>
                 <tfoot>
                 <tr>
-				  <th style="display:none;" ></th>
-					<th>Source</th>
+				 <th style="display:none;" ></th>
+				  <?php if(isset($user_details['role_id']) && $user_details['role_id']!=2){ ?>
+                  <th>Institute Name</th>
+				  <?php } ?>
+                  <th>Course Name</th>
 					<th>Name</th>
+					<th>Location, City</th>
 					<th>Email Id</th>
-					<th>Mobile Number</th>
+					<th>Contact Number</th>
 					<th>Created at</th>
+				  
                 </tr>
                 </tfoot>
               </table>
