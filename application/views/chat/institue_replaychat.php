@@ -83,6 +83,10 @@
 <?php } ?>
 
 <script>
+function institue_single_replay_msg(cust_id){
+	alert('hiiii');
+	
+}
 function close_institue_chat(id){
 	$('#institue_user_chat_id_'+id).hide();
 }
@@ -100,7 +104,6 @@ function sent_institue_replay_msg(cust_id){
 						$('#text_msg'+cust_id).val('');
 						$("#institue_user_chat_id_"+cust_id).empty();
 						$("#institue_user_chat_id_"+cust_id).append(data);
-						scrollToBottom('institue_user_chat_id_'+cust_id);
 					}
            });
 }
