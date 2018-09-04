@@ -1334,3 +1334,13 @@ a.btn-social,
     background-color: #da4b39
 }
 /* social sharing sidebar end */
+.modal-on-middle{
+	position: fixed;
+	left: 50%;
+	transform: translate(-50%, 10%);
+	z-index:3000;
+	-webkit-box-shadow: 0px 0px 37px -12px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 37px -12px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 37px -12px rgba(0,0,0,0.75);
+
+}
