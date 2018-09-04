@@ -44,6 +44,7 @@ function send_msg(){
 						$('#text_msg').val('');
 						$("#chatmessages").empty();
 						$("#chatmessages").append(data);
+						scrollToBottom('div1');
 						
    					}
            });
@@ -60,11 +61,16 @@ function send_msg(){
    					success:function(data){
 						$("#chatmessages").empty();
 						$("#chatmessages").append(data);
+						scrollToBottom('div1');
 						
    					}
            }); 
 	   }
 	
+}
+function scrollToBottom(id) {
+   var div = document.getElementById(id);
+   div.scrollTop = div.scrollHeight - div.clientHeight;
 }
 $(document).ready(function(){
     $(".btn-chat-box").click(function(){

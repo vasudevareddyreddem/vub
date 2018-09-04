@@ -275,7 +275,7 @@
 							 <a> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
 							</div>
 							<!-- /.box-header -->
-							<div class="box-body" id="chatmessages">
+							<div class="box-body chatmessages" id="chatmessages">
 							</div>
 							<!-- /.box-body -->
 							<div class="box-footer">
@@ -360,6 +360,7 @@ $( function() {
 				success:function(data){
 					$("#institue_pending_chats").empty();
 					$("#institue_pending_chats").append(data);
+					scrollToBottom('div1');
 					
 				}
 	   });
