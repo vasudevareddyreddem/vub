@@ -44,8 +44,7 @@ function send_msg(){
 						$('#text_msg').val('');
 						$("#chatmessages").empty();
 						$("#chatmessages").append(data);
-						var element = document.getElementById("chatmessages");
-						element.scrollTop = element.scrollHeight;
+						scrollToBottom('div1');
 						
    					}
            });
@@ -62,15 +61,16 @@ function send_msg(){
    					success:function(data){
 						$("#chatmessages").empty();
 						$("#chatmessages").append(data);
-						window.setInterval(function() {
-						var elem = document.getElementById('chatmessages');
-						elem.scrollTop = elem.scrollHeight;
-						}, 5000);
+						scrollToBottom('div1');
 						
    					}
            }); 
 	   }
 	
+}
+function scrollToBottom(id) {
+   var div = document.getElementById(id);
+   div.scrollTop = div.scrollHeight - div.clientHeight;
 }
 $(document).ready(function(){
     $(".btn-chat-box").click(function(){

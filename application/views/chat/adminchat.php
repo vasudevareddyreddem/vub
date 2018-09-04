@@ -50,9 +50,5 @@
  
  <?php } ?>
  
- <script>
- $('#div1');
-d.scrollTop(d.prop("scrollHeight"));
- window.scrollTo(0,document.querySelector(".scrollingContainer").scrollHeight)
- </script>
+
 		  <?php exit; ?>
