@@ -221,7 +221,9 @@
 							 <a> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
 							</div>
 							<!-- /.box-header -->
+							 <div class="chat-container">
 							<div class="box-body" id="chatmessages">
+							</div>
 							</div>
 							<!-- /.box-body -->
 							<div class="box-footer">
