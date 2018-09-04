@@ -5546,12 +5546,14 @@ var widgetsMenu = $.widget( "ui.menu", {
 		return this.element.outerHeight() < this.element.prop( "scrollHeight" );
 	},
 
-	select: function( event ) {
-
-		// TODO: It should never be possible to not have an active item at this
+	select: function(event){
+		//console.log(event);
+// TODO: It should never be possible to not have an active item at this
 		// point, but the tests don't trigger mouseenter before click.
 		this.active = this.active || $( event.target ).closest( ".ui-menu-item" );
 		var ui = { item: this.active };
+		console.log(ui.item.context);
+		console.log(ui.item.context.textConten);
 		if ( !this.active.has( ".ui-menu" ).length ) {
 			this.collapseAll( event, true );
 		}
@@ -6135,9 +6137,10 @@ $.widget( "ui.autocomplete", {
 	},
 
 	_renderItem: function( ul, item ) {
-		return $( "<li>" )
-			.append( $( "<div>" ).text( item.label ) )
-			.appendTo( ul );
+		// return $( "<li>" ).append( $( "<div>" ).text( item.label ) ).appendTo( ul );
+		//console.log(item.label.split("@",2)[1]);
+		return $( "<li>" ).append( $( "<div>" ).append("<span> "+(item.label).split("@",1)+"</span>").append('&nbsp;<img id="theImg" src="'+(item.label).split("@",2)[1]+'"/>')).appendTo( ul );
+		// return $( "<li>" ).append( $( "<div>" ).append('<img id="theImg" src="'+item.label.split("@",2)+'"/>').append("<span> '"+item.label.split("@",1)+"'	</span>")).appendTo( ul );
 	},
 
 	_move: function( direction, event ) {
