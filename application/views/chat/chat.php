@@ -2,7 +2,7 @@
  <?php //echo '<pre>';print_r($msg_list);exit; ?>
  <?php if(isset($msg_list) && count($msg_list)>0){ ?>
 
-          <div  id="chatmessages" class="direct-chat-messages">
+          <div  id="chatmessages" class="direct-chat-messages chat-container">
 		   <?php foreach($msg_list as $list){ ?>
 				 <?php if($list['type']=='Replay'){ ?>
 							<div class="message">

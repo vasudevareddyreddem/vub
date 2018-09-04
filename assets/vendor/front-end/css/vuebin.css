@@ -33,14 +33,13 @@ position: relative;
 	  width: 400px;
   margin: 0 auto;
   border-radius: 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position:fixed;
   bottom:0;right:0;
 	z-index:1025;
 
 	
 }
-
 .chat-container {
   max-height: 400px;
   overflow: auto;
