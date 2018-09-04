@@ -59,7 +59,7 @@ class Chat extends Front_end {
 						$data['msg_list']=$this->Chat_model->get_customer_wise_sent_admin_messages_list($login_details['cust_id']);
 					}
 					$this->load->view('chat/adminchat',$data);
-					echo '<pre>';print_r($adminmsg_data);exit;
+					//echo '<pre>';print_r($adminmsg_data);exit;
 					
 					
 			}

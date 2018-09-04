@@ -3146,8 +3146,7 @@ table.text-center th {
 .direct-chat-msg {
 	
 	  padding: 20px;
-  -webkit-transform: rotate(180deg) !important;
-          transform: rotate(180deg)!important;
+
   direction: ltr;
 }
 

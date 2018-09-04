@@ -211,38 +211,8 @@
 				<li class="page-scroll" style="padding-left:30px;margin-top:5px">
 					<a href="javascript:void(0);" onclick="send_msg()"> <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"></a>
 				</li>
-				<div class="chat-div">
-					<div >
-						<div  style="display:none" class="chat-box">
-						  <!-- DIRECT CHAT PRIMARY -->
-						  <div class="box box-primary direct-chat direct-chat-primary">
-							<div class="box-header with-border">
-							  <h3 class="box-title">Direct Chat</h3>
-							 <a> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
-							</div>
-							<!-- /.box-header -->
-							 <div class="chat-container">
-							<div class="box-body" id="">
-							<span id="chatmessages"></span>
-							</div>
-							</div>
-							<!-- /.box-body -->
-							<div class="box-footer">
-							  <form action="#" method="post">
-								<div class="input-group">
-								  <input type="text" id="text_msg" name="text_msg" placeholder="Type Message ..." class="form-control">
-									  <span class="input-group-btn">
-										<button type="button" onclick="send_msg()" class="btn btn-primary btn-flat">Send</button>
-									  </span>
-								</div>
-							  </form>
-							</div>
-							<!-- /.box-footer-->
-						  </div>
-						  <!--/.direct-chat -->
-						</div>
-					</div>
-					</div>
+				<span id="chatmessages"></span>
+				
 			<?php }else{ ?>
 			<div class="chat-div">
 				<div class="row" id="institue_pending_chats">
