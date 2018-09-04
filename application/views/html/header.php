@@ -164,11 +164,11 @@
                   <span aria-hidden="true">&times;</span></button>
 					<h1>Login with</h1><br>
 						<div class="">
-							<a href="<?php echo isset($loginURL)?$loginURL:''; ?>" type="button" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
+							<a href="<?php echo isset($loginURL)?$loginURL:''; ?>" type="button" class="btn btn-primary btn-block text-white"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
 						</div>
 						<br>
 						<div class="">
-							<a href="<?php echo base_url('auth_oa2/session/google'); ?>" type="button" class="btn btn-danger btn-block"><i class="fa fa-google-plus"></i> Sign in with GooglePlus</a>
+							<a href="<?php echo base_url('auth_oa2/session/google'); ?>" type="button" class="btn btn-danger btn-block text-white"><i class="fa fa-google-plus"></i> Sign in with GooglePlus</a>
 						</div>
 					
 				 

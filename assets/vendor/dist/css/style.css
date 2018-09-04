@@ -6,6 +6,7 @@
 	right:0;
 	width:100%;
 	z-index:1024;
+	
 
 }
 .font-20{
@@ -13,8 +14,6 @@
  line-height:22px;
 }
 .chat-box{
-	-webkit-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
+
 }
 /* chat end */

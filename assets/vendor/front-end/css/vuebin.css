@@ -30,21 +30,46 @@ position: relative;
 }
 /* Chat start */
 .chat-div{
-	position:fixed;
-	bottom:0;
-	right:0;
-	width:22%;
+	  width: 400px;
+  margin: 0 auto;
+  border-radius: 5px;
+  overflow: hidden;
+  position:fixed;
+  bottom:0;right:0;
+	z-index:1025;
+
 	
 }
-.font-20{
-	font-size:16px;
-	line-height:22px;
+.chat-container {
+  max-height: 400px;
+  overflow: auto;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  direction: rtl;
+  background:#fff;
 }
-.chat-box{
-	-webkit-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
-box-shadow: -1px 0px 17px -3px rgba(0,0,0,0.75);
+.chat-container .message {
+  border-bottom: solid 1px #ccc;
+  padding: 20px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  direction: ltr;
 }
+.chat-container .message .avatar {
+  float: left;
+  margin-right: 5px;
+}
+.chat-container .message .datetime {
+  float: right;
+  color: #999;
+}
+.send-message-form input {
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+}
+
 /* chat end */
 	/* notifications */
 .bg-succ{

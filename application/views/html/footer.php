@@ -2,32 +2,141 @@
 <div class="chat-div">
 <div >
 	<div  style="display:none" class="chat-box">
-      <!-- DIRECT CHAT PRIMARY -->
-      <div class="box box-primary direct-chat direct-chat-primary">
-        <div class="box-header with-border">
+	 <div class="box-header with-border bg-white">
           <h3 class="box-title">Direct Chat</h3>
 		 <a> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
     
           
         </div>
-        <!-- /.box-header -->
-        <div class="box-body" id="chatmessages">
-         
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
+     <div class="chat-container">
+	 
+	   <div class="box-body">
+    <div class="message">
+       <div class="direct-chat-msg">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_1.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                Is this template really for free? That's unbelievable!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div> 
+	<div class="message">
+       <div class="direct-chat-msg right">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                You better believe it!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div>
+	<div class="message">
+       <div class="direct-chat-msg">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_1.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                Is this template really for free? That's unbelievable!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div> 
+	<div class="message">
+       <div class="direct-chat-msg right">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                You better believe it!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div>
+	<div class="message">
+       <div class="direct-chat-msg">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_1.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                Is this template really for free? That's unbelievable!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div> 
+	<div class="message">
+       <div class="direct-chat-msg right">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                You better believe it!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div>
+	<div class="message">
+       <div class="direct-chat-msg">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_1.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                Is this template really for free? That's unbelievable!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div> 
+	<div class="message">
+       <div class="direct-chat-msg right">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img class="direct-chat-img" src="https://bootdey.com/img/Content/user_2.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                You better believe it!
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+    </div>
+    
+  </div>
+  </div>
+  <div class="box-footer">
           <form action="#" method="post">
             <div class="input-group">
-              <input type="text" id="text_msg" name="text_msg" placeholder="Type Message ..." class="form-control">
+              <input type="text" name="message" placeholder="Type Message ..." class="form-control">
                   <span class="input-group-btn">
-                    <button type="button" onclick="send_msg()" class="btn btn-primary btn-flat">Send</button>
+                    <button type="submit" class="btn btn-primary btn-flat">Send</button>
                   </span>
             </div>
           </form>
         </div>
-        <!-- /.box-footer-->
-      </div>
-      <!--/.direct-chat -->
+
     </div>
 </div>
 
@@ -59,6 +168,9 @@
             </div>
         </footer>
 <!-- jQuery 2.2.3 -->
+<script>
+$(".direct-chat-messages").scrollTop($('.direct-chat-messages').height())
+</script>
 <script>
 function send_msg(){
 	var msg=$('#text_msg').val();
