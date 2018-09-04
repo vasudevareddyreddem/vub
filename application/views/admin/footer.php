@@ -50,8 +50,7 @@ function sent_replay_msg(cust_id){
 						$('#text_msg'+cust_id).val('');
 						$("#admin_replay_"+cust_id).empty();
 						$("#admin_replay_"+cust_id).append(data);
-						document.getElementById("#admin_replay_"+cust_id).scrollIntoView();
-						pageScroll();
+						scrollToBottom('admin_replay_'+cust_id);
 						
    					}
            });
@@ -68,6 +67,7 @@ function get_admin_msgs(){
    					success:function(data){
 						$("#pending_chats").empty();
 						$("#pending_chats").append(data);
+						scrollToBottom('div1');
 						
    					}
            }); 
@@ -92,6 +92,10 @@ $(document).ready(function(){
     //bootstrap WYSIHTML5 - text editor
     $(".textarea").wysihtml5();
   });
+  function scrollToBottom(id) {
+   var div = document.getElementById(id);
+   div.scrollTop = div.scrollHeight - div.clientHeight;
+}
 </script>
 </body>
 </html>

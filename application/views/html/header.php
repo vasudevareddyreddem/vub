@@ -360,6 +360,7 @@ $( function() {
 				success:function(data){
 					$("#institue_pending_chats").empty();
 					$("#institue_pending_chats").append(data);
+					scrollToBottom('div1');
 					
 				}
 	   });
