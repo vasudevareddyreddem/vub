@@ -1,0 +1,75 @@
+ <!-- Conversations are loaded here -->
+ <?php //echo '<pre>';print_r($msg_list);exit; ?>
+        <div class="box-header with-border">
+          <h3 class="box-title"><?php echo isset($msg_list[0]['name'])?$msg_list[0]['name']:'' ;?>&nbsp;Direct Chat</h3>
+		 <a href="javascript:void(0);" onclick="close_institue_chat('<?php echo isset($msg_list[0]['cust_id'])?$msg_list[0]['cust_id']:''; ?>');"> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
+    
+          
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <!-- Conversations are loaded here -->
+          <div class="direct-chat-messages">
+ <?php if(isset($msg_list) && count($msg_list)>0){ ?>
+		<div  id="chatmessages" class="direct-chat-messages">
+		   <?php foreach($msg_list as $list){ ?>
+				 <?php if($list['type']=='Replay'){ ?>
+							<!-- Message. Default to the left -->
+							<div id="replyed_chat" class="direct-chat-msg">
+							  <div class="direct-chat-info clearfix">
+								<span class="direct-chat-name pull-left"><?php echo isset($list['sender_name'])?$list['sender_name']:''; ?></span>
+								<span class="direct-chat-timestamp pull-right"><?php echo date('M j h:i A',strtotime(htmlentities($list['created_at'])));?></span>
+							  </div>
+							  <!-- /.direct-chat-info -->
+							  <?php if($list['profile_pic']==''){ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/user_1.jpg'); ?>" alt="User"><!-- /.direct-chat-img -->
+							  <?php }else{ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/'.$list['profile_pic']); ?>" alt="User"><!-- /.direct-chat-img -->
+							  <?php } ?>
+							  <div class="direct-chat-text">
+								<?php echo isset($list['text'])?$list['text']:''; ?>
+							  </div>
+							  <!-- /.direct-chat-text -->
+							</div>
+							<?php }else{ ?>
+						  
+						  
+						  <!--/.direct-chat-messages-->
+					
+						 <div id="reply_chat"  class="direct-chat-msg right">
+							  <div class="direct-chat-info clearfix">
+								<span class="direct-chat-name pull-right"><?php echo isset($list['sent_name'])?$list['sent_name']:''; ?></span>
+								<span class="direct-chat-timestamp pull-left"><?php echo date('M j h:i A',strtotime(htmlentities($list['created_at'])));?></span>
+							  </div>
+							  <!-- /.direct-chat-info -->
+							  <?php if($list['a_logo']==''){ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/user_2.jpg'); ?>" alt="Admin"><!-- /.direct-chat-img -->
+							  <?php }else{ ?>
+									<img class="direct-chat-img" src="<?php echo base_url('assets/customer_pic/user_2.jpg'); ?>" alt="Admin"><!-- /.direct-chat-img -->
+							  <?php } ?>
+							  <div  class="direct-chat-text">
+								<?php echo isset($list['text'])?$list['text']:''; ?>
+							  </div>
+							  <!-- /.direct-chat-text -->
+							</div>
+				 <?php } ?>
+          <!-- /.direct-chat-pane -->
+ <?php } ?>
+          </div>
+		   </div>
+   </div>
+		  <div class="box-footer">
+          <form>
+            <div class="input-group">
+				<input type="text" id="text_msg<?php echo $msg_list[0]['cust_id']; ?>" name="text_msg" placeholder="Type Message ..." class="form-control">
+				<span class="input-group-btn">
+				<button type="button" onclick="sent_institue_replay_msg(<?php echo $msg_list[0]['cust_id']; ?>);" class="btn btn-primary btn-flat">Send</button>
+				</span>
+            </div>
+          </form>
+        </div>
+ 
+   
+     
+ <?php } ?>
+		  <?php exit; ?>

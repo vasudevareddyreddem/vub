@@ -204,6 +204,57 @@
 				</div>
 			</div>
 		  </div>
+		   <div class="chat-div">
+		<?php if(isset($user_details) && count($user_details)>0){ ?>
+		
+			<?php if($user_details['completed']==''){ ?>
+				<li class="page-scroll" style="padding-left:30px;margin-top:5px">
+					<a href="javascript:void(0);" onclick="send_msg()"> <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"></a>
+				</li>
+				<div class="chat-div">
+					<div >
+						<div  style="display:none" class="chat-box">
+						  <!-- DIRECT CHAT PRIMARY -->
+						  <div class="box box-primary direct-chat direct-chat-primary">
+							<div class="box-header with-border">
+							  <h3 class="box-title">Direct Chat</h3>
+							 <a> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body" id="chatmessages">
+							</div>
+							<!-- /.box-body -->
+							<div class="box-footer">
+							  <form action="#" method="post">
+								<div class="input-group">
+								  <input type="text" id="text_msg" name="text_msg" placeholder="Type Message ..." class="form-control">
+									  <span class="input-group-btn">
+										<button type="button" onclick="send_msg()" class="btn btn-primary btn-flat">Send</button>
+									  </span>
+								</div>
+							  </form>
+							</div>
+							<!-- /.box-footer-->
+						  </div>
+						  <!--/.direct-chat -->
+						</div>
+					</div>
+					</div>
+			<?php }else{ ?>
+			<div class="chat-div">
+				<div class="row" id="institue_pending_chats">
+				</div>
+			</div>
+				<li class="page-scroll" style="padding-left:30px;margin-top:5px">
+					<a href="javascript:void(0);" onclick="get_institue_msgs()" > <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"></a>
+				</li>
+			<?php } ?>
+		<?php }else{ ?>
+			<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
+			   <img class="" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat">
+			</li>
+		<?php } ?>
+	</div>
  <!-- share -->
 
 <script  type="text/javascript">
@@ -213,9 +264,10 @@
     <?php foreach($location_values as $a_lis){
 		
 		?>{
+			
 			value:'<?php echo $a_lis['l_id']; ?>',
-			label:'<?php echo $a_lis['address']; ?>',
-			//img:'<img src="http://localhost/vub/assets/flags/in.png">',
+			label:'<?php echo $a_lis['address']; ?>'+'<img src="http://localhost/vub/assets/flags/in.png">',
+			//img:'<?php echo $a_lis['address']; ?><?php echo isset($img)?$img:''; ?>',
 			},
 		<?php } ?>
 		];
@@ -229,7 +281,7 @@ $('.location_search').autocomplete({
     minLength: 1,
     source: source,
     select: function(event, ui) {
-        $('#local_id').val(mapping[ui.item.value]);
+		$('#local_id').val(mapping[ui.item.value]);
     }
 });
 
@@ -255,22 +307,20 @@ $('.homemenu_id').autocomplete({
 });
 
   } );
-  </script>
-    <div class="chat-div">
-		<?php if(isset($user_details) && count($user_details)>0){ ?>
-		
-			<?php if($user_details['completed']==''){ ?>
-				<li class="page-scroll" style="padding-left:30px;margin-top:5px">
-					<a href="javascript:void(0);" onclick="send_msg()"> <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"></a>
-				</li>
-			<?php }else{ ?>
-				<li class="page-scroll" style="padding-left:30px;margin-top:5px">
-					<a href="javascript:void(0);" onclick="get_institue_msgs();" > <img class="btn-chat-box" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"></a>
-				</li>
-			<?php } ?>
-		<?php }else{ ?>
-			<li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px">
-			   <img class="" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat">
-			</li>
-		<?php } ?>
-	</div>
+ 
+function get_institue_msgs(){
+	jQuery.ajax({
+		url: "<?php echo base_url('chat/get_institue_pending_chat_list');?>",
+		data: {
+			text:'',
+		},
+		type: "POST",
+		format:"html",
+				success:function(data){
+					$("#institue_pending_chats").empty();
+					$("#institue_pending_chats").append(data);
+					
+				}
+	   });
+}
+	</script>

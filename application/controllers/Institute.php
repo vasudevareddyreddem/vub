@@ -691,7 +691,52 @@ class Institute extends Admin_panel {
 		}
 	}
 	/* institue level admin video upload*/
-	
+	/* subscribeers functionality*/
+	public  function subscribeers(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$login_details=$this->session->userdata('vuebin_user');
+			if($login_details['role_id']==2 || $login_details['role_id']==1){
+				$data['user_details']=$login_details;
+				$institue_id=$this->Institute_model->get_institue_id($login_details['cust_id']);
+				if( $login_details['role_id']==1){
+				$data['subscribeers_list']=$this->Institute_model->get_subscribeers_list('');
+				}else{
+				$data['subscribeers_list']=$this->Institute_model->get_subscribeers_list($institue_id['i_id']);
+					
+				}
+				$this->load->view('admin/subscribeers_list',$data);
+				$this->load->view('admin/footer');
+				//echo '<pre>';print_r($data);exit;
+			}else{
+				$this->session->set_flashdata('error',"you don't have permission to access");
+				redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public  function userlists(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$login_details=$this->session->userdata('vuebin_user');
+			if($login_details['role_id']==1){
+				$data['user_list']=$this->Institute_model->get_users_list();
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('admin/user_list',$data);
+				$this->load->view('admin/footer');
+				//echo '<pre>';print_r($data);exit;
+			}else{
+				$this->session->set_flashdata('error',"you don't have permission to access");
+				redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	/* subscribeers functionality*/
 	
 	
 }

@@ -306,5 +306,26 @@ class Institute_model extends CI_Model
 	}
 	/* institur page  purpose*/
 	
+	public  function get_institue_id($cust_id){
+		$this->db->select('i_id')->from('institute_list');
+		$this->db->where('institute_list.created_by',$cust_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_subscribeers_list($institue_id){
+		$this->db->select('institute_list.i_name,video_subscribe_list.*,customers_list.name,customers_list.email_id,customers_list.mobile,video_list.v_title')->from('video_subscribe_list');
+		$this->db->join('customers_list', 'customers_list.cust_id = video_subscribe_list.cust_id', 'left');
+		$this->db->join('video_list', 'video_list.video_id = video_subscribe_list.video_id', 'left');
+		$this->db->join('institute_list', 'institute_list.i_id = video_list.i_id', 'left');
+		$this->db->where('video_subscribe_list.status',1);
+		if(isset($institue_id) && $institue_id!=''){
+		 $this->db->where('video_list.i_id',$institue_id);
+		}
+		return $this->db->get()->result_array();
+	}
+	public function get_users_list(){
+		$this->db->select('customers_list.cust_id,customers_list.created_at,customers_list.source,customers_list.email_id,customers_list.name,customers_list.mobile')->from('customers_list');
+		$this->db->join('institute_list', 'institute_list.created_by = customers_list.cust_id', 'left');
+		return $this->db->get()->result_array();
+	}
 
 }

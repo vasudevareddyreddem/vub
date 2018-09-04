@@ -24,7 +24,7 @@ class Search extends Front_end {
 			redirect($this->agent->referrer());
 		}
 		$value=explode('_',$post['institue_course']);
-		echo '<pre>';print_r($post);
+		//echo '<pre>';print_r($post);
 		if(isset($value[1]) && $value[1]=='institue'){
 			if(isset($post['local_id']) && $post['local_id']!=''){
 				$check=$this->User_model->get_location_with_intitue($value[0],$post['local_id']);
@@ -52,6 +52,9 @@ class Search extends Front_end {
 				redirect($this->agent->referrer());
 			}
 		}else if(isset($post['local_id']) && $post['local_id']!=''){
+			$this->session->set_flashdata('error',"Must be select Institute Name or course Name");
+			redirect($this->agent->referrer());
+		}else{
 			$this->session->set_flashdata('error',"Must be select Institute Name or course Name");
 			redirect($this->agent->referrer());
 		}
