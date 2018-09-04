@@ -109,6 +109,11 @@ class User_model extends CI_Model
 			$this->db->where('institute_list.location_name',$location_id);	
 		}
 		return $this->db->get()->row_array();
+	}
+
+	public  function save_leads_data($data){
+		$this->db->insert('leads',$data);
+		return $this->db->insert_id();
 	}	
 	
 

@@ -188,36 +188,38 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <form action="#">
+                    <form action="<?php echo base_url('user/postleade');?>" method="post">
+					<input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>">
+					<input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                         <div class="form-group col-md-12">
 							<div class="form-group">
 								<label class=" control-label">Course Name*</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Course Name" />
+									<input type="text" class="form-control" name="course_name" id="course_name" placeholder="Enter Course Name" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class=" control-label">Name*</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Name" />
+									<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class=" control-label">Location, City*</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Location, City" />
+									<input type="text" class="form-control" name="location_name" name="location_name" placeholder="Enter Location, City" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class=" control-label">Email Id*</label>
 								<div class="">
-									<input type="email" class="form-control" name="username" placeholder="Enter Email Id" />
+									<input type="email" class="form-control" name="email_id" id="email_id" placeholder="Enter Email Id" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label class=" control-label">Contact Number *</label>
 								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Contact Number" />
+									<input type="text" class="form-control" name="contact_num" id="contact_num" placeholder="Enter Contact Number" />
 								</div>
 							</div>
 						</div> 
@@ -311,12 +313,12 @@
 			</li>
 		<?php } ?>
 	</div>
- <!--  
+  
   <script>
 $(document).ready(function(){
    $("#pop-modal").modal();
 });
-</script>-->
+</script>
 <script  type="text/javascript">
 $( function() {
     var raw = [
