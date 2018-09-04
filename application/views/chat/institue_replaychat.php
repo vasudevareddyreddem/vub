@@ -13,7 +13,7 @@
         <!-- /.box-header -->
         <div class="box-body">
           <!-- Conversations are loaded here -->
-          <div class="direct-chat-messages">
+          <div class="direct-chat-messages" id="div1<?php echo $lis['cust_id']; ?>">
             <!-- Message. Default to the left -->
 			
 			<?php foreach($lis['messages'] as $list){ ?>
@@ -78,6 +78,14 @@
       </div>
       <!--/.direct-chat -->
     </div>
+	<script>
+	function scrollToBottom<?php echo $lis['cust_id']; ?>(id) {
+	var div = document.getElementById(id);
+	div.scrollTop = div.scrollHeight - div.clientHeight;
+	}
+	scrollToBottom('div1<?php echo $lis['cust_id']; ?>');
+	</script>
+	
 <?php } ?>
 	
 <?php } ?>
