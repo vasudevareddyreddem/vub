@@ -325,6 +325,17 @@ class Institute_model extends CI_Model
 	public function get_users_list(){
 		$this->db->select('customers_list.cust_id,customers_list.created_at,customers_list.source,customers_list.email_id,customers_list.name,customers_list.mobile')->from('customers_list');
 		$this->db->join('institute_list', 'institute_list.created_by = customers_list.cust_id', 'left');
+		$this->db->order_by('customers_list.cust_id','desc');
+		return $this->db->get()->result_array();
+	}
+	
+	public  function get_leads_details_list($institue_id){
+		$this->db->select('institute_list.i_name,leads.*')->from('leads');
+		$this->db->join('institute_list', 'institute_list.i_id = leads.i_id', 'left');
+		if(isset($institue_id) && $institue_id!=''){
+		 $this->db->where('leads.i_id',$institue_id);
+		}
+		$this->db->order_by('leads.l_id','desc');
 		return $this->db->get()->result_array();
 	}
 

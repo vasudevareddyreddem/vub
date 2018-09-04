@@ -172,50 +172,27 @@ class User extends Front_end {
 		$this->session->unset_userdata('vuebin_user');
         redirect('');
 	}
-	public  function links(){
-		require('media.php');
-		$image = new OpenGraphProtocolImage();
-		$image->setURL( 'https://shofus.com/assets/vendor/front-end/img/logo.png' );
-		$image->setSecureURL( 'https://shofus.com/assets/vendor/front-end/img/logo.png' );
-		$image->setType( 'image/jpeg' );
-		$image->setWidth( 400 );
-		$image->setHeight( 300 );
-
-		$video = new OpenGraphProtocolVideo();
-		$video->setURL( 'http://shofus.com/assets/vendor/front-end/video/back1.mp4' );
-		$video->setSecureURL( 'https://shofus.com/assets/vendor/front-end/video/back1.mp4' );
-		$video->setType( OpenGraphProtocolVideo::extension_to_media_type( pathinfo( parse_url( $video->getURL(), PHP_URL_PATH ), PATHINFO_EXTENSION ) ) );
-		$video->setWidth( 500 );
-		$video->setHeight( 400 );
-
-		$audio = new OpenGraphProtocolAudio();
-		$audio->setURL( 'http://example.com/audio.mp3' );
-		$audio->setSecureURL( 'https://example.com/audio.mp3' );
-		$audio->setType('audio/mpeg');
-		$ogp = new OpenGraphProtocol();
-		$ogp->setLocale( 'en_US' );
-		$ogp->setSiteName( 'Happy place' );
-		$ogp->setTitle( 'Hello world' );
-		$ogp->setDescription( 'We make the world happy.' );
-		$ogp->setType( 'website' );
-		$ogp->setURL( 'https://shofus.com' );
-		$ogp->setDeterminer( 'the' );
-		$ogp->addImage($image);
-		//$ogp->addAudio($audio);
-		$ogp->addVideo($video);
-		$data['ogp']=$ogp;
-		$article = new OpenGraphProtocolArticle();
-		$article->setPublishedTime( '2011-11-03T01:23:45Z' );
-		$article->setModifiedTime( new DateTime( 'now', new DateTimeZone( 'America/Los_Angeles' ) ) );
-		$article->setExpirationTime( '2011-12-31T23:59:59+00:00' );
-		$article->setSection( 'Front page' );
-		$article->addTag( 'weather' );
-		$article->addTag( 'football' );
-		$article->addAuthor( 'http://example.com/author.html' );
-		$data['article']=$article;
-		//echo '<pre>';print_r($data);exit;
-		$this->load->view('share',$data);
-		//echo '<pre>';print_r($ogp);exit;
+	public  function postleade(){
+		$user_details=$this->session->userdata('vuebin_user');
+		$post=$this->input->post();
+		$lead_data=array(
+		'i_id'=>isset($post['i_id'])?base64_decode($post['i_id']):'',
+		'course_name'=>isset($post['course_name'])?$post['course_name']:'',
+		'name'=>isset($post['name'])?$post['name']:'',
+		'location_name'=>isset($post['location_name'])?$post['location_name']:'',
+		'email_id'=>isset($post['email_id'])?$post['email_id']:'',
+		'contact_num'=>isset($post['contact_num'])?$post['contact_num']:'',
+		'created_at'=>date('Y-m-d H:i:s'),
+		'updated_at'=>date('Y-m-d H:i:s'),
+		'created_by'=>isset($user_details['cust_id'])?$post['cust_id']:'',
+		);
+		$save=$this->User_model->save_leads_data($lead_data);
+		if(count($save)>0){
+			redirect($this->agent->referrer());
+		}else{
+			redirect($this->agent->referrer());
+		}
+		//echo '<pre>';print_r($post);exit;
 	}
 	
 	

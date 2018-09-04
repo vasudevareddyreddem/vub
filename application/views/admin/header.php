@@ -307,6 +307,15 @@
 				  </a>
 				
 			</li>
+			<li class="treeview">
+				  <a href="<?php echo base_url('institute/leads'); ?>">
+					<i class="fa fa-files-o"></i>
+					<span>Leads List</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+			</li>
 		
 	  <?php }else if($details['role_id']==2){ ?>
 			<?php if(isset($details['completed'])&& $details['completed']==1){ ?>
@@ -346,6 +355,15 @@
 					</span>
 				  </a>
 				
+			</li>
+			<li class="treeview">
+				  <a href="<?php echo base_url('institute/leads'); ?>">
+					<i class="fa fa-files-o"></i>
+					<span>Leads List</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
 			</li>
 			<?php }else{ ?>
 				<li class="treeview">
