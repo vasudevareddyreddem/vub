@@ -297,7 +297,8 @@
 					</div>
 			<?php }else{ ?>
 			<div class="chat-div">
-				<div class="row" id="institue_pending_chats">
+				<div class="row" id="">
+				<span id="institue_pending_chats"></span>
 				</div>
 			</div>
 				<li class="page-scroll" style="padding-left:30px;margin-top:5px">

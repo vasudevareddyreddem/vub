@@ -13,7 +13,7 @@
         <!-- /.box-header -->
         <div class="box-body">
           <!-- Conversations are loaded here -->
-          <div class="direct-chat-messages">
+          <div class="direct-chat-messages" id="div1<?php echo $lis['cust_id']; ?>">
             <!-- Message. Default to the left -->
 			
 			<?php foreach($lis['messages'] as $list){ ?>
@@ -78,11 +78,23 @@
       </div>
       <!--/.direct-chat -->
     </div>
+	<script>
+	function scrollToBottom<?php echo $lis['cust_id']; ?>(id) {
+	var div = document.getElementById(id);
+	div.scrollTop = div.scrollHeight - div.clientHeight;
+	}
+	scrollToBottom('div1<?php echo $lis['cust_id']; ?>');
+	</script>
+	
 <?php } ?>
 	
 <?php } ?>
 
 <script>
+function institue_single_replay_msg(cust_id){
+	alert('hiiii');
+	
+}
 function close_institue_chat(id){
 	$('#institue_user_chat_id_'+id).hide();
 }
@@ -100,7 +112,6 @@ function sent_institue_replay_msg(cust_id){
 						$('#text_msg'+cust_id).val('');
 						$("#institue_user_chat_id_"+cust_id).empty();
 						$("#institue_user_chat_id_"+cust_id).append(data);
-						scrollToBottom('institue_user_chat_id_'+cust_id);
 					}
            });
 }
