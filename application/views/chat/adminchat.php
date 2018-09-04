@@ -1,7 +1,7 @@
- <!-- Conversations are loaded here -->
+
  <?php //echo '<pre>';print_r($msg_list);exit; ?>
  <?php if(isset($msg_list) && count($msg_list)>0){ ?>
-		<div  id="chatmessages" class="direct-chat-messages">
+		<div  id="div1" class="direct-chat-messages">
 		   <?php foreach($msg_list as $list){ ?>
 				 <?php if($list['type']=='Replay'){ ?>
 							<!-- Message. Default to the left -->
@@ -49,4 +49,10 @@
 		  
  
  <?php } ?>
+ 
+ <script>
+ $('#div1');
+d.scrollTop(d.prop("scrollHeight"));
+ window.scrollTo(0,document.querySelector(".scrollingContainer").scrollHeight)
+ </script>
 		  <?php exit; ?>

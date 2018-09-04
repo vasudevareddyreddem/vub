@@ -44,6 +44,8 @@ function send_msg(){
 						$('#text_msg').val('');
 						$("#chatmessages").empty();
 						$("#chatmessages").append(data);
+						var element = document.getElementById("chatmessages");
+						element.scrollTop = element.scrollHeight;
 						
    					}
            });
@@ -60,6 +62,10 @@ function send_msg(){
    					success:function(data){
 						$("#chatmessages").empty();
 						$("#chatmessages").append(data);
+						window.setInterval(function() {
+						var elem = document.getElementById('chatmessages');
+						elem.scrollTop = elem.scrollHeight;
+						}, 5000);
 						
    					}
            }); 
