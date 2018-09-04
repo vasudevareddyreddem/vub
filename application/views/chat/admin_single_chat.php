@@ -1,7 +1,6 @@
  <!-- Conversations are loaded here -->
  <?php //echo '<pre>';print_r($msg_list);exit; ?>
  <?php if(isset($msg_list) && count($msg_list)>0){ ?>
-		<div  id="div1" class="direct-chat-messages">
 		   <?php foreach($msg_list as $list){ ?>
 				 <?php if($list['type']=='Replay'){ ?>
 							<!-- Message. Default to the left -->
@@ -45,7 +44,7 @@
 				 <?php } ?>
           <!-- /.direct-chat-pane -->
  <?php } ?>
-          </div>
+          
 		  
  
  <?php } ?>

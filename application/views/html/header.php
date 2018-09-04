@@ -177,7 +177,7 @@
 		  </div>
   <!-- Full Width Column -->
  <!-- share -->
- <div class="modal fade" id="pop-modal" role="dialog">
+<div class="modal fade" id="pop-modal" role="dialog">
     <div class="modal-dialog  ">
     <div class="modal-content ">
             <div class="modal-header bg-primary text-center">
@@ -232,71 +232,6 @@
       
     </div>
   </div>
-  
-</div>
-
-<script>
-$(document).ready(function(){
-   $("#pop-modal").modal();
-});
-</script>
- 
- 
- 
- <div class="modal-on-middle"  style="display:none" >
-    <div class="modal-dialog modal-smll" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-center">
-				</span></button>
-                <h4 class="modal-title" id="myModalLabel">Please submit this form to get calls from Training Institutes
-</h4>
-                
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <form action="#">
-                        <div class="form-group col-md-12">
-							<div class="form-group">
-								<label class=" control-label">Course Name*</label>
-								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Course Name" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class=" control-label">Name*</label>
-								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Name" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class=" control-label">Location, City*</label>
-								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Location, City" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class=" control-label">Email Id*</label>
-								<div class="">
-									<input type="email" class="form-control" name="username" placeholder="Enter Email Id" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class=" control-label">Contact Number *</label>
-								<div class="">
-									<input type="text" class="form-control" name="username" placeholder="Enter Contact Number" />
-								</div>
-							</div>
-						</div> 
-					
-                     <div class="form-group col-md-12">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
  <div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 
     	  <div class="modal-dialog">
@@ -376,7 +311,11 @@ $(document).ready(function(){
 		<?php } ?>
 	</div>
  <!-- share -->
-
+  <script>
+$(document).ready(function(){
+   $("#pop-modal").modal();
+});
+</script>
 <script  type="text/javascript">
 $( function() {
     var raw = [

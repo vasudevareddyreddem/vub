@@ -45,8 +45,9 @@ public  function sent_admin_replay_msg(){
 		}else{
 			$data['msg_list']=$this->Chat_model->admin_get_indivusal_messages_list($post['cust_id']);
 		}
+		//echo '<pre>';print_r($data);exit;
 		$this->load->view('chat/admin_single_chat',$data);
-	//echo '<pre>';print_r($adminmsg_data);exit;
+	
 
 }	
 /* admin side  replay messages */	
