@@ -35,7 +35,10 @@
 <!-- Bootstrap WYSIHTML5 -->
 
 <script>
- 
+ function scrollToBottom(id) {
+	var div = document.getElementById(id);
+	div.scrollTop = div.scrollHeight - div.clientHeight;
+	}
 function sent_replay_msg(cust_id){
 	var msg=$('#text_msg'+cust_id).val();
 	jQuery.ajax({
@@ -50,7 +53,7 @@ function sent_replay_msg(cust_id){
 						$('#text_msg'+cust_id).val('');
 						$("#div1"+cust_id).empty();
 						$("#div1"+cust_id).append(data);
-						scrollToBottom('admin_replay_'+cust_id);
+						scrollToBottom('div1'+cust_id);
 						
    					}
            });
