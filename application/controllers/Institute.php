@@ -736,6 +736,25 @@ class Institute extends Admin_panel {
 			redirect('admin');
 		}
 	}
+	public  function leads(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$login_details=$this->session->userdata('vuebin_user');
+			if($login_details['role_id']==1){
+				$data['leads_list_list']=$this->Institute_model->get_users_list();
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('admin/leads_list',$data);
+				$this->load->view('admin/footer');
+				//echo '<pre>';print_r($data);exit;
+			}else{
+				$this->session->set_flashdata('error',"you don't have permission to access");
+				redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
 	/* subscribeers functionality*/
 	
 	
