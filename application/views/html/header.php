@@ -222,7 +222,8 @@
 							</div>
 							<!-- /.box-header -->
 							 <div class="chat-container">
-							<div class="box-body" id="chatmessages">
+							<div class="box-body" id="">
+							<span id="chatmessages"></span>
 							</div>
 							</div>
 							<!-- /.box-body -->
