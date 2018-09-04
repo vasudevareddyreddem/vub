@@ -177,7 +177,7 @@
 		  </div>
   <!-- Full Width Column -->
  <!-- share -->
-<div class="modal fade" id="pop-modal" role="dialog">
+<div class="modal fade" id="pop-modal" role="dialog" >
     <div class="modal-dialog  ">
     <div class="modal-content ">
             <div class="modal-header bg-primary text-center">
@@ -310,12 +310,12 @@
 			</li>
 		<?php } ?>
 	</div>
- <!-- share -->
+ <!--  
   <script>
 $(document).ready(function(){
    $("#pop-modal").modal();
 });
-</script>
+</script>-->
 <script  type="text/javascript">
 $( function() {
     var raw = [
