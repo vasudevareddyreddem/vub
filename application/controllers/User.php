@@ -188,6 +188,18 @@ class User extends Front_end {
 		);
 		$save=$this->User_model->save_leads_data($lead_data);
 		if(count($save)>0){
+			if(isset($post['i_id']) && $post['i_id']!=''){
+				$institue_lead = array('name' => 'institue_lead', 'value' => 1,'expire' => time()+86500 ,'path'   => '/');
+				$this->input->set_cookie($institue_lead);
+				$this->load->helper('cookie');
+				$this->input->cookie('institue_lead', TRUE);
+			}else{
+				$admin_lead = array('name' => 'admin_lead', 'value' => 1,'expire' => time()+86500 ,'path'   => '/');
+				$this->input->set_cookie($admin_lead);
+				$this->load->helper('cookie');
+				$this->input->cookie('admin_lead', TRUE);
+			}
+			
 			redirect($this->agent->referrer());
 		}else{
 			redirect($this->agent->referrer());

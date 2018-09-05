@@ -177,6 +177,8 @@
 		  </div>
   <!-- Full Width Column -->
  <!-- share -->
+ 
+ 
 <div class="modal fade" id="pop-modal" role="dialog" >
     <div class="modal-dialog  ">
     <div class="modal-content ">
@@ -201,25 +203,25 @@
 							<div class="form-group">
 								<label class=" control-label">Name*</label>
 								<div class="">
-									<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" />
+									<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class=" control-label">Location, City*</label>
 								<div class="">
-									<input type="text" class="form-control" name="location_name" name="location_name" placeholder="Enter Location, City" />
+									<input type="text" class="form-control" name="location_name" name="location_name" placeholder="Enter Location, City" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class=" control-label">Email Id*</label>
 								<div class="">
-									<input type="email" class="form-control" name="email_id" id="email_id" placeholder="Enter Email Id" />
+									<input type="email" class="form-control" name="email_id" id="email_id" placeholder="Enter Email Id" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class=" control-label">Contact Number *</label>
 								<div class="">
-									<input type="text" class="form-control" name="contact_num" id="contact_num" placeholder="Enter Contact Number" />
+									<input type="text" class="form-control" name="contact_num" id="contact_num" placeholder="Enter Contact Number" required>
 								</div>
 							</div>
 						</div> 
@@ -313,12 +315,10 @@
 			</li>
 		<?php } ?>
 	</div>
-  
-  <script>
-$(document).ready(function(){
-   $("#pop-modal").modal();
-});
-</script>
+  <?php //if($this->input->cookie('institue_lead')==''){ ?>
+		  <script>$(document).ready(function(){   $("#pop-modal").modal();});</script>
+ <?php //} ?>
+
 <script  type="text/javascript">
 $( function() {
     var raw = [

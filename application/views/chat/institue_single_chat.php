@@ -1,17 +1,5 @@
- <!-- Conversations are loaded here -->
- <?php //echo '<pre>';print_r($msg_list);exit; ?>
-        <div class="box-header with-border">
-          <h3 class="box-title"><?php echo isset($msg_list[0]['name'])?$msg_list[0]['name']:'' ;?>&nbsp;Direct Chat</h3>
-		 <a href="javascript:void(0);" onclick="close_institue_chat('<?php echo isset($msg_list[0]['cust_id'])?$msg_list[0]['cust_id']:''; ?>');"> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
-    
-          
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <!-- Conversations are loaded here -->
-          <div class="direct-chat-messages">
+
  <?php if(isset($msg_list) && count($msg_list)>0){ ?>
-		<div  id="chatmessages" class="direct-chat-messages">
 		   <?php foreach($msg_list as $list){ ?>
 				 <?php if($list['type']=='Replay'){ ?>
 							<!-- Message. Default to the left -->
@@ -55,20 +43,8 @@
 				 <?php } ?>
           <!-- /.direct-chat-pane -->
  <?php } ?>
-          </div>
-		   </div>
-   </div>
-		  <div class="box-footer">
-          <form>
-            <div class="input-group">
-				<input type="text" id="text_msg<?php echo $msg_list[0]['cust_id']; ?>" name="text_msg" placeholder="Type Message ..." class="form-control">
-				<span class="input-group-btn">
-				<button type="button" onclick="sent_institue_replay_msg(<?php echo $msg_list[0]['cust_id']; ?>);" class="btn btn-primary btn-flat">Send</button>
-				</span>
-            </div>
-          </form>
-        </div>
- 
+         
+		   
    
      
  <?php } ?>

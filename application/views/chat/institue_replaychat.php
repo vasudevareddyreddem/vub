@@ -1,11 +1,14 @@
-
+<style>
+.chat-div {
+width: 100%;}
+</style>
 <?php if(isset($msg_list) && count($msg_list)>0){ ?>
 <?php foreach($msg_list as $lis){ ?>
-<div  style="" class="chat-box col-md-3 col-md-offset-3">
+<div  style="" class="chat-box col-md-3 pull-right">
       <!-- DIRECT CHAT PRIMARY -->
       <div id="institue_user_chat_id_<?php echo $lis['cust_id']; ?>" class="box box-primary direct-chat direct-chat-primary">
         <div class="box-header with-border">
-          <h3 class="box-title"><?php echo isset($lis['name'])?$lis['name']:'' ;?>&nbsp;Direct Chat</h3>
+          <h3 class="box-title"><?php echo isset($lis['name'])?$lis['name']:'' ;?></h3>
 		 <a href="javascript:void(0);" onclick="close_institue_chat('<?php echo $lis['cust_id']; ?>');"> <i class="fa fa-times-circle pull-right btn-chat-box" aria-hidden="true"></i></a>
     
           
@@ -79,9 +82,11 @@
       <!--/.direct-chat -->
     </div>
 	<script>
+	
 	function scrollToBottom<?php echo $lis['cust_id']; ?>(id) {
-	var div = document.getElementById(id);
-	div.scrollTop = div.scrollHeight - div.clientHeight;
+		
+		var div = document.getElementById(id);
+		div.scrollTop = div.scrollHeight - div.clientHeight;
 	}
 	scrollToBottom('div1<?php echo $lis['cust_id']; ?>');
 	</script>
@@ -91,10 +96,11 @@
 <?php } ?>
 
 <script>
-function institue_single_replay_msg(cust_id){
-	alert('hiiii');
-	
+function scrollToBottom(id) {
+		var div = document.getElementById(id);
+		div.scrollTop = div.scrollHeight - div.clientHeight;
 }
+
 function close_institue_chat(id){
 	$('#institue_user_chat_id_'+id).hide();
 }
@@ -110,8 +116,9 @@ function sent_institue_replay_msg(cust_id){
    			format:"html",
    					success:function(data){
 						$('#text_msg'+cust_id).val('');
-						$("#institue_user_chat_id_"+cust_id).empty();
-						$("#institue_user_chat_id_"+cust_id).append(data);
+						$("#div1"+cust_id).empty();
+						$("#div1"+cust_id).append(data);
+						scrollToBottom("div1"+cust_id);
 					}
            });
 }
