@@ -189,15 +189,15 @@
                 
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <form action="<?php echo base_url('user/postleade');?>" method="post">
+                <div class="row" id="lead_data">
+                    <form onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post">
 					<input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>">
 					<input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                         <div class="form-group col-md-12">
 							<div class="form-group">
 								<label class=" control-label">Course Name*</label>
 								<div class="">
-									<input type="text" class="form-control" name="course_name" id="course_name" placeholder="Enter Course Name" />
+									<input type="text" class="form-control" name="course_name" id="course_name" placeholder="Enter Course Name" required>
 								</div>
 							</div>
 							<div class="form-group">
@@ -227,10 +227,28 @@
 						</div> 
 					
                      <div class="form-group col-md-12">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
+                        <input type="submit"  class="btn btn-primary btn-lg btn-block" value="Submit">
                     </div>
                     </form>
                 </div>
+				 <div class="row" id="lead_num_otp" style="display:none;">
+				 <div id="EmptyforError"></div>
+					<div class="form-group col-md-12">
+						<input  type="hidden" name="lead_id" id="lead_id" value="">
+						<div class="form-group">
+							<label class=" control-label">Verification Code</label>
+								<input type="text" class="form-control" name="verification_code" id="verification_code" placeholder="Mobile  Verification Code" required>
+							<div class="">
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<input type="button" onclick="submit_otp_verification();" class="btn btn-primary btn-lg btn-block" value="Verify">
+						</div>
+						<div class="form-group col-md-6">
+							<input type="button" onclick="otp_resent();" class="btn btn-primary btn-lg btn-block" value="Resend">
+						</div>
+					</div>
+				 </div>
             </div>
         </div>
       
@@ -315,11 +333,100 @@
 			</li>
 		<?php } ?>
 	</div>
-  <?php //if($this->input->cookie('institue_lead')==''){ ?>
+	<?php //echo $this->input->cookie('admin_lead');exit; ?>
+  <?php if($this->input->cookie('admin_lead')==''){ ?>
 		  <script>$(document).ready(function(){   $("#pop-modal").modal();});</script>
- <?php //} ?>
-
+ <?php } ?>
+ 
 <script  type="text/javascript">
+function sent_lead(){
+	jQuery.ajax({
+		url: "<?php echo base_url('user/save_lead_information');?>",
+		data: {
+			l_id:'<?php echo $this->uri->segment(3); ?>',
+			course:$('#course_name').val(),
+			p_name:$('#name').val(),
+			email_id:$('#email_id').val(),
+			loc:$('#location_name').val(),
+			num:$('#contact_num').val(),
+		},
+		type: "POST",
+		format:"json",
+				success:function(data){
+					var parsedData = JSON.parse(data);
+					//alert(parsedData.msg);
+					if(parsedData.msg==1){
+						$('#lead_id').val(parsedData.lead_id);
+						$('#lead_data').hide();
+						$('#lead_num_otp').show();
+					}else{
+						$('#lead_id').val(parsedData.lead_id);
+						$('#lead_data').show();
+						$('#lead_num_otp').hide();
+					}
+				return false;
+				}
+	   });
+	return false;
+}
+function submit_otp_verification(){
+	var otp=$('#verification_code').val();
+	var lead_id=$('#lead_id').val();
+	jQuery.ajax({
+		url: "<?php echo base_url('user/mobile_num_verification');?>",
+		data: {
+			otp:otp,
+			lead_id:lead_id,
+		},
+		type: "POST",
+		format:"json",
+				success:function(data){
+					var parsedData = JSON.parse(data);
+					if(parsedData.msg==1){
+						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Mobile number successfully verified <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						location.reload();
+					}else if(parsedData.msg==0){
+						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_war"> Technical problem will occurred. Please try again <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						return false;
+					}else if(parsedData.msg==2){
+						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_war"> One Time Password is expired. Please try again <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						return false;		
+					}else if(parsedData.msg==3){
+						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_war"> Otp wrong. Please try again <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						return false;
+					}
+					
+				}
+	   });
+}
+function otp_resent(){
+	var lead_id=$('#lead_id').val();
+	if(lead_id !=''){
+		jQuery.ajax({
+			url: "<?php echo base_url('user/resent_verification_code');?>",
+			data: {
+				lead_id:lead_id,
+			},
+			type: "POST",
+			format:"json",
+					success:function(data){
+						var parsedData = JSON.parse(data);
+						//alert(parsedData.msg);
+						if(parsedData.msg==1){
+							$("#EmptyforError").html("Otp successfully sent. Check  your  register Mobile  number").css("color", "red").fadeIn().fadeOut(5000);
+							$("#EmptyforError").focus();
+						}else if(parsedData.msg==0){
+							$("#EmptyforError").html("Technical problem will occurred. Please try again").css("color", "red").fadeIn().fadeOut(5000);
+							$("#EmptyforError").focus();
+						}else if(parsedData.msg==2){
+							$("#EmptyforError").html("Technical problem will occurred. Please try again").css("color", "red").fadeIn().fadeOut(5000);
+						}
+						return false;
+					}
+		   });
+	   
+	}
+}
 $( function() {
     var raw = [
     <?php foreach($location_values as $a_lis){?>{value:'<?php echo $a_lis['l_id']; ?>',label:'<?php echo $a_lis['address']; ?>'+'@<?php echo base_url('assets/flags/'.strtolower($a_lis['country_code']).'.png'); ?>',},<?php } ?>
@@ -369,7 +476,6 @@ $( function() {
 					$("#institue_pending_chats").empty();
 					$("#institue_pending_chats").append(data);
 					scrollToBottom('div1');
-					
 				}
 	   });
 }

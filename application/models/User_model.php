@@ -110,11 +110,20 @@ class User_model extends CI_Model
 		}
 		return $this->db->get()->row_array();
 	}
-
+	/*/ lead  purpose*/
 	public  function save_leads_data($data){
 		$this->db->insert('leads',$data);
 		return $this->db->insert_id();
-	}	
+	}
+	public  function get_leader_details($L_id){
+		$this->db->select('l_id,in_id,contact_num,otp_verification,otp_dateitm')->from('leads');
+		$this->db->where('l_id',$L_id);
+		return $this->db->get()->row_array();
+	}
+	public  function update_lead_resend_otp($l_id,$data){
+		$this->db->where('l_id',$l_id);
+		return $this->db->update('leads',$data);
+	}
 	
 
 }

@@ -1,4 +1,6 @@
-
+ <?php if($this->input->cookie('institue_lead')==''){ ?>
+		  <script>$(document).ready(function(){   $("#pop-modal").modal();});</script>
+ <?php } ?>
 <div class="content-wrapper">
 	<div class="body-start-page ">
 <!-- Main content -->
