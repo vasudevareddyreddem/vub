@@ -27,7 +27,8 @@
 <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/select2.full.min.js"></script>
    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/jquery-ui.css">
   <script src="<?php echo base_url(); ?>assets/vendor/front-end/js/jquery-ui.js"></script>
-</head>
+
+  </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
@@ -429,7 +430,9 @@ function otp_resent(){
 }
 $( function() {
     var raw = [
-    <?php foreach($location_values as $a_lis){?>{value:'<?php echo $a_lis['l_id']; ?>',label:'<?php echo $a_lis['address']; ?>'+'@<?php echo base_url('assets/flags/'.strtolower($a_lis['country_code']).'.png'); ?>',},<?php } ?>
+    <?php foreach($location_values as $a_lis){?>{
+		value:'<?php echo $a_lis['l_id']; ?>',
+		label:'<?php echo $a_lis['address']; ?>'+'@<?php echo base_url('assets/flags/'.strtolower($a_lis['country_code']).'.png'); ?>',},<?php } ?>
 		];
 		var source  = [ ];
 		var mapping = { };
@@ -448,12 +451,16 @@ $( function() {
  
  $( function() {
 	var homesearch = [
-		<?php foreach($search_values as $lis){ ?>{value:'<?php echo $lis['value']; ?>', label:'<?php echo $lis['label']; ?>',},	<?php } ?>
+		<?php foreach($search_values as $lis){ ?>{
+			value:'<?php echo $lis['value']; ?>', 
+			label:'<?php echo $lis['label']; ?>',},
+			<?php } ?>
 	];
 	var source  = [ ];
 	var mapping = { };
 	for(var i = 0; i < homesearch.length; ++i) {
 		source.push(homesearch[i].label);
+		//alert(homesearch[i].label);
 		mapping[homesearch[i].label] = homesearch[i].value;
 	}
 	$('.homemenu_id').autocomplete({

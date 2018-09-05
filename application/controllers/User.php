@@ -234,8 +234,8 @@ class User extends Front_end {
 				curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&password='.$pass.'&mobile='.$post['num'].'&message='.$msg.'&sender=vubein&type=3');
 				curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
 				//echo '<pre>';print_r($ch2);exit;
-				//$server_output = curl_exec ($ch2);
-				//curl_close ($ch2);
+				$server_output = curl_exec ($ch2);
+				curl_close ($ch2);
 				$data['msg']=1;
 				$data['lead_id']=$save;
 				echo json_encode($data);exit;	
@@ -301,7 +301,7 @@ class User extends Front_end {
 							);
 							$update=$this->User_model->update_lead_resend_otp($post['lead_id'],$add);
 							if(count($update)>0){
-								if($lead_details['in_id']!=''){
+								if($lead_details['in_id']!='' && $lead_details['in_id']!=0){
 									$institue_lead = array('name' => 'institue_lead', 'value' => 1,'expire' => time()+86500 ,'path'   => '/');
 									$this->input->set_cookie($institue_lead);
 									$this->load->helper('cookie');
