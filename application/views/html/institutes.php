@@ -73,7 +73,7 @@
 							<div class="sidebar-recent bg-white">
 							<div class="bg-primary pad-10">
 								<span class="">
-								   <h3 class="text-white text-center">Latest Institites </h3>
+								   <h3 class="text-white text-center">Latest Institutes </h3>
 								</span>	
 							</div>	
 							 <div class="pad-20 list-style-none" >

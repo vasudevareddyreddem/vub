@@ -208,10 +208,10 @@ function video_like(v_id){
 						if(parsedData.msg=1){
 							$('#likes_count').empty();
 							$('#likes_count').append(parsedData.count);
-							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ"> Video successfully subscribed. <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ"> Video successfully liked. <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
 
 						}else if(parsedData.msg=2){
-							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Video already subscribed <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Video already liked <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
 
 						}else if(parsedData.msg=0){
 							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Technical problem will occurred. Please try again <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');

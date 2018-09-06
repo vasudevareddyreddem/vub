@@ -342,6 +342,7 @@ class Institute extends Admin_panel {
 				$add_user_data=array(
 				'role_id'=>2,
 				'source'=>'vueb',
+				'name'=>isset($post['i_contact_person'])?$post['i_contact_person']:'',
 				'email_id'=>isset($post['i_email_id'])?$post['i_email_id']:'',
 				'mobile'=>isset($post['i_p_phone'])?$post['i_p_phone']:'',
 				'status'=>1,

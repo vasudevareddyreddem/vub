@@ -52,10 +52,10 @@ class Search extends Front_end {
 				redirect($this->agent->referrer());
 			}
 		}else if(isset($post['local_id']) && $post['local_id']!=''){
-			$this->session->set_flashdata('error',"Must be select Institute Name or course Name");
+			$this->session->set_flashdata('error',"Must select institute name or course name");
 			redirect($this->agent->referrer());
 		}else{
-			$this->session->set_flashdata('error',"Must be select Institute Name or course Name");
+			$this->session->set_flashdata('error',"Must select institute name or course name");
 			redirect($this->agent->referrer());
 		}
 		//echo '<pre>';print_r($value);exit;

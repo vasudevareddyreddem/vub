@@ -137,6 +137,12 @@ class Video_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	
+	public  function getting_video_details($h_v_id){
+		$this->db->select('*')->from('homepage_header_videos');
+		$this->db->where('h_v_id',$h_v_id);
+		return $this->db->get()->row_array();
+	}
+	
 	
 
 }

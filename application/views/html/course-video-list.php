@@ -38,27 +38,27 @@
 										 <h4><a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id'])); ?>"  style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
 										 
 										 <h5><strong class="site-col-r">Institites:</strong> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h5> 
-										 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
+										 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>
 										 <span><?php echo isset($list['address'])?$list['address']:''; ?></span>
 										 </h5> 
-										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
+										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>
 										 <?php if($list['i_s_phone']!=''){ ?>
-										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>,
+										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
 										 <?php } ?>
 										 </h5>
-										 <h5><strong class="site-col-r">E-Mail ID:</strong> <span><?php echo isset($list['i_email_id'])?$list['i_email_id']:''; ?></span>,
+										 <h5><strong class="site-col-r">E-Mail ID:</strong> <span><?php echo isset($list['i_email_id'])?$list['i_email_id']:''; ?></span>
 										 
 										 </h5>
 										  <?php if($list['i_founder']!=''){ ?>
-										 <h5><strong class="site-col-r">Founder Name:</strong> <span><?php echo isset($list['i_founder'])?$list['i_founder']:''; ?></span>,
+										 <h5><strong class="site-col-r">Founder Name:</strong> <span><?php echo isset($list['i_founder'])?$list['i_founder']:''; ?></span>
 										 
 										 </h5>
 										  <?php } ?>
 										  <?php if($list['t_name']!=''){ ?>
-										 <h5><strong class="site-col-r">Trainer Name:</strong> <span><?php echo isset($list['t_name'])?$list['t_name']:''; ?></span>,
+										 <h5><strong class="site-col-r">Trainer Name:</strong> <span><?php echo isset($list['t_name'])?$list['t_name']:''; ?></span>
 										 <?php } ?>
 										 <?php if($list['training_mode']!=''){ ?>
-										 <h5><strong class="site-col-r">Training Mode:</strong> <span><?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></span>,
+										 <h5><strong class="site-col-r">Training Mode:</strong> <span><?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></span>
 										 </h5>
 										  <?php } ?>
 										 

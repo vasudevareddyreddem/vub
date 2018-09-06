@@ -323,6 +323,25 @@ class Video extends Admin_panel {
 			redirect('admin');
 		}
 	}
+	public function homepagevideoedit()
+	{	
+		if($this->session->userdata('vuebin_user'))
+		{
+			$login_details=$this->session->userdata('vuebin_user');
+			if($login_details['role_id']==1){
+				$v_id=base64_decode($this->uri->segment(3));
+				$data['details']=$this->Video_model->getting_video_details($v_id);
+				$this->load->view('video/homevideo_edit',$data);
+				$this->load->view('admin/footer');
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
 	public  function addhomepagevideopost(){
 		if($this->session->userdata('vuebin_user'))
 			{
@@ -367,6 +386,52 @@ class Video extends Admin_panel {
 			}	
 		
 	}
+	public  function homepagevideoeditpost(){
+		if($this->session->userdata('vuebin_user'))
+			{
+				$login_details=$this->session->userdata('vuebin_user');
+				if($login_details['role_id']==1){
+					$post=$this->input->post();
+					//echo '<pre>';print_r($post);exit;
+					$details=$this->Video_model->getting_video_details($post['h_vi_id']);
+					if(isset($_FILES['video_file']['name']) && $_FILES['video_file']['name']!=''){
+						unlink('assets/homepage_videos/'.$details['video_name']);
+						$pic=$_FILES['video_file']['name'];
+						$picname = str_replace(" ", "", $pic);
+						$imagename=microtime().basename($picname);
+						$imgname = str_replace(" ", "", $imagename);
+						move_uploaded_file($_FILES['video_file']['tmp_name'], 'assets/homepage_videos/'.$imgname);
+					}else{
+						$imgname=$details['video_name'];
+						$pic=$details['org_video_name'];					
+					}
+					$update_data=array(
+					'title'=>isset($post['title'])?$post['title']:'',
+					'org_video_name'=>isset($pic)?$pic:'',
+					'video_name'=>isset($imgname)?$imgname:'',
+					'status'=>0,
+					'updated_at'=>date('Y-m-d H:i:s'),
+					);
+					$update=$this->Video_model->update_homepagevideo_details($post['h_vi_id'],$update_data);
+					if(count($update)>0){
+						$this->session->set_flashdata('success','Video details successfully updated');
+						redirect('video/homevideolists');
+					}else{
+						$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+						redirect('video/homepagevideoedit/'.base64_encode($post['h_vi_id']));
+					}
+					//echo '<pre>';print_r($post);exit;
+					
+				}else{
+						$this->session->set_flashdata('error',"you don't have permission to access");
+						redirect('dashboard');
+				}
+			}else{
+				$this->session->set_flashdata('error',"you don't have permission to access");
+				redirect('admin');
+			}	
+		
+	}
 	public  function homevideolists(){
 		if($this->session->userdata('vuebin_user'))
 		{
@@ -398,7 +463,7 @@ class Video extends Admin_panel {
 			}else{
 				$check=$this->Video_model->get_active_homepage_videos();
 				if(count($check)>0){
-					$this->session->set_flashdata('error',"Already one  homepage Video is  active. at atime only one video is active");
+					$this->session->set_flashdata('error',"Already one  homepage Video is  active. at atime only one video must be active");
 					redirect('video/homevideolists');
 				}
 				$stat=1;
