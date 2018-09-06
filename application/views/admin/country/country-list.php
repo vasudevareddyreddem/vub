@@ -27,7 +27,7 @@
                   <th style="display:none;" ></th>
                   <th>Country Name</th>
                   <th>Country Code</th>
-                  <th>City count</th>
+                  <th>City Count</th>
                   <th>Add City</th>
                   <th>Created Date</th>
                   <th>Status</th>

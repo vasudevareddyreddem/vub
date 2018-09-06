@@ -59,7 +59,7 @@ class Location extends Admin_panel {
 				);
 				$save_location=$this->Location_model->save_location($add);
 				if(count($save_location)>0){
-					$this->session->set_flashdata('success','Location successfully Added');
+					$this->session->set_flashdata('success','Location successfully added');
 					redirect('location/index/'.base64_encode($post['city_id']).'/'.$post['country_id']);
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");

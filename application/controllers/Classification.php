@@ -95,7 +95,7 @@ class Classification extends Admin_panel {
 				);
 				$save=$this->Classification_model->save_classification($add);
 				if(count($save)>0){
-					$this->session->set_flashdata('success','Classification successfully Added');
+					$this->session->set_flashdata('success','Classification successfully added');
 					redirect('classification/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
@@ -135,7 +135,7 @@ class Classification extends Admin_panel {
 				);
 				$update=$this->Classification_model->update_classification_details($post['c_id'],$update_data);
 				if(count($update)>0){
-					$this->session->set_flashdata('success','Classification successfully details Updated');
+					$this->session->set_flashdata('success','Classification details successfully updated');
 					redirect('classification/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");

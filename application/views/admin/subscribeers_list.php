@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Subscribeers List
+        Subscribers List
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Subscribeers List</li>
+        <li class="active">Subscribers List</li>
       </ol>
     </section>
 
@@ -18,7 +18,7 @@
         <div class="col-xs-12">
 		<div class="box">
             <div class="box-header">
-              <h3 class="box-title">Subscribeers List</h3>
+              <h3 class="box-title">Subscribers List</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -59,9 +59,10 @@
                 <tfoot>
                 <tr>
 				  <th style="display:none;" ></th>
-                  <?php if(isset($user_details['role_id']) && $user_details['role_id']!=2){ ?>
+				  <?php if(isset($user_details['role_id']) && $user_details['role_id']!=2){ ?>
                   <th>Institute Name</th>
 				  <?php } ?>
+                  <th>Video Title</th>
                   <th>Email Id</th>
                   <th>Mobile Number</th>
                   <th>Name</th>

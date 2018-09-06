@@ -77,7 +77,7 @@
 						  <div class="form-group">
                             <div class="col-lg-4 col-lg-offset-6">
 							
-                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">update</button>
+                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Update</button>
 								
                                 
                             </div>

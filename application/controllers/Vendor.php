@@ -103,7 +103,7 @@ class Vendor extends Admin_panel {
 				);
 				$save=$this->Vendor_model->save_vendor($add);
 				if(count($save)>0){
-					$this->session->set_flashdata('success','vendor successfully Added');
+					$this->session->set_flashdata('success','Vendor successfully added');
 					redirect('vendor/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
@@ -154,7 +154,7 @@ class Vendor extends Admin_panel {
 				);
 				$update=$this->Vendor_model->update_vendor_details($post['v_id'],$update_data);
 				if(count($update)>0){
-					$this->session->set_flashdata('success','vendor successfully details Updated');
+					$this->session->set_flashdata('success','Vendor details successfully updated');
 					redirect('vendor/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
@@ -192,9 +192,9 @@ class Vendor extends Admin_panel {
 				$update=$this->Vendor_model->update_vendor_details($v_id,$update_data);
 						if(count($update)>0){
 							if($status==1){
-							$this->session->set_flashdata('success',"vendor successfully deactivated");
+							$this->session->set_flashdata('success',"Vendor successfully deactivated");
 							}else{
-							$this->session->set_flashdata('success',"vendor successfully activated");
+							$this->session->set_flashdata('success',"Vendor successfully activated");
 							}
 							redirect('vendor/lists');
 							
@@ -227,8 +227,7 @@ class Vendor extends Admin_panel {
 						if(count($update)>0){
 							$details=$this->Vendor_model->get_vendor_details($v_id);
 							unlink('assets/vendor_img/'.$details['img']);
-							$this->session->set_flashdata('success',"vendor successfully deleted");
-
+							$this->session->set_flashdata('success',"Vendor successfully deleted");
 							redirect('vendor/lists');
 							
 						}else{

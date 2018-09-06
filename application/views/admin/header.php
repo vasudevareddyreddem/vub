@@ -63,7 +63,7 @@
          
          
           <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
+          <!--<li class="dropdown tasks-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"></i>
               <span class="label label-danger">9</span>
@@ -71,9 +71,8 @@
             <ul class="dropdown-menu">
               <li class="header">You have 9 tasks</li>
               <li>
-                <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li><!-- Task item -->
+                  <li>
                     <a href="#">
                       <h3>
                         Design some buttons
@@ -86,14 +85,13 @@
                       </div>
                     </a>
                   </li>
-                  <!-- end task item -->
                 </ul>
               </li>
               <li class="footer">
                 <a href="#">View all tasks</a>
               </li>
             </ul>
-          </li>
+          </li>-->
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -186,7 +184,7 @@
 		  <li class="treeview">
 			  <a href="#">
 				<i class="fa fa-files-o"></i>
-				<span>Home page Video</span>
+				<span>Home Page Video</span>
 				<span class="pull-right-container">
 				  <span class="label label-primary pull-right"></span>
 				</span>
@@ -300,7 +298,7 @@
 			<li class="treeview">
 				  <a href="<?php echo base_url('institute/userlists'); ?>">
 					<i class="fa fa-files-o"></i>
-					<span>User's List</span>
+					<span>Users List</span>
 					<span class="pull-right-container">
 					  <span class="label label-primary pull-right"></span>
 					</span>

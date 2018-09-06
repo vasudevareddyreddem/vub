@@ -33,7 +33,7 @@
                   <th>Contact Person</th>
                   <th>Location</th>
                   <th>Address</th>
-                  <th>Created at</th>
+                  <th>Created On</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -71,13 +71,14 @@
                 <tfoot>
                 <tr>
 				 <th style="display:none;" ></th>
-                 <th>Institute Name</th>
+                  <th>Institute Name</th>
                   <th>Institute Logo</th>
                   <th>Email Id</th>
                   <th>Mobile Number</th>
                   <th>Contact Person</th>
                   <th>Location</th>
                   <th>Address</th>
+                  <th>Created On</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>

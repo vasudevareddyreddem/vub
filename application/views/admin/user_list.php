@@ -30,7 +30,7 @@
 					<th>Name</th>
 					<th>Email Id</th>
 					<th>Mobile Number</th>
-					<th>Created at</th>
+					<th>Created On</th>
                 </tr>
                 </thead>
 				<?php if(isset($user_list) && count($user_list)>0){ ?>
@@ -57,7 +57,7 @@
 					<th>Name</th>
 					<th>Email Id</th>
 					<th>Mobile Number</th>
-					<th>Created at</th>
+					<th>Created On</th>
                 </tr>
                 </tfoot>
               </table>

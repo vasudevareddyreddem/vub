@@ -33,7 +33,7 @@
                 <thead>
                 <tr>
                   <th style="display:none;" ></th>
-                  <th>city Name</th>
+                  <th>City Name</th>
                   <th>Country Name</th>
                   <th>Location Count</th>
                   <th>Add Location</th>

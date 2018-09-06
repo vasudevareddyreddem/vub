@@ -47,7 +47,7 @@ class Country extends Admin_panel {
 				);
 				$save_country=$this->Country_model->save_country($add);
 				if(count($save_country)>0){
-					$this->session->set_flashdata('success','Country successfully Added');
+					$this->session->set_flashdata('success','Country successfully added');
 					redirect('country/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");

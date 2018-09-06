@@ -410,9 +410,9 @@ class Video extends Admin_panel {
 					$update=$this->Video_model->update_homepagevideo_details($v_id,$update_data);
 						if(count($update)>0){
 							if($status==1){
-							$this->session->set_flashdata('success',"Video successfully Deactivate");
+							$this->session->set_flashdata('success',"video successfully deactivated");
 							}else{
-							$this->session->set_flashdata('success',"Video successfully activate");
+							$this->session->set_flashdata('success',"video successfully activated");
 							}
 							redirect('video/homevideolists');
 							

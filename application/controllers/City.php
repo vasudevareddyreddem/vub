@@ -58,7 +58,7 @@ class City extends Admin_panel {
 				);
 				$save_city=$this->city_model->save_city($add);
 				if(count($save_city)>0){
-					$this->session->set_flashdata('success','city successfully Added');
+					$this->session->set_flashdata('success','City successfully added');
 					redirect('city/index/'.base64_encode($post['country_id']));
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");

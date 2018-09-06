@@ -92,7 +92,7 @@ class Publish extends Admin_panel {
 				);
 				$update=$this->Publish_model->update_course_details($post['c_name'],$update_data);
 				if(count($update)>0){
-					$this->session->set_flashdata('success','Course successfully Published');
+					$this->session->set_flashdata('success','Course successfully published');
 					redirect('publish/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
@@ -128,7 +128,7 @@ class Publish extends Admin_panel {
 				$update=$this->Publish_model->update_course_details($post['c_name'],$update_data);
 
 				if(count($update)>0){
-					$this->session->set_flashdata('success','Course published details successfully updated');
+					$this->session->set_flashdata('success','Published Course details successfully updated');
 					redirect('publish/lists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");

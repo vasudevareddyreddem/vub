@@ -67,11 +67,11 @@
              city_name: {
                 validators: {
 					notEmpty: {
-						message: 'State Name is required'
+						message: 'City Name is required'
 					},
 					regexp: {
 					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message:'Country Name wont allow <> [] = % '
+					message:'City Name wont allow <> [] = % '
 					}
 				}
             }

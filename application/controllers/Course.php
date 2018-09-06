@@ -283,7 +283,7 @@ class Course extends Admin_panel {
 				);
 				$save=$this->Course_model->save_course_type($add);
 				if(count($save)>0){
-					$this->session->set_flashdata('success','Course type successfully Added');
+					$this->session->set_flashdata('success','Course type successfully added');
 					redirect('course/typelists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
@@ -323,7 +323,7 @@ class Course extends Admin_panel {
 				);
 				$update=$this->Course_model->update_course_type_details($post['c_t_l'],$update_data);
 				if(count($update)>0){
-					$this->session->set_flashdata('success','Course type successfully details Updated');
+					$this->session->set_flashdata('success','Course Type details successfully updated');
 					redirect('course/typelists');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");

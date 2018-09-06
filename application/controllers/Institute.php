@@ -131,7 +131,7 @@ class Institute extends Admin_panel {
 				);
 				$save=$this->Institute_model->save_institute($add);
 				if(count($save)>0){
-					$this->session->set_flashdata('success','Institute successfully Added');
+					$this->session->set_flashdata('success','Institute successfully added');
 					redirect('institute/details');
 				}else{
 					$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
@@ -484,9 +484,9 @@ class Institute extends Admin_panel {
 							);
 							$this->Institute_model->update_user_login_details($institue_login_details['created_by'],$login_data);
 							if($status==1){
-							$this->session->set_flashdata('success',"institute successfully deactivated");
+							$this->session->set_flashdata('success',"Institute successfully deactivated");
 							}else{
-							$this->session->set_flashdata('success',"institute successfully activated");
+							$this->session->set_flashdata('success',"Institute successfully activated");
 							}
 							redirect('institute/admin_lists');
 							

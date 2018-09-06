@@ -6137,9 +6137,9 @@ $.widget( "ui.autocomplete", {
 	},
 
 	_renderItem: function( ul, item ) {
-		// return $( "<li>" ).append( $( "<div>" ).text( item.label ) ).appendTo( ul );
+		return $( "<li>" ).append( $( "<div>" ).text( item.label ) ).appendTo( ul );
 		//console.log(item.label.split("@",2)[1]);
-		return $( "<li>" ).append( $( "<div>" ).append("<span> "+(item.label).split("@",1)+"</span>").append('&nbsp;<img id="theImg" src="'+(item.label).split("@",2)[1]+'"/>')).appendTo( ul );
+		//return $( "<li>" ).append( $( "<div>" ).append("<span> "+(item.label).split("@",1)+"</span>").append('&nbsp;<img id="theImg" src="'+(item.label).split("@",2)[1]+'"/>')).appendTo( ul );
 		// return $( "<li>" ).append( $( "<div>" ).append('<img id="theImg" src="'+item.label.split("@",2)+'"/>').append("<span> '"+item.label.split("@",1)+"'	</span>")).appendTo( ul );
 	},
 

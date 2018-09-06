@@ -98,10 +98,10 @@ function admindedelete(id){
 }
 function adminstatus(id){
 	if(id==1){
-			$('#content1').html('Are you sure you want to Unpublished?');
+			$('#content1').html('Are you sure you want to Unpublish?');
 		
 	}if(id==0){
-			$('#content1').html('Are you sure you want to Published?');
+			$('#content1').html('Are you sure you want to Publish?');
 	}
 }
 function admindedeletemsg(id){

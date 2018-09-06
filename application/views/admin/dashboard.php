@@ -22,7 +22,7 @@
             <div class="inner">
               <h3><?php echo isset($total_institues['count'])?$total_institues['count']:''; ?></h3>
 
-              <p>Total Institues</p>
+              <p>Total Institutes</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -37,7 +37,7 @@
             <div class="inner">
               <h3><?php echo isset($total_video['count'])?$total_video['count']:''; ?></h3>
 
-              <p>Total Video's</p>
+              <p>Total Videos</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -52,7 +52,7 @@
             <div class="inner">
               <h3><?php echo isset($total_user['count'])?$total_user['count']:''; ?></h3>
 
-              <p>Total User's</p>
+              <p>Total Users</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
