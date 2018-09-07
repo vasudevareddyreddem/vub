@@ -288,17 +288,12 @@
                 }
             }
             $(function() {
-                $(".location_search").autocomplete({
-                    source: [<?php foreach($location_values as $a_lis){?> {
-                        id: '<?php echo $a_lis['
-                        l_id ']; ?>',
-                        value: '<?php echo $a_lis['
-                        address ']; ?>',
-                        label: '<?php echo $a_lis['
-                        address ']; ?>',
-                        img: '<?php echo base_url('
-                        assets / flags / '.strtolower($a_lis['
-                        country_code ']).'.png '); ?>',
+				$(".location_search").autocomplete({
+                    source: [<?php foreach($location_values as $li){?> {
+                        id: '<?php echo $li['l_id']; ?>',
+                        value: '<?php echo $li['address']; ?>',
+                        label: '<?php echo $li['address']; ?>',
+                        img: '<?php echo base_url('assets/flags/'.strtolower($li['country_code']).'.png '); ?>',
                     }, <?php } ?>],
                     minLength: 1,
                     select: function(event, ui) {
@@ -314,10 +309,8 @@
             });
             $(function() {
                 var homesearch = [<?php foreach($search_values as $lis){ ?> {
-                    value: '<?php echo $lis['
-                    value ']; ?>',
-                    label: '<?php echo $lis['
-                    label ']; ?>',
+                    value: '<?php echo $lis['value']; ?>',
+                    label: '<?php echo $lis['label']; ?>',
                 }, <?php } ?>];
                 var source = [];
                 var mapping = {};

@@ -87,9 +87,12 @@ class Course_model extends CI_Model
 		$this->db->where('course_list.published',1);
 		$return=$this->db->get()->result_array();
 		foreach($return as $lis){
+			$course_list='';
 			$course_list=$this->classification_wise_course_list($lis['c_id']);
-			$data[$lis['c_id']]=$lis;
-			$data[$lis['c_id']]['course_list']=isset($course_list)?$course_list:'';
+			if(isset($course_list) && count($course_list)>0){
+				$data[$lis['c_id']]=$lis;
+				$data[$lis['c_id']]['course_list']=isset($course_list)?$course_list:'';
+			}
 		}
 		if(!empty($data)){
 			return $data;
@@ -97,26 +100,26 @@ class Course_model extends CI_Model
 	}
 	public  function classification_wise_course_list($c_id){
 		$this->db->select('course_list.course_id,course_list.c_name')->from('course_list');
-		$this->db->group_by('course_list.classification_id',$c_id);
+		$this->db->where('course_list.classification_id',$c_id);
+		$this->db->group_by('course_list.classification_id');
 		$this->db->where('course_list.status',1);
 		$return=$this->db->get()->result_array();
 		foreach($return as $li){
-			$videos_count=$this->course_wise_video_count($li['course_id']);
-			//echo '<pre>';print_r($videos_count);exit;
+			 $videos_count=$this->course_wise_video_count($li['course_id']);
+			 if(($videos_count['video_count'] )> 0){
 				$courses[$li['course_id']]=$li;
-				$courses[$li['course_id']]['video_count']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+				 $courses[$li['course_id']]['video_count']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+			 }
 		}
 		if(!empty($courses)){
 			return $courses;
 		}
-		
-		
 	}
 	public  function course_wise_video_count($course_id){
 		$this->db->select('COUNT(video_list.video_id) as video_count')->from('video_list');
 		$this->db->where('status ',1);
 		$this->db->where('course_name',$course_id);
-		$this->db->where('public ',1);
+		$this->db->where('public',1);
 		$this->db->order_by('video_count');
 		return $this->db->get()->row_array();
 	}
@@ -130,6 +133,7 @@ class Course_model extends CI_Model
 		$this->db->where('video_list.course_name',$course_id);
 		$this->db->order_by('video_list.video_id','asc');
 		$this->db->where('video_list.status',1);
+		$this->db->where('video_list.public',1);
 		$return=$this->db->get()->result_array();
 		
 		foreach($return as $list){

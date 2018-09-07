@@ -28,7 +28,7 @@
 					<th>Course Name</th>
 					<th>Course Type Name</th>
 					<th>Course Image</th>
-					<th>classification</th>
+					<th>Classification</th>
 					<th>Vendor</th>
 					<th>Created Date</th>
 					<th>Published</th>
@@ -69,7 +69,7 @@
 					<th>Course Name</th>
 					<th>Course Type Name</th>
 					<th>Course Image</th>
-					<th>classification</th>
+					<th>Classification</th>
 					<th>Vendor</th>
 					<th>Created Date</th>
 					<th>Published</th>
