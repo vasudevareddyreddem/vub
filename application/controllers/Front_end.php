@@ -31,7 +31,8 @@ class Front_end extends CI_Controller {
 			$permissions = ['email'];
 			$header['loginURL']=$helper->getLoginUrl($redirectURL, $permissions);
 		}
-		//echo '<pre>';print_r($header);exit;		
+		$header['active_url']=$this->uri->segment(1);
+		//echo '<pre>';print_r($header['active_url']);exit;		
 		$this->load->view('html/header',$header);
 	}
 }

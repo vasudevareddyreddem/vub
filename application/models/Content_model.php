@@ -13,7 +13,7 @@ class Content_model extends CI_Model
 		return $this->db->update('footer_content',$data);
 	}
 	public  function get_footer_content($id){
-		$this->db->select('c_id,footer')->from('footer_content');
+		$this->db->select('c_id,footer,mobile1,mobile2,email_id')->from('footer_content');
 		$this->db->where('c_id',$id);
 		return $this->db->get()->row_array();
 	}
@@ -44,6 +44,7 @@ class Content_model extends CI_Model
 		$this->db->where('t_id',$t_id);
 		return $this->db->get()->row_array();
 	}
+	
 	
 	
 	

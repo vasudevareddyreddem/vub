@@ -53,6 +53,9 @@ class Content extends Admin_panel {
 				$post=$this->input->post();
 				$add=array(
 				'footer'=>isset($post['footer_content'])?$post['footer_content']:'',
+				'mobile1'=>isset($post['mobile1'])?$post['mobile1']:'',
+				'mobile2'=>isset($post['mobile2'])?$post['mobile2']:'',
+				'email_id'=>isset($post['email_id'])?$post['email_id']:'',
 				'created_at'=>date('Y-m-d H:i:s'),
 				'updated_at'=>date('Y-m-d H:i:s'),
 				'created_by'=>$login_details['cust_id'],

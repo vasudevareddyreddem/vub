@@ -125,5 +125,18 @@ class User_model extends CI_Model
 		return $this->db->update('leads',$data);
 	}
 	
+	/* home page content */
+	public  function get_aboutus_content($a_id){
+		$this->db->select('a_id,aboutus,video_name,org_name')->from('aboutus_content');
+		$this->db->where('a_id',$a_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_testimonial_home_list(){
+		$this->db->select('author_name,testimonial,image_name,org_name')->from('testimonial');
+		$this->db->where('status',1);
+		return $this->db->get()->result_array();
+	}
+	/* home page content */
+	
 
 }

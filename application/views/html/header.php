@@ -47,8 +47,8 @@
                         <ul class="nav navbar-nav mar-l-40">
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                             <li class="hidden"> <a href="#page-top"></a> </li>
-                            <li class="page-scroll nav-li-active"> <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a> </li>
-                            <li class="page-scroll"> <a href="<?php echo base_url('courses'); ?>">COURSES</a> </li>
+                            <li class="page-scroll <?php if($active_url=='institutes'){ echo "nav-li-active"; } ?>"> <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a> </li>
+                            <li class="page-scroll <?php if($active_url=='courses'){ echo "nav-li-active"; } ?>"> <a href="<?php echo base_url('courses'); ?>">COURSES</a> </li>
                         </ul>
                     </div> <!-- /.navbar-collapse -->
                     <!-- Navbar Right Menu -->
@@ -304,7 +304,7 @@
                         $(".ui-autocomplete").css("z-index", 1000);
                     }
                 }).autocomplete("instance")._renderItem = function(ul, item) {
-                    return $("<li><div><img src='" + item.img + "'><span>" + item.value + "</span></div></li>").appendTo(ul);
+                    return $("<li><div><img style='width:25px;height:auto;margin-top:-5px;' src='" + item.img + "'><span>&nbsp;" + item.value + "</span></div></li>").appendTo(ul);
                 };
             });
             $(function() {
