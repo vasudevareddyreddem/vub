@@ -17,11 +17,11 @@
 								  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white no-padding">
 									 <div class=" ">
 										<div class="row ">
-											  <div class="col-md-3 col-xs-12 text-center " >
+											  <div class="col-md-3 col-xs-12 text-center " style="padding-top:20px;">
 											  <?php if($list['i_logo']!=''){ ?>
-													<img class="img-vertical-center img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="<?php echo isset($list['i_logo'])?$list['i_logo']:''; ?>">
+													<img class=" img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="<?php echo isset($list['i_logo'])?$list['i_logo']:''; ?>">
 												<?php }else{ ?>
-													<img class="img-vertical-center img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
+													<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
 												<?php } ?>
 										   </div>
 										   <div class=" col-md-7  bod-left">
