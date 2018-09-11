@@ -3,6 +3,9 @@
 	width:100%;
 	z-index:1024;
 }
+.fc_hover:hover{
+	color:#3059f1 !important;
+}
 .qucik-li li{
 	list-style-type:none;
 	margin:10px -33px;

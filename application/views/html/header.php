@@ -110,7 +110,7 @@
             <div class="modal-dialog">
                 <div class="loginmodal-container"> <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute;right:10px;top:10px;background:#aaa;padding:5px; border-radius:50%;width:40px;height:40px;"> <span aria-hidden="true">&times;</span></button>
                     <h1>Login with</h1><br>
-                    <div class=""> <a href="<?php echo isset($loginURL)?$loginURL:''; ?>" type="button" class="btn btn-primary btn-block text-white"><i class="fa fa-facebook"></i> Sign in with Facebook</a> </div> <br>
+                    <div class=""> <a href="<?php echo isset($loginURL)?$loginURL:''; ?>" type="button" class="btn btn-primary btn-block text-white fc_hover"><i class="fa fa-facebook"></i> Sign in with Facebook</a> </div> <br>
                     <div class=""> <a href="<?php echo base_url('auth_oa2/session/google'); ?>" type="button" class="btn btn-danger btn-block text-white"><i class="fa fa-google-plus"></i> Sign in with GooglePlus</a> </div>
                 </div>
             </div>
