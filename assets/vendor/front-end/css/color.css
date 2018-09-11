@@ -245,7 +245,7 @@ a.light-text:focus {
   font-size: 30px;
   margin: 0;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .intro-img .intro-body,
 .intro-img-half .intro-body,
