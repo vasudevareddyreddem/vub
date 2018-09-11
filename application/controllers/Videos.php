@@ -17,7 +17,8 @@ class Videos extends  Front_end {
 		$data['video_list']=$this->Institute_model->get_institues_video_list($v_id);
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/videoplay',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 	}
 	public function play()
 	{	
@@ -52,7 +53,8 @@ class Videos extends  Front_end {
 		/* view count*/
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/videoplay',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 	}
 	public function upload()
 	{	
@@ -77,7 +79,8 @@ class Videos extends  Front_end {
 		}else{
 			$this->load->view('html/upload');
 		}
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 		
 	}
 	public  function video_subscribe(){

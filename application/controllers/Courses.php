@@ -17,7 +17,8 @@ class Courses extends Front_end {
 		$data['classification_list']=$this->Course_model->get_classification_wise_course();
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/course',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 	}
 	public function videoplay()
 	{	
@@ -45,7 +46,8 @@ class Courses extends Front_end {
 			);
 		//$this->Video_model->save_video_views_count($view_data);
 		$this->load->view('html/course-video',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 		
 	}
 	
@@ -65,7 +67,8 @@ class Courses extends Front_end {
 			$data['cust_id']='';
 		}
 		$this->load->view('html/course-video-list',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 		
 	}
 	

@@ -15,6 +15,7 @@ class Front_end extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper('security');
 		$this->load->model('User_model');
+		$this->load->model('Content_model');
 		$header['search_values']=$this->User_model->get_course_or_institues_list('');
 		$header['location_values']=$this->User_model->get_location_search_list('');
 		if($this->session->userdata('vuebin_user'))

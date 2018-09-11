@@ -286,6 +286,15 @@
 				</ul>
 			</li>
 			<li class="treeview">
+				  <a href="<?php echo base_url('content/footer'); ?>">
+					<i class="fa fa-files-o"></i>
+					<span>Footer Content</span>
+					<span class="pull-right-container">
+					  <span class="label label-primary pull-right"></span>
+					</span>
+				  </a>
+			</li>
+			<li class="treeview">
 				  <a href="<?php echo base_url('institute/subscribeers'); ?>">
 					<i class="fa fa-files-o"></i>
 					<span>Subscribed List</span>
