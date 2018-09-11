@@ -304,7 +304,7 @@
                         $(".ui-autocomplete").css("z-index", 1000);
                     }
                 }).autocomplete("instance")._renderItem = function(ul, item) {
-                    return $("<li><div><img src='" + item.img + "'><span>" + item.value + "</span></div></li>").appendTo(ul);
+                    return $("<li><div><img style='width:25px;height:auto;margin-top:-5px;' src='" + item.img + "'><span>&nbsp;" + item.value + "</span></div></li>").appendTo(ul);
                 };
             });
             $(function() {
