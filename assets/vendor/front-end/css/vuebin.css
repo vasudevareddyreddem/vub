@@ -968,9 +968,12 @@ color:#FFF;
    .sm-hide{
 	   display:none;
    }
-   #sticky{
-	   position:relative;
-   }
+  #sticky.stick {
+    position: relative;
+   width: 100%;
+   top:0 !important;
+   z-index:0;
+}
    
    .mobile-heading{
 	   position:absolute !important;
@@ -1018,12 +1021,7 @@ color:#FFF;
 	padding:10px !important;
 	z-index:0 !important;
 }
-#sticky.stick {
-    position: relative;
-   width: 100%;
-   top:0 !important;
-   z-index:0;
-}
+
    .institutes-curd-right{
 	position: relative;
     bottom: -36px;

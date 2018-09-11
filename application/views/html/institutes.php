@@ -65,6 +65,7 @@
 				 </div>
 			
 			<?php } ?>
+			<div class="sm-hide">
 			<?php if(isset($lastest_institute_list) && count($lastest_institute_list)>0){ ?>
 				<div class="col-md-4 col-xs-12 col-sm-12">
 				<div id="sticky-anchor"></div>
@@ -127,6 +128,70 @@
 						<?php } ?>
 						</section>
 				
+		</div>
+		<div class="md-hide">
+			<?php if(isset($lastest_institute_list) && count($lastest_institute_list)>0){ ?>
+				<div class="col-md-4 col-xs-12 col-sm-12">
+		
+				
+							<div class="sidebar-recent bg-white">
+							<div class="bg-primary pad-10">
+								<span class="">
+								   <h3 class="text-white text-center">Latest Institutes </h3>
+								</span>	
+							</div>	
+							 <div class="pad-20 list-style-none" >
+								<marquee class="pubmed-articles" align="top" behavior="scroll" onmouseout="this.start();" onmouseover="this.stop();" direction="up" scrollamount="2" style="padding: 10px;height: 350px;overflow:hidden;">
+								   
+								  <div class="row ">
+								  <div class="table-responsive ">
+								  <table class="table table-striped">
+								
+								<tbody>
+								<?php foreach($lastest_institute_list as $list){ ?>
+										<tr>
+											<td valign="center">
+											<?php if($list['i_logo']!=''){ ?>
+											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="Sathya techonologies">
+											<?php }else{?>
+											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
+											<?php } ?>
+										
+												
+											</td>
+											<td colspan="2">
+												<div class="article-details">
+													 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>" style="color:#0062C4;"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
+												
+													 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
+													 <span><?php echo isset($list['location_name'])?$list['location_name']:''; ?></span>,
+													 <span><?php echo isset($list['city_name'])?$list['city_name']:''; ?></span>
+													 <span><?php echo isset($list['country_name'])?$list['country_name']:''; ?></span>
+													 </h5>
+												</div>
+											</td>
+										  </tr>
+								<?php } ?>
+								  
+								</tbody>
+							  </table>
+							  </div>
+								  
+								
+								
+								   
+								</marquee>
+								
+							 </div>
+						  </div>
+						  <div class="clearfix">&nbsp;</div>	
+					
+						</div>
+					
+						<?php } ?>
+						</section>
+				
+		</div>
 		</div>
 		
 	</div>

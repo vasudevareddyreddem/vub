@@ -3,7 +3,7 @@
 	<div class="body-start-page ">
 <!-- Main content -->
     
-	<section class="content  pad-100">
+	<section class="content " style="padding-top:50px;">
       <div class="row">
 		<div class="col-md-4 col-md-offset-4 border-ddd" >
 		<h3 class="text-center">Log in to <?php echo isset($user_details['source'])?$user_details['source']:''; ?></h3>
