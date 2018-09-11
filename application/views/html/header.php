@@ -33,18 +33,7 @@
                     <div class="navbar-header"> <a href="<?php echo base_url(); ?>" class="navbar-brand"><img style="width:100px;height:auto;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png" /></a>
                         <div id="mobile-search-id" class=" md-hide" style="position:absolute;right:65px;color:#333;top:12px;font-size:20px;"> <i class="fa fa-search" aria-hidden="true"></i> </div> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"> <i class="fa fa-bars"></i> </button>
                     </div>
-                    <!--mobile search-->
-                    <div class="mobile-search md-hide" style="display:none">
-                        <div id="close-search"> <i style="margin-left:20px;font-size:22px;margin-top:20px;	" class="fa fa-arrow-left" aria-hidden="true"> </i> </div>
-                        <hr>
-                        <div class="container" style="position:relative;z-index:2000"> <span class="fa fa-search" style=";position:absolute;top:10px;left:30px;color:#aaa"></span> <input style="padding-left:35px;z-index:2000" type="text" class="form-control tags homemenu_id" name="search " id="" placeholder="Search videos">
-                            <div class="row mar-t10">
-                                <div class="col-md-12"> <input type="text" class="form-control location_search" name="search" placeholder="Location"> </div> 
-						
-                            </div>
-                        </div> <br>
-								<button style="position:absolute;right:10px;top:10px;" class="btn btn-sm btn-primary col-md-2  go-btn">Go</button>
-                    </div>
+                   
 					<!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav mar-l-40">
@@ -89,6 +78,23 @@
                             </form>
                         </ul>
                     </div> <!-- /.navbar-custom-menu -->
+					<!-- mobile view search purpose*/
+					 <!--mobile search-->
+                    <div class="mobile-search md-hide" style="display:none">
+					<form action="<?php echo base_url('search/post'); ?>" method="post">
+                        <div id="close-search"> <i style="margin-left:20px;font-size:22px;margin-top:20px;	" class="fa fa-arrow-left" aria-hidden="true"> </i> </div>
+                        <hr>
+                        <div class="container" style="position:relative;z-index:2000"> <span class="fa fa-search" style=";position:absolute;top:10px;left:30px;color:#aaa"></span> <input style="padding-left:35px;z-index:2000" type="text" class="form-control tags homemenu_id" name="search " id="" placeholder="Search videos">
+                            <div class="row mar-t10">
+                                <div class="col-md-12"> <input type="text" class="form-control location_search" name="search" placeholder="Location"> </div> 
+								<input type="hidden" name="local_id" id="local_id1" value="">
+								<input type="hidden" name="institue_course" id="homemenu_id1" value="">
+                            </div>
+                        </div> <br>
+								<button type="submit" style="position:absolute;right:10px;top:10px;" class="btn btn-sm btn-primary col-md-2  go-btn">Go</button>
+                    </form>
+					</div>
+					<!-- mobile view search purpose*/
                 </div> <!-- /.container-fluid -->
             </nav>
         </header>
@@ -301,6 +307,7 @@
                     minLength: 1,
                     select: function(event, ui) {
                         $('#local_id').val(ui.item.id);
+                        $('#local_id1').val(ui.item.id);
                     },
                     html: true,
                     open: function(event, ui) {
@@ -326,6 +333,7 @@
                     source: source,
                     select: function(event, ui) {
                         $('#homemenu_id').val(mapping[ui.item.value]);
+                        $('#homemenu_id1').val(mapping[ui.item.value]);
                     }
                 });
             });
