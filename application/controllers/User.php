@@ -12,7 +12,9 @@ class User extends Front_end {
 	{	
 		
 		$data['home_page_video']=$this->User_model->get_home_page_video();
-		//echo '<pre>';print_r($header);exit; 
+		$data['aboutus']=$this->User_model->get_aboutus_content(1);
+		$data['testimonial']=$this->User_model->get_testimonial_home_list();
+		//echo '<pre>';print_r($data);exit; 
 		$this->load->view('html/index',$data);
 		$footer['details']=$this->Content_model->get_footer_content(1);
 		$this->load->view('html/footer',$footer);

@@ -21,17 +21,12 @@
                 <div class="row" data-scrollreveal="enter left over 1s">
                     <div class="col-lg-4 ">
 					   <video class="thumbnail" width="100%" height="100%" controls   controlsList="nodownload">
-							<source src="<?php echo base_url(); ?>assets/vendor/front-end/video/back1.mp4" type="video/mp4">
+							<source src="<?php echo base_url('assets/aboutus_video/'.$aboutus['video_name']) ?>" type="video/mp4">
 							<source src="movie.ogg" type="video/ogg">
 						</video>
                     </div>
                     <div class="col-lg-8 " data-scrollreveal="enter right over 1s">
-                        <h2>About Us</h2>
-                     
-						<h3>Host videos in the highest quality possible</h3>
-                        <p>Start uploading, and enjoy 4K Ultra HD with HDR, tools to manage and showcase videos, no ads before, during, or after your videos, AND professional live streaming plans.</p>
-                      
-                           
+                        <?php echo isset($aboutus['aboutus'])?$aboutus['aboutus']:''; ?>
                         
                     </div>
                 </div>
@@ -39,7 +34,7 @@
         </section>
 
         
-
+		<?php if(isset($testimonial) && count($testimonial)>0){ ?>
         <section class="">
            <div class="container">
 
@@ -48,57 +43,67 @@
       <div class="carousel slide" data-ride="carousel" id="quote-carousel">
         <!-- Bottom Carousel Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#quote-carousel" data-slide-to="1"></li>
-          <li data-target="#quote-carousel" data-slide-to="2"></li>
+		<?php $cnt=0;foreach($testimonial as $list){ ?>
+			  <?php if($cnt==0){ ?>
+			  <li data-target="#quote-carousel" data-slide-to="<?php echo $cnt; ?>" class="active"></li>
+			  <?php }else{ ?>
+			       <li data-target="#quote-carousel" data-slide-to="<?php echo $cnt; ?>"></li>
+			  <?php } ?>
+			  
+		  <?php $cnt++;} ?>
         </ol>
         
         <!-- Carousel Slides / Quotes -->
         <div class="carousel-inner">
         
           <!-- Quote 1 -->
-          <div class="item active">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png" />">
-                
-                </div>
-                <div class="col-sm-9">
-                  <p>Vubin is a valuable enterprise platform for businesses to share their high-quality, visual stories.</p>
-                  <small>Someone famous</small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 2 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/mijustin/128.jpg" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
-                  <small>Someone famous</small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 3 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/keizgoesboom/128.jpg" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
-                  <small>Someone famous</small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
+		  <?php $cnt=0;foreach($testimonial as $list){ ?>
+			  <?php if($cnt==0){ ?>
+				  <div class="item active">
+					<blockquote>
+					  <div class="row">
+						<div class="col-sm-3 text-center">
+							<?php if($list['image_name']!=''){ ?>
+							<img class="img-circle" src="<?php echo base_url('assets/testimonial/'.$list['image_name']); ?>"/>
+							<?php }else{?>
+								<div class="img-circle" ><?php echo $result = substr($list['author_name'], 0, 2); ?></div>
+
+							<?php } ?>
+						  
+						
+						</div>
+						<div class="col-sm-9">
+						  <?php echo isset($list['testimonial'])?$list['testimonial']:''; ?>
+						  <small><?php echo isset($list['author_name'])?$list['author_name']:''; ?></small>
+						</div>
+					  </div>
+					</blockquote>
+				  </div>
+			  <?php }else{ ?>
+					<div class="item">
+						<blockquote>
+						   <div class="row">
+									<div class="col-sm-3 text-center">
+										<?php if($list['image_name']!=''){ ?>
+										<img class="img-circle" src="<?php echo base_url('assets/testimonial/'.$list['image_name']); ?>"/>
+										<?php }else{?>
+											<div class="img-circle" ><?php echo $result = substr($list['author_name'], 0, 2); ?></div>
+
+										<?php } ?>
+									  
+									
+									</div>
+									<div class="col-sm-9">
+									  <?php echo isset($list['testimonial'])?$list['testimonial']:''; ?>
+									  <small><?php echo isset($list['author_name'])?$list['author_name']:''; ?></small>
+									</div>
+								  </div>
+						</blockquote>
+				  </div>
+			  <?php } ?>
+			  
+		  <?php $cnt++;} ?>
+          
         </div>
         
         <!-- Carousel Buttons Next/Prev -->
@@ -109,6 +114,7 @@
   </div>
 </div>
         </section>
+		<?php } ?>
 		
 <script>
 $(document).ready(function() {

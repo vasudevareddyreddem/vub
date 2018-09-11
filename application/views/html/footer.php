@@ -14,14 +14,15 @@
 				</ul>
             </div>
             <div class="col-md-3 cont-pargh text-left">
-                <h3 class="script widget-title">Contact Us</h3> <p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
-					<p><i class="fa fa-phone"></i>  +91-9999878398  </p>
-					<p><i class="fa fa fa-envelope"></i> info@example.com  </p>	
+                <h3 class="script widget-title">Contact Us</h3> <p><i class="fa fa-location-arrow"></i>   <?php echo isset($details['mobile1'])?$details['mobile1']:''; ?> </p>
+				<?php if(isset($details['mobile2']) && $details['mobile2']!=''){ ?>
+					<p><i class="fa fa-phone"></i>   <?php echo isset($details['mobile2'])?$details['mobile2']:''; ?> </p>
+				<?php } ?>
+					<p><i class="fa fa fa-envelope"></i>  <?php echo isset($details['email_id'])?$details['email_id']:''; ?> </p>	
             </div>
 			<div class="col-md-3 address-cont text-left">
-                <h3 class="script widget-title">Address</h3>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-				You've visited this page many times. Last visit: 27/8/18</p>
+			 <h3 class="script widget-title">Address</h3>
+				<p><?php echo isset($details['footer'])?$details['footer']:''; ?></p>
             </div>
 			<div class="col-md-3  ">
                 <h3 class="script widget-title text-left">Stay With Me!</h3>
