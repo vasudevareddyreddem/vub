@@ -183,11 +183,11 @@
       <?php if($details['role_id']==1){ ?>
 		  <li class="treeview">
 			  <a href="#">
-				<i class="fa fa-files-o"></i>
+				<i class="fa fa-file-video-o"></i>
 				<span>Home Page Video</span>
-				<span class="pull-right-container">
-				  <span class="label label-primary pull-right"></span>
-				</span>
+			  <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 			  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('video/homevideo'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -196,11 +196,11 @@
 		</li>
 		<li class="treeview">
 			  <a href="#">
-				<i class="fa fa-files-o"></i>
+				<i class="fa fa-globe"></i>
 				<span>Country</span>
-				<span class="pull-right-container">
-				  <span class="label label-primary pull-right"></span>
-				</span>
+		 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 			  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('country'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -211,9 +211,9 @@
 			  <a href="#">
 				<i class="fa fa-files-o"></i>
 				<span>Course Type</span>
-				<span class="pull-right-container">
-				  <span class="label label-primary pull-right"></span>
-				</span>
+				 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 			  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('course/addtype'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -222,11 +222,11 @@
 		</li>
 		<li class="treeview">
 				  <a href="#">
-					<i class="fa fa-files-o"></i>
+					<i class=" fa fa-file-text-o"></i>
 					<span>Course </span>
-					<span class="pull-right-container">
-					  <span class="label label-primary pull-right"></span>
-					</span>
+					 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 				  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('course'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -235,11 +235,11 @@
 			</li>
 		<li class="treeview">
 			  <a href="#">
-				<i class="fa fa-files-o"></i>
+				<i class="fa fa-sitemap"></i>
 				<span>Classification</span>
-				<span class="pull-right-container">
-				  <span class="label label-primary pull-right"></span>
-				</span>
+				 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 			  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('classification'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -248,11 +248,11 @@
 		</li>
 		<li class="treeview">
 			  <a href="#">
-				<i class="fa fa-files-o"></i>
+				<i class="fa fa-user"></i>
 				<span>Vendor</span>
-				<span class="pull-right-container">
-				  <span class="label label-primary pull-right"></span>
-				</span>
+					 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 			  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('vendor'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -261,11 +261,11 @@
 		</li>
 		<li class="treeview">
 				  <a href="#">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-spinner"></i>
 					<span>Publish Course</span>
-					<span class="pull-right-container">
-					  <span class="label label-primary pull-right"></span>
-					</span>
+						 <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+						</span>
 				  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('publish'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -274,11 +274,11 @@
 			</li>
 			<li class="treeview">
 				  <a href="#">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-plus-square"></i>
 					<span>Add Institute</span>
-					<span class="pull-right-container">
-					  <span class="label label-primary pull-right"></span>
-					</span>
+						 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 				  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('institute/admin_add'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -287,25 +287,25 @@
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('content/footer'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-text-width"></i>
 					<span>Footer Content</span>
-					<span class="pull-right-container">
-					  <span class="label label-primary pull-right"></span>
+					 <span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
 					</span>
 				  </a>
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('content/aboutus'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-text-height"></i>
 					<span>About Us Content</span>
-					<span class="pull-right-container">
-					  <span class="label label-primary pull-right"></span>
-					</span>
+						 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 				  </a>
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('content/testimonial'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-frown-o"></i>
 					<span>Testimonial</span>
 					<span class="pull-right-container">
 					  <span class="label label-primary pull-right"></span>
@@ -314,7 +314,7 @@
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('institute/subscribeers'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-hand-o-up"></i>
 					<span>Subscribed List</span>
 					<span class="pull-right-container">
 					  <span class="label label-primary pull-right"></span>
@@ -324,7 +324,7 @@
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('institute/userlists'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-users"></i>
 					<span>Users List</span>
 					<span class="pull-right-container">
 					  <span class="label label-primary pull-right"></span>
@@ -334,7 +334,7 @@
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('institute/leads'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-user-secret"></i>
 					<span>Leads List</span>
 					<span class="pull-right-container">
 					  <span class="label label-primary pull-right"></span>
@@ -347,11 +347,11 @@
 			
 			<li class="treeview">
 				  <a href="#">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-institution (alias)"></i>
 					<span>Institute</span>
-					<span class="pull-right-container">
-					  <span class="label label-primary pull-right"></span>
-					</span>
+						 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 				  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('institute/details'); ?>"><i class="fa fa-circle-o"></i> Details</a></li>
@@ -360,11 +360,11 @@
 			
 			<li class="treeview">
 				  <a href="#">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-upload"></i>
 					<span>Upload  Video</span>
-					<span class="pull-right-container">
-					  <span class="label label-primary pull-right"></span>
-					</span>
+						 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 				  </a>
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url('video'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
@@ -373,7 +373,7 @@
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('institute/subscribeers'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-hand-o-up"></i>
 					<span>Subscribed List</span>
 					<span class="pull-right-container">
 					  <span class="label label-primary pull-right"></span>
@@ -383,7 +383,7 @@
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('institute/leads'); ?>">
-					<i class="fa fa-files-o"></i>
+					<i class="fa fa-user-secret"></i>
 					<span>Leads List</span>
 					<span class="pull-right-container">
 					  <span class="label label-primary pull-right"></span>
@@ -393,11 +393,11 @@
 			<?php }else{ ?>
 				<li class="treeview">
 					  <a href="#">
-						<i class="fa fa-files-o"></i>
+						<i class="fa fa-institution (alias)"></i>
 						<span>Institute</span>
-						<span class="pull-right-container">
-						  <span class="label label-primary pull-right"></span>
-						</span>
+							 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
 					  </a>
 					<ul class="treeview-menu">
 						<li><a href="<?php echo base_url('institute'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>

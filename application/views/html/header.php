@@ -37,12 +37,15 @@
                     <div class="mobile-search md-hide" style="display:none">
                         <div id="close-search"> <i style="margin-left:20px;font-size:22px;margin-top:20px;	" class="fa fa-arrow-left" aria-hidden="true"> </i> </div>
                         <hr>
-                        <div class="container" style="position:relative;z-index:2000"> <span class="fa fa-search" style=";position:absolute;top:10px;left:30px;color:#aaa"></span> <input style="padding-left:35px;z-index:2000" type="text" class="form-control tags" name="search " id="" placeholder="Search videos">
+                        <div class="container" style="position:relative;z-index:2000"> <span class="fa fa-search" style=";position:absolute;top:10px;left:30px;color:#aaa"></span> <input style="padding-left:35px;z-index:2000" type="text" class="form-control tags homemenu_id" name="search " id="" placeholder="Search videos">
                             <div class="row mar-t10">
-                                <div class="col-md-12"> <input type="text" class="form-control " name="search" placeholder="Location"> </div> <button class="btn btn-sm btn-primary col-md-2  go-btn">Go</button>
+                                <div class="col-md-12"> <input type="text" class="form-control location_search" name="search" placeholder="Location"> </div> 
+						
                             </div>
                         </div> <br>
-                    </div> <!-- Collect the nav links, forms, and other content for toggling -->
+								<button style="position:absolute;right:10px;top:10px;" class="btn btn-sm btn-primary col-md-2  go-btn">Go</button>
+                    </div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav mar-l-40">
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
@@ -343,3 +346,10 @@
                 });
             }
         </script>
+		<script>
+$(document).ready(function(){
+    $("#mobile-search-id").click(function(){
+        $(".mobile-search").toggle();
+    });
+});
+</script>
