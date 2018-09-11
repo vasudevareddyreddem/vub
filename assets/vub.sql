@@ -16,6 +16,25 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`vub` /*!40100 DEFAULT CHARACTER SET lat
 
 USE `vub`;
 
+/*Table structure for table `aboutus_content` */
+
+DROP TABLE IF EXISTS `aboutus_content`;
+
+CREATE TABLE `aboutus_content` (
+  `a_id` int(11) NOT NULL AUTO_INCREMENT,
+  `aboutus` longtext,
+  `video_name` varchar(250) DEFAULT NULL,
+  `org_name` varchar(250) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`a_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `aboutus_content` */
+
+insert  into `aboutus_content`(`a_id`,`aboutus`,`video_name`,`org_name`,`created_at`,`updated_at`,`created_by`) values (1,'<h2>About Us</h2>\r\n\r\n<h3>Host videos in the highest quality possible</h3>\r\n\r\n<p>Start uploading, and enjoy 4K Ultra HD with HDR, tools to manage and showcase videos, no ads before, during, or after your videos, AND professional live streaming plans.</p>\r\n','0.7879420015366459050.694556001534825844back2.mp4','0.694556001534825844back2.mp4','2018-09-11 08:05:05','2018-09-11 08:05:05',1);
+
 /*Table structure for table `admin` */
 
 DROP TABLE IF EXISTS `admin`;
@@ -349,6 +368,27 @@ CREATE TABLE `role` (
 /*Data for the table `role` */
 
 insert  into `role`(`role_id`,`role`,`status`,`created_at`) values (1,'Admin',1,'2018-08-02 15:51:54'),(2,'Channel/Institute',1,'2018-08-02 15:54:28');
+
+/*Table structure for table `testimonial` */
+
+DROP TABLE IF EXISTS `testimonial`;
+
+CREATE TABLE `testimonial` (
+  `t_id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_name` varchar(250) DEFAULT NULL,
+  `testimonial` longtext,
+  `image_name` varchar(250) DEFAULT NULL,
+  `org_name` varchar(250) DEFAULT NULL,
+  `status` int(11) DEFAULT '1',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`t_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `testimonial` */
+
+insert  into `testimonial`(`t_id`,`author_name`,`testimonial`,`image_name`,`org_name`,`status`,`created_at`,`updated_at`,`created_by`) values (1,'Someone famous','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>\r\n','0.336636001536650106128.jpg','128.jpg',1,'2018-09-11 09:15:06','2018-09-11 09:15:20',1),(2,'Someone famous','<p>Vubin is a valuable enterprise platform for businesses to share their high-quality, visual storie</p>\r\n','0.262925001536650060overbite.gif','overbite.gif',1,'2018-09-11 09:14:20','2018-09-11 09:15:16',1);
 
 /*Table structure for table `vendor_list` */
 
