@@ -15,12 +15,12 @@
   </div>
   <?php } ?>
   </div>
-<section id="" class="-2">
+<section id="" class="bg-white">
  
             <div class="container">
                 <div class="row" data-scrollreveal="enter left over 1s">
                     <div class="col-lg-4 ">
-					   <video width="100%" height="100%" controls   controlsList="nodownload">
+					   <video class="thumbnail" width="100%" height="100%" controls   controlsList="nodownload">
 							<source src="<?php echo base_url(); ?>assets/vendor/front-end/video/back1.mp4" type="video/mp4">
 							<source src="movie.ogg" type="video/ogg">
 						</video>
@@ -40,7 +40,7 @@
 
         
 
-        <section class="bg-primary">
+        <section class="">
            <div class="container">
 
   <div class='row'>
