@@ -200,6 +200,23 @@ CREATE TABLE `customers_list` (
 
 insert  into `customers_list`(`cust_id`,`role_id`,`username`,`source`,`email_id`,`name`,`mobile`,`password`,`org_password`,`profile_pic`,`status`,`mobile_verified`,`otp_verification`,`otp_dateitm`,`created_at`,`updated_at`,`created_by`) values (1,2,'vasudevareddy',NULL,'vasu@gmail.com','vasudevareddy','8500050944','e10adc3949ba59abbe56e057f20f883e','123456',NULL,1,0,NULL,NULL,'2018-08-02 15:55:33','2018-08-02 15:55:35',0),(2,2,NULL,'vueb','reddy.55610@gmail.com',NULL,'gfhfg','e10adc3949ba59abbe56e057f20f883e',NULL,'0.1654100015338183161513337708.jpg',0,0,NULL,NULL,NULL,'2018-08-10 07:23:40',NULL),(3,2,NULL,'vueb','reddy.55610@gmail.com',NULL,'8500050944',NULL,NULL,'',NULL,0,NULL,NULL,'2018-08-21 08:46:25','2018-08-21 08:54:27',1),(5,2,'104018910096192141661','google','vasudevareddy549@gmail.com','REDDEM VASUDEVAREDDY','8500050944',NULL,NULL,NULL,NULL,1,'176329','2018-08-31 07:34:26','2018-08-29 11:54:10','2018-08-31 07:35:00',NULL),(6,2,'111182826856894925436','google','banuribhavya97@gmail.com','bhavya reddy','9603306215',NULL,NULL,NULL,NULL,1,'288388','2018-09-01 06:48:52','2018-09-01 06:48:38','2018-09-01 06:49:27',NULL),(7,2,'108318449358159828278','google','reddy.bhavya97@gmail.com','Banuri Bhavya','9603306215',NULL,NULL,NULL,NULL,1,'124408','2018-09-01 07:04:24','2018-09-01 07:04:18','2018-09-01 07:04:49',NULL),(10,2,'103177793666372173094','google','bayapureddyforu@gmail.com','bayapu reddy','8500226782',NULL,NULL,NULL,NULL,1,'110611','2018-09-04 13:01:52','2018-09-04 13:01:38','2018-09-04 13:02:20',NULL),(11,2,'114186209979876725631','google','vasuforu22@gmail.com','vasu reddy','8500050944',NULL,NULL,NULL,NULL,1,'105157','2018-09-04 14:33:05','2018-09-04 14:33:00','2018-09-04 14:33:22',NULL),(12,2,'101860162377174962076','google','ksivakumar355@gmail.com','K SIVAKUMAR','8500226782',NULL,NULL,NULL,NULL,1,'113761','2018-09-06 15:01:34','2018-09-06 15:01:28','2018-09-06 15:01:46',NULL),(13,2,NULL,'vueb','like@gmail.com',NULL,'8500050944',NULL,NULL,'',1,0,NULL,NULL,'2018-09-06 15:03:14','2018-09-06 15:03:14',1),(14,2,NULL,'vueb','error@gmail.com','error','8500050944',NULL,NULL,'',1,0,NULL,NULL,'2018-09-06 15:05:31','2018-09-06 15:05:31',1);
 
+/*Table structure for table `footer_content` */
+
+DROP TABLE IF EXISTS `footer_content`;
+
+CREATE TABLE `footer_content` (
+  `c_id` int(11) NOT NULL AUTO_INCREMENT,
+  `footer` longtext,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`c_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `footer_content` */
+
+insert  into `footer_content`(`c_id`,`footer`,`created_at`,`updated_at`,`created_by`) values (1,'<h2>Thank&#39;s for visiting Vubin</h2>\r\n\r\n<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>\r\n\r\n<h3>Find me!</h3>\r\n\r\n<p><strong>7-1-413/17</strong><br />\r\nSrinivasa Nagar<br />\r\nAmeerpet ,Hyderabad</p>\r\n','2018-09-11 07:19:55','2018-09-11 07:19:55',1);
+
 /*Table structure for table `homepage_header_videos` */
 
 DROP TABLE IF EXISTS `homepage_header_videos`;

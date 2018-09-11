@@ -76,6 +76,24 @@ class Content extends Admin_panel {
 			redirect('admin');
 		}
 	}
+	public function aboutus()
+	{	
+		if($this->session->userdata('vuebin_user'))
+		{
+			$login_details=$this->session->userdata('vuebin_user');
+			if($login_details['role_id']==1){
+				$data['details']=$this->Content_model->get_footer_content(1);
+				$this->load->view('admin/content/aboutus-add',$data);
+				$this->load->view('admin/footer');
+			}else{
+					$this->session->set_flashdata('error',"you don't have permission to access");
+					redirect('dashboard');
+			}
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
 	
 	
 	
