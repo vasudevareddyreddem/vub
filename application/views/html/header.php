@@ -29,7 +29,7 @@
     <div class="wrapper">
         <header class="main-header">
             <nav class="navbar navbar-dark navbar-fixed-top">
-                <div class="container">
+                <div class="container" style="padding-top:10px;">
                     <div class="navbar-header"> <a href="<?php echo base_url(); ?>" class="navbar-brand"><img style="width:100px;height:auto;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png" /></a>
                         <div id="mobile-search-id" class=" md-hide" style="position:absolute;right:65px;color:#333;top:12px;font-size:20px;"> <i class="fa fa-search" aria-hidden="true"></i> </div> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"> <i class="fa fa-bars"></i> </button>
                     </div>
@@ -44,10 +44,10 @@
                         </div> <br>
                     </div> <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                        <ul class="nav navbar-nav ">
+                        <ul class="nav navbar-nav mar-l-40">
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                             <li class="hidden"> <a href="#page-top"></a> </li>
-                            <li class="page-scroll"> <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a> </li>
+                            <li class="page-scroll nav-li-active"> <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a> </li>
                             <li class="page-scroll"> <a href="<?php echo base_url('courses'); ?>">COURSES</a> </li>
                         </ul>
                     </div> <!-- /.navbar-collapse -->

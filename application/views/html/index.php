@@ -61,7 +61,7 @@
             <blockquote>
               <div class="row">
                 <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="http://www.reactiongifs.com/r/overbite.gif" style="width: 100px;height:100px;">
+                  <img class="img-circle" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png" />">
                 
                 </div>
                 <div class="col-sm-9">

@@ -3,25 +3,35 @@
 <footer class="footer-2 bg-dark" id="footer" style="border-top:5px solid #fff;z-index:1024">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 text-left">
 
-                <h3 class="script">Qucik Links</h3>
+                <h3 class="script widget-title">Qucik Links</h3>
 				<ul class="qucik-li">
-				<li>Home</li>
+				
+					<li class="page-scroll"> <a href="<?php echo base_url(); ?>">Home </a> </li>
 					<li class="page-scroll"> <a href="<?php echo base_url('institutes'); ?>">Institutes </a> </li>
 					<li class="page-scroll"> <a href="<?php echo base_url('courses'); ?>">Courses </a> </li>
 				</ul>
             </div>
-            <div class="col-md-3 ">
-                <h3 class="script">Find me!</h3> <p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
+            <div class="col-md-3 cont-pargh text-left">
+                <h3 class="script widget-title">Contact Us</h3> <p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
 					<p><i class="fa fa-phone"></i>  +91-9999878398  </p>
 					<p><i class="fa fa fa-envelope"></i> info@example.com  </p>	
             </div>
-			<div class="col-md-3 ">
-                <h3 class="script">Find me!</h3> <address> <strong>7-1-413/17</strong> <br>Srinivasa Nagar <br>Ameerpet ,Hyderabad. <br> </address>
+			<div class="col-md-3 address-cont text-left">
+                <h3 class="script widget-title">Address</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				You've visited this page many times. Last visit: 27/8/18</p>
             </div>
-			<div class="col-md-3 ">
-                <h3 class="script">Find me!</h3> <address> <strong>7-1-413/17</strong> <br>Srinivasa Nagar <br>Ameerpet ,Hyderabad. <br> </address>
+			<div class="col-md-3  ">
+                <h3 class="script widget-title text-left">Stay With Me!</h3>
+				    <ul class="social-network social-circle">
+                       
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
             </div>
         </div>
     </div>

@@ -4,43 +4,62 @@
 <!-- Main content -->
     <section class="content">
       <div class="row">
-		 <div class="col-md-2 no-padding bg-dark  pos-ab-left" >
+		 <div class="col-md-2 no-padding bg-dark pos-ab-left" style="">
 		 <div id="sticky-anchor"></div>
-				<div id="sticky">
+				<div id="sticky" >
 			<section class=" ">
       <!-- Sidebar user panel -->
       <div class="pad-15" >
       <div class="user-panel">
-         <div class="bg-white" style="padding:10px;border-radius:5px;">
+        <div class="bg-white" style="padding:10px;border-radius:5px;">
 		<?php if(isset($institute_details['i_logo']) && $institute_details['i_logo']!=''){ ?>
          <img  class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$institute_details['i_logo']); ?>" alt="<?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?>">
 		<?php }else{ ?>
 		 <img  class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?>">
 		<?php } ?>
         </div>
-       
+      
       </div>
     
       <!-- sidebar menu: : style can be found in sidebar.less -->
-	 <div class="" style="overflow:hidden;">
-		   <h4><?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?></h4>
+	  <div class="" style="overflow:hidden;">
+		   <h4 class="text-center"><?php echo isset($institute_details['i_name'])?$institute_details['i_name']:''; ?></h4>
+		   <hr class="hr-cus">
 		   <small ><i class="fa fa-map-marker"> </i> &nbsp; <?php echo isset($institute_details['i_address'])?$institute_details['i_address']:''; ?>,<?php echo isset($institute_details['location_name'])?$institute_details['location_name']:''; ?>,<?php echo isset($institute_details['city_name'])?$institute_details['city_name']:''; ?>,<?php echo isset($institute_details['country_name'])?$institute_details['country_name']:''; ?></small > 
+		   <hr class="hr-cus">
 	  <div class="help-side">
 		   <small ><i class="fa fa-phone"> </i>&nbsp;  <?php echo isset($institute_details['i_p_phone'])?$institute_details['i_p_phone']:''; ?></small>
 	  </div>  
+	  <hr class="hr-cus">
 	 <div class="help-side">
 		   <small ><i class="fa fa-envelope"> </i>&nbsp;  <?php echo isset($institute_details['i_email_id'])?$institute_details['i_email_id']:''; ?></small>
-	  </div>   
+	  </div> 
+		<hr class="hr-cus">	  
 	  <div class="help-side">
 		   <small ><i class="fa fa-video-camera"> </i>&nbsp;  Total: <?php echo isset($institute_details['video_list'])?$institute_details['video_list']:''; ?></small>
 	  </div> 
 	</div> 
-	</div> 
 	
+<hr class="hr-cus">
+    <div class="col-md-12"style="background:rgba(255,255,255, 0.1);border-radius:10px;">
+	<h4 class="text-center">Share With us<h4>
+	<?php 
 
-       
+		$image=base_url('assets/institute_logo/'.$institute_details['i_logo']);
+		$title='hello';
+		$summary='devareddy';
+		$url='www.vasu.com';
+	?>
+	<hr class="hr-cus">
+        <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url('institutes/linkedin/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-instagram"><i class="fa fa-linkedin "></i></a>
+      <a href="http://twitter.com/share?text=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+       <a href="https://plus.google.com/share?url=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-email"><i class="fa fa-google-plus"></i></a>
+    </div>
+	
        
     </section>
+		 </div>
 		 </div>
 		 </div>
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">

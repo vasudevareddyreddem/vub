@@ -100,12 +100,12 @@
 	<div class="clearfix">&nbsp;</div>
 
     <section class="content" id="recommended">
-		<div class="container-fluid">
+		<div class="">
 		<div class="row">
 			<div class="col-md-8">
 			<?php if(isset($video_list) && count($video_list)>0){ ?>
 			<div class="sidebar-recent bg-white pad-20">
-				<h4>Similar videos</h4>
+				<h3>Similar videos</h3>
 				<hr>
 						<?php foreach($video_list as $list){ ?>
 						<div class="row " style="border:1px solid #ddd;margin:5px;position:relative">
@@ -166,14 +166,17 @@
 			<?php } ?>
 			</div>
 			<div class="col-md-4">
+				<div class="bg-primary pad-10">
+					<h4 class="text-center">Courses offered by <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h4>
+				</div>
 			<div class="sidebar-recent bg-white pad-20">
-				<h4>Courses offered by <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h4>
-				<hr>
+				
+	
 						<?php if(isset($courses_list) && count($courses_list)>0){ ?>
 						<?php foreach($courses_list as $list){ ?>
 						<div class="row " style="border:1px solid #ddd;margin:5px">
-								    <div class="pad-10 ">
-										<ul class="list-courses">
+								    <div class=" ">
+										<ul class="list-courses list-sty-none">
 											<li class=""><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp; Count: &nbsp;<?php echo isset($list['video_count'])?$list['video_count']:''; ?></a></li>
 	
 						
