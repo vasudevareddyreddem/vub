@@ -14,7 +14,8 @@ class User extends Front_end {
 		$data['home_page_video']=$this->User_model->get_home_page_video();
 		//echo '<pre>';print_r($header);exit; 
 		$this->load->view('html/index',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 	}
 	
 	public  function verification(){
@@ -24,7 +25,8 @@ class User extends Front_end {
 			$data['user_details']=$this->User_model->get_user_basic_details($user_details['cust_id']);
 			//echo '<pre>';print_r($data);exit; 
 			$this->load->view('html/verification',$data);
-			$this->load->view('html/footer');
+			$footer['details']=$this->Content_model->get_footer_content(1);
+			$this->load->view('html/footer',$footer);
 		}else{
 			redirect();
 		}
@@ -112,7 +114,8 @@ class User extends Front_end {
 			$data['user_details']=$this->User_model->get_user_basic_details($user_details['cust_id']);
 			//echo '<pre>';print_r($data);exit; 
 			$this->load->view('html/verify',$data);
-			$this->load->view('html/footer');
+			$footer['details']=$this->Content_model->get_footer_content(1);
+			$this->load->view('html/footer',$footer);
 		}else{
 			redirect();
 		}

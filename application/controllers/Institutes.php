@@ -15,7 +15,8 @@ class Institutes extends  Front_end {
 		$data['lastest_institute_list']=$this->Institute_model->get_lastest_institute_list();
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/institutes',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 	}
 	public function page()
 	{	
@@ -32,7 +33,8 @@ class Institutes extends  Front_end {
 		$data['courses_offered']=$this->Institute_model->get_institues_wise_courses_offered($i_id);
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/institute-page',$data);
-		$this->load->view('html/footer');
+		$footer['details']=$this->Content_model->get_footer_content(1);
+		$this->load->view('html/footer',$footer);
 	}
 	public function share(){
 		
