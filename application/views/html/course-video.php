@@ -26,8 +26,11 @@
 						
 							</a>
 								
-							<span class="pull-right">
+							<!--<span class="pull-right">
 									<a href="javascript:void(0);" onclick="video_subscribe(<?php echo isset($video_details[0]['video_id'])?$video_details[0]['video_id']:''; ?>);" class="btn btn-primary btn-sm">Subscribe</a>
+							</span>-->
+								<span class="pull-right">
+									<a  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#subscribe-modal">Subscribe</a>
 							</span>
 					<?php }else{ ?>
 					 <a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal"><i class="fa fa-thumbs-up font-share" aria-hidden="true"></i></a>
@@ -106,21 +109,23 @@
 			<?php if(isset($video_list) && count($video_list)>0){ ?>
 			<div class="sidebar-recent bg-white pad-20">
 				<h3>Similar videos</h3>
-				<hr>
+				<hr>		
 						<?php foreach($video_list as $list){ ?>
+							
 						<div class="row " style="border:1px solid #ddd;margin:5px;position:relative">
+						 <a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id'])); ?>" style="color:#222">
 								    <div class="col-md-3 col-xs-12 text-center " >
 										<div class="vertical-center">
-											 <a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id'])); ?>" class="">
+								
 											 <video width="100%" height="100%" class="thumbnail">
 											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
 											  <source src="movie.ogg" type="video/ogg">
-											</video></a>
+											</video>
 											</div>
 								   </div>
 								   <div class=" col-md-7  bod-left">
 									  <div class="article-details">
-										 <h4><a href="" style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
+										 <h4 style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></h4>
 										 
 										 <h5><strong class="site-col-r">Institites:</strong> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h5> 
 										 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
@@ -156,9 +161,10 @@
 												<h2><i class="fa fa-video-camera" aria-hidden="true"></i></h2>
 											</div>
 										</div>
-										
-						</div>
+							</a>			
+						</div>	
 						<?php } ?>
+					
 						
 						
 				
@@ -199,7 +205,7 @@
   <div class="clearfix">&nbsp;</div>
   <div class="clearfix">&nbsp;</div>
   </div>	
- 
+
 
 <script>
 function video_subscribe(v_id){

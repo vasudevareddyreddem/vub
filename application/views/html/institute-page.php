@@ -2,7 +2,7 @@
 		  <script>$(document).ready(function(){   $("#pop-modal").modal();});</script>
  <?php } ?>
 <div class="content-wrapper">
-	<div class="body-start-page ">
+	<div class="body-start-page " style="margin-top:10px;">
 <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -65,12 +65,17 @@
 		 </div>
 		 </div>
 		 
+		 <div class="col-md-10 col-md-offset-2">
+			<img src="<?php echo base_url(); ?>assets/vendor/front-end/img/institue-ban.jpg" alt="">
+		 </div>
+		 <div class="clearfix">&nbsp;</div>
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">
 		 <?php if(isset($video_list) && count($video_list)>0){ ?>
 		 <?php foreach($video_list as $list){ ?>
 		 <?php if(isset($list['u_b_schedule']) && $list['u_b_schedule']!=''){ ?>
 			  <marquee scrolldelay="150"  onmouseover="this.stop()" onmouseout="this.start()"><?php echo isset($list['u_b_schedule'])?$list['u_b_schedule']:''; ?></marquee>
-		 <?php } ?>			
+		 <?php } ?>	
+ <a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name'])); ?>" style="color:#222">		 
 			<div class="article">
 						   <div class="row">
 							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -87,18 +92,18 @@
 									   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 p0">
 										  <div class="article-view">
 											 <div class="">
-											 <a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name'])); ?>">
+											
 											 <video width="100%" height="100%" class="thumbnail">
 											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
 											  <source src="movie.ogg" type="video/ogg">
-											</video></a>
+											</video>
 													
 											 </div>
 										  </div>
 									   </div>
 									   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 										  <div class="article-details">
-											 <h4><a href="#"  style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
+											 <h4><a   style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
 											 
 											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($list['c_name'])?$list['c_name']:''; ?></h5>
 											 <?php if(isset($list['training_mode']) && $list['training_mode']!=''){ ?>
@@ -132,6 +137,7 @@
 							  </div>
 						   </div>
 						</div>
+						</a>
 						 
 					<?php } ?>	
 				<?php }else{ ?>	
@@ -142,7 +148,7 @@
 			
 			<?php if(isset($courses_offered) && count($courses_offered)>0){ ?>
 					<div class="col-md-3 ">
-						<div id="">
+						<div>
 							<div class="sidebar-recent bg-white">
 									<div class="bg-primary pad-10">
 										<span class="">
@@ -153,7 +159,7 @@
 									<div class="row " style="border:1px solid #ddd;margin:5px">
 										<ul class="list-courses list-sty-none">
 										
-											<a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['c_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><li class=""><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp; Count: &nbsp;<?php echo isset($list['video_list'])?$list['video_list']:''; ?></li></a>
+											<a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['c_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><li class=""><?php echo isset($list['c_name'])?$list['c_name']:''; ?>(<?php echo isset($list['video_list'])?$list['video_list']:''; ?>)</li></a>
 											
 									
 										</ul>

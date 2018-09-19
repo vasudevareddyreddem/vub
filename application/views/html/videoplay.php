@@ -83,8 +83,11 @@
 						
 							</a>
 								
-							<span class="pull-right">
+							<!--<span class="pull-right">
 									<a href="javascript:void(0);" onclick="video_subscribe(<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>);" class="btn btn-primary btn-sm">Subscribe</a>
+							</span>-->
+								<span class="pull-right">
+									<a  class="btn btn-primary btn-sm" data-toggle="modal" data-target="#subscribe-modal">Subscribe</a>
 							</span>
 					<?php }else{ ?>
 					 <a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal"><i class="fa fa-thumbs-up font-share" aria-hidden="true"></i></a>
@@ -159,6 +162,7 @@
   </div>	
   </div>	
  <div id="sucessmsg" style="display:none;"></div>
+
  
 <script>
 	function sticky_relocate() {
@@ -227,7 +231,7 @@ function video_like(v_id){
 						if(parsedData.msg=1){
 							$('#likes_count').empty();
 							$('#likes_count').append(parsedData.count);
-							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ"> Video successfully liked. <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ"> You Liked It Thank You. <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
 
 						}else if(parsedData.msg=2){
 							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Video already liked <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');

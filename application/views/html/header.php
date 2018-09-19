@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/bootstrapValidator.min.css"> <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> <!-- Theme style -->
+	
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/design.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/vuebin.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/color.css">
@@ -117,7 +118,7 @@
         </div> <!-- Full Width Column -->
         <!-- share -->
         <div class="modal fade" id="pop-modal" role="dialog">
-            <div class="modal-dialog  ">
+            <div class="modal-dialog  modal-lg">
                 <div class="modal-content ">
                     <div class="modal-header bg-primary text-center"> </span></button>
                         <h4 class="modal-title" id="myModalLabel">Please submit this form to get calls from Training Institutes </h4>
@@ -126,7 +127,7 @@
                         <div class="row" id="lead_data">
                             <form onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post"> <input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>"> <input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                                 <div class="form-group col-md-12">
-                                    <div class="form-group"> <label class=" control-label">Course Name*</label>
+                                    <div class="form-group"> <label class=" control-label">Course  Definition*</label>
                                         <div class=""> <input type="text" class="form-control" name="course_name" id="course_name" placeholder="Enter Course Name" required> </div>
                                     </div>
                                     <div class="form-group"> <label class=" control-label">Name*</label>
@@ -202,6 +203,44 @@
             <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> <img class="" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"> </li>
             <?php } ?>
         </div>
+		   <div class="modal fade" id="subscribe-modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Subscribe</h4>
+        </div>
+        <div class="modal-body">
+					<form>
+				
+				<div class="form-check">
+					<label>
+						<input type="checkbox" name="check" checked> <span class="label-text">Option 01</span>
+					</label>
+				</div>
+				<div class="form-check">
+					<label>
+						<input type="checkbox" name="check"> <span class="label-text">Option 02</span>
+					</label>
+				</div>
+				<div class="form-check">
+					<label>
+						<input type="checkbox" name="check"> <span class="label-text">Option 03</span>
+					</label>
+				</div>
+				
+			</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Subscribe</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
         <?php if($this->input->cookie('admin_lead')==''){ ?>
         <script>
             $(document).ready(function() {
@@ -314,7 +353,7 @@
                         $(".ui-autocomplete").css("z-index", 1000);
                     }
                 }).autocomplete("instance")._renderItem = function(ul, item) {
-                    return $("<li><div><img style='width:25px;height:auto;margin-top:-5px;' src='" + item.img + "'><span>&nbsp;" + item.value + "</span></div></li>").appendTo(ul);
+                    return $("<li><div><span>&nbsp;" + item.value + "</span> <img style='width:25px;height:auto;margin-top:-5px;' src='" + item.img + "'></div></li>").appendTo(ul);
                 };
             });
             $(function() {

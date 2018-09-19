@@ -12,6 +12,7 @@
 			<?php if(isset($institute_list) && count($institute_list)>0){ ?>
 				 <div class="col-md-8  " data-category="view">
 						 <?php foreach($institute_list as $list){ ?>
+						 <a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>"  style="color:#222;">
 						 <div class="article">
 							   <div class="row">
 								  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white no-padding">
@@ -26,7 +27,7 @@
 										   </div>
 										   <div class=" col-md-7  bod-left">
 											  <div class="article-details">
-												 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>"  style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
+												 <h4 style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h4>
 												 
 												<!-- <h5><strong class="site-col-r">Courses:</strong> <?php echo isset($list['course_list'])?$list['course_list']:''; ?></h5> -->
 												 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
@@ -61,6 +62,7 @@
 								   
 							   </div>
 							</div>
+							</a>
 						 <?php } ?>
 				 </div>
 			
