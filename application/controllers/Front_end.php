@@ -17,7 +17,10 @@ class Front_end extends CI_Controller {
 		$this->load->model('User_model');
 		$this->load->model('Content_model');
 		$header['search_values']=$this->User_model->get_course_or_institues_list('');
-		$header['location_values']=$this->User_model->get_location_search_list('');
+		$location_all=$this->User_model->get_location_search_list('');
+		$location_indivual=$this->User_model->get_location_search_indivisual_list('');
+		$header['location_values']=array_merge($location_all,$location_indivual);
+		//echo '<pre>';print_r($header);exit;
 		if($this->session->userdata('vuebin_user'))
 		{
 			$vuebin_details=$this->session->userdata('vuebin_user');
@@ -32,7 +35,8 @@ class Front_end extends CI_Controller {
 			$header['loginURL']=$helper->getLoginUrl($redirectURL, $permissions);
 		}
 		$header['active_url']=$this->uri->segment(1);
-		//echo '<pre>';print_r($header['active_url']);exit;		
+		$header['active_url_1']=$this->uri->segment(6);
+		//echo '<pre>';print_r($header);exit;		
 		$this->load->view('html/header',$header);
 	}
 }

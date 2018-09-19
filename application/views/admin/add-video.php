@@ -55,7 +55,7 @@
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="training_mode[]" value="Offline" /> Offline
+												<input type="checkbox" name="training_mode[]" value="ClassRoom" /> Class Room
 											</label>
 										</div>
 									</div>

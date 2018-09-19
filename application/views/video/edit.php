@@ -53,9 +53,9 @@
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-											<?php if (in_array("Offline", $t_mode)){ ?>
+											<?php if (in_array("ClassRoom", $t_mode)){ ?>
  
-												<input type="checkbox" checked name="training_mode[]" value="Offline" /> Offline
+												<input type="checkbox" checked name="training_mode[]" value="ClassRoom" /> Class Room
 											  <?php }else{ ?>
 												<input type="checkbox" name="training_mode[]" value="Offline" /> Offline
 											  <?Php } ?>
@@ -357,6 +357,7 @@
 					}
 				}
 				},
+
 				vendor: {
 					 validators: {
 					notEmpty: {

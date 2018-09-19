@@ -183,7 +183,7 @@
 						<div class="row " style="border:1px solid #ddd;margin:5px">
 								    <div class=" ">
 										<ul class="list-courses list-sty-none">
-											<li class=""><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp; Count: &nbsp;<?php echo isset($list['video_count'])?$list['video_count']:''; ?></a></li>
+											<li class=""><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><?php echo isset($list['c_name'])?$list['c_name']:''; ?>&nbsp;(&nbsp;<?php echo isset($list['video_count'])?$list['video_count']:''; ?> )</a></li>
 	
 						
 										</ul>
