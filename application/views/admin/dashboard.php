@@ -22,21 +22,23 @@
 			  <h3 class="box-title"> Dashboard</h3>
 			
 			  </div>
-			  <div class="pull-right">
-			<span class="bg-primary" style="padding:8px">
-              <i class="fa fa-filter"></i>
-			  </span>
-			  <h3 class="box-title">  
-			  <select class="form-control">
-				<option>Select</option>
-				<option>01-09-2018</option>
-				<option>02-09-2018</option>
-				<option>03-09-2018</option>
-				<option>04-09-2018</option>
-				<option>05-09-2018</option>
-				<option>06-09-2018</option>
-			  </select></h3>
-			  <button class="btn btn-primary" style="border-radius:0px;margin-top:-2px;margin-left:-4px;">Filter</button>
+			  <div class="">
+			
+			  <div class="col-md-4 pull-right">  
+			     <div class="form-group col-md-9">
+           
+
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="datepicker">
+                </div>
+                <!-- /.input group -->
+              </div>
+			  <button class="btn btn-primary col-md-3" style="border-radius:0px;margin-top:-2px;margin-left:-4px;">Filter</button>
+			  </div>
+			  
 			  </div>
             </div>
             <!-- /.box-header -->

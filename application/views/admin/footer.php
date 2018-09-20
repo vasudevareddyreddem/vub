@@ -25,6 +25,10 @@
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/select2/select2.full.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendor/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<?php echo base_url(); ?>assets/vendor/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- SlimScroll -->
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -35,7 +39,17 @@
 <script src="<?php echo base_url(); ?>assets/vendor/dist/js/demo.js"></script>
 <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
 
+        //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+  });
+</script>
 <script>
  function scrollToBottom(id) {
 	var div = document.getElementById(id);
@@ -99,6 +113,7 @@ $(document).ready(function(){
   });
  
 </script>
+
 
 </body>
 </html>
