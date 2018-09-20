@@ -8,6 +8,7 @@ class Videos extends  Front_end {
 		parent::__construct();	
 		$this->load->model('Institute_model');
 		$this->load->model('Video_model');
+		$this->load->model('Course_model');
 	}
 	public function index()
 	{	
@@ -25,11 +26,13 @@ class Videos extends  Front_end {
 		$i_id=base64_decode($this->uri->segment(3));
 		$v_id=base64_decode($this->uri->segment(4));
 		$course_id=base64_decode($this->uri->segment(5));
+		$data['course_id']=$course_id;
 		$data['institute_details']=$this->Institute_model->get_institues_details_for_front_end($i_id);
 		$data['video_details']=$this->Institute_model->get_video_details($v_id);
 		$data['video_list']=$this->Institute_model->get_course_wise_video_list($i_id,$course_id,$v_id);
 		$data['like_count']=$this->Video_model->get_video_counts($v_id);
-		
+		$data['courses_list']=$this->Course_model->institue_wise_course_list($i_id);
+		//echo '<pre>';print_r($data['courses_list']);exit;
 		if($this->session->userdata('vuebin_user'))
 		{
 			$user_details=$this->session->userdata('vuebin_user');
@@ -89,11 +92,12 @@ class Videos extends  Front_end {
 		{
 			$user_details=$this->session->userdata('vuebin_user');
 			$post=$this->input->post();
-			echo '<pre>';print_r($post);exit;
+			//echo '<pre>';print_r($post);exit;
 			foreach($post['subscribe'] as $lis){
 				$subscribe_data=array(
 					'video_id'=>isset($post['video_id'])?$post['video_id']:'',
 					'ip_address'=>$this->input->ip_address(),
+					'course_id'=>isset($lis)?$lis:'',
 					'cust_id'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
 					'status'=>1,
 					'created_at'=>date('Y-m-d H:i:s'),
@@ -102,20 +106,19 @@ class Videos extends  Front_end {
 				);
 				$check=$this->Video_model->check_video_subscribe_exist($post['video_id'],$user_details['cust_id']);
 				if(count($check)>0){
-					$data=2;
-					echo json_encode($data);exit;		
 				}else{
 					$save=$this->Video_model->save_video_subscribe($subscribe_data);
-					if(count($save)>0){
-							$data=1;
-							echo json_encode($data);exit;	
-					}else{
-						$data=0;
-						echo json_encode($data);exit;
-					}
 				}	
 				
 			}
+			if(count($save)>0){
+					$this->session->set_flashdata('success',"Course successfully subscribed.");
+					redirect($this->agent->referrer());
+			}else{
+				$this->session->set_flashdata('error',"Course already subscribed.");
+				redirect($this->agent->referrer());
+			}
+			
 			
 
 		}else{

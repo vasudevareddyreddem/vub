@@ -190,7 +190,12 @@ class Course_model extends CI_Model
 		$this->db->order_by('video_count');
 		return $this->db->get()->row_array();
 	}
-	
+	public  function get_video_likes_details($video_id){
+		$this->db->select('COUNT(video_likes_list.v_l_id) as like_count')->from('video_likes_list');
+		$this->db->where('status ',1);
+		$this->db->where('video_id',$video_id);
+		return $this->db->get()->row_array();
+	}
 	
 	
 

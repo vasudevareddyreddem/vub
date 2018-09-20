@@ -26,6 +26,7 @@ class Courses extends Front_end {
 		$data['course_id']=$course_id;
 		$video_id=base64_decode($this->uri->segment(4));
 		$data['video_details']=$this->Course_model->get_video_details($video_id);
+		$data['like_count']=$this->Course_model->get_video_likes_details($video_id);
 		$data['video_list']=$this->Course_model->course_wise_video_list($course_id,$video_id);
 		$data['courses_list']=$this->Course_model->institue_wise_course_list($data['video_details']['i_id']);
 		//echo '<pre>';print_r($data['courses_list']);exit;
@@ -45,7 +46,7 @@ class Courses extends Front_end {
 			'updated_at'=>date('Y-m-d H:i:s'),
 			'create_by'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
 			);
-		//$this->Video_model->save_video_views_count($view_data);
+		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/course-video',$data);
 		$footer['details']=$this->Content_model->get_footer_content(1);
 		$this->load->view('html/footer',$footer);
