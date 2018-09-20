@@ -1,57 +1,4 @@
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <!-- Small boxes (Stat box) -->
-	    <div class="box box-default">
-            <div class="box-header with-border">
-			<div class="pull-left">
-		
-			  <h3 class="box-title"> Dashboard</h3>
-			
-			  </div>
-			  <div class="">
-			
-			  <div class="col-md-6 pull-right">  
-			     <div class="form-group col-md-4">
-           
-
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="todate" placeholder="To date">
-                </div>
-                </div>
-				<div class="form-group col-md-4">
-				<div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="fromdate" placeholder="From date">
-                </div>
-                <!-- /.input group -->
-              </div>
-			  <button onclick="get_filter_data()" class="btn btn-primary" style="border-radius:0px;margin-top:-2px;margin-left:-4px;">Filter</button>
-			  </div>
-			  
-			  </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-             <span id="change_filter_data"> 
          
       <div class="row">
 	
@@ -144,36 +91,4 @@
         </div>
         <!-- ./col -->
       </div>
-	  </span>
-	     </div>
-            <!-- /.box-body -->
-          </div>
-    
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-<script>
-function get_filter_data(){
-	var todate =$('#todate').val();
-	var fromdate =$('#fromdate').val();
-	if(todate !='' && fromdate!=''){
-		    jQuery.ajax({
-   			url: "<?php echo base_url('dashboard/get_date_wise_dashboard');?>",
-   			data: {
-				todate: todate,
-				fromdate: fromdate,
-			},
-   			type: "POST",
-   			format:"html",
-   					success:function(data){
-						if(data.msg=1){
-							$("#change_filter_data").empty();
-							$("#change_filter_data").append(data);
-						}
-					}
-           });
-	   }
-}
-</script>
+	  <?php exit; ?>

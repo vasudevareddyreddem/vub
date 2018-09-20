@@ -45,7 +45,16 @@
     $(".select2").select2();
 
         //Date picker
-    $('#datepicker').datepicker({
+    $('#todate').datepicker({
+      autoclose: true
+    });
+  });
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
+
+        //Date picker
+    $('#fromdate').datepicker({
       autoclose: true
     });
   });

@@ -83,6 +83,55 @@ class Admin_model extends CI_Model
 	}
 	
 	
+	/* dashboard filters  */
+	public  function get_range_of_total_institue_list_count($to,$from){
+		$this->db->select('COUNT(institute_list.i_id) as count')->from('institute_list');
+		$this->db->where('institute_list.status',1);
+		$this->db->where("DATE_FORMAT(created_at,'%Y-%m-%d') >=",$to);
+		$this->db->where("DATE_FORMAT(created_at,'%Y-%m-%d') <=",$from);
+		return $this->db->get()->row_array();
+	}
+	public  function get_range_of_total_video_list_count($to,$from){
+		$this->db->select('COUNT(video_list.video_id) as count')->from('video_list');
+		$this->db->where('video_list.status',1);
+		$this->db->where('video_list.public',1);
+		$this->db->where("DATE_FORMAT(created_at,'%Y-%m-%d') >=",$to);
+		$this->db->where("DATE_FORMAT(created_at,'%Y-%m-%d') <=",$from);
+		return $this->db->get()->row_array();
+	}
+	public  function get_range_of_total_user_list_count($to,$from){
+		$this->db->select('COUNT(customers_list.cust_id) as count')->from('customers_list');
+		$this->db->join('institute_list ', 'institute_list.created_by = customers_list.cust_id', 'left');
+		$this->db->where('institute_list.created_by !=','customers_list.cust_id');
+		$this->db->where('customers_list.status',1);
+		$this->db->where("DATE_FORMAT(customers_list.created_at,'%Y-%m-%d') >=",$to);
+		$this->db->where("DATE_FORMAT(customers_list.created_at,'%Y-%m-%d') <=",$from);
+		return $this->db->get()->row_array();
+	}
+	
+	public  function get_range_of_total_course_list_count($to,$from){
+		$this->db->select('COUNT(course_list.course_id) as count')->from('course_list');
+		$this->db->where('course_list.status',1);
+		$this->db->where("DATE_FORMAT(course_list.created_at,'%Y-%m-%d') >=",$to);
+		$this->db->where("DATE_FORMAT(course_list.created_at,'%Y-%m-%d') <=",$from);
+		return $this->db->get()->row_array();
+	}
+	public  function get_range_of_total_vendor_list_count($to,$from){
+		$this->db->select('COUNT(vendor_list.v_id) as count')->from('vendor_list');
+		$this->db->where('vendor_list.status',1);
+		$this->db->where("DATE_FORMAT(vendor_list.created_at,'%Y-%m-%d') >=",$to);
+		$this->db->where("DATE_FORMAT(vendor_list.created_at,'%Y-%m-%d') <=",$from);
+		return $this->db->get()->row_array();
+	}
+	public  function get_range_of_total_classification_list_count($to,$from){
+		$this->db->select('COUNT(classification_list.c_id) as count')->from('classification_list');
+		$this->db->where('classification_list.status',1);
+		$this->db->where("DATE_FORMAT(classification_list.created_at,'%Y-%m-%d') >=",$to);
+		$this->db->where("DATE_FORMAT(classification_list.created_at,'%Y-%m-%d') <=",$from);
+		return $this->db->get()->row_array();
+	}
+	
+	
 	
 	
 

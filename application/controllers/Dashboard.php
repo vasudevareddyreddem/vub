@@ -44,7 +44,20 @@ class Dashboard extends Admin_panel {
 	}
 	public  function get_date_wise_dashboard(){
 		$post=$this->input->post();
-		echo '<pre>';print_r($post);exit;
+		$to_originalDate = $post['todate'];
+		$to_newDate = date("Y-m-d", strtotime($to_originalDate));
+		$from_originalDate = $post['fromdate'];
+		$from_newDate = date("Y-m-d", strtotime($from_originalDate));
+		
+		
+		$data['total_institues']=$this->Admin_model->get_range_of_total_institue_list_count($to_newDate,$from_newDate);
+		$data['total_video']=$this->Admin_model->get_range_of_total_video_list_count($to_newDate,$from_newDate);
+		$data['total_user']=$this->Admin_model->get_range_of_total_user_list_count($to_newDate,$from_newDate);
+		$data['total_course']=$this->Admin_model->get_range_of_total_course_list_count($to_newDate,$from_newDate);
+		$data['total_vendors']=$this->Admin_model->get_range_of_total_vendor_list_count($to_newDate,$from_newDate);
+		$data['total_classification']=$this->Admin_model->get_range_of_total_classification_list_count($to_newDate,$from_newDate);
+		$this->load->view('admin/filter_dashboard',$data);
+		
 		
 	}
 	
