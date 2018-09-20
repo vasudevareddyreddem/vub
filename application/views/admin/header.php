@@ -194,6 +194,7 @@
 					<li><a href="<?php echo base_url('video/homevideolists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
 		</li>
+		
 		<li class="treeview">
 			  <a href="#">
 				<i class="fa fa-asterisk"></i>
@@ -387,6 +388,16 @@
 					<li><a href="<?php echo base_url('video'); ?>"><i class="fa fa-circle-o"></i> Add</a></li>
 					<li><a href="<?php echo base_url('video/lists'); ?>"><i class="fa fa-circle-o"></i> List</a></li>
 				</ul>
+			</li>
+			<li class="treeview">
+				  <a href="<?php echo base_url('institute/addbanner'); ?>">
+					<i class="fa fa-spinner"></i>
+					<span>Add Banner</span>
+						 <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+						</span>
+				  </a>
+				
 			</li>
 			<li class="treeview">
 				  <a href="<?php echo base_url('institute/subscribeers'); ?>">
