@@ -25,7 +25,7 @@
                 <thead>
                 <tr>
                   <th style="display:none;" ></th>
-                  <th>Course Name</th>
+                  <th>Course Definition</th>
 				    <th>Course Type Name</th>
 
                   <th>Course Image</th>
@@ -47,7 +47,7 @@
 
 							  <?php } ?>
 							  </td>
-							  <td> <?php echo date('M d ,Y',strtotime(htmlentities($list['created_at'])));?></td>
+							  <td> <?php echo date('M d ,Y H:i:s',strtotime(htmlentities($list['created_at'])));?></td>
 							  <td><?php if($list['status']==1){  echo "Active";}else{ echo "Deactive";} ?></td>
 							  <td>
 									  <a href="<?php echo base_url('course/edit/'.base64_encode($list['course_id'])); ?>"  data-toggle="tooltip" title="Edit"><i class="fa fa-pencil btn btn-success"></i></a>
@@ -63,7 +63,7 @@
                 <tfoot>
                 <tr>
 				 <th style="display:none;" ></th>
-                   <th>Course Name</th>
+                   <th>Course Definition</th>
                    <th>Course Type Name</th>
                   <th>Course Image</th>
                   <th>Created Date</th>
