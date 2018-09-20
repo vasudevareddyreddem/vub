@@ -89,29 +89,34 @@ class Videos extends  Front_end {
 		{
 			$user_details=$this->session->userdata('vuebin_user');
 			$post=$this->input->post();
-			$subscribe_data=array(
-			'video_id'=>isset($post['video_id'])?$post['video_id']:'',
-			'ip_address'=>$this->input->ip_address(),
-			'cust_id'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
-			'status'=>1,
-			'created_at'=>date('Y-m-d H:i:s'),
-			'updated_at'=>date('Y-m-d H:i:s'),
-			'create_by'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
-			);
-			$check=$this->Video_model->check_video_subscribe_exist($post['video_id'],$user_details['cust_id']);
-			if(count($check)>0){
+			echo '<pre>';print_r($post);exit;
+			foreach($post['subscribe'] as $lis){
+				$subscribe_data=array(
+					'video_id'=>isset($post['video_id'])?$post['video_id']:'',
+					'ip_address'=>$this->input->ip_address(),
+					'cust_id'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
+					'status'=>1,
+					'created_at'=>date('Y-m-d H:i:s'),
+					'updated_at'=>date('Y-m-d H:i:s'),
+					'create_by'=>isset($user_details['cust_id'])?$user_details['cust_id']:'',
+				);
+				$check=$this->Video_model->check_video_subscribe_exist($post['video_id'],$user_details['cust_id']);
+				if(count($check)>0){
 					$data=2;
 					echo json_encode($data);exit;		
-			}else{
-				$save=$this->Video_model->save_video_subscribe($subscribe_data);
-				if(count($save)>0){
-						$data=1;
-						echo json_encode($data);exit;	
 				}else{
-					$data=0;
-					echo json_encode($data);exit;
-				}
+					$save=$this->Video_model->save_video_subscribe($subscribe_data);
+					if(count($save)>0){
+							$data=1;
+							echo json_encode($data);exit;	
+					}else{
+						$data=0;
+						echo json_encode($data);exit;
+					}
+				}	
+				
 			}
+			
 
 		}else{
 			$this->session->set_flashdata('error',"Please login and continue");

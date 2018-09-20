@@ -206,7 +206,46 @@
   <div class="clearfix">&nbsp;</div>
   </div>	
 
-
+<div class="modal fade" id="subscribe-modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Subscribe</h4>
+        </div>
+		<form action="<?php echo base_url('videos/video_subscribe'); ?>" method="post">
+		<input type="hidden" name="video_id" id="" value="<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>">
+        <div class="modal-body">
+				<?php foreach($courses_list as $list){ ?>
+					<?php if($course_id== $list['course_name']){ ?>
+					<div class="form-check">
+						<label>
+							<input type="checkbox" checked name="subscribe[]" value="<?php echo $list['course_name']; ?>"> <span class="label-text"><?php echo $list['c_name']; ?></span>
+						</label>
+					</div>
+					<?php }else{ ?>
+						<div class="form-check">
+							<label>
+								<input type="checkbox" name="subscribe[]" value="<?php echo $list['course_name']; ?>"> <span class="label-text"><?php echo $list['c_name']; ?></span>
+							</label>
+						</div>
+					<?php } ?>
+				<?php } ?>
+				
+				
+			
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+          <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        </div>
+		</form>
+      </div>
+      
+    </div>
+  </div>
 <script>
 function video_subscribe(v_id){
 	if(v_id!=''){

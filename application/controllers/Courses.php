@@ -23,6 +23,7 @@ class Courses extends Front_end {
 	public function videoplay()
 	{	
 		$course_id=base64_decode($this->uri->segment(3));
+		$data['course_id']=$course_id;
 		$video_id=base64_decode($this->uri->segment(4));
 		$data['video_details']=$this->Course_model->get_video_details($video_id);
 		$data['video_list']=$this->Course_model->course_wise_video_list($course_id,$video_id);
