@@ -1,4 +1,5 @@
- <?php if($this->input->cookie('institue_lead')==''){ ?>
+ <?php $lead_data=$this->session->userdata('institue_lead_data'); ?>
+        <?php if($lead_data['ip_address']!=$this->input->ip_address() && $lead_data['institue_data']==''){ ?>
 		  <script>$(document).ready(function(){   $("#pop-modal").modal();});</script>
  <?php } ?>
 <div class="content-wrapper">
@@ -64,14 +65,17 @@
 		 </div>
 		 </div>
 		 </div>
-		 
+		 <?php if(isset($banner_img) && count($banner_img)>0){ ?>
 		 <div class="col-md-10 col-md-offset-2">
-			<img src="<?php echo base_url(); ?>assets/vendor/front-end/img/institue-ban.jpg" alt="">
+			<img src="<?php echo base_url('assets/institute_banner/'.$banner_img['banner_img']); ?>" alt="<?php echo $banner_img['org_image']; ?>">
 		 </div>
+		 <?php } ?>
+		 
 		 <div class="clearfix">&nbsp;</div>
+		 <?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
 		 <div class="col-md-10 col-md-offset-2">
 			<h4>Related videos list</h4>
-			<?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
+			
 				<?php foreach($institue_realted_video_list as $list){ ?>
 				<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
 			<div class="article">
@@ -139,10 +143,11 @@
 						
 				<?php } ?>
 			
-			<?php } ?>
+			
 			
 
 		 </div>
+		 <?php } ?>
 		 <div class="clearfix">&nbsp;</div>
 		 
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">

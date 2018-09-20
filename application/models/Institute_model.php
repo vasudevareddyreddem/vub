@@ -382,6 +382,22 @@ class Institute_model extends CI_Model
 		$this->db->where('video_list.status !=',2);
 		return $this->db->get()->result_array();
 	}
+	
+	public  function get_banner_details($int_id){
+		$this->db->select('*')->from('institute_banners');
+		$this->db->where('institute_banners.i_id',$int_id);
+		return $this->db->get()->row_array();
+	}
+	public  function update_banner_details($b_id,$data){
+		$this->db->where('institute_banners.b_id',$b_id);
+		return $this->db->update('institute_banners',$data);
+	}
+	public  function insert_banner_details($data){
+		$this->db->insert('institute_banners',$data);
+		return $this->db->insert_id();
+	}
+	
+	
 	/* institue  related video  list*/
 
 }

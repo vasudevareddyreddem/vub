@@ -765,5 +765,69 @@ class Institute extends Admin_panel {
 	}
 	/* subscribeers functionality*/
 	
+	/* add  banner*/
+	public  function addbanner(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$login_details=$this->session->userdata('vuebin_user');
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('institute/add-banner');
+				$this->load->view('admin/footer');
+				//echo '<pre>';print_r($data);exit;
+			
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	public  function updatebannerpost(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$login_details=$this->session->userdata('vuebin_user');
+			$institue_id=$this->Institute_model->get_institue_id($login_details['cust_id']);
+			$banners_details=$this->Institute_model->get_banner_details($institue_id['i_id']);
+			$post=$this->input->post();
+			if(isset($_FILES['banner_img']['name']) && $_FILES['banner_img']['name']!=''){
+					unlink('assets/institute_banner/'.$banners_details['banner_img']);
+					$pic=$_FILES['banner_img']['name'];
+					$picname = str_replace(" ", "", $pic);
+					$imagename=microtime().basename($picname);
+					$imgname = str_replace(" ", "", $imagename);
+					$img_name = $_FILES['banner_img']['name'];
+					move_uploaded_file($_FILES['banner_img']['tmp_name'], 'assets/institute_banner/'.$imgname);
+				}else{
+					$imgname=$banners_details['banner_img'];
+				}
+			$add=array(
+			'i_id'=>$institue_id['i_id'],
+			'org_image'=>isset($img_name)?$img_name:'',
+			'banner_img'=>isset($imgname)?$imgname:'',
+			'created_at'=>date('Y-m-d H:i:s'),
+			'updated_at'=>date('Y-m-d H:i:s'),
+			'created_by'=>$login_details['cust_id'],
+			);
+			
+			if(count($banners_details)>0){
+				$save=$this->Institute_model->update_banner_details($banners_details['b_id'],$add);
+			}else{
+				$save=$this->Institute_model->insert_banner_details($add);
+			}
+			
+			if(count($save)>0){
+				$this->session->set_flashdata('success',"Banner Successfully updated");
+				redirect('institute/addbanner');	
+			}else{
+				$this->session->set_flashdata('error',"technical problem will occurred. Please try again.");
+							redirect('institute/addbanner');	
+			}
+				
+			
+			
+		}else{
+			$this->session->set_flashdata('error',"you don't have permission to access");
+			redirect('admin');
+		}
+	}
+	
 	
 }
