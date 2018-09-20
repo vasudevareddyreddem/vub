@@ -202,48 +202,6 @@
             <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> <img class="" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"> </li>
             <?php } ?>
         </div>
-<<<<<<< HEAD
-		   <div class="modal fade" id="subscribe-modal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header bg-primary">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Subscribe</h4>
-        </div>
-        <div class="modal-body">
-					<form>
-				
-				<div class="form-check">
-					<label>
-						<input type="checkbox" name="check" checked> <span class="label-text">Option 01</span>
-					</label>
-				</div>
-				<div class="form-check">
-					<label>
-						<input type="checkbox" name="check"> <span class="label-text">Option 02</span>
-					</label>
-				</div>
-				<div class="form-check">
-					<label>
-						<input type="checkbox" name="check"> <span class="label-text">Option 03</span>
-					</label>
-				</div>
-				
-			</form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Subscribe</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-=======
->>>>>>> 663b2f099f0283aff7c731bf6a11c818133d4a4b
         <?php if($this->input->cookie('admin_lead')==''){ ?>
         <script>
             $(document).ready(function() {
