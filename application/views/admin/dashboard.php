@@ -15,6 +15,29 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
+	    <div class="box box-default">
+            <div class="box-header with-border">
+			<div class="pull-right">
+			<span class="bg-primary" style="padding:8px">
+              <i class="fa fa-filter"></i>
+			  </span>
+			  <h3 class="box-title">  
+			  <select class="form-control">
+				<option>Select</option>
+				<option>01-09-2018</option>
+				<option>02-09-2018</option>
+				<option>03-09-2018</option>
+				<option>04-09-2018</option>
+				<option>05-09-2018</option>
+				<option>06-09-2018</option>
+			  </select></h3>
+			  <button class="btn btn-primary">Filter</button>
+			  </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+             
+         
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -105,6 +128,9 @@
         </div>
         <!-- ./col -->
       </div>
+	     </div>
+            <!-- /.box-body -->
+          </div>
     
 
     </section>

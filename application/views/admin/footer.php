@@ -24,6 +24,7 @@
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/select2/select2.full.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendor/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- SlimScroll -->
 <script src="<?php echo base_url(); ?>assets/vendor/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -98,5 +99,6 @@ $(document).ready(function(){
   });
  
 </script>
+
 </body>
 </html>
