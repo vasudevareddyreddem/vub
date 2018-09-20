@@ -1,4 +1,5 @@
- <?php if($this->input->cookie('institue_lead')==''){ ?>
+ <?php $lead_data=$this->session->userdata('institue_lead_data'); ?>
+        <?php if($lead_data['ip_address']!=$this->input->ip_address() && $lead_data['institue_data']==''){ ?>
 		  <script>$(document).ready(function(){   $("#pop-modal").modal();});</script>
  <?php } ?>
 <div class="content-wrapper">

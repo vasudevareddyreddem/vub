@@ -29,14 +29,16 @@ class Institutes extends  Front_end {
 		}else{
 			$data['video_list']=$this->Institute_model->get_institues_video_list($i_id,'');
 			$institue_realted_video_list=$this->Institute_model->get_institue_related_video_list($i_id);
-			foreach($institue_realted_video_list as $lis){
-				foreach($lis as $li){
-					$lists[]=$li;
+			if(count($institue_realted_video_list)>0){
+				foreach($institue_realted_video_list as $lis){
+					foreach($lis as $li){
+						$lists[]=$li;
+					}
+					
 				}
-				
-			}
-			if(isset($lists)&& count($lists)>0){
-				$data['institue_realted_video_list']=$lists;
+				if(isset($lists)&& count($lists)>0){
+					$data['institue_realted_video_list']=$lists;
+				}
 			}
 		}
 		
