@@ -70,7 +70,76 @@
 		 </div>
 		 <div class="clearfix">&nbsp;</div>
 		 <div class="col-md-10 col-md-offset-2">
-			<h4>Realted videos list</h4>
+			<h4>Related videos list</h4>
+			<?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
+				<?php foreach($institue_realted_video_list as $list){ ?>
+				<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
+			<div class="article">
+						   <div class="row">
+							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								 <div class="article-footer clearfix">
+									<span class="pull-left">
+									   <h4 class="text-white"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></h4>
+									</span>	
+									
+								 </div>
+							  </div>
+							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								 <div class="article-body clearfix">
+									<div class="row">
+									   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 p0">
+										  <div class="article-view">
+											 <div class="">
+											
+											 <video width="100%" height="100%" class="thumbnail">
+											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
+											  <source src="movie.ogg" type="video/ogg">
+											</video>
+													
+											 </div>
+										  </div>
+									   </div>
+									   <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+										  <div class="article-details">
+											 <h4><a   style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
+											 
+											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($list['c_name'])?$list['c_name']:''; ?></h5>
+											 <?php if(isset($list['training_mode']) && $list['training_mode']!=''){ ?>
+											 <h5><strong class="site-col-b">Training Mode:</strong> <?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></h5>
+											 <?php } ?>
+												<?php if(isset($list['v_desc']) && $list['v_desc']!=''){ ?>
+											 <h5><strong class="site-col-b">Video Description:</strong>  <?php echo isset($list['v_desc'])?$list['v_desc']:''; ?></h5>
+												 <?php } ?>
+											 <?php if(isset($list['t_name']) && $list['t_name']!=''){ ?>
+											 <h5><strong class="site-col-b">Trainer Name:</strong> <?php echo isset($list['t_name'])?$list['t_name']:''; ?></h5>
+											 <?php } ?>
+											 
+										  </div>
+									   </div>
+									</div>
+									
+								 </div>
+							  </div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								 <div class="article-head clearfix">
+									<span class="">
+									  <i class="fa fa-thumbs-up" aria-hidden="true"></i> <?php echo isset($list['likes_count'])?$list['likes_count']:''; ?>
+									</span>
+									<span class="mar-l10">
+									  <i class="fa fa-eye" aria-hidden="true"></i> <?php echo isset($list['view_count'])?$list['view_count']:''; ?>
+									</span>
+									<span class="pull-right">
+									   <h4 class="text-white" style="line-height:24px"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date('M j Y h:i A',strtotime(htmlentities($list['created_at'])));?></h4>
+									</span>
+								 </div>
+							  </div>
+						   </div>
+						</div>
+						</a>
+						
+				<?php } ?>
+			
+			<?php } ?>
 			
 
 		 </div>

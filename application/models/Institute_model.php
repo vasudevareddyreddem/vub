@@ -355,5 +355,33 @@ class Institute_model extends CI_Model
 		$this->db->order_by('leads.l_id','desc');
 		return $this->db->get()->result_array();
 	}
+	/* institue  related video  list*/
+	public  function get_institue_related_video_list($l_id){
+		$this->db->select('course_name')->from('video_list');
+		$this->db->where('video_list.i_id',$l_id);
+		$this->db->group_by('video_list.course_name');
+		$return=$this->db->get()->result_array();
+		foreach($return as $lis){
+			$video_list=$this->get_related_video_list($lis['course_name'],$l_id);
+			if(count($video_list)>0){
+				$data[$lis['course_name']]=$video_list;
+			}
+		}
+		if(!empty($data)){
+			return $data;
+		}
+	}
+	
+	public  function get_related_video_list($course_id,$i_id){
+			$this->db->select('course_list.c_name,video_list.t_name,video_list.course_name,video_list.v_desc,video_list.i_id,video_list.video_id,video_list.video_file,video_list.org_video_file,video_list.training_mode,video_list.v_title,video_list.a_author,video_list.u_b_schedule,video_list.created_by,video_list.created_at')->from('video_list');
+		$this->db->join('course_list ', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->join('institute_list ', 'institute_list.i_id = video_list.i_id', 'left');
+		$this->db->join('admin ', 'admin.cust_id = video_list.created_by', 'left');
+		$this->db->where('video_list.i_id !=',$i_id);
+		$this->db->where('video_list.course_name',$course_id);
+		$this->db->where('video_list.status !=',2);
+		return $this->db->get()->result_array();
+	}
+	/* institue  related video  list*/
 
 }

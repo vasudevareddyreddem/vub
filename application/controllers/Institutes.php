@@ -28,10 +28,20 @@ class Institutes extends  Front_end {
 			
 		}else{
 			$data['video_list']=$this->Institute_model->get_institues_video_list($i_id,'');
+			$institue_realted_video_list=$this->Institute_model->get_institue_related_video_list($i_id);
+			foreach($institue_realted_video_list as $lis){
+				foreach($lis as $li){
+					$lists[]=$li;
+				}
+				
+			}
+			if(isset($lists)&& count($lists)>0){
+				$data['institue_realted_video_list']=$lists;
+			}
 		}
 		
 		$data['courses_offered']=$this->Institute_model->get_institues_wise_courses_offered($i_id);
-		//echo '<pre>';print_r($data);exit;
+		//echo '<pre>';print_r($lists);exit;
 		$this->load->view('html/institute-page',$data);
 		$footer['details']=$this->Content_model->get_footer_content(1);
 		$this->load->view('html/footer',$footer);
