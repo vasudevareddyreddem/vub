@@ -224,7 +224,24 @@ class Institute_model extends CI_Model
 		$this->db->join('city_list', 'city_list.city_id = institute_list.i_city', 'left');
 		$this->db->join('location_list', 'location_list.l_id = institute_list.location_name', 'left');
 		$this->db->where('institute_list.status!=',2);
-		return $this->db->get()->result_array();
+		$return=$this->db->get()->result_array();
+				
+		foreach($return as $list){
+			$videos_count=$this->get_instituewise_video_count_list($list['i_id']);
+			$data[$list['i_id']]=$list;
+			$data[$list['i_id']]['video_count']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+		}
+		if(!empty($data)){
+			return $data;
+			
+		}
+	}
+	public  function get_instituewise_video_count_list($i_id){
+		$this->db->select('COUNT(video_list.video_id) as video_count')->from('video_list');
+		$this->db->where('status ',1);
+		$this->db->where('i_id',$i_id);
+		$this->db->order_by('video_count');
+		return $this->db->get()->row_array();
 	}
 	public  function get_institute_login_details($i_id){
 		$this->db->select('i_id,created_by')->from('institute_list');

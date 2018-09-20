@@ -135,6 +135,7 @@ class Videos extends  Front_end {
 			);
 			$check=$this->Video_model->check_video_likes_exist($post['video_id'],$user_details['cust_id']);
 			if(count($check)>0){
+				$delete=$this->Video_model->dislike_already_liked_video($post['video_id'],$user_details['cust_id']);
 				$like_count=$this->Video_model->get_video_counts($post['video_id']);
 				//echo '<pe>';print_r($like_count);exit;
 						$data['msg']=1;

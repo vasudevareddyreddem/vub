@@ -89,6 +89,7 @@ class Video extends Admin_panel {
 			$login_details=$this->session->userdata('vuebin_user');
 			if($login_details['role_id']==2 || $login_details['role_id']==1){
 				$post=$this->input->post();
+				//echo '<pre>';print_r($post);exit;
 				if(isset($post['training_mode']) && count($post['training_mode'])>0){
 					$result = implode ( ",", $post['training_mode']);
 				}
@@ -98,6 +99,22 @@ class Video extends Admin_panel {
 					$imagename=microtime().basename($picname);
 					$imgname = str_replace(" ", "", $imagename);
 					move_uploaded_file($_FILES['video_file']['tmp_name'], 'assets/videos/'.$imgname);
+				}
+				if(isset($post['displaymode'][1]) &&  $post['displaymode'][0]=='public' && $post['displaymode'][1]=='private' || isset($post['displaymode'][1]) && $post['displaymode'][1]=='public' && $post['displaymode'][0]=='private'){
+					$public=1;
+					$private=1;
+				}else if(isset($post['displaymode'][0]) && $post['displaymode'][0]=='public'){
+					$public=1;
+					$private=0;
+				}else if(isset($post['displaymode'][0]) && $post['displaymode'][0]=='private'){
+					$public=0;
+					$private=1;
+				}else if(isset($post['displaymode'][1]) && $post['displaymode'][1]=='private'){
+					$public=0;
+					$private=1;
+				}else if(isset($post['displaymode'][1]) && $post['displaymode'][1]=='public'){
+					$public=1;
+					$private=0;	
 				}
 				$add=array(
 				'i_id'=>isset($post['i_id'])?$post['i_id']:'',
@@ -117,8 +134,8 @@ class Video extends Admin_panel {
 				'c_fee'=>isset($post['c_fee'])?$post['c_fee']:'',
 				'v_tags'=>isset($post['v_tags'])?$post['v_tags']:'',
 				'course_content'=>isset($post['course_content'])?$post['course_content']:'',
-				'public'=>isset($post['public'])?$post['public']:'',
-				'private'=>isset($post['private'])?$post['private']:'',
+				'public'=>isset($public)?$public:'',
+				'private'=>isset($private)?$private:'',
 				'status'=>1,
 				'created_at'=>date('Y-m-d H:i:s'),
 				'updated_at'=>date('Y-m-d H:i:s'),
@@ -177,6 +194,22 @@ class Video extends Admin_panel {
 					$imgname=$details['video_file'];
 					$pic=$details['org_video_file'];
 				}
+				if(isset($post['displaymode'][1]) &&  $post['displaymode'][0]=='public' && $post['displaymode'][1]=='private' || isset($post['displaymode'][1]) && $post['displaymode'][1]=='public' && $post['displaymode'][0]=='private'){
+					$public=1;
+					$private=1;
+				}else if(isset($post['displaymode'][0]) && $post['displaymode'][0]=='public'){
+					$public=1;
+					$private=0;
+				}else if(isset($post['displaymode'][0]) && $post['displaymode'][0]=='private'){
+					$public=0;
+					$private=1;
+				}else if(isset($post['displaymode'][1]) && $post['displaymode'][1]=='private'){
+					$public=0;
+					$private=1;
+				}else if(isset($post['displaymode'][1]) && $post['displaymode'][1]=='public'){
+					$public=1;
+					$private=0;	
+				}
 				$update_data=array(
 				'video_file'=>isset($imgname)?$imgname:'',
 				'org_video_file'=>isset($pic)?$pic:'',
@@ -194,11 +227,11 @@ class Video extends Admin_panel {
 				'c_fee'=>isset($post['c_fee'])?$post['c_fee']:'',
 				'v_tags'=>isset($post['v_tags'])?$post['v_tags']:'',
 				'course_content'=>isset($post['course_content'])?$post['course_content']:'',
-				'public'=>isset($post['public'])?$post['public']:'',
-				'private'=>isset($post['private'])?$post['private']:'',
+				'public'=>isset($public)?$public:'',
+				'private'=>isset($private)?$private:'',
 				'updated_at'=>date('Y-m-d H:i:s'),
 				);
-				//echo '<pre>';print_r($add);exit;
+				//echo '<pre>';print_r($update_data);exit;
 					$update=$this->Video_model->update_video_details($post['video_id'],$update_data);
 
 				if(count($update)>0){
