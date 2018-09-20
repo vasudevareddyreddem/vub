@@ -48,7 +48,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-primary">
             <div class="inner">
               <h3><?php echo isset($total_user['count'])?$total_user['count']:''; ?></h3>
 
@@ -77,7 +77,7 @@
         </div>
 		<div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-white">
+          <div class="small-box bg-green">
             <div class="inner">
               <h3><?php echo isset($total_vendors['count'])?$total_vendors['count']:''; ?></h3>
 

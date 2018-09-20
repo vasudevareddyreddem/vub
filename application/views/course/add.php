@@ -13,15 +13,20 @@
 			<div style="padding:20px;">
             <form id="addcourse" method="post" class="" action="<?php echo base_url('course/addpost'); ?>" enctype="multipart/form-data">
 						<div class="row">
-						<div class="col-md-6">
+							<div class="col-md-12">
+								<h2 class="page-header">Course Definition</h2>
+							</div>
+						</div>
+						<div class="row">
+						<div class="col-md-4">
 							<div class="form-group">
-								<label class=" control-label">Course Name</label>
+								<label class=" control-label">Course Definition</label>
 								<div class="">
 									<input type="text" class="form-control" name="c_name" id="c_name" placeholder="Course Name" />
 								</div>
 							</div>
                         </div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class=" control-label">Course Image</label>
 								<div class="">
@@ -29,8 +34,7 @@
 								</div>
 							</div>
                         </div>
-						</div><div class="row">
-						<div class="col-md-6">
+							<div class="col-md-4">
 							<div class="form-group">
 								<label class=" control-label">Course Type</label>
 								<div class="">
@@ -45,6 +49,14 @@
 								</div>
 							</div>
                         </div>
+						</div>
+						<div class="clearfix">&nbsp;</div>
+							<div class="row">
+							<div class="col-md-12">
+								<h2 class="page-header">Course Profile</h2>
+							</div>
+						</div>
+						<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class=" control-label">Course Profile 1</label>
@@ -53,8 +65,6 @@
 								</div>
 							</div>
                         </div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 2</label>
@@ -63,7 +73,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
+							
+						</div>
+						<div class="row">
+						<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 3</label>
 									<div class="">
@@ -71,8 +84,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 4</label>
@@ -81,7 +92,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
+							
+						</div>
+						<div class="row">
+						<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 5</label>
 									<div class="">
@@ -89,8 +103,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 6</label>
@@ -99,7 +111,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
+							
+						</div>
+						<div class="row">
+						<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 7</label>
 									<div class="">
@@ -107,8 +122,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 8</label>
@@ -117,7 +130,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
+							
+						</div>
+						<div class="row">
+						<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 9</label>
 									<div class="">
@@ -125,8 +141,6 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class=" control-label">Course Profile 10</label>

@@ -30,7 +30,7 @@
 			</div>
            
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table-responsive">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -53,7 +53,7 @@
 							  <td style="display:none;"><?php echo $list['video_id']; ?></td>
 							  <td><?php echo $list['i_name']; ?></td>
 							  <td>
-								<video width="30%" height="20%" class="thumbnail">
+								<video style="width:50px;" class="thumbnail">
 								<source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
 								<source src="movie.ogg" type="video/ogg">
 								</video>
