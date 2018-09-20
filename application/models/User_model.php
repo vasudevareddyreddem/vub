@@ -251,6 +251,31 @@ class User_model extends CI_Model
 		return $this->db->get()->result_array();
 	}
 	/* home page content */
+	/*subscribes_video_list*/
+	public  function get_user_subscribes_video_list($u_id){
+		$this->db->select('course_list.course_id,video_list.video_id,video_list.i_id,video_list.v_title,video_list.video_file,video_list.org_video_file,video_list.t_name,video_list.course_content,course_list.c_name as coursename,video_list.training_mode,institute_list.i_name,institute_list.i_logo,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,institute_list.i_address,institute_list.i_contact_person,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code')->from('video_subscribe_list');
+		$this->db->join('video_list', 'video_list.video_id = video_subscribe_list.video_id', 'left');
+		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->join('institute_list', 'institute_list.i_id = video_list.i_id', 'left');
+		$this->db->join('location_list ', 'location_list.l_id = institute_list.location_name', 'left');
+		$this->db->join('city_list ', 'city_list.city_id = institute_list.i_city', 'left');
+		$this->db->join('countries_list ', 'countries_list.c_id = institute_list.country_name', 'left');
+		$this->db->where('video_subscribe_list.cust_id',$u_id);
+		return $this->db->get()->result_array();
+	}
+	public  function get_lastest_user_subscribes_video_list($u_id){
+		$this->db->select('course_list.course_id,video_list.video_id,video_list.i_id,video_list.v_title,video_list.video_file,video_list.org_video_file,video_list.t_name,video_list.course_content,course_list.c_name as coursename,video_list.training_mode,institute_list.i_name,institute_list.i_logo,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,institute_list.i_address,institute_list.i_contact_person,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code')->from('video_subscribe_list');
+		$this->db->join('video_list', 'video_list.video_id = video_subscribe_list.video_id', 'left');
+		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->join('institute_list', 'institute_list.i_id = video_list.i_id', 'left');
+		$this->db->join('location_list ', 'location_list.l_id = institute_list.location_name', 'left');
+		$this->db->join('city_list ', 'city_list.city_id = institute_list.i_city', 'left');
+		$this->db->join('countries_list ', 'countries_list.c_id = institute_list.country_name', 'left');
+		$this->db->where('video_subscribe_list.cust_id',$u_id);
+		$this->db->order_by('video_subscribe_list.v_s_id','desc');
+		$this->db->limit(5);
+		return $this->db->get()->result_array();
+	}
 	
 
 }

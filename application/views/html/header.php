@@ -29,7 +29,7 @@
     <div class="wrapper">
         <header class="main-header">
             <nav class="navbar navbar-dark navbar-fixed-top">
-                <div class="container" style="padding-top:10px;">
+                <div class="container-fluid" style="padding-top:10px;">
                     <div class="navbar-header"> <a href="<?php echo base_url(); ?>" class="navbar-brand"><img style="width:100px;height:auto;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png" /></a>
                         <div id="mobile-search-id" class=" md-hide" style="position:absolute;right:65px;color:#333;top:12px;font-size:20px;"> <i class="fa fa-search" aria-hidden="true"></i> </div> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"> <i class="fa fa-bars"></i> </button>
                     </div>
@@ -67,6 +67,8 @@
                             </li>
                             <?php if(isset($user_details) && count($user_details)>0){ ?>
                             <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('user/logout'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Logout</a> </li>
+							<li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('user/subscribes'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">My subscribe</a> </li>
+							
                             <?php }else{ ?>
                             <!--<li data-toggle=" 							" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> 							   <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Login</a> 							</li>-->
                             <?php } ?>

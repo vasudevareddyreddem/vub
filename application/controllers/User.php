@@ -339,5 +339,22 @@ class User extends Front_end {
 	}
 	
 	
+	public  function subscribes(){
+		if($this->session->userdata('vuebin_user'))
+		{
+			$user_details=$this->session->userdata('vuebin_user');
+			$data['video_list']=$this->User_model->get_user_subscribes_video_list($user_details['cust_id']);
+			$data['latest_video_list']=$this->User_model->get_lastest_user_subscribes_video_list($user_details['cust_id']);
+			//echo '<pre>';print_r($data);exit; 
+			$this->load->view('html/Subscribe_list',$data);
+			$footer['details']=$this->Content_model->get_footer_content(1);
+			$this->load->view('html/footer',$footer);
+		}else{
+			$this->session->set_flashdata('error',"Please log in continue");
+			redirect();
+		}
+	}
+	
+	
 	
 }
