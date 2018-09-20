@@ -145,6 +145,19 @@
   <!-- /.content-wrapper -->
 <script>
 function get_filter_data(id){
-	alert(id);
+	if(id !=''){
+		    jQuery.ajax({
+   			url: "<?php echo base_url('dashboard/get_date_wise_dashboard');?>",
+   			data: {
+				date: id,
+			},
+   			type: "POST",
+   			format:"html",
+   					success:function(data){
+						if(data.msg=1){
+						}
+					}
+           });
+	   }
 }
 </script>

@@ -55,7 +55,7 @@
 	?>
 	<hr class="hr-cus">
         <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
-      <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url('institutes/linkedin/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-instagram"><i class="fa fa-linkedin "></i></a>
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-instagram"><i class="fa fa-linkedin "></i></a>
       <a href="http://twitter.com/share?text=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
        <a href="https://plus.google.com/share?url=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-email"><i class="fa fa-google-plus"></i></a>
     </div>

@@ -5,7 +5,8 @@ class Dashboard extends Admin_panel {
 
 	public function __construct() 
 	{
-		parent::__construct();	
+		parent::__construct();
+		$this->load->model('Institute_model');		
 		
 	}
 	public function index()
@@ -27,7 +28,12 @@ class Dashboard extends Admin_panel {
 				$this->load->view('admin/dashboard',$data);
 				
 			}if($login_details['role_id']==2){
-				$this->load->view('admin/instituedashboard');
+				$institue_id=$this->Institute_model->get_institue_id($login_details['cust_id']);
+				$data['total_video']=$this->Admin_model->get_institue_total_video_list_count($institue_id['i_id']);
+				$data['total_leads']=$this->Admin_model->get_institue_total_user_list_count($institue_id['i_id']);
+				$data['total_course']=$this->Admin_model->get_institue_total_course_list_count($institue_id['i_id']);
+				//echo '<pre>';print_r($data);exit;
+				$this->load->view('admin/instituedashboard',$data);
 				
 			}
 			$this->load->view('admin/footer');
@@ -35,6 +41,11 @@ class Dashboard extends Admin_panel {
 			$this->session->set_flashdata('error',"you don't have permission to access");
 			redirect('admin');
 		}
+	}
+	public  function get_date_wise_dashboard(){
+		$post=$this->input->post();
+		echo '<pre>';print_r($post);exit;
+		
 	}
 	
 	
