@@ -204,16 +204,22 @@
             <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> <img class="" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"> </li>
             <?php } ?>
         </div>
-		 
-        <?php if($this->input->cookie('admin_lead')==''){ ?>
+		 	 <div id="sucessmsg" style=""></div>
+			 
+			 <?php $lead_data=$this->session->userdata('lead_data'); ?>
+        <?php if($lead_data['ip_address']!=$this->input->ip_address() && $lead_data['vuebin_data']==''){ ?>
         <script>
             $(document).ready(function() {
                 $("#pop-modal").modal();
             });
         </script>
         <?php } ?>
+		
+		
         <script type="text/javascript">
             function sent_lead() {
+					$('#lead_data').hide();
+					$('#lead_num_otp').show();
                 jQuery.ajax({
                     url: "<?php echo base_url('user/save_lead_information');?>",
                     data: {
@@ -227,9 +233,11 @@
                     type: "POST",
                     format: "json",
                     success: function(data) {
+						
                         var parsedData = JSON.parse(data);
                         if (parsedData.msg == 1) {
-                            $('#lead_id').val(parsedData.lead_id);
+							$('#sucessmsg').html('  <div class="alert_msg1 animated slideInUp bg-succ"> Otp successfully sent. Check your Mobile  number <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i> </div>');
+							$('#lead_id').val(parsedData.lead_id);
                             $('#lead_data').hide();
                             $('#lead_num_otp').show();
                         } else {
@@ -257,17 +265,17 @@
                     success: function(data) {
                         var parsedData = JSON.parse(data);
                         if (parsedData.msg == 1) {
-                            $('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Mobile number successfully verified <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');
+                            $('#sucessmsg').html('  <div class="alert_msg1 animated slideInUp bg-succ"> Mobile number successfully verified <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i> </div>');
                             location.reload();
                         } else if (parsedData.msg == 0) {
-                            $('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_war"> Technical problem will occurred. Please try again <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');
-                            return false;
+							 $('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Technical problem will occurred. Please try again <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i> </div>');
+							return false;
                         } else if (parsedData.msg == 2) {
-                            $('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_war"> One Time Password is expired. Please try again <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');
-                            return false;
+						 $('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> One Time Password is expired. Please try again <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i> </div>');
+							return false;
                         } else if (parsedData.msg == 3) {
-                            $('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_war"> Otp wrong. Please try again <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');
-                            return false;
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn">Otp wrong. Please try again<i class="fa fa-check text-success ico_bac" aria-hidden="true"></i> </div>');
+							return false;
                         }
                     }
                 });

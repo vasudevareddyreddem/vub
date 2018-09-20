@@ -287,6 +287,7 @@ class User extends Front_end {
 		}
 	}
 	public  function mobile_num_verification(){
+		$this->load->library('session');
 		$post=$this->input->post();
 		$lead_details=$this->User_model->get_leader_details($post['lead_id']);
 		if($lead_details['otp_verification']==$post['otp']){
@@ -306,18 +307,20 @@ class User extends Front_end {
 							);
 							$update=$this->User_model->update_lead_resend_otp($post['lead_id'],$add);
 							if(count($update)>0){
-								if($lead_details['in_id']!='' && $lead_details['in_id']!=0){
-									$institue_lead = array('name' => 'institue_lead', 'value' => 1,'expire' => time()+86500 ,'path'   => '/');
-									$this->input->set_cookie($institue_lead);
-									$this->load->helper('cookie');
-									$this->input->cookie('institue_lead', TRUE);
+								if($lead_details['in_id']!='' && $lead_details['in_id']==0){
+										$newdata = array(
+										'ip_address'  =>$this->input->ip_address(),
+										'vuebin_data' =>'yes'
+										);
+										$this->session->set_userdata('lead_data',$newdata);
+									
 								}else{
-									$admin_lead = array('name' => 'admin_lead', 'value' => 1,'expire' => time()+86500 ,'path'   => '/');
-									$this->input->set_cookie($admin_lead);
-									$this->load->helper('cookie');
-									$this->input->cookie('admin_lead', TRUE);
+									$newdata = array(
+										'ip_address'  =>$this->input->ip_address(),
+										'institue_data' =>'yes'
+										);
+									$this->session->set_userdata('institue_lead_data',$newdata);
 								}
-								
 								$data['msg']=1;
 								echo json_encode($data);exit;
 							}else{
