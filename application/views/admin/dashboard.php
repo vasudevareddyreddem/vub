@@ -27,16 +27,26 @@
               <i class="fa fa-filter"></i>
 			  </span>
 			  <h3 class="box-title">  
-			  <select class="form-control" onchange="get_filter_data(this.value)">
+			  <select class="form-control" id="todate">
 				<option value="">Select</option>
-				<option value="">01-09-2018</option>
-				<option value="">02-09-2018</option>
-				<option value="">03-09-2018</option>
-				<option value="">04-09-2018</option>
-				<option value="">05-09-2018</option>
-				<option value="">06-09-2018</option>
+				<option value="01-09-2018">01-09-2018</option>
+				<option value="02-09-2018">02-09-2018</option>
+				<option value="03-09-2018">03-09-2018</option>
+				<option value="04-09-2018">04-09-2018</option>
+				<option value="05-09-2018">05-09-2018</option>
+				<option value="06-09-2018">06-09-2018</option>
 			  </select></h3>
-			  <button class="btn btn-primary" style="border-radius:0px;margin-top:-2px;margin-left:-4px;">Filter</button>
+			  <h3 class="box-title">  
+			  <select class="form-control" id="fromdate">
+				<option value="">Select</option>
+				<option value="01-09-2018">01-09-2018</option>
+				<option value="02-09-2018">02-09-2018</option>
+				<option value="03-09-2018">03-09-2018</option>
+				<option value="04-09-2018">04-09-2018</option>
+				<option value="05-09-2018">05-09-2018</option>
+				<option value="06-09-2018">06-09-2018</option>
+			  </select></h3>
+			  <button onclick="get_filter_data()" class="btn btn-primary" style="border-radius:0px;margin-top:-2px;margin-left:-4px;">Filter</button>
 			  </div>
             </div>
             <!-- /.box-header -->
@@ -144,12 +154,15 @@
   </div>
   <!-- /.content-wrapper -->
 <script>
-function get_filter_data(id){
-	if(id !=''){
+function get_filter_data(){
+	var todate =$('#todate').val();
+	var fromdate =$('#fromdate').val();
+	if(todate !='' && fromdate!=''){
 		    jQuery.ajax({
    			url: "<?php echo base_url('dashboard/get_date_wise_dashboard');?>",
    			data: {
-				date: id,
+				todate: todate,
+				fromdate: fromdate,
 			},
    			type: "POST",
    			format:"html",
