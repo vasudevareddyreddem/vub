@@ -62,6 +62,27 @@ class Admin_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	
+	/* institute dashboard*/
+	public  function get_institue_total_video_list_count($i_id){
+		$this->db->select('COUNT(video_list.video_id) as count')->from('video_list');
+		$this->db->where('video_list.i_id',$i_id);
+		$this->db->where('video_list.status !=',2);
+		return $this->db->get()->row_array();
+	}
+	public  function get_institue_total_user_list_count($i_id){
+		$this->db->select('COUNT(leads.l_id) as count')->from('leads');
+		$this->db->where('leads.in_id',$i_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_institue_total_course_list_count(){
+		$this->db->select('COUNT(course_list.course_id) as count')->from('video_list');
+		$this->db->join('course_list ', 'course_list.course_id = video_list.course_name', 'left');
+		$this->db->group_by('video_list.course_name');
+		$this->db->where('course_list.status',1);
+		return $this->db->get()->row_array();
+	}
+	
+	
 	
 	
 

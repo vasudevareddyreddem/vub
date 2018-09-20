@@ -277,5 +277,11 @@ class User_model extends CI_Model
 		return $this->db->get()->result_array();
 	}
 	
+	public  function get_institues_name($i_id){
+		$this->db->select('institute_list.i_name')->from('institute_list');
+		$this->db->where('institute_list.i_id',$i_id);
+		return $this->db->get()->row_array();
+	}
+	
 
 }
