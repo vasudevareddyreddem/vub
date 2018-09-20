@@ -17,7 +17,12 @@
       <!-- Small boxes (Stat box) -->
 	    <div class="box box-default">
             <div class="box-header with-border">
-			<div class="pull-right">
+			<div class="pull-left">
+		
+			  <h3 class="box-title"> Dashboard</h3>
+			
+			  </div>
+			  <div class="pull-right">
 			<span class="bg-primary" style="padding:8px">
               <i class="fa fa-filter"></i>
 			  </span>
@@ -31,7 +36,7 @@
 				<option>05-09-2018</option>
 				<option>06-09-2018</option>
 			  </select></h3>
-			  <button class="btn btn-primary">Filter</button>
+			  <button class="btn btn-primary" style="border-radius:0px;margin-top:-2px;margin-left:-4px;">Filter</button>
 			  </div>
             </div>
             <!-- /.box-header -->
