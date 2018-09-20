@@ -20,7 +20,7 @@
             <!-- /.box-header -->
             <!-- form start -->
 			<div style="padding:20px;">
-            <form id="addvideo" method="post" class="" action="<?php echo base_url('video/addpost'); ?>" enctype="multipart/form-data">
+            <form id="addvideo" method="post"  action="<?php echo base_url('video/addpost'); ?>" enctype="multipart/form-data">
 						<input type="hidden" id="i_id" name="i_id" value="<?php echo isset($institue_id)?$institue_id:''; ?>">
 						<div class="row">
 						<div class="col-md-6">
@@ -55,7 +55,7 @@
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="training_mode[]" value="Offline" /> Offline
+												<input type="checkbox" name="training_mode[]" value="ClassRoom" /> Class Room
 											</label>
 										</div>
 									</div>
@@ -218,14 +218,14 @@
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="public" value="1" /> Public
+												<input type="checkbox" name="displaymode[]" value="public" /> Public
 											</label>
 										</div>
 									</div>
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="private" value="1" /> Private
+												<input type="checkbox" name="displaymode[]" value="private" /> Private
 											</label>
 										</div>
 									</div>
@@ -265,7 +265,12 @@
 	
 </div>
 
-  <script type="text/javascript">$(document).ready(function() {
+  <script type="text/javascript">
+  function check_validation(){
+	 
+	  return false;
+  }
+  $(document).ready(function() {
     $('#addvideo').bootstrapValidator({
         
         fields: {
@@ -290,7 +295,14 @@
 			'training_mode[]': {
                 validators: {
 					notEmpty: {
-						message: 'Training_mode is required'
+						message: 'Training mode is required'
+					}
+				}
+            },
+			'displaymode[]': {
+                validators: {
+					notEmpty: {
+						message: 'Display Mode is required'
 					}
 				}
             },

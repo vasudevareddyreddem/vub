@@ -53,9 +53,9 @@
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-											<?php if (in_array("Offline", $t_mode)){ ?>
+											<?php if (in_array("ClassRoom", $t_mode)){ ?>
  
-												<input type="checkbox" checked name="training_mode[]" value="Offline" /> Offline
+												<input type="checkbox" checked name="training_mode[]" value="ClassRoom" /> Class Room
 											  <?php }else{ ?>
 												<input type="checkbox" name="training_mode[]" value="Offline" /> Offline
 											  <?Php } ?>
@@ -226,9 +226,9 @@
 										<div class="checkbox">
 											<label>
 											<?php if($video_details['public']==1){ ?>
-												<input checked type="checkbox" name="public" value="1" /> Public
+												<input checked type="checkbox" name="displaymode[]" value="public" /> Public
 											<?php }else{  ?>
-												<input type="checkbox" name="public" value="1" /> Public
+												<input type="checkbox" name="displaymode[]" value="public" /> Public
 											<?php } ?>
 											</label>
 										</div>
@@ -237,9 +237,9 @@
 										<div class="checkbox">
 											<label>
 											<?php if($video_details['private']==1){ ?>
-												<input type="checkbox" name="private" value="1" /> Private
+												<input type="checkbox" name="displaymode[]" value="private" /> Private
 											<?php }else{  ?>
-												<input type="checkbox" name="private" value="1" /> Private
+												<input type="checkbox" name="displaymode[]" value="private" /> Private
 											<?php } ?>
 											</label>
 										</div>
@@ -303,7 +303,14 @@
 			'training_mode[]': {
                 validators: {
 					notEmpty: {
-						message: 'Training_mode is required'
+						message: 'Training mode is required'
+					}
+				}
+            },
+			'displaymode[]': {
+                validators: {
+					notEmpty: {
+						message: 'Display Mode is required'
 					}
 				}
             },
@@ -357,6 +364,7 @@
 					}
 				}
 				},
+
 				vendor: {
 					 validators: {
 					notEmpty: {

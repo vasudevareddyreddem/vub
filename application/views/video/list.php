@@ -60,7 +60,11 @@
 							  <td><?php if($list['public']==1){ echo "Public";} ?>&nbsp;<?php if($list['private']==1){ echo ",";} ?>&nbsp;<?php if($list['private']==1){ echo "Private";} ?></td>
 							 
 							  <td> <?php echo date('M d ,Y',strtotime(htmlentities($list['created_at'])));?></td>
-							  <td> <?php echo $list['demo_type']; ?>&nbsp;&nbsp;,<?php echo $list['full_type']; ?></td>
+							  <td> 
+							  <?php if($list['demo_type']!='' || $list['full_type']!=''){ ?>
+							  <?php echo $list['demo_type']; ?>&nbsp;&nbsp;,<?php echo $list['full_type']; ?>
+							  <?php } ?>
+							  </td>
 							  <td><?php if($list['status']==1){  echo "Active";}else{ echo "Deactive";} ?></td>
 							  <td>
 									  <a href="<?php echo base_url('video/edit/'.base64_encode($list['video_id'])); ?>"  data-toggle="tooltip" title="Edit"><i class="fa fa-pencil btn btn-success"></i></a>

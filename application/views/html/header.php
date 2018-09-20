@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/bootstrapValidator.min.css"> <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"> <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> <!-- Theme style -->
-	
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/design.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/vuebin.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/front-end/css/color.css">
@@ -40,7 +39,7 @@
                         <ul class="nav navbar-nav mar-l-40">
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                             <li class="hidden"> <a href="#page-top"></a> </li>
-                            <li class="page-scroll <?php if($active_url=='institutes'){ echo "nav-li-active"; } ?>"> <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a> </li>
+                            <li class="page-scroll <?php if($active_url=='institutes'  || $active_url_1=='instutue'){ echo "nav-li-active"; } ?>"> <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a> </li>
                             <li class="page-scroll <?php if($active_url=='courses'){ echo "nav-li-active"; } ?>"> <a href="<?php echo base_url('courses'); ?>">COURSES</a> </li>
                         </ul>
                     </div> <!-- /.navbar-collapse -->
@@ -50,7 +49,7 @@
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                             <li class="hidden"> <a href="#page-top"></a> </li>
                             <li class="page-scroll">
-                                <form action="<?php echo base_url('search/post'); ?>" method="post">
+                                <form action="<?php echo base_url('search/index/'); ?>" method="post">
                                     <div class="search-form">
                                         <div class="form-group "> <input id="myInput" type="text" class="form-control search-loc homemenu_id" name="institue_course_name" placeholder=" Course Video/Institute "> <input type="hidden" id="homemenu_id" name="institue_course" value=""> </div>
                                     </div>
@@ -118,7 +117,7 @@
         </div> <!-- Full Width Column -->
         <!-- share -->
         <div class="modal fade" id="pop-modal" role="dialog">
-            <div class="modal-dialog  modal-lg">
+            <div class="modal-dialog  ">
                 <div class="modal-content ">
                     <div class="modal-header bg-primary text-center"> </span></button>
                         <h4 class="modal-title" id="myModalLabel">Please submit this form to get calls from Training Institutes </h4>
@@ -127,7 +126,7 @@
                         <div class="row" id="lead_data">
                             <form onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post"> <input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>"> <input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                                 <div class="form-group col-md-12">
-                                    <div class="form-group"> <label class=" control-label">Course  Definition*</label>
+                                    <div class="form-group"> <label class=" control-label">Course Name*</label>
                                         <div class=""> <input type="text" class="form-control" name="course_name" id="course_name" placeholder="Enter Course Name" required> </div>
                                     </div>
                                     <div class="form-group"> <label class=" control-label">Name*</label>
@@ -203,6 +202,7 @@
             <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> <img class="" style="width:100px;height:auto;float:right;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" alt="livechat"> </li>
             <?php } ?>
         </div>
+<<<<<<< HEAD
 		   <div class="modal fade" id="subscribe-modal" role="dialog">
     <div class="modal-dialog">
     
@@ -242,6 +242,8 @@
     </div>
   </div>
   
+=======
+>>>>>>> 663b2f099f0283aff7c731bf6a11c818133d4a4b
         <?php if($this->input->cookie('admin_lead')==''){ ?>
         <script>
             $(document).ready(function() {
@@ -354,7 +356,7 @@
                         $(".ui-autocomplete").css("z-index", 1000);
                     }
                 }).autocomplete("instance")._renderItem = function(ul, item) {
-                    return $("<li><div><span>&nbsp;" + item.value + "</span> <img style='width:25px;height:auto;margin-top:-5px;' src='" + item.img + "'></div></li>").appendTo(ul);
+                    return $("<li><div><img style='width:25px;height:auto;margin-top:-5px;' src='" + item.img + "'><span>&nbsp;" + item.value + "</span></div></li>").appendTo(ul);
                 };
             });
             $(function() {

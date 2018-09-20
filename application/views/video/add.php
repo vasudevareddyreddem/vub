@@ -46,7 +46,7 @@
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="training_mode[]" value="Offline" /> Offline
+												<input type="checkbox" name="training_mode[]" value="ClassRoom" /> Class Room
 											</label>
 										</div>
 									</div>
@@ -209,14 +209,14 @@
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="public" value="1" /> Public
+												<input type="checkbox" name="displaymode[]" value="public" /> Public
 											</label>
 										</div>
 									</div>
 									<div class="col-lg-3">
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" name="private" value="1" /> Private
+												<input type="checkbox" name="displaymode[]" value="private" /> Private
 											</label>
 										</div>
 									</div>
@@ -281,7 +281,14 @@
 			'training_mode[]': {
                 validators: {
 					notEmpty: {
-						message: 'Training_mode is required'
+						message: 'Training mode is required'
+					}
+				}
+            },
+			'displaymode[]': {
+                validators: {
+					notEmpty: {
+						message: 'Display Mode is required'
 					}
 				}
             },

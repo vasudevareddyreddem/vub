@@ -34,6 +34,7 @@
                   <th>Location</th>
                   <th>Address</th>
                   <th>Created On</th>
+                  <th>Videos Count</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -55,6 +56,7 @@
 							  <td><?php echo $list['l_name']; ?></td>
 							  <td><?php echo $list['i_address']; ?></td>
 							  <td> <?php echo date('M d ,Y',strtotime(htmlentities($list['created_at'])));?></td>
+							   <td><?php echo $list['video_count']; ?></td>
 							  <td><?php if($list['status']==1){  echo "Active";}else{ echo "Deactive";} ?></td>
 							  <td>
 									  <a href="<?php echo base_url('institute/admin_edit/'.base64_encode($list['i_id'])); ?>"  data-toggle="tooltip" title="Edit"><i class="fa fa-pencil btn btn-success"></i></a>
@@ -79,6 +81,7 @@
                   <th>Location</th>
                   <th>Address</th>
                   <th>Created On</th>
+				   <th>Videos Count</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>

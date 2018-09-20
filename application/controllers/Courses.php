@@ -25,7 +25,7 @@ class Courses extends Front_end {
 		$course_id=base64_decode($this->uri->segment(3));
 		$video_id=base64_decode($this->uri->segment(4));
 		$data['video_details']=$this->Course_model->get_video_details($video_id);
-		$data['video_list']=$this->Course_model->course_wise_video_list($course_id);
+		$data['video_list']=$this->Course_model->course_wise_video_list($course_id,$video_id);
 		$data['courses_list']=$this->Course_model->institue_wise_course_list($data['video_details']['i_id']);
 		//echo '<pre>';print_r($data['courses_list']);exit;
 		if($this->session->userdata('vuebin_user'))
@@ -57,7 +57,7 @@ class Courses extends Front_end {
 	{	
 		$course_id=base64_decode($this->uri->segment(3));
 		$data['course_details']=$this->Course_model->get_course_name_details($course_id);
-		$data['video_list']=$this->Course_model->course_wise_video_list($course_id);
+		$data['video_list']=$this->Course_model->course_wise_video_list($course_id,'');
 		//echo '<pre>';print_r($data);exit;
 		if($this->session->userdata('vuebin_user'))
 		{

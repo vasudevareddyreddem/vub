@@ -75,7 +75,7 @@
 		 <?php if(isset($list['u_b_schedule']) && $list['u_b_schedule']!=''){ ?>
 			  <marquee scrolldelay="150"  onmouseover="this.stop()" onmouseout="this.start()"><?php echo isset($list['u_b_schedule'])?$list['u_b_schedule']:''; ?></marquee>
 		 <?php } ?>	
- <a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name'])); ?>" style="color:#222">		 
+ <a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
 			<div class="article">
 						   <div class="row">
 							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
