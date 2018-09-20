@@ -137,10 +137,11 @@ class Videos extends  Front_end {
 			if(count($check)>0){
 				$delete=$this->Video_model->dislike_already_liked_video($post['video_id'],$user_details['cust_id']);
 				$like_count=$this->Video_model->get_video_counts($post['video_id']);
-				//echo '<pe>';print_r($like_count);exit;
-						$data['msg']=1;
+						$data['msg']=2;
 						$data['count']=$like_count['like_count'];
 						echo json_encode($data);exit;	
+				
+				
 			}else{
 				$save=$this->Video_model->save_video_likee($like_data);
 				if(count($save)>0){

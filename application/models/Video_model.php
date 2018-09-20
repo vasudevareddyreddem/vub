@@ -143,6 +143,14 @@ class Video_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	
+	/* video  dislike  purpose*/
+	public  function dislike_already_liked_video($video_id,$cust_id){
+		$this->db->where('video_id',$video_id);
+		$this->db->where('cust_id',$cust_id);
+		return $this->db->delete('video_likes_list');
+	}
+	/* video  dislike  purpose*/
+	
 	
 
 }

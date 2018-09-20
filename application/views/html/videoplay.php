@@ -228,15 +228,16 @@ function video_like(v_id){
    					success:function(data){
 						jQuery('#sucessmsg').show();
 						var parsedData=JSON.parse(data);
-						if(parsedData.msg=1){
-							$('#likes_count').empty();
+						$('#likes_count').empty();
 							$('#likes_count').append(parsedData.count);
+						if(parsedData.msg==1){
+							
 							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-succ"> You Liked It Thank You. <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
 
-						}else if(parsedData.msg=2){
-							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Video already liked <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+						}else if(parsedData.msg==2){
+							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> You Disliked It Thank You <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
 
-						}else if(parsedData.msg=0){
+						}else if(parsedData.msg==0){
 							$('#sucessmsg').html('<div class="alert_msg1 animated slideInUp bg-warn"> Technical problem will occurred. Please try again <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
 						}
 						
