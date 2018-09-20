@@ -36,7 +36,12 @@ class Front_end extends CI_Controller {
 		}
 		$header['active_url']=$this->uri->segment(1);
 		$header['active_url_1']=$this->uri->segment(6);
-		//echo '<pre>';print_r($header);exit;		
+		$page=$this->uri->segment(2);
+		$institute=base64_decode($this->uri->segment(3));
+		if($page=='page' && $institute!=''){
+		$get_institue=$this->User_model->get_institues_name($institute);
+		$header['institues_name']=$get_institue['i_name'];
+		}
 		$this->load->view('html/header',$header);
 	}
 }
