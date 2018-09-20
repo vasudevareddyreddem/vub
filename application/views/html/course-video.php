@@ -21,7 +21,7 @@
 
 					
 					<?php if(isset($cust_id) && $cust_id!=''){ ?>
-							<a href="javascript:void(0);" onclick="video_like(<?php echo isset($video_details[0]['video_id'])?$video_details[0]['video_id']:''; ?>);">
+							<a href="javascript:void(0);" onclick="video_like(<?php echo isset($video_details['video_id'])?$video_details['video_id']:''; ?>);">
 							  <i class="fa fa-thumbs-up font-share" aria-hidden="true"></i><span id="likes_count"> <?php if(isset($like_count['like_count']) && $like_count['like_count']!=0){ echo $like_count['like_count']; } ?></span>
 						
 							</a>
