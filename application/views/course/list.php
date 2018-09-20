@@ -26,7 +26,7 @@
                 <tr>
                   <th style="display:none;" ></th>
                   <th>Course Definition</th>
-				    <th>Course Type Name</th>
+				  <th>Course Type Name</th>
 
                   <th>Course Image</th>
                   <th>Created Date</th>
