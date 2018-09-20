@@ -241,6 +241,7 @@
       
     </div>
   </div>
+  
         <?php if($this->input->cookie('admin_lead')==''){ ?>
         <script>
             $(document).ready(function() {
