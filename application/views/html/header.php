@@ -198,10 +198,10 @@
             <div class="chat-div">
                 <div class="row" id=""> <span id="institue_pending_chats"></span> </div>
             </div>
-            <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="javascript:void(0);" onclick="get_institue_msgs()"> <div class="bg-primary" style="width:100px;float:right;border-radius:20px;padding:10px;text-align: center;"><span class="">Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?></span></div></a> </li>
+            <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="javascript:void(0);" onclick="get_institue_msgs()"> <img style="width:100px;position:fixed;right:20px;bottom:20px;cursor: pointer;" title="Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?>" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" /></a> </li>
             <?php } ?>
             <?php }else{ ?>
-            <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> <div class="bg-primary" style="width:100px;float:right;border-radius:20px;padding:10px;text-align: center;"><span class="">Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?></span></div>
+            <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"><img style="width:100px;position:fixed;right:20px;bottom:20px;cursor: pointer;" title="Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?>" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" /> 
 			</li>
             <?php } ?>
         </div>

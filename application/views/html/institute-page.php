@@ -222,10 +222,10 @@
 										</span>	
 									</div>	
 									<?php foreach($courses_offered as $list){ ?>
-									<div class="row " style="border:1px solid #ddd;margin:20px">
-										<ul class="list-courses list-sty-none">
+									<div  class="row " style="border:1px solid #ddd;margin:20px">
+										<ul title="<?php echo isset($list['c_name'])?($list['c_name']):''; ?>" class="list-courses list-sty-none">
 										
-											<a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['c_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><li class=""><?php echo isset($list['c_name'])?substr($list['c_name'], 0, 28):''; ?>&nbsp;&nbsp;(<?php echo isset($list['video_list'])?$list['video_list']:''; ?>)</li></a>
+											<a  href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['c_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><li class=""><?php echo isset($list['c_name'])?substr($list['c_name'], 0, 28):''; ?>&nbsp;&nbsp;(<?php echo isset($list['video_list'])?$list['video_list']:''; ?>)</li></a>
 											
 									
 										</ul>
