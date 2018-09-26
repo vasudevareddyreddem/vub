@@ -6,7 +6,7 @@
 			<div class="col-md-12">
 			<div class="row">
 				<div class="panel bg-white">
-				  <div class="panel-heading text-center"><h3><?php echo isset($course_details['c_name'])?$course_details['c_name']:''; ?></h3></div>
+				  <div class="panel-heading text-center"><h3> Videos for <?php echo isset($course_details['c_name'])?$course_details['c_name']:''; ?> In  <?php echo isset($location_search_area)?$location_search_area:''; ?></h3></div>
 				</div>
 			</div>
 			</div>
@@ -39,7 +39,7 @@
 										 <h4><a><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
 										 
 										 <h5><strong class="site-col-r">Institites:</strong> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h5> 
-										 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>
+										 <h5><strong class="site-col-r">Address:</strong> 
 										 <span><?php echo isset($list['address'])?$list['address']:''; ?></span>
 										 </h5> 
 										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>
@@ -47,19 +47,12 @@
 										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
 										 <?php } ?>
 										 </h5>
-										 <h5><strong class="site-col-r">E-Mail ID:</strong> <span><?php echo isset($list['i_email_id'])?$list['i_email_id']:''; ?></span>
 										 
-										 </h5>
-										  <?php if($list['i_founder']!=''){ ?>
-										 <h5><strong class="site-col-r">Founder Name:</strong> <span><?php echo isset($list['i_founder'])?$list['i_founder']:''; ?></span>
-										 
-										 </h5>
-										  <?php } ?>
 										  <?php if($list['t_name']!=''){ ?>
 										 <h5><strong class="site-col-r">Trainer Name:</strong> <span><?php echo isset($list['t_name'])?$list['t_name']:''; ?></span>
 										 <?php } ?>
 										 <?php if($list['training_mode']!=''){ ?>
-										 <h5><strong class="site-col-r">Class  Room:</strong> <span><?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></span>
+										 <h5><strong class="site-col-r">Training mode:</strong> <span><?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></span>
 										 </h5>
 										  <?php } ?>
 										 

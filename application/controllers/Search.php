@@ -16,6 +16,7 @@ class Search extends Front_end {
 		
 		$post=$this->input->post();
 		//echo '<pre>';print_r($post);exit;
+		$data['location_search_area']=isset($post['location_name'])?$post['location_name']:'';
 		if(isset($post['institue_course']) && $post['institue_course']=='' && $post['local_id']!=''){
 			$this->session->set_flashdata('error',"Please select any one");
 			redirect($this->agent->referrer());
@@ -46,13 +47,13 @@ class Search extends Front_end {
 					if(count($check)>0){
 						redirect('institutes/page/'.base64_encode($check['i_id']).'/'.$check['i_name']);
 					}else{
-						$this->session->set_flashdata('error',"Your searched location having no institues. Please try again.");
+						$this->session->set_flashdata('error',"No result found.");
 						redirect($this->agent->referrer());
 					}
 				}
 				//echo '<pre>';print_r($data['institute_list']);exit;
 				if(count($data)<=0){
-					$this->session->set_flashdata('error',"Your searched location having no institues. Please try again.");
+					$this->session->set_flashdata('error',"No result found.");
 					redirect($this->agent->referrer());
 				}
 				
@@ -71,7 +72,7 @@ class Search extends Front_end {
 				
 				if(isset($loc_value[1]) && $loc_value[1]=='location'){
 				  $data['video_list']=$this->User_model->get_location_with_course_list($value[0],$loc_value[0]);
-				echo $this->db->last_query();exit;
+				//echo $this->db->last_query();exit;
 				}else if(isset($loc_value[1]) && $loc_value[1]=='country'){
 				  $data['video_list']=$this->User_model->get_country_with_course_list($value[0],$loc_value[0]);
 				}else if(isset($loc_value[1]) && $loc_value[1]=='city'){
@@ -82,7 +83,7 @@ class Search extends Front_end {
 						if(count($check)>0){
 							redirect('courses/videolist/'.base64_encode($check['course_id']));
 						}else{
-							$this->session->set_flashdata('error',"Your search location having no Institutes. Please try again.");
+							$this->session->set_flashdata('error',"No result found.");
 							redirect($this->agent->referrer());
 						}
 					

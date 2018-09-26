@@ -48,10 +48,13 @@ class Institute_model extends CI_Model
 			}else{
 				$imp='';
 			}
-			//echo '<pre>';print_r($imp);exit;
-				$data[$list['i_id']]=$list;
-				$data[$list['i_id']]['course_list']=isset($imp)?$imp:'';
-				$data[$list['i_id']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+			//echo '<pre>';print_r($videos_count);exit;
+				if($videos_count['video_count']>0){
+					$data[$list['i_id']]=$list;
+					$data[$list['i_id']]['course_list']=isset($imp)?$imp:'';
+					$data[$list['i_id']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+				
+				}
 				
 			}
 			foreach($data as $key => $row) {

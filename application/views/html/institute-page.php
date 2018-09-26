@@ -33,10 +33,10 @@
 	  <div class="help-side">
 		   <small ><i class="fa fa-phone"> </i>&nbsp;  <?php echo isset($institute_details['i_p_phone'])?$institute_details['i_p_phone']:''; ?></small>
 	  </div>  
-	  <hr class="hr-cus">
-	 <div class="help-side">
+	  <!-- <hr class="hr-cus">
+	<div class="help-side">
 		   <small ><i class="fa fa-envelope"> </i>&nbsp;  <?php echo isset($institute_details['i_email_id'])?$institute_details['i_email_id']:''; ?></small>
-	  </div> 
+	  </div> -->
 		<hr class="hr-cus">	  
 	  <div class="help-side">
 		   <small ><i class="fa fa-video-camera"> </i>&nbsp;  Total: <?php echo isset($institute_details['video_list'])?$institute_details['video_list']:''; ?></small>
@@ -108,15 +108,14 @@
 											 <h4><a   style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
 											 
 											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($list['c_name'])?$list['c_name']:''; ?></h5>
+											  <?php if(isset($list['t_name']) && $list['t_name']!=''){ ?>
+											 <h5><strong class="site-col-b">Trainer Name:</strong> <?php echo isset($list['t_name'])?$list['t_name']:''; ?></h5>
+											 <?php } ?>
 											 <?php if(isset($list['training_mode']) && $list['training_mode']!=''){ ?>
 											 <h5><strong class="site-col-b">Training Mode:</strong> <?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></h5>
 											 <?php } ?>
-												<?php if(isset($list['v_desc']) && $list['v_desc']!=''){ ?>
-											 <h5><strong class="site-col-b">Video Description:</strong>  <?php echo isset($list['v_desc'])?$list['v_desc']:''; ?></h5>
-												 <?php } ?>
-											 <?php if(isset($list['t_name']) && $list['t_name']!=''){ ?>
-											 <h5><strong class="site-col-b">Trainer Name:</strong> <?php echo isset($list['t_name'])?$list['t_name']:''; ?></h5>
-											 <?php } ?>
+											
+											
 											 
 										  </div>
 									   </div>
@@ -153,9 +152,7 @@
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">
 		 <?php if(isset($video_list) && count($video_list)>0){ ?>
 		 <?php foreach($video_list as $list){ ?>
-		 <?php if(isset($list['u_b_schedule']) && $list['u_b_schedule']!=''){ ?>
-			  <marquee scrolldelay="150"  onmouseover="this.stop()" onmouseout="this.start()"><?php echo isset($list['u_b_schedule'])?$list['u_b_schedule']:''; ?></marquee>
-		 <?php } ?>	
+	
 			<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
 			<div class="article">
 						   <div class="row">
@@ -187,15 +184,13 @@
 											 <h4><a   style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></a></h4>
 											 
 											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($list['c_name'])?$list['c_name']:''; ?></h5>
-											 <?php if(isset($list['training_mode']) && $list['training_mode']!=''){ ?>
-											 <h5><strong class="site-col-b">Training Mode:</strong> <?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></h5>
-											 <?php } ?>
-												<?php if(isset($list['v_desc']) && $list['v_desc']!=''){ ?>
-											 <h5><strong class="site-col-b">Video Description:</strong>  <?php echo isset($list['v_desc'])?$list['v_desc']:''; ?></h5>
-												 <?php } ?>
 											 <?php if(isset($list['t_name']) && $list['t_name']!=''){ ?>
 											 <h5><strong class="site-col-b">Trainer Name:</strong> <?php echo isset($list['t_name'])?$list['t_name']:''; ?></h5>
 											 <?php } ?>
+											 <?php if(isset($list['training_mode']) && $list['training_mode']!=''){ ?>
+											 <h5><strong class="site-col-b">Training Mode:</strong> <?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></h5>
+											 <?php } ?>
+											 
 											 
 										  </div>
 									   </div>
@@ -240,7 +235,7 @@
 									<div class="row " style="border:1px solid #ddd;margin:5px">
 										<ul class="list-courses list-sty-none">
 										
-											<a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['c_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><li class=""><?php echo isset($list['c_name'])?$list['c_name']:''; ?>(<?php echo isset($list['video_list'])?$list['video_list']:''; ?>)</li></a>
+											<a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['c_name'].'/'.base64_encode($list['course_name'])); ?>" style="color:#0062C4;"><li class=""><?php echo isset($list['c_name'])?substr($list['c_name'], 0, 28):''; ?>&nbsp;&nbsp;(&nbsp;<?php echo isset($list['video_list'])?$list['video_list']:''; ?>&nbsp;)</li></a>
 											
 									
 										</ul>

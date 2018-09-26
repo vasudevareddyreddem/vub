@@ -14,7 +14,7 @@
 				<div class="video-content">
 					<div class="row">
 					<div class="col-md-6">
-						<h4><a href="javascript:void(0)" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?> tutorial - What is <?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?></a></h4>	
+						<h4><a href="javascript:void(0)" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?> </a></h4>	
 					</div>
 					<div class="col-md-6">
 						<a href="javascript:void(0)"  data-toggle="modal" data-target="#share-modal" ><i class="fa fa-share-alt font-share" aria-hidden="true"></i></a>
@@ -51,7 +51,6 @@
 				
 				<div>
 					<div class="pad-15">
-						<h3 class=""> What is <?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?> ?  </h3>	
 						   <div class="" >
 							  <div class="user-panel">
 								<a href="<?php echo base_url('institutes/page/'.base64_encode($video_details['i_id']).'/'.$video_details['i_name']); ?>"><div class="bg-white" style="padding:10px;border-radius:5px;">
@@ -72,18 +71,14 @@
 								   <h4 class="font-20"><strong class="text-primary">Address :</strong> <?php echo isset($video_details['i_address'])?$video_details['i_address']:''; ?>, <?php echo isset($video_details['address'])?$video_details['address']:''; ?></h4>
 								   <h4 class="font-20"><strong class="text-primary"><i class="fa fa-phone-square"> </i>  &nbsp;</strong> <?php echo isset($video_details['i_p_phone'])?$video_details['i_p_phone']:''; ?></h4> 
 								   
-								   <h4 class="font-20"> <strong class="text-primary"> <i class="fa fa-envelope"> </i> &nbsp; </strong> <?php echo isset($video_details['i_email_id'])?$video_details['i_email_id']:''; ?></h4>
 								   <?php if($video_details['t_name']!=''){ ?>
 								   <h4 class="font-20"> <strong class="text-primary">Trainer  Name: </strong>  <?php echo isset($video_details['t_name'])?$video_details['t_name']:''; ?></h4> 
 								   <?php } ?>
-								   <?php if($video_details['i_founder']!=''){ ?>
-								   <h4 class="font-20"> <strong class="text-primary">Founder Name: </strong>   <?php echo isset($video_details['i_founder'])?$video_details['i_founder']:''; ?></h4>
+								   <?php if($video_details['training_mode']!=''){ ?>
+								   <h4 class="font-20"> <strong class="text-primary">Training  mode: </strong>  <?php echo isset($video_details['training_mode'])?$video_details['training_mode']:''; ?></h4> 
 								   <?php } ?>
 								   <?php if($video_details['i_contact_person']!=''){ ?>
 								   <h4 class="font-20"> <strong class="text-primary">Contact Person: </strong>  <?php echo isset($video_details['i_contact_person'])?$video_details['i_contact_person']:''; ?></h4>
-								   <?php } ?>
-								   <?php if($video_details['course_content']!=''){ ?>
-								   <h4 class="font-20"> <strong class="text-primary">Description: </strong>  <?php echo isset($video_details['course_content'])?$video_details['course_content']:''; ?></h4>
 								   <?php } ?>
 							
 								
@@ -128,29 +123,22 @@
 										 <h4 style="color:#0062C4;"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></h4>
 										 
 										 <h5><strong class="site-col-r">Institites:</strong> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h5> 
-										 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
+										 <h5><strong class="site-col-r">Address:</strong> 
 										 <span><?php echo isset($list['address'])?$list['address']:''; ?></span>,
 										 </h5> 
-										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
-										 <?php if($list['i_s_phone']!=''){ ?>
-										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>,
-										 <?php } ?>
-										 </h5>
-										 <h5><strong class="site-col-r">E-Mail ID:</strong> <span><?php echo isset($list['i_email_id'])?$list['i_email_id']:''; ?></span>,
-										 
-										 </h5>
-										  <?php if($list['i_founder']!=''){ ?>
-										 <h5><strong class="site-col-r">Founder Name:</strong> <span><?php echo isset($list['i_founder'])?$list['i_founder']:''; ?></span>,
-										 
-										 </h5>
-										  <?php } ?>
-										  <?php if($list['t_name']!=''){ ?>
+										   <?php if($list['t_name']!=''){ ?>
 										 <h5><strong class="site-col-r">Trainer Name:</strong> <span><?php echo isset($list['t_name'])?$list['t_name']:''; ?></span>,
 										 <?php } ?>
 										 <?php if($list['training_mode']!=''){ ?>
 										 <h5><strong class="site-col-r">Training Mode:</strong> <span><?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></span>,
 										 </h5>
 										  <?php } ?>
+										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
+										 <?php if($list['i_s_phone']!=''){ ?>
+										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>,
+										 <?php } ?>
+										 </h5>
+										
 										 
 										 
 									  </div>

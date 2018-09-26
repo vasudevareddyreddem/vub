@@ -102,15 +102,14 @@
 							<h4><a href="#" target="_blank" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?></a></h4>
 											 
 											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($video_details['c_name'])?$video_details['c_name']:''; ?></h5>
-											 <?php if(isset($video_details['training_mode']) && $video_details['training_mode']!=''){ ?>
+											<?php if(isset($video_details['t_name']) && $video_details['t_name']!=''){ ?>
+											 <h5><strong class="site-col-b">Trainer Name:</strong> <?php echo isset($video_details['t_name'])?$video_details['t_name']:''; ?></h5>
+											 <?php } ?>											
+											<?php if(isset($video_details['training_mode']) && $video_details['training_mode']!=''){ ?>
+											 
 											 <h5><strong class="site-col-b">Training Mode:</strong> <?php echo isset($video_details['training_mode'])?$video_details['training_mode']:''; ?></h5>
 											 <?php } ?>
-												<?php if(isset($video_details['v_desc']) && $video_details['v_desc']!=''){ ?>
-											 <h5><strong class="site-col-b">Video Description:</strong>  <?php echo isset($video_details['v_desc'])?$video_details['v_desc']:''; ?></h5>
-												 <?php } ?>
-											 <?php if(isset($video_details['t_name']) && $video_details['t_name']!=''){ ?>
-											 <h5><strong class="site-col-b">Trainer Name:</strong> <?php echo isset($video_details['t_name'])?$video_details['t_name']:''; ?></h5>
-											 <?php } ?>
+											
 											 <?php if(isset($video_details['course_content']) && $video_details['course_content']!=''){ ?>
 													<p class="vide0-parag"><?php echo isset($video_details['course_content'])?$video_details['course_content']:''; ?></p>
 											 <?php } ?>
