@@ -331,6 +331,7 @@
 						$('#local_id1').val(ui.item.id);
 						$("#myInput1").val(res[0]);
 						$(".location_search").html(res[0]);
+						$(".search_loc_mob").html(res[0]);
 						return false;
                     },
                     html: true,
