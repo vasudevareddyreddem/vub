@@ -29,7 +29,7 @@ class Courses extends Front_end {
 		$data['like_count']=$this->Course_model->get_video_likes_details($video_id);
 		$data['video_list']=$this->Course_model->course_wise_video_list($course_id,$video_id);
 		$data['courses_list']=$this->Course_model->institue_wise_course_list($data['video_details']['i_id']);
-		//echo '<pre>';print_r($data['courses_list']);exit;
+		//echo '<pre>';print_r($data['video_details']);exit;
 		if($this->session->userdata('vuebin_user'))
 		{
 			$user_details=$this->session->userdata('vuebin_user');
