@@ -51,7 +51,7 @@
                             <li class="page-scroll">
                                 <form action="<?php echo base_url('search/index/'); ?>" method="post">
                                     <div class="search-form">
-                                        <div class="form-group "> <input id="myInput" type="text" class="form-control search-loc homemenu_id" name="institue_course_name" placeholder=" Course Video/Institute "> <input type="hidden" id="homemenu_id" name="institue_course" value=""> </div>
+                                        <div class="form-group "> <input id="myInput" type="text" class="form-control search-loc homemenu_id" name="institue_course_name" value="<?php echo $this->session->userdata('search_ins'); ?>" placeholder=" Course Video/Institute "> <input type="hidden" id="homemenu_id" name="institue_course" value="<?php echo $this->session->userdata('search_ins_val'); ?>"> </div>
                                     </div>
                             </li>
                             <li class="page-scroll">
@@ -59,7 +59,7 @@
                                     <div class="row">
                                         <div class="col-md-10">
                                             <div class="search-form1">
-                                                <div class="form-group "> <input id="myInput1" type="text" class="form-control search_loc_val location_search" name="location_name" placeholder=" Location"> <input type="hidden" name="local_id" id="local_id" value=""> </div>
+                                                <div class="form-group "> <input id="myInput1" type="text" class="form-control search_loc_val location_search" name="location_name" value="<?php echo $this->session->userdata('search_loc'); ?>" placeholder=" Location"> <input type="hidden" name="local_id" id="local_id" value="<?php echo $this->session->userdata('search_loc_val'); ?>"> </div>
                                             </div>
                                         </div> <button class="btn btn-sm btn-primary col-md-2 btn-go ">Go</button>
                                     </div>
