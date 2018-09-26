@@ -124,7 +124,7 @@ class Course_model extends CI_Model
 		return $this->db->get()->row_array();
 	}
 	public  function course_wise_video_list($course_id,$video_id){
-		$this->db->select('course_list.course_id,video_list.video_id,video_list.i_id,video_list.v_title,video_list.video_file,video_list.org_video_file,video_list.t_name,video_list.course_content,course_list.c_name as coursename,video_list.training_mode,institute_list.i_name,institute_list.i_logo,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,institute_list.i_address,institute_list.i_contact_person,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code')->from('video_list');
+		$this->db->select('course_list.course_id,video_list.video_id,video_list.i_id,video_list.v_title,video_list.video_file,video_list.org_video_file,video_list.t_name,video_list.course_content,course_list.c_name as coursename,video_list.training_mode,institute_list.i_name,institute_list.i_logo,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,institute_list.i_address,institute_list.i_contact_person,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code,countries_list.num_code')->from('video_list');
 		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
 		$this->db->join('institute_list', 'institute_list.i_id = video_list.i_id', 'left');
 		$this->db->join('location_list ', 'location_list.l_id = institute_list.location_name', 'left');
@@ -150,7 +150,7 @@ class Course_model extends CI_Model
 		}
 	}
 	public  function get_video_details($video_id){
-		$this->db->select('course_list.course_id,video_list.video_id,video_list.i_id,video_list.v_title,video_list.video_file,video_list.org_video_file,video_list.t_name,video_list.course_content,course_list.c_name as coursename,video_list.training_mode,institute_list.i_name,institute_list.i_logo,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,institute_list.i_address,institute_list.i_contact_person,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code')->from('video_list');
+		$this->db->select('course_list.course_id,video_list.video_id,video_list.i_id,video_list.v_title,video_list.video_file,video_list.org_video_file,video_list.t_name,video_list.course_content,course_list.c_name as coursename,video_list.training_mode,institute_list.i_name,institute_list.i_logo,institute_list.i_p_phone,institute_list.i_email_id,institute_list.i_founder,institute_list.i_s_phone,institute_list.i_address,institute_list.i_contact_person,CONCAT(location_list.location_name," ",city_list.city_name," ",countries_list.country_name) as address,countries_list.country_code,countries_list.num_code')->from('video_list');
 		$this->db->join('course_list', 'course_list.course_id = video_list.course_name', 'left');
 		$this->db->join('institute_list', 'institute_list.i_id = video_list.i_id', 'left');
 		$this->db->join('location_list ', 'location_list.l_id = institute_list.location_name', 'left');
