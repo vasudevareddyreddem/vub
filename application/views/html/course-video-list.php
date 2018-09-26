@@ -6,7 +6,7 @@
 			<div class="col-md-12">
 			<div class="row">
 				<div class="panel bg-white">
-				  <div class="panel-heading text-center"><h3> Videos for <?php echo isset($course_details['c_name'])?$course_details['c_name']:''; ?> In  <?php echo isset($location_search_area)?$location_search_area:''; ?></h3></div>
+				  <div class="panel-heading text-center"><h3> Videos for <?php echo isset($course_details['c_name'])?$course_details['c_name']:''; ?>  <?php echo isset($location_search_area)?'In '.$location_search_area:''; ?></h3></div>
 				</div>
 			</div>
 			</div>
@@ -42,9 +42,9 @@
 										 <h5><strong class="site-col-r">Address:</strong> 
 										 <span><?php echo isset($list['address'])?$list['address']:''; ?></span>
 										 </h5> 
-										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>
+										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>
 										 <?php if($list['i_s_phone']!=''){ ?>
-										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
+										, <span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
 										 <?php } ?>
 										 </h5>
 										 

@@ -69,7 +69,7 @@
 							  <div class="" style="overflow:hidden;">
 								   <h4 class="font-20"><strong class="text-primary">Institute :</strong> <?php echo isset($video_details['i_name'])?$video_details['i_name']:''; ?></h4>
 								   <h4 class="font-20"><strong class="text-primary">Address :</strong> <?php echo isset($video_details['i_address'])?$video_details['i_address']:''; ?>, <?php echo isset($video_details['address'])?$video_details['address']:''; ?></h4>
-								   <h4 class="font-20"><strong class="text-primary"><i class="fa fa-phone-square"> </i>  &nbsp;</strong> <?php echo isset($video_details['i_p_phone'])?$video_details['i_p_phone']:''; ?></h4> 
+								   <h4 class="font-20"><strong class="text-primary"><i class="fa fa-phone-square"> </i>  &nbsp;</strong><?php echo isset($video_details['num_code'])?$video_details['num_code']:''; ?>- <?php echo isset($video_details['i_p_phone'])?$video_details['i_p_phone']:''; ?></h4> 
 								   
 								   <?php if($video_details['t_name']!=''){ ?>
 								   <h4 class="font-20"> <strong class="text-primary">Trainer  Name: </strong>  <?php echo isset($video_details['t_name'])?$video_details['t_name']:''; ?></h4> 
@@ -133,9 +133,9 @@
 										 <h5><strong class="site-col-r">Training Mode:</strong> <span><?php echo isset($list['training_mode'])?$list['training_mode']:''; ?></span>,
 										 </h5>
 										  <?php } ?>
-										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
+										 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
 										 <?php if($list['i_s_phone']!=''){ ?>
-										 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>,
+										 <span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>,
 										 <?php } ?>
 										 </h5>
 										
