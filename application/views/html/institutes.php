@@ -30,7 +30,7 @@
 												 <h4 style="color:#0062C4;"> <?php echo isset($list['i_name'])?$list['i_name']:''; ?></h4>
 												 
 												<!-- <h5><strong class="site-col-r">Courses:</strong> <?php echo isset($list['course_list'])?$list['course_list']:''; ?></h5> -->
-												 <h5><strong class="site-col-r">Address:</strong> <span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,
+												 <h5><strong class="site-col-r">Address:</strong> <!--<span><?php echo isset($list['i_address'])?$list['i_address']:''; ?></span>,-->
 												 <span><?php echo isset($list['location_name'])?$list['location_name']:''; ?></span>,
 												 <span><?php echo isset($list['city_name'])?$list['city_name']:''; ?></span>,
 												 <span><?php echo isset($list['country_name'])?$list['country_name']:''; ?></span>

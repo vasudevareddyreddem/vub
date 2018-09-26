@@ -33,10 +33,10 @@
 	  <div class="help-side">
 		   <small ><i class="fa fa-phone"> </i>&nbsp;  <?php echo isset($institute_details['i_p_phone'])?$institute_details['i_p_phone']:''; ?></small>
 	  </div>  
-	  <hr class="hr-cus">
-	 <div class="help-side">
+	  <!-- <hr class="hr-cus">
+	<div class="help-side">
 		   <small ><i class="fa fa-envelope"> </i>&nbsp;  <?php echo isset($institute_details['i_email_id'])?$institute_details['i_email_id']:''; ?></small>
-	  </div> 
+	  </div> -->
 		<hr class="hr-cus">	  
 	  <div class="help-side">
 		   <small ><i class="fa fa-video-camera"> </i>&nbsp;  Total: <?php echo isset($institute_details['video_list'])?$institute_details['video_list']:''; ?></small>
