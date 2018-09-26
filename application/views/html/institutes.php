@@ -91,9 +91,9 @@
 										<tr>
 											<td valign="center">
 											<?php if($list['i_logo']!=''){ ?>
-											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="Sathya techonologies">
+											<img  style="width:120px" class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="Sathya techonologies">
 											<?php }else{?>
-											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
+											<img  style="width:120px" class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
 											<?php } ?>
 										
 												
@@ -154,7 +154,7 @@
 										<tr>
 											<td valign="center">
 											<?php if($list['i_logo']!=''){ ?>
-											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="Sathya techonologies">
+											<img  class="img-responsive" src="<?php echo base_url('assets/institute_logo/'.$list['i_logo']); ?>" alt="Sathya techonologies">
 											<?php }else{?>
 											<img class="img-responsive" src="<?php echo base_url('assets/institute_logo/institute_logo.png'); ?>" alt="<?php echo isset($list['i_name'])?$list['i_name']:''; ?>">
 											<?php } ?>
