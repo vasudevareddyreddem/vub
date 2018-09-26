@@ -59,7 +59,7 @@
                                     <div class="row">
                                         <div class="col-md-10">
                                             <div class="search-form1">
-                                                <div class="form-group "> <input id="myInput1" type="text" class="form-control location_search" name="location_name" placeholder=" Location"> <input type="hidden" name="local_id" id="local_id" value=""> </div>
+                                                <div class="form-group "> <input id="myInput1" type="text" class="form-control search_loc_val location_search" name="location_name" placeholder=" Location"> <input type="hidden" name="local_id" id="local_id" value=""> </div>
                                             </div>
                                         </div> <button class="btn btn-sm btn-primary col-md-2 btn-go ">Go</button>
                                     </div>
@@ -88,7 +88,7 @@
                         <hr>
                         <div class="container" style="position:relative;z-index:2000"> <span class="fa fa-search" style=";position:absolute;top:10px;left:30px;color:#aaa"></span> <input style="padding-left:35px;z-index:2000" type="text" class="form-control tags homemenu_id" name="search " id="" placeholder="Search videos">
                             <div class="row mar-t10">
-                                <div class="col-md-12"> <input type="text" class="form-control location_search" name="search" placeholder="Location"> </div> 
+                                <div class="col-md-12"> <input type="text" class="form-control search_loc_mob location_search" name="search" placeholder="Location"> </div> 
 								<input type="hidden" name="local_id" id="local_id1" value="">
 								<input type="hidden" name="institue_course" id="homemenu_id1" value="">
                             </div>
@@ -317,9 +317,21 @@
                         img: '<?php echo base_url('assets/flags/'.strtolower($li['country_code']).'.png '); ?>',
                     }, <?php } ?>],
                     minLength: 1,
+					focus: function( event, ui ) {
+						var str= ui.item.value;
+						var res = str.split(",");
+						$(this).val(res[0]);
+
+					return false;
+					},
                     select: function(event, ui) {
-                        $('#local_id').val(ui.item.id);
-                        $('#local_id1').val(ui.item.id);
+						var str= ui.item.value;
+						var res = str.split(",");
+						$('#local_id').val(ui.item.id);
+						$('#local_id1').val(ui.item.id);
+						$("#myInput1").val(res[0]);
+						$(".location_search").html(res[0]);
+						return false;
                     },
                     html: true,
                     open: function(event, ui) {

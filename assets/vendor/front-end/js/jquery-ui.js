@@ -5552,8 +5552,6 @@ var widgetsMenu = $.widget( "ui.menu", {
 		// point, but the tests don't trigger mouseenter before click.
 		this.active = this.active || $( event.target ).closest( ".ui-menu-item" );
 		var ui = { item: this.active };
-		console.log(ui.item.context);
-		console.log(ui.item.context.textConten);
 		if ( !this.active.has( ".ui-menu" ).length ) {
 			this.collapseAll( event, true );
 		}
