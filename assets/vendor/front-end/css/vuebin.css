@@ -1,3 +1,9 @@
+.modal-open {
+  overflow:hidden;
+  overflow-y:scroll;
+  padding-right:0 !important;
+}
+
 .footer-2{
 	position: absolute !important;
 	width:100%;
