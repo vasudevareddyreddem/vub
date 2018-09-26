@@ -1,5 +1,11 @@
 <head>
+<?php if($details['i_id']!='' && $details['i_name']!=''){ ?>
 <meta property="og:url" content="<?php echo base_url('institutes/page/'.base64_decode($details['i_id']).'/'.$details['i_name']); ?>" />
+
+<?php  }else{ ?>
+<meta property="og:url" content="<?php echo base_url(''); ?>" />
+
+<?php } ?>
 <meta property="fb:app_id" content="219204818951085" /> 
 <meta property="og:type"   content="website" /> 
 <meta property="og:title"  content="<?php echo $details['i_name']; ?>" /> 
