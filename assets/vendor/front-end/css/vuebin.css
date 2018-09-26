@@ -222,10 +222,12 @@ list-style-type:none;
 	.alert_msg1 {
 		
 		position:fixed;
-		bottom:80px;
+		 left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 		color:#fff;
 		padding:10px;
-		left:50%;
+	
 		z-index:1200;
 		-nimation:signup-response 0.5s 1;
     -webkit-animation:signup-response 0.5s 1;

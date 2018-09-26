@@ -63,7 +63,8 @@
 		 </div>
 		 </div>
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">
-			<div class="sidebar-recent bg-white">
+		 
+			<div class="sidebar-recent bg-white" style="margin-top:10px;">
 				<video width="100%" height="100%" controls  autoplay controlsList="nodownload">
 					<source src="<?php echo base_url('assets/videos/'.$video_details['video_file']); ?>" type="video/mp4">
 					<source src="movie.ogg" type="video/ogg">
@@ -118,7 +119,7 @@
             </div>
 			<?php if(isset($video_list)&& count($video_list)>0){ ?>
 				<div class="col-md-3 ">
-					<div class="sidebar-recent bg-white">
+					<div class="sidebar-recent bg-white" style="margin-top:10px;">
 						<div class="bg-primary pad-10">
 							
 							   <h3 class="text-white pad-rl-15">videos </h3>
