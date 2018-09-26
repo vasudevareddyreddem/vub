@@ -6,7 +6,7 @@
 			<div class="col-md-12">
 			<div class="row">
 				<div class="panel bg-white">
-				  <div class="panel-heading text-center"><h3> Videos for <?php echo isset($course_details['c_name'])?$course_details['c_name']:''; ?> In </h3></div>
+				  <div class="panel-heading text-center"><h3> Videos for <?php echo isset($course_details['c_name'])?$course_details['c_name']:''; ?> In  <?php echo isset($location_search_area)?$location_search_area:''; ?></h3></div>
 				</div>
 			</div>
 			</div>

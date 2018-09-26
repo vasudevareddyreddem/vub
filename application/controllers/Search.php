@@ -16,6 +16,7 @@ class Search extends Front_end {
 		
 		$post=$this->input->post();
 		//echo '<pre>';print_r($post);exit;
+		$data['location_search_area']=isset($post['location_name'])?$post['location_name']:'';
 		if(isset($post['institue_course']) && $post['institue_course']=='' && $post['local_id']!=''){
 			$this->session->set_flashdata('error',"Please select any one");
 			redirect($this->agent->referrer());
@@ -71,7 +72,7 @@ class Search extends Front_end {
 				
 				if(isset($loc_value[1]) && $loc_value[1]=='location'){
 				  $data['video_list']=$this->User_model->get_location_with_course_list($value[0],$loc_value[0]);
-				echo $this->db->last_query();exit;
+				//echo $this->db->last_query();exit;
 				}else if(isset($loc_value[1]) && $loc_value[1]=='country'){
 				  $data['video_list']=$this->User_model->get_country_with_course_list($value[0],$loc_value[0]);
 				}else if(isset($loc_value[1]) && $loc_value[1]=='city'){
