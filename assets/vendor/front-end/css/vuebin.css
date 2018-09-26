@@ -3,6 +3,10 @@
   overflow-y:scroll;
   padding-right:0 !important;
 }
+.article-view .thumbnail {
+   
+margin-bottom: 0px !important;
+}
 
 .footer-2{
 	position: absolute !important;
@@ -517,9 +521,9 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
 }
 .article{
 	border-radius: 2px;
-    box-shadow: 0px 3px 7px rgba(2, 2, 0, 0.57);
-    margin-bottom: 20px;
-	 /* border:1px solid #CCC; */
+    /* box-shadow: 0px 3px 7px rgba(2, 2, 0, 0.57); */
+    margin-bottom: 15px;
+	 border:1px solid #e5e5e5; 
 }
 .journal-article{
 	border-radius: 2px;
@@ -574,10 +578,10 @@ box-shadow: -2px 6px 39px -8px rgba(0,0,0,0.75);
     
 }
 .article .article-head{
-	background: #3059f1;
-padding: 8px 15px;
-
-color: #fff;
+	background:#fff;
+	padding: 8px 15px;
+	border-top:1px solid #e5e5e5;
+	color: #aaa;
  /* box-shadow: 0px 0px 3px rgba(2, 2, 0, 0.50); */
 
 }

@@ -70,9 +70,9 @@
 				<div id="sticky" >
 				
 							<div class="sidebar-recent bg-white">
-							<div class="bg-primary pad-10">
+							<div style="border-bottom:1px solid #f5f5f5">
 								<span class="">
-								   <h3 class="text-white text-center">Latest Institutes </h3>
+								   <h3 style="padding-left:15px;">Latest Institutes </h3>
 								</span>	
 							</div>	
 							 <div class="pad-20 list-style-none" >
