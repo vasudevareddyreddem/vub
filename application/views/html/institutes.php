@@ -34,25 +34,21 @@
 												 <span><?php echo isset($list['location_name'])?$list['location_name']:''; ?></span>,
 												 <span><?php echo isset($list['city_name'])?$list['city_name']:''; ?></span>,
 												 <span><?php echo isset($list['country_name'])?$list['country_name']:''; ?></span>
-												 <span><img class=" img-responsive" src="<?php echo base_url('assets/flags/'.$list['country_code'].'.png'); ?>"></span>
+												
 												 </h5> 
 												 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
 												 <span><?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
 												 </h5>
-												 <h5><strong class="site-col-r">E-Mail ID:</strong> <span><?php echo isset($list['i_email_id'])?$list['i_email_id']:''; ?></span>
-												 
-												 </h5>
-												 <h5><strong class="site-col-r">Founder Name:</strong> <span><?php echo isset($list['i_founder'])?$list['i_founder']:''; ?></span>
-												 
-												 </h5>
+												
+												
 												 
 												 
 											  </div>
 										   </div>
 												<div class="bg-aaa col-md-2 text-center institutes-curd-right" >
-													<div class="count-videos">
-														<h2><?php echo isset($list['video_list'])?$list['video_list']:''; ?></h2>
-														<h2><i class="fa fa-video-camera" aria-hidden="true"></i></h2>
+													<div class="count-videos" style="padding:0px">
+														<div style="font-size:25px;"><?php echo isset($list['video_list'])?$list['video_list']:''; ?></div>
+														<div style="font-size:25px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
 													</div>
 												</div>
 										</div>
