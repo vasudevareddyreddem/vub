@@ -46,7 +46,7 @@
 											  </div>
 										   </div>
 												<div class="bg-aaa col-md-2 text-center institutes-curd-right" >
-													<div class="count-videos" style="padding:0px">
+													<div class="count-videos" style="padding-top:10px">
 														<div style="font-size:25px;"><?php echo isset($list['video_list'])?$list['video_list']:''; ?></div>
 														<div style="font-size:25px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
 													</div>

@@ -99,7 +99,7 @@
 					</div>
 					</div>
 					 <hr>
-							<h4><a href="#" target="_blank" style="color:#0062C4;"><?php echo isset($video_details['v_title'])?$video_details['v_title']:''; ?></a></h4>
+						
 											 
 											 <h5><strong class="site-col-r">Course Name:</strong> <?php echo isset($video_details['c_name'])?$video_details['c_name']:''; ?></h5>
 											<?php if(isset($video_details['t_name']) && $video_details['t_name']!=''){ ?>
