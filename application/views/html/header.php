@@ -65,46 +65,44 @@
                                     </div>
                                 </div>
                             </li>
-		<li class="dropdown notifications-menu  user " style="padding-left:20px;">
-            <a href="#" class="dropdown-toggle user-header" data-toggle="dropdown" >
-              <i class="fa fa-user"></i>
-             
-            </a>
-            <ul class="dropdown-menu">
-             
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-					<li>
-						<a href="#">
-						  <span class="h4"><i class="fa fa-cloud-upload "></i> Upload</span></a>
-					</li>
-					<li>
-						<a href="#">
-						  <span class="h4"><i class="fa fa-rocket "></i> My Subscriptions</span></a>
-					</li>
-					<li>
-						<a href="#">
-						  <span class="h4"><i class="fa fa-power-off "></i> Logout</span></a>
-					</li>
-                  
-                </ul>
-              </li>
-            
-            </ul>
-          </li>
-                           <!-- <?php if(isset($user_details) && count($user_details)>0){ ?>
-                            <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('user/logout'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Logout</a> </li>
-							<li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('user/subscribes'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">My Subscriptions</a> </li>
+							
+                           <?php if(isset($user_details) && count($user_details)>0){ ?>
+                           
+							<li class="dropdown notifications-menu  user " style="padding-left:20px;">
+								<a href="#" class="dropdown-toggle user-header" data-toggle="dropdown" >
+								  <i class="fa fa-user"></i>
+								 
+								</a>
+								<ul class="dropdown-menu">
+								 
+								  <li>
+									<!-- inner menu: contains the actual data -->
+									<ul class="menu">
+										<li>
+											<a href="<?php echo base_url('videos/upload'); ?>">
+											  <span class="h4"><i class="fa fa-cloud-upload "></i> My Account</span></a>
+										</li>
+										<li>
+											<a href="<?php echo base_url('user/subscribes'); ?>">
+											  <span class="h4"><i class="fa fa-rocket "></i> My Subscriptions</span></a>
+										</li>
+										<li>
+											<a href="<?php echo base_url('user/logout'); ?>">
+											  <span class="h4"><i class="fa fa-power-off "></i> Logout</span></a>
+										</li>
+									  
+									</ul>
+								  </li>
+								
+								</ul>
+							  </li>
 							
                             <?php }else{ ?>
-                           
+								<li class="dropdown notifications-menu  user " style="padding-left:20px;">
+										<a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal" class="dropdown-toggle user-header" data-toggle="dropdown" >
+										  <i class="fa fa-user"></i></a>
+								</li>
                             <?php } ?>
-                            <?php if(isset($user_details) && count($user_details)>0){ ?>
-                            <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;"> <i style="font-size:20px;" class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</a> </li>
-                            <?php }else{ ?>
-                            <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;"> <span style="font-size:18px"><i class="fa fa-cloud-upload" aria-hidden="true"></i></span> Upload</a> </li>
-                            <?php } ?>-->
                             </form>
                         </ul>
                     </div> <!-- /.navbar-custom-menu -->
