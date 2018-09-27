@@ -76,7 +76,7 @@
 								</span>	
 							</div>	
 							 <div class="pad-20 list-style-none" >
-								<marquee class="pubmed-articles" align="top" behavior="scroll" onmouseout="this.start();" onmouseover="this.stop();" direction="up" scrollamount="2" style="padding: 10px;height: 350px;overflow:hidden;">
+								<marquee class="pubmed-articles" align="top" behavior="scroll" onmouseout="this.start();" onmouseover="this.stop();" direction="up" scrollamount="6"  style="padding: 10px;height: 350px;overflow:hidden;">
 								   
 								  <div class="row ">
 								  <div class="table-responsive ">
