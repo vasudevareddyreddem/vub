@@ -36,12 +36,51 @@
                    
 					<!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                        <ul class="nav navbar-nav mar-l-40">
+                        <ul class="nav navbar-nav mar-l-40 sm-hide">
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+							<!--for website-->
                             <li class="hidden"> <a href="#page-top"></a> </li>
                             <li class="page-scroll <?php if($active_url=='institutes'  || $active_url_1=='instutue'){ echo "active"; } ?>"> <a href="<?php echo base_url('institutes'); ?>"> Institutes</a> </li>
                             <li class="page-scroll <?php if($active_url=='courses'){ echo "active"; } ?>"> <a href="<?php echo base_url('courses'); ?>">Courses </a> </li>
                         </ul>
+						<!--for mobile-->
+						<ul class="nav navbar-nav mar-l-40 md-hide">
+                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                            <li class="hidden"> <a href="#page-top"></a> </li>
+                            <li class="page-scroll <?php if($active_url=='institutes'  || $active_url_1=='instutue'){ echo "active"; } ?>"> <a href="<?php echo base_url('institutes'); ?>"> Institutes</a> </li>
+                            <li class="page-scroll <?php if($active_url=='courses'){ echo "active"; } ?>"> <a href="<?php echo base_url('courses'); ?>">Courses </a> </li>
+							
+							 <?php if(isset($user_details) && count($user_details)>0){ ?>
+							 
+									<li class="page-scroll md-hide">
+										<a href="<?php echo base_url('videos/upload'); ?>">
+										  <span class="h4"><i class="fa fa-cloud-upload "></i> My Account</span></a>
+									</li>
+									<li  class=" page-scroll md-hide">
+										<a href="<?php echo base_url('user/subscribes'); ?>">
+										  <span class="h4"><i class="fa fa-rocket "></i> My Subscriptions</span></a>
+									</li>
+									<li class="page-scroll md-hide">
+										<a href="<?php echo base_url('user/logout'); ?>">
+										  <span class="h4"><i class="fa fa-power-off "></i> Logout</span></a>
+									</li>
+								  
+								
+						
+						
+						<?php }else{ ?>
+							<li class="dropdown notifications-menu  user md-hide page-scroll " style="padding-left:20px;">
+									<a href="javascript:void(0);" data-toggle="modal" data-target="#login-modal" class="dropdown-toggle user-header" data-toggle="dropdown" >
+									  <i class="fa fa-user"></i></a>
+							</li>
+						<?php } ?>
+							
+							
+							
+							
+                        </ul>
+						
+						
                     </div> <!-- /.navbar-collapse -->
                     <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu ">
