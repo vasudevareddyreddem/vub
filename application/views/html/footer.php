@@ -1,4 +1,4 @@
-</div>
+
 </body>
 <footer class="footer-2 bg-dark" id="footer" style="border-top:5px solid #fff;z-index:1024">
     <div class="container">

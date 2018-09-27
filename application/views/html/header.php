@@ -26,7 +26,7 @@
 </head> <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 
 <body class="hold-transition skin-blue layout-top-nav">
-    <div class="wrapper">
+    
         <header class="main-header">
             <nav class="navbar navbar-dark navbar-fixed-top">
                 <div class="container-fluid" style="padding-top:10px;">
@@ -39,8 +39,8 @@
                         <ul class="nav navbar-nav mar-l-40">
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                             <li class="hidden"> <a href="#page-top"></a> </li>
-                            <li class="page-scroll <?php if($active_url=='institutes'  || $active_url_1=='instutue'){ echo "nav-li-active"; } ?>"> <a href="<?php echo base_url('institutes'); ?>">INSTITUTES</a> </li>
-                            <li class="page-scroll <?php if($active_url=='courses'){ echo "nav-li-active"; } ?>"> <a href="<?php echo base_url('courses'); ?>">COURSES</a> </li>
+                            <li class="page-scroll <?php if($active_url=='institutes'  || $active_url_1=='instutue'){ echo "active"; } ?>"> <a href="<?php echo base_url('institutes'); ?>"> Institutes</a> </li>
+                            <li class="page-scroll <?php if($active_url=='courses'){ echo "active"; } ?>"> <a href="<?php echo base_url('courses'); ?>">Courses </a> </li>
                         </ul>
                     </div> <!-- /.navbar-collapse -->
                     <!-- Navbar Right Menu -->
@@ -65,93 +65,46 @@
                                     </div>
                                 </div>
                             </li>
-							 <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+		<li class="dropdown notifications-menu  user " style="padding-left:20px;">
+            <a href="#" class="dropdown-toggle user-header" data-toggle="dropdown" >
+              <i class="fa fa-user"></i>
+             
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
+             
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="<?php echo base_url(); ?>assets/vendor/front-end/img/userd.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        AdminLTE Design Team
-                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Developers
-                        <small><i class="fa fa-clock-o"></i> Today</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Sales Department
-                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Reviewers
-                        <small><i class="fa fa-clock-o"></i> 2 days</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
+					<li>
+						<a href="#">
+						  <span class="h4"><i class="fa fa-cloud-upload "></i> Upload</span></a>
+					</li>
+					<li>
+						<a href="#">
+						  <span class="h4"><i class="fa fa-rocket "></i> My Subscriptions</span></a>
+					</li>
+					<li>
+						<a href="#">
+						  <span class="h4"><i class="fa fa-power-off "></i> Logout</span></a>
+					</li>
+                  
                 </ul>
               </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
+            
             </ul>
           </li>
-                            <?php if(isset($user_details) && count($user_details)>0){ ?>
+                           <!-- <?php if(isset($user_details) && count($user_details)>0){ ?>
                             <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('user/logout'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Logout</a> </li>
 							<li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('user/subscribes'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">My Subscriptions</a> </li>
 							
                             <?php }else{ ?>
-                            <!--<li data-toggle=" 							" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> 							   <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;">Login</a> 							</li>-->
+                           
                             <?php } ?>
                             <?php if(isset($user_details) && count($user_details)>0){ ?>
                             <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="<?php echo base_url('videos/upload'); ?>" type="button" class="btn btn-sm btn-default " style="padding:4px 10px;"> <i style="font-size:20px;" class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</a> </li>
                             <?php }else{ ?>
                             <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"> <a type="button" class="btn btn-sm btn-default " style="padding:4px 10px;"> <span style="font-size:18px"><i class="fa fa-cloud-upload" aria-hidden="true"></i></span> Upload</a> </li>
-                            <?php } ?>
+                            <?php } ?>-->
                             </form>
                         </ul>
                     </div> <!-- /.navbar-custom-menu -->
@@ -194,13 +147,18 @@
         </div> <!-- Full Width Column -->
         <!-- share -->
         <div class="modal fade" id="pop-modal" role="dialog">
-            <div class="modal-dialog  ">
+            <div class="modal-dialog modal-lg ">
                 <div class="modal-content ">
-                    <div class="modal-header bg-primary text-center"> </span></button>
-                        <h4 class="modal-title" id="myModalLabel">Please submit this form to get calls from Training Institutes </h4>
-                    </div>
-                    <div class="modal-body">
+                    
+                    <div class="modal-body" style="border-left:5px solid #3059f1">
                         <div class="row" id="lead_data">
+						<div class="col-md-6">
+						  <div class=" text-center">
+						 <h3 class="" style="line-height:30px;"><i>Please submit this form to get calls from Training Institutes </i></h3>
+						 </div>
+							<img src="<?php echo base_url(); ?>assets/vendor/front-end/img/callcenter.png">
+						</div>
+						<div class="col-md-6">
                             <form onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post"> <input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>"> <input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                                 <div class="form-group col-md-12">
                                     <div class="form-group"> <label class=" control-label">Course Name*</label>
@@ -221,6 +179,7 @@
                                 </div>
                                 <div class="form-group col-md-12"> <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit"> </div>
                             </form>
+							</div>
                         </div>
                         <div class="row" id="lead_num_otp" style="display:none;">
                             <div id="EmptyforError"></div>

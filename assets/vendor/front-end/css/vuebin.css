@@ -3,6 +3,21 @@
   overflow-y:scroll;
   padding-right:0 !important;
 }
+.user-header{
+	background:#ddd;
+	padding:10px 11px !important;
+	border-radius:50%;
+	height:38px;
+	width:38px;
+}
+.user-header:hover{
+	background:#3059f1 !important;
+	padding:10px 11px !important;
+	border-radius:50%;
+	height:38px;
+	width:38px;
+	color:#fff !important;
+}
 .article-view .thumbnail {
    
 margin-bottom: 0px !important;
@@ -25,15 +40,9 @@ margin-bottom: 0px !important;
 	list-style-type:none;
 	margin:6px 0px !important;
 }
-.nav-li-active{
-	background:#ff0000;
-}
 
-.nav-li-active a{
-	color:#fff !important;
-	
-	
-}
+
+
  .widget-title {
     color: #ffffff;
     font-family: "Raleway", sans-serif;
