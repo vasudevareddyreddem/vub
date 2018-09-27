@@ -24,7 +24,7 @@
 							 <div class=" ">
 								<div class="row ">
 								    <div class="col-md-3 col-xs-12 text-center " >
-										<div class="vertical-center">
+										<div style="padding-top:22px;padding-left:15px;">
 											
 											 <video width="100%" height="100%" class="thumbnail">
 											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
@@ -88,15 +88,15 @@
 								<tbody>
 								<?php foreach($latest_video_list as $list){ ?>
 										<tr>
-											<td valign="center">
-											 <video width="100%" height="100%" class="thumbnail">
+											<td valign="center" style="width:130px">
+											 <video width="100%" height="auto" class="thumbnail">
 											  <source src="<?php echo base_url('assets/videos/'.$list['video_file']); ?>" type="video/mp4">
 											  <source src="movie.ogg" type="video/ogg">
 											</video>
 										
 												
 											</td>
-											<td colspan="2">
+											<td colspan="2" >
 												<div class="article-details">
 													 <h4><a href="<?php echo base_url('institutes/page/'.base64_encode($list['i_id']).'/'.$list['i_name']); ?>" style="color:#0062C4;"><?php echo isset($list['i_name'])?$list['i_name']:''; ?></a></h4>
 												
