@@ -45,7 +45,7 @@
 	
 <hr class="hr-cus">
     <div class="col-md-12"style="background:rgba(255,255,255, 0.1);border-radius:10px;">
-	<h4 class="text-center">Share With us<h4>
+	<h4 class="text-center">Contact Us Via<h4>
 	<?php 
 
 		$image=base_url('assets/institute_logo/'.$institute_details['i_logo']);
