@@ -3,6 +3,10 @@
   overflow-y:scroll;
   padding-right:0 !important;
 }
+.btn-hover-main:hover{
+	background:#3059f1 !important;
+	color:#fff !important;
+}
 .user-header{
 	background:#ddd;
 	padding:10px 11px !important;

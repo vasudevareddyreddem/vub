@@ -187,7 +187,7 @@
             <div class="modal-dialog modal-lg ">
                 <div class="modal-content ">
                     
-                    <div class="modal-body" style="border-left:5px solid #3059f1">
+                    <div class="modal-body" style="border-left:5px solid #3059f1;border-bottom:5px solid #3059f1;">
                         <div class="row" id="lead_data">
 						<div class="col-md-6">
 						  <div class=" text-center">
@@ -214,7 +214,8 @@
                                         <div class=""> <input type="text" class="form-control" name="contact_num" id="contact_num" placeholder="Enter Contact Number" required> </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-12"> <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit"> </div>
+                                <div class="form-group col-md-12"> <input type="submit" 
+								class="btn-hover-main btn  btn-lg btn-block" value="Submit"> </div>
                             </form>
 							</div>
                         </div>
@@ -269,10 +270,10 @@
             <div class="chat-div">
                 <div class="row" id=""> <span id="institue_pending_chats"></span> </div>
             </div>
-            <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="javascript:void(0);" onclick="get_institue_msgs()"> <img style="width:100px;position:fixed;right:20px;bottom:20px;cursor: pointer;" title="Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?>" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" /></a> </li>
+            <li class="page-scroll" style="padding-left:30px;margin-top:5px"> <a href="javascript:void(0);" onclick="get_institue_msgs()"> <img style="width:100px;position:fixed;right:20px;bottom:0px;cursor: pointer;" data-toggle="tooltip" title="Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?>" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" /></a> </li>
             <?php } ?>
             <?php }else{ ?>
-            <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"><img style="width:100px;position:fixed;right:20px;bottom:20px;cursor: pointer;" title="Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?>" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" /> 
+            <li data-toggle="modal" data-target="#login-modal" class="page-scroll" style="padding-left:30px;margin-top:5px"><img style="width:100px;position:fixed;right:20px;bottom:0px;cursor: pointer;" data-toggle="tooltip"  title="Chat with <?php echo isset($institues_name)?$institues_name:'Vuebin'; ?>" src="<?php echo base_url(); ?>assets/vendor/front-end/img/livechat.png" /> 
 			</li>
             <?php } ?>
         </div>

@@ -66,12 +66,14 @@
 		 </div>
 		 </div>
 		 <?php if(isset($banner_img) && count($banner_img)>0){ ?>
-		 <div class="col-md-10 col-md-offset-2">
-			<img src="<?php echo base_url('assets/institute_banner/'.$banner_img['banner_img']); ?>" alt="<?php echo $banner_img['org_image']; ?>">
+		 <div class="col-md-10 col-md-offset-2" >
+		 <div style="height:150px;overflow:hidden;border:1px solid #ddd">
+			<img  src="<?php echo base_url('assets/institute_banner/'.$banner_img['banner_img']); ?>" alt="<?php echo $banner_img['org_image']; ?>">
+			</div>
 		 </div>
 		 <?php } ?>
 		 
-		 
+		 <div class="clearfix">&nbsp;</div>
 		 <?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
 		 <div class="col-md-10 col-md-offset-2">
 			<h4>Related videos list</h4>
@@ -80,14 +82,7 @@
 				<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
 			<div class="article">
 						   <div class="row">
-							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								 <div class="article-footer clearfix">
-									<span class="pull-left">
-									   <h4 class="text-white"><?php echo isset($list['v_title'])?$list['v_title']:''; ?></h4>
-									</span>	
-									
-								 </div>
-							  </div>
+							
 							  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								 <div class="article-body clearfix">
 									<div class="row">
