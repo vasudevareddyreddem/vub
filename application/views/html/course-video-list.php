@@ -19,7 +19,7 @@
 				 <div class="col-md-6  " data-category="view">
 				 <?php if(isset($video_list) && count($video_list)>0){ ?>
 				 <?php foreach($video_list as $list){ ?>
-				  <a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id'])); ?>" style="color:#222">
+				  <a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id']).'/'.$list['i_name'].'/'.$list['v_title']); ?>" style="color:#222">
                  <div class="article">
 					   <div class="row">
 						  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-white no-padding">
