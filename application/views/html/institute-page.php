@@ -45,7 +45,7 @@
 	
 <hr class="hr-cus">
     <div class="col-md-12"style="background:rgba(255,255,255, 0.1);border-radius:10px;">
-	<h4 class="text-center">Contact Us Via<h4>
+	<h4 class="text-center">Connect Us<h4>
 	<?php 
 
 		$image=base_url('assets/institute_logo/'.$institute_details['i_logo']);
@@ -73,7 +73,7 @@
 		 </div>
 		 <?php } ?>
 		 
-		 <div class="clearfix">&nbsp;</div>
+		 
 		 <?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
 		 <div class="col-md-10 col-md-offset-2">
 			<h4>Related videos list</h4>

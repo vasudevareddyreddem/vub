@@ -46,9 +46,9 @@
 											  </div>
 										   </div>
 												<div class="bg-aaa col-md-2 text-center institutes-curd-right" >
-													<div class="count-videos" style="padding-top:10px">
-														<div style="font-size:25px;"><?php echo isset($list['video_list'])?$list['video_list']:''; ?></div>
-														<div style="font-size:25px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
+													<div class="count-videos vetical-center" style="padding-top:25px">
+														<div style="font-size:25px;line-height:24px"><?php echo isset($list['video_list'])?$list['video_list']:''; ?></div>
+														<div style="font-size:18px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
 													</div>
 												</div>
 										</div>
