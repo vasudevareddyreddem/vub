@@ -46,13 +46,7 @@
 <hr class="hr-cus">
     <div class="col-md-12"style="background:rgba(255,255,255, 0.1);border-radius:10px;">
 	<h4 class="text-center">Contact Us Via<h4>
-	<?php 
-
-		$image=base_url('assets/institute_logo/'.$institute_details['i_logo']);
-		$title='hello';
-		$summary='devareddy';
-		$url='www.vasu.com';
-	?>
+	
 	<hr class="hr-cus">
         <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
       <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-instagram"><i class="fa fa-linkedin "></i></a>

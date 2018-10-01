@@ -13,7 +13,7 @@ class Institutes extends  Front_end {
 	{	
 		$data['institute_list']=$this->Institute_model->get_institues_list_for_front_end();
 		$data['lastest_institute_list']=$this->Institute_model->get_lastest_institute_list();
-		//echo '<pre>';print_r($data);exit;
+		echo '<pre>';print_r($data);exit;
 		$this->load->view('html/institutes',$data);
 		$footer['details']=$this->Content_model->get_footer_content(1);
 		$this->load->view('html/footer',$footer);
@@ -44,7 +44,7 @@ class Institutes extends  Front_end {
 		}
 		
 		$data['courses_offered']=$this->Institute_model->get_institues_wise_courses_offered($i_id);
-		//echo '<pre>';print_r($lists);exit;
+		//echo '<pre>';print_r($data);exit;
 		$this->load->view('html/institute-page',$data);
 		$footer['details']=$this->Content_model->get_footer_content(1);
 		$this->load->view('html/footer',$footer);
