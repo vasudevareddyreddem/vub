@@ -45,7 +45,8 @@
 	
 <hr class="hr-cus">
     <div class="col-md-12"style="background:rgba(255,255,255, 0.1);border-radius:10px;">
-	<h4 class="text-center">Contact Us Via<h4>
+
+	<h4 class="text-center">Connect Us<h4>
 	
 	<hr class="hr-cus">
         <a href="http://www.facebook.com/sharer.php?s=100&p[url]=<?php echo base_url('institutes/share/'.base64_encode($institute_details['i_id'])); ?>" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
@@ -67,7 +68,7 @@
 		 </div>
 		 <?php } ?>
 		 
-		 <div class="clearfix">&nbsp;</div>
+		 
 		 <?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
 		 <div class="col-md-10 col-md-offset-2">
 			<h4>Related videos list</h4>

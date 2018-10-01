@@ -28,8 +28,8 @@
 <body class="hold-transition skin-blue layout-top-nav">
     <div class="wrapper">
         <header class="main-header">
-            <nav class="navbar navbar-dark navbar-fixed-top">
-                <div class="container-fluid" style="padding-top:10px;">
+            <nav class="navbar navbar-dark navbar-fixed-top" style="height:50px;">
+                <div class="container-fluid" style="padding-top:3px;">
                     <div class="navbar-header"> <a href="<?php echo base_url(); ?>" class="navbar-brand"><img style="width:100px;height:auto;" src="<?php echo base_url(); ?>assets/vendor/front-end/img/logo.png" /></a>
                         <div id="mobile-search-id" class=" md-hide" style="position:absolute;right:65px;color:#333;top:12px;font-size:20px;"> <i class="fa fa-search" aria-hidden="true"></i> </div> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"> <i class="fa fa-bars"></i> </button>
                     </div>
@@ -93,7 +93,7 @@
                                         <div class="form-group "> <input id="myInput" type="text" class="form-control search-loc homemenu_id" name="institue_course_name" value="<?php echo $this->session->userdata('search_ins'); ?>" placeholder=" Course Video/Institute "> <input type="hidden" id="homemenu_id" name="institue_course" value="<?php echo $this->session->userdata('search_ins_val'); ?>"> </div>
                                     </div>
                             </li>
-                            <li class="page-scroll">
+                            <li class="page-scroll" style="margin-right:30px;">
                                 <div>
                                     <div class="row">
                                         <div class="col-md-10">
@@ -191,27 +191,28 @@
                         <div class="row" id="lead_data">
 						<div class="col-md-6">
 						  <div class=" text-center">
-						 <h3 class="" style="line-height:30px;"><i>Please submit this form to get calls from Training Institutes </i></h3>
+						 <h3 class="" style="line-height:30px;">Please submit this form to get calls from Training Institutes </h3>
 						 </div>
 							<img src="<?php echo base_url(); ?>assets/vendor/front-end/img/callcenter.png">
 						</div>
 						<div class="col-md-6">
                             <form onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post"> <input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>"> <input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                                 <div class="form-group col-md-12">
-                                    <div class="form-group"> <label class=" control-label">Course Name*</label>
-                                        <div class=""> <input type="text" class="form-control" name="course_name" id="course_name" placeholder="Enter Course Name" required> </div>
+								 <div class="form-group"> 
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="name" id="name" placeholder="Your Name" required> </div>
                                     </div>
-                                    <div class="form-group"> <label class=" control-label">Name*</label>
-                                        <div class=""> <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required> </div>
+                                    <div class="form-group"> 
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="course_name" id="course_name" placeholder=" Course Name" required> </div>
                                     </div>
-                                    <div class="form-group"> <label class=" control-label">Location, City*</label>
-                                        <div class=""> <input type="text" class="form-control" name="location_name" name="location_name" placeholder="Enter Location, City" required> </div>
+                                   
+                                    <div class="form-group"> 
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="location_name" name="location_name" placeholder=" Location, City" required> </div>
                                     </div>
-                                    <div class="form-group"> <label class=" control-label">Email Id*</label>
-                                        <div class=""> <input type="email" class="form-control" name="email_id" id="email_id" placeholder="Enter Email Id" required> </div>
+                                    <div class="form-group"> 
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="email" class="form-control" name="email_id" id="email_id" placeholder=" Email Id" required> </div>
                                     </div>
-                                    <div class="form-group"> <label class=" control-label">Contact Number *</label>
-                                        <div class=""> <input type="text" class="form-control" name="contact_num" id="contact_num" placeholder="Enter Contact Number" required> </div>
+                                    <div class="form-group"> 
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="contact_num" id="contact_num" placeholder=" Contact Number" required> </div>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12"> <input type="submit" 
@@ -219,6 +220,7 @@
                             </form>
 							</div>
                         </div>
+						
                         <div class="row" id="lead_num_otp" style="display:none;">
                             <div id="EmptyforError"></div>
                             <div class="form-group col-md-12"> <input type="hidden" name="lead_id" id="lead_id" value="">
