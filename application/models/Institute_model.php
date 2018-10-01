@@ -23,26 +23,15 @@ class Institute_model extends CI_Model
 		
 		$this->db->where('institute_list.status',1);
 		$this->db->order_by('institute_list.i_id','desc');
+		$this->db->limit(20);
 		$return=$this->db->get()->result_array();
 			foreach($return as $list){
 			$videos_count=$this->get_institue_video_count_list($list['i_id']);
-			$course_list=array();
-			
-			//echo '<pre>';print_r($videos_count);exit;
-				if($videos_count['video_count']>0){
+			if($videos_count['video_count']>0){
 					$data[$list['i_id']]=$list;
-					$data[$list['i_id']]['course_list']=isset($imp)?$imp:'';
 					$data[$list['i_id']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
-				
 				}
-				
 			}
-			foreach($data as $key => $row) {
-				//echo '<pre>';print_r($row);
-				$dates[$key]  = $row['video_list'];
-			}
-			$sort_data=array_multisort($dates, SORT_DESC, $data);
-			//echo '<pre>';print_r($sort_data);exit;
 			if(!empty($data)){
 				return $data;
 				
