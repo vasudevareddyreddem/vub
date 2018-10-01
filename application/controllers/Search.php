@@ -15,12 +15,15 @@ class Search extends Front_end {
 		
 		
 		$post=$this->input->post();
+		
 		$this->session->set_userdata('search_ins',$post['institue_course_name']);
 		$this->session->set_userdata('search_ins_val',$post['institue_course']);
 		$this->session->set_userdata('search_loc',$post['location_name']);
 		$this->session->set_userdata('search_loc_val',$post['local_id']);
-		//echo '<pre>';print_r($post);exit;
-		$data['location_search_area']=isset($post['location_name'])?$post['location_name']:'';
+		
+		// echo $this->session->userdata('search_loc_val');
+		// echo '<pre>';print_r($post);exit;
+		// $data['location_search_area']=isset($post['location_name'])?$post['location_name']:'';
 		if(isset($post['institue_course']) && $post['institue_course']=='' && $post['local_id']!=''){
 			$this->session->set_flashdata('error',"Please select any one");
 			redirect($this->agent->referrer());

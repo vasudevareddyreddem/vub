@@ -24,6 +24,8 @@ class Institutes extends  Front_end {
 		$course_id=base64_decode($this->uri->segment(5));
 		$data['institute_details']=$this->Institute_model->get_institues_details_for_front_end($i_id);
 		$data['banner_img']=$this->Institute_model->get_banner_details($i_id);
+		
+		//echo '<pre>';print_r($data);exit;
 		if(isset($course_id) && $course_id!=''){
 				$data['video_list']=$this->Institute_model->get_institues_video_list($i_id,$course_id);
 			
@@ -45,6 +47,16 @@ class Institutes extends  Front_end {
 		
 		$data['courses_offered']=$this->Institute_model->get_institues_wise_courses_offered($i_id);
 		//echo '<pre>';print_r($data);exit;
+		
+		
+		/* INSTUTITE LOGIN details purpose*/
+		if($this->session->userdata('vuebin_user'))
+		{
+			$vuebin_details=$this->session->userdata('vuebin_user');
+			$header['user_details']=$this->User_model->get_userdetails($vuebin_details['cust_id']);
+		}
+		//echo '<pre>';print_r($header);exit;
+		/* INSTUTITE LOGIN details purpose*/
 		$this->load->view('html/institute-page',$data);
 		$footer['details']=$this->Content_model->get_footer_content(1);
 		$this->load->view('html/footer',$footer);
