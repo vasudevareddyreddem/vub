@@ -67,8 +67,8 @@
 		 </div>
 		 <?php if(isset($banner_img) && count($banner_img)>0){ ?>
 		 <div class="col-md-10 col-md-offset-2" >
-		 <div style="height:150px;overflow:hidden;border:1px solid #ddd">
-			<img  src="<?php echo base_url('assets/institute_banner/'.$banner_img['banner_img']); ?>" alt="<?php echo $banner_img['org_image']; ?>">
+		 <div style="max-height:150px;overflow:hidden;border:1px solid #ddd;width:auto">
+			<img class="img-responsive" src="<?php echo base_url('assets/institute_banner/'.$banner_img['banner_img']); ?>" alt="<?php echo $banner_img['org_image']; ?>">
 			</div>
 		 </div>
 		 <?php } ?>

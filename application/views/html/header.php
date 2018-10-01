@@ -220,7 +220,6 @@
                             </form>
 							</div>
                         </div>
-						
                         <div class="row" id="lead_num_otp" style="display:none;">
                             <div id="EmptyforError"></div>
                             <div class="form-group col-md-12"> <input type="hidden" name="lead_id" id="lead_id" value="">
