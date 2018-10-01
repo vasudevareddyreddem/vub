@@ -66,8 +66,23 @@
 			<img class="img-responsive" src="<?php echo base_url('assets/institute_banner/'.$banner_img['banner_img']); ?>" alt="<?php echo $banner_img['org_image']; ?>">
 			</div>
 		 </div>
+		 
 		 <?php } ?>
+		 
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">
+	
+          <!-- Custom Tabs -->
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab_1" data-toggle="tab">Videos list</a></li>
+			  <?php if(isset($user_details) && $user_details['completed']==0){ ?>
+              <li><a href="#tab_2" data-toggle="tab">Related videos list</a></li>
+			  <?php } ?>
+             
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+          
 		 <?php if(isset($video_list) && count($video_list)>0){ ?>
 		 <h3 style="padding:10px;margin-top:0px;background:#ddd">Videos list</h3>
 		 <?php foreach($video_list as $list){ ?>
@@ -130,12 +145,13 @@
 				<?php } ?>
 
 				<!--related video list-->
-				
-		 <div class="clearfix">&nbsp;</div
-		 <?php if(isset($user_details) && $user_details['completed']==0){ ?>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                <?php if(isset($user_details) && $user_details['completed']==0){ ?>
 		 <?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
 		 <div >
-			<h3>Related videos list</h3>
+			
 			
 				<?php foreach($institue_realted_video_list as $list){ ?>
 				<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
@@ -202,7 +218,21 @@
 		 </div>
 		 <?php } ?>
 		 <?php } ?>
-				<!--related video list-->				
+				<!--related video list-->	
+              </div>
+          
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- nav-tabs-custom -->
+        
+		
+		
+		
+				
+		 
+		 			
 				</div>
 				
 			

@@ -866,13 +866,15 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-tooltip {
 	padding: 8px;
+	margin-top:100px !important;
 	position: absolute;
 	z-index: 9999;
 	max-width: 300px;
+
+	top:63.60% !important;
+	
 }
-body .ui-tooltip {
-	border-width: 2px;
-}
+
 /* Component containers
 ----------------------------------*/
 .ui-widget {
