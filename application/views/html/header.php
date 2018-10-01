@@ -199,20 +199,20 @@
                             <form  autocomplete="off" onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post"> <input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>"> <input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                                 <div class="form-group col-md-12">
 								 <div class="form-group"> 
-                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="name" id="name" placeholder="Your Name" required> </div>
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;padding: 22px 12px;" type="text" class="form-control" name="name" id="name" placeholder="Your Name" required> </div>
                                     </div>
                                     <div class="form-group"> 
-                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control course_search" name="course_name" id="course_name" placeholder=" Course Name" required> </div>
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;padding:22px 12px;" type="text" class="form-control course_search" name="course_name" id="course_name" placeholder=" Course Name" required> </div>
                                     </div>
                                    
                                     <div class="form-group"> 
-                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control location_search" name="location_name" name="location_name" placeholder=" Location, City" required> </div>
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;padding:22px 12px;" type="text" class="form-control location_search" name="location_name" name="location_name" placeholder=" Location, City" required> </div>
                                     </div>
                                     <div class="form-group"> 
                                         <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="email" class="form-control" name="email_id" id="email_id" placeholder=" Email Id" required> </div>
                                     </div>
                                     <div class="form-group"> 
-                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="contact_num" id="contact_num" placeholder=" Contact Number" required> </div>
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;padding:22px 12px;" type="text" class="form-control" name="contact_num" id="contact_num" placeholder=" Contact Number" required> </div>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12"> <input type="submit" 
