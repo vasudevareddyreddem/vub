@@ -75,6 +75,12 @@ class User_model extends CI_Model
 	}
 	
 	/*home  search functionality  purpose*/
+	public  function get_course_names_list($val){
+		
+		$this->db->select('c_name as label,CONCAT(course_id,"_","course") as value')->from('course_list');
+		$this->db->where('course_list.status',1);
+		return $this->db->get()->result_array();
+	}
 	public  function get_course_or_institues_list($val){
 		$this->db->select('i_name as label,CONCAT(i_id,"_","institue") AS value')->from('institute_list');
 		$this->db->where('institute_list.status',1);

@@ -196,17 +196,17 @@
 							<img src="<?php echo base_url(); ?>assets/vendor/front-end/img/callcenter.png">
 						</div>
 						<div class="col-md-6">
-                            <form onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post"> <input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>"> <input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
+                            <form  autocomplete="off" onsubmit="return sent_lead();" action="<?php echo base_url('user/postleade');?>" method="post"> <input type="hidden" name="lead_type" id="lead_type" value="<?php echo $this->uri->segment(2); ?>"> <input type="hidden" name="i_id" id="i_id" value="<?php echo $this->uri->segment(3); ?>">
                                 <div class="form-group col-md-12">
 								 <div class="form-group"> 
                                         <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="name" id="name" placeholder="Your Name" required> </div>
                                     </div>
                                     <div class="form-group"> 
-                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="course_name" id="course_name" placeholder=" Course Name" required> </div>
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control course_search" name="course_name" id="course_name" placeholder=" Course Name" required> </div>
                                     </div>
                                    
                                     <div class="form-group"> 
-                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control" name="location_name" name="location_name" placeholder=" Location, City" required> </div>
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="text" class="form-control location_search" name="location_name" name="location_name" placeholder=" Location, City" required> </div>
                                     </div>
                                     <div class="form-group"> 
                                         <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="email" class="form-control" name="email_id" id="email_id" placeholder=" Email Id" required> </div>
@@ -427,6 +427,26 @@
                     mapping[homesearch[i].label] = homesearch[i].value;
                 }
                 $('.homemenu_id').autocomplete({
+                    minLength: 1,
+                    source: source,
+                    select: function(event, ui) {
+                        $('#homemenu_id').val(mapping[ui.item.value]);
+                        $('#homemenu_id1').val(mapping[ui.item.value]);
+                    }
+                });
+            });
+			$(function() {
+                var coresearch = [<?php foreach($core_values as $lis){ ?> {
+                    value: '<?php echo $lis['value']; ?>',
+                    label: '<?php echo $lis['label']; ?>',
+                }, <?php } ?>];
+                var source = [];
+                var mapping = {};
+                for (var i = 0; i < coresearch.length; ++i) {
+                    source.push(coresearch[i].label);
+                    mapping[coresearch[i].label] = coresearch[i].value;
+                }
+                $('.course_search').autocomplete({
                     minLength: 1,
                     source: source,
                     select: function(event, ui) {
