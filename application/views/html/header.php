@@ -88,7 +88,7 @@
                             <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                             <li class="hidden"> <a href="#page-top"></a> </li>
                             <li class="page-scroll">
-                                <form action="<?php echo base_url('search/index/'); ?>" method="post">
+                                <form onsubmit="return check_validations();" action="<?php echo base_url('search/index/'); ?>" method="post">
                                     <div class="search-form">
                                         <div class="form-group "> <input id="myInput" type="text" class="form-control search-loc homemenu_id" name="institue_course_name" value="<?php echo $this->session->userdata('search_ins'); ?>" placeholder=" Course Video/Institute "> <input type="hidden" id="homemenu_id" name="institue_course" value="<?php echo $this->session->userdata('search_ins_val'); ?>"> </div>
                                     </div>
@@ -98,7 +98,10 @@
                                     <div class="row">
                                         <div class="col-md-10">
                                             <div class="search-form1">
-                                                <div class="form-group "> <input id="myInput1" type="text" class="form-control search_loc_val location_search" name="location_name" value="<?php echo $this->session->userdata('search_loc'); ?>" placeholder=" Location"> <input type="hidden" name="local_id" id="local_id" value="<?php echo $this->session->userdata('search_loc_val'); ?>"> </div>
+                                                <div class="form-group "> <input id="myInput1" type="text" class="form-control search_loc_val location_search" name="location_name" value="<?php echo $this->session->userdata('search_loc'); ?>" placeholder=" Location">
+												<input type="hidden" name="local_id" id="local_id" value="">
+												<input type="hidden" name="error_local_id" id="error_local_id" value="">
+												</div>
                                             </div>
                                         </div> <button class="btn btn-sm btn-primary col-md-2 btn-go ">Go</button>
                                     </div>
@@ -291,6 +294,9 @@
 		
 		
         <script type="text/javascript">
+		function check_validations(){
+			alert();return false;
+		}
             function sent_lead() {
 					$('#lead_data').hide();
 					$('#lead_num_otp').show();
@@ -391,10 +397,7 @@
                     }, <?php } ?>],
                     minLength: 1,
 					focus: function( event, ui ) {
-						var str= ui.item.value;
-						var res = str.split(",");
-						$(this).val(res[0]);
-
+						
 					return false;
 					},
                     select: function(event, ui) {
