@@ -31,7 +31,7 @@
 		   <small ><i class="fa fa-map-marker"> </i> &nbsp; <?php echo isset($institute_details['i_address'])?$institute_details['i_address']:''; ?>,<?php echo isset($institute_details['location_name'])?$institute_details['location_name']:''; ?>,<?php echo isset($institute_details['city_name'])?$institute_details['city_name']:''; ?>,<?php echo isset($institute_details['country_name'])?$institute_details['country_name']:''; ?></small > 
 		   <hr class="hr-cus">
 	  <div class="help-side">
-		   <small ><i class="fa fa-phone"> </i>&nbsp; <?php echo isset($institute_details['num_code'])?$institute_details['num_code']:''; ?>- <?php echo isset($institute_details['i_p_phone'])?$institute_details['i_p_phone']:''; ?></small>
+		   <small ><i class="fa fa-phone"> </i>&nbsp; +<?php echo isset($institute_details['num_code'])?$institute_details['num_code']:''; ?>- <?php echo isset($institute_details['i_p_phone'])?$institute_details['i_p_phone']:''; ?></small>
 	  </div>  
 	  <!-- <hr class="hr-cus">
 	<div class="help-side">

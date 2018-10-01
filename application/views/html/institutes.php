@@ -36,8 +36,8 @@
 												 <span><?php echo isset($list['country_name'])?$list['country_name']:''; ?></span>
 												
 												 </h5> 
-												 <h5><strong class="site-col-r">Contact:</strong> <span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
-												 <span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
+												 <h5><strong class="site-col-r">Contact:</strong> +<span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_p_phone'])?$list['i_p_phone']:''; ?></span>,
+												 +<span><?php echo isset($list['num_code'])?$list['num_code']:''; ?>-<?php echo isset($list['i_s_phone'])?$list['i_s_phone']:''; ?></span>
 												 </h5>
 												
 												
