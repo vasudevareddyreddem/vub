@@ -20,10 +20,11 @@
             <!-- /.box-header -->
             <!-- form start -->
 			<div style="padding:20px;">
-            <form id="addbanner" method="post" class="" action="<?php echo base_url('institute/updatebannerpost'); ?>" enctype="multipart/form-data">
+            <form onsubmit="return check_validations();" id="addbanner" method="post" class="" action="<?php echo base_url('institute/updatebannerpost'); ?>" enctype="multipart/form-data">
 						<div class="row">
 						
 						<div class="col-md-6">
+						<input  type="hidden" id="validation_value" name="validation_value" value="0">
 							<div class="form-group">
 								<label class=" control-label">Institute Banner</label>
 								<div class="">
@@ -63,19 +64,58 @@
 	
 </div>
 
-  <script type="text/javascript">$(document).ready(function() {
+  <script type="text/javascript">
+  function check_validations(){
+	  var check_value=$('#validation_value').val();
+	  if(check_value==2){
+		 return true; 
+	  }else{
+		 alert('Use only 1000*150 dimensions images');
+		return false;		 
+	  }
+  }
+	  
+	  var _URL = window.URL || window.webkitURL;
+
+$("#banner_img").change(function(e) {
+    
+    var image, file;
+
+    if ((file = this.files[0])) {
+       
+        image = new Image();
+        
+        image.onload = function() {
+			
+			if(this.width==1000 && this.height==150){
+				$('#validation_value').val(2);
+			}
+            
+        };
+    
+        image.src = _URL.createObjectURL(file);
+
+
+    }
+
+});
+	  
+ 
+  
+  
+  
+  $(document).ready(function() {
    $('#addbanner').bootstrapValidator({
         
         fields: {
              banner_img: {
                 validators: {
-					notEmpty: {
-						message: 'Banner is required'
-					},
-					regexp: {
-					regexp: "(.*?)\.(jpg|jpeg|png|gif)$",
-					message: "Uploaded file is not a valid. Only jpg,jpeg,png,gif images are allowed"
-					}
+					file: {
+                        extension: 'jpeg,png,jpg',
+                        type: 'image/jpeg,image/png,image/jpg',
+                        maxSize: 2048 * 1024,
+                        message: 'The selected file is not valid'
+                    }
 				}
             }
             }

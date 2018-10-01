@@ -23,8 +23,20 @@ class Institute_model extends CI_Model
 		
 		$this->db->where('institute_list.status',1);
 		$this->db->order_by('institute_list.i_id','desc');
-		$this->db->limit(5);
-		return $this->db->get()->result_array();
+		$this->db->limit(20);
+		$return=$this->db->get()->result_array();
+			foreach($return as $list){
+			$videos_count=$this->get_institue_video_count_list($list['i_id']);
+			if($videos_count['video_count']>0){
+					$data[$list['i_id']]=$list;
+					$data[$list['i_id']]['video_list']=isset($videos_count['video_count'])?$videos_count['video_count']:'';
+				}
+			}
+			if(!empty($data)){
+				return $data;
+				
+			}
+
 	}
 
 	public  function get_institues_list_for_front_end(){
