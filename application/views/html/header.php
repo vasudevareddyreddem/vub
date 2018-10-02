@@ -99,7 +99,7 @@
                                         <div class="col-md-10">
                                             <div class="search-form1">
                                                 <div class="form-group "> <input id="myInput1" type="text" class="form-control search_loc_val location_search" name="location_name" value="<?php echo $this->session->userdata('search_loc'); ?>" placeholder=" Location">
-												<input type="hidden" name="local_id" id="local_id" value="<?php echo $this->session->userdata('local_id'); ?>">
+												<input type="hidden" name="local_id" id="local_id" value="">
 												<input type="hidden" name="error_local_id" id="error_local_id" value="">
 												</div>
                                             </div>
@@ -295,13 +295,7 @@
 		
         <script type="text/javascript">
 		function check_validations(){
-			var search=$('.search_loc_val').val();
-			var bb=$('#local_id').val();
-			if($('#error_local_id').val()=='' && search!='' && bb==''){
-				$('#sucessmsg').html('  <div class="alert_msg1 animated slideInUp bg-warn"> Invalid Location search <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i> </div>');
-	return false;
-			}
-			
+			alert();return false;
 		}
             function sent_lead() {
 					$('#lead_data').hide();
@@ -409,7 +403,6 @@
                     select: function(event, ui) {
 						var str= ui.item.value;
 						var res = str.split(",");
-						$('#error_local_id').val(ui.item.id);
 						$('#local_id').val(ui.item.id);
 						$('#local_id1').val(ui.item.id);
 						$("#myInput1").val(res[0]);
