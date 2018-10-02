@@ -295,13 +295,7 @@
 		
         <script type="text/javascript">
 		function check_validations(){
-			var search=$('.search_loc_val').val();
-			
-			if($('#error_local_id').val()=='' && search!=''){
-				$('#sucessmsg').html('  <div class="alert_msg1 animated slideInUp bg-warn"> Invalid Location search <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i> </div>');
-	return false;
-			}
-			
+			alert();return false;
 		}
             function sent_lead() {
 					$('#lead_data').hide();
@@ -409,7 +403,6 @@
                     select: function(event, ui) {
 						var str= ui.item.value;
 						var res = str.split(",");
-						$('#error_local_id').val(ui.item.id);
 						$('#local_id').val(ui.item.id);
 						$('#local_id1').val(ui.item.id);
 						$("#myInput1").val(res[0]);
