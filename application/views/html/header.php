@@ -209,7 +209,7 @@
                                     </div>
                                    
                                     <div class="form-group"> 
-                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;padding:22px 12px;" type="text" class="form-control location_search" name="location_name" name="location_name" placeholder=" Location, City" required> </div>
+                                        <div class=""> <input style="border:none;border-bottom:1px solid #ddd;padding:22px 12px;" type="text" class="form-control loc_search" name="location_name" name="location_name" placeholder=" Location, City" required> </div>
                                     </div>
                                     <div class="form-group"> 
                                         <div class=""> <input style="border:none;border-bottom:1px solid #ddd;" type="email" class="form-control" name="email_id" id="email_id" placeholder=" Email Id" required> </div>
@@ -287,7 +287,7 @@
         <?php if($lead_data['ip_address']!=$this->input->ip_address() && $lead_data['vuebin_data']==''){ ?>
         <script>
             $(document).ready(function() {
-                $("#pop-modal").modal();
+                //$("#pop-modal").modal();
             });
         </script>
         <?php } ?>
@@ -442,6 +442,25 @@
                     select: function(event, ui) {
                         $('#homemenu_id').val(mapping[ui.item.value]);
                         $('#homemenu_id1').val(mapping[ui.item.value]);
+                    }
+                });
+            });
+			$(function() {
+                var loc_search = [<?php foreach($loc_values as $lis){ ?> {
+                    value: '<?php echo $lis['location_name']; ?>',
+                    label: '<?php echo $lis['location_name']; ?>',
+                }, <?php } ?>];
+                var source = [];
+                var mapping = {};
+                for (var i = 0; i < loc_search.length; ++i) {
+                    source.push(loc_search[i].label);
+                    mapping[loc_search[i].label] = loc_search[i].value;
+                }
+                $('.loc_search').autocomplete({
+                    minLength: 1,
+                    source: source,
+                    select: function(event, ui) {
+						//alert(ui.item.id);
                     }
                 });
             });

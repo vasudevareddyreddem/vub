@@ -1,6 +1,6 @@
  <?php $lead_data=$this->session->userdata('institue_lead_data'); ?>
         <?php if($lead_data['ip_address']!=$this->input->ip_address() && $lead_data['institue_data']==''){ ?>
-		  <script>$(document).ready(function(){   $("#pop-modal").modal();});</script>
+		  <script>$(document).ready(function(){   //$("#pop-modal").modal();});</script>
  <?php } ?>
 <div class="content-wrapper">
 	<div class="body-start-page " style="margin-top:10px;">

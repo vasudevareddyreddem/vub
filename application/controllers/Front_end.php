@@ -19,6 +19,7 @@ class Front_end extends CI_Controller {
 		$header['search_values']=$this->User_model->get_course_or_institues_list('');
 		$header['core_values']=$this->User_model->get_course_names_list('');
 		$header['location_values']=$this->User_model->get_location_search_list('');
+		$header['loc_values']=$this->User_model->get_only_location_search_list('');
 		//$location_indivual=$this->User_model->get_location_search_indivisual_list('');
 		//$header['location_values']=$location_all;
 		//echo '<pre>';print_r($header);exit;
