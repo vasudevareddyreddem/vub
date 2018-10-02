@@ -62,11 +62,11 @@
 		 </div>
 		 <?php if(isset($banner_img) && count($banner_img)>0){ ?>
 		 <div class="col-md-10 col-md-offset-2" >
-		 <div style="max-height:150px;overflow:hidden;border:1px solid #ddd;width:auto">
+		 <div style="max-height:150px;overflow:hidden;border:1px solid #ddd;width:auto margin-bot">
 			<img class="img-responsive" src="<?php echo base_url('assets/institute_banner/'.$banner_img['banner_img']); ?>" alt="<?php echo $banner_img['org_image']; ?>">
 			</div>
 		 </div>
-		 
+		 <div class="clearfix">&nbsp;</div>
 		 <?php } ?>
 		 
 		 <div class="col-md-7 no- lib-item col-md-offset-2" data-category="view">
@@ -75,7 +75,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab_1" data-toggle="tab">Videos list</a></li>
-			  <?php if(isset($user_details) && $user_details['completed']==0){ ?>
+			  <?php if(isset($user_details) && $user_details['completed']==1){ ?>
               <li><a href="#tab_2" data-toggle="tab">Related videos list</a></li>
 			  <?php } ?>
              
@@ -87,7 +87,7 @@
 		 <h3 style="padding:10px;margin-top:0px;background:#ddd">Videos list</h3>
 		 <?php foreach($video_list as $list){ ?>
 	
-			<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
+			<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'.'/'.$list['c_name'].'/'.$list['v_title']); ?>" style="color:#222">		 
 			<div class="article">
 						   <div class="row">
 							
@@ -148,13 +148,13 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_2">
-                <?php if(isset($user_details) && $user_details['completed']==0){ ?>
+                <?php if(isset($user_details) && $user_details['completed']==1){ ?>
 		 <?php if(isset($institue_realted_video_list) && count($institue_realted_video_list)>0){ ?>
 		 <div >
 			
 			
 				<?php foreach($institue_realted_video_list as $list){ ?>
-				<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'); ?>" style="color:#222">		 
+				<a href="<?php echo base_url('videos/play/'.base64_encode($list['i_id']).'/'.base64_encode($list['video_id']).'/'.base64_encode($list['course_name']).'/'.'instutue'.'/'.$list['c_name']); ?>" style="color:#222">		 
 			<div class="article">
 						   <div class="row">
 							

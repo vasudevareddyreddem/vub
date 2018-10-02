@@ -108,7 +108,7 @@
 						<?php foreach($video_list as $list){ ?>
 							
 						<div class="row " style="border:1px solid #ddd;margin:5px;position:relative">
-						 <a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id'])); ?>" style="color:#222">
+						 <a href="<?php echo base_url('courses/videoplay/'.base64_encode($list['course_id']).'/'.base64_encode($list['video_id']).'/'.$list['i_name'].'/'.$list['v_title']); ?>" style="color:#222">
 								    <div class="col-md-3 col-xs-12 text-center " >
 										<div class="vertical-center">
 								
