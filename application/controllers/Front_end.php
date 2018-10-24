@@ -32,7 +32,7 @@ class Front_end extends CI_Controller {
 				
 		}else{
 			require_once "config.php";
-			$redirectURL = "https://shofus.com/fbcallback";
+			$redirectURL = "https://cllicks.com/fbcallback";
 			$permissions = ['email'];
 			$header['loginURL']=$helper->getLoginUrl($redirectURL, $permissions);
 		}

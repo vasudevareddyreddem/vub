@@ -295,7 +295,7 @@
 		
         <script type="text/javascript">
 		function check_validations(){
-			alert();return false;
+			//alert();return false;
 		}
             function sent_lead() {
 					$('#lead_data').hide();
